@@ -1,20 +1,64 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Joshua Segatt - Senior Frontend Engineer Portfolio
 
-# Run and deploy your AI Studio app
+A modern, high-performance web portfolio built to showcase technical expertise, scalable architecture, and premium user experiences. Designed with a focus on fluid animations, responsive layouts, and robust component design.
 
-This contains everything you need to run your app locally.
+## Architecture & Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/10lwMzJEK0a38YQ3SkFVXnnAp92ZAXlbc
+- **Core**: React 18 / TypeScript
+- **Styling**: Tailwind CSS (Utility-first, Custom Design Tokens)
+- **Animations**: Framer Motion (Orchestrated physics-based animations)
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
+- **Build Tool**: Vite (Lightning-fast HMR and optimized production builds)
 
-## Run Locally
+## Design Philosophy
 
-**Prerequisites:**  Node.js
+- **Zero-Compromise UI**: Pixel-perfect implementation with deep attention to micro-interactions.
+- **Component-Driven**: Modular, reusable architecture following SOLID principles where applicable.
+- **Performance First**: Optimized asset delivery, minimal re-renders, and efficient CSS payload.
+- **Fluid Typography & Spacing**: Adaptive scaling across all device viewports.
 
+## Core Features
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **Interactive Project Lab**: A dynamic, multi-step proposal generator with integrated complexity calculation.
+- **Blueprint Scanner**: An animated, faux-analytical UI component demonstrating complex state management and sequenced animations.
+- **Responsive Hero Section**: Tailored visual hierarchy supporting dynamic content presentation.
+- **Form Integration**: Client-side form handling and payload formatting via EmailJS.
+
+## Getting Started
+
+To run this project locally for review or development:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Structure Overview
+
+```text
+src/
+├── components/          # Reusable UI components (Hero, ProjectLab, BlueprintScanner)
+├── App.tsx              # Root application component and routing configuration
+├── index.css            # Global stylesheet and Tailwind directives
+├── main.tsx             # Application entry point
+└── tailwind.config.js   # Custom theme tokens and design system configuration
+```
+
+## Deployment
+
+Configured for seamless deployment via Netlify or Vercel using standard React/Vite build presets.
+
+```bash
+Build Command: npm run build
+Publish Directory: dist
+```
+
+---
+*Built by Joshua Segatt.*
