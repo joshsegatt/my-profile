@@ -1,64 +1,59 @@
-# Joshua Segatt - Senior Frontend Engineer Portfolio
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Joshua%20Segatto&fontSize=60&fontAlignY=35&desc=AI-Powered%20Senior%20Software%20Engineer&descAlignY=55&descAlign=62&fontColor=ffffff" alt="Header" />
+</div>
 
-A modern, high-performance web portfolio built to showcase technical expertise, scalable architecture, and premium user experiences. Designed with a focus on fluid animations, responsive layouts, and robust component design.
+<h1 align="center">Premium Technical Portfolio</h1>
 
-## Architecture & Tech Stack
+<p align="center">
+  <strong>Crafting Digital Excellence for Global Markets</strong><br>
+  <em>London, UK 🇬🇧 • Operating Worldwide 🌍</em>
+</p>
 
-- **Core**: React 18 / TypeScript
-- **Styling**: Tailwind CSS (Utility-first, Custom Design Tokens)
-- **Animations**: Framer Motion (Orchestrated physics-based animations)
-- **Routing**: React Router DOM
-- **Icons**: Lucide React
-- **Build Tool**: Vite (Lightning-fast HMR and optimized production builds)
+<div align="center">
+  <img src="https://img.shields.io/badge/Status-Available_for_Hire-success?style=for-the-badge&logo=opslevel&logoColor=white" alt="Hire Me" />
+  <img src="https://img.shields.io/badge/Location-London,_UK-black?style=for-the-badge&logo=google-maps&logoColor=white" alt="Location" />
+  <img src="https://img.shields.io/badge/Specialization-AI_&_SaaS-blue?style=for-the-badge&logo=openai&logoColor=white" alt="Specialization" />
+</div>
 
-## Design Philosophy
+<br />
 
-- **Zero-Compromise UI**: Pixel-perfect implementation with deep attention to micro-interactions.
-- **Component-Driven**: Modular, reusable architecture following SOLID principles where applicable.
-- **Performance First**: Optimized asset delivery, minimal re-renders, and efficient CSS payload.
-- **Fluid Typography & Spacing**: Adaptive scaling across all device viewports.
+## ✦ The Vision
 
-## Core Features
+This repository contains the proprietary source code for my professional portfolio. 
+Built to demonstrate **10x engineering efficiency** and **Figma Pro-level aesthetics**, it blends minimalist "Obsidian" design principles with hyper-fluid Framer Motion physics.
 
-- **Interactive Project Lab**: A dynamic, multi-step proposal generator with integrated complexity calculation.
-- **Blueprint Scanner**: An animated, faux-analytical UI component demonstrating complex state management and sequenced animations.
-- **Responsive Hero Section**: Tailored visual hierarchy supporting dynamic content presentation.
-- **Form Integration**: Client-side form handling and payload formatting via EmailJS.
-
-## Getting Started
-
-To run this project locally for review or development:
-
-```bash
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## Structure Overview
-
-```text
-src/
-├── components/          # Reusable UI components (Hero, ProjectLab, BlueprintScanner)
-├── App.tsx              # Root application component and routing configuration
-├── index.css            # Global stylesheet and Tailwind directives
-├── main.tsx             # Application entry point
-└── tailwind.config.js   # Custom theme tokens and design system configuration
-```
-
-## Deployment
-
-Configured for seamless deployment via Netlify or Vercel using standard React/Vite build presets.
-
-```bash
-Build Command: npm run build
-Publish Directory: dist
-```
+> 🔒 **Closed Source:** The architecture, component logic, and design tokens housed in this repository are proprietary. This codebase serves exclusively as a testament to technical capability and is not licensed for public reuse or distribution.
 
 ---
-*Built by Joshua Segatt.*
+
+## ✦ Technical Supremacy
+
+Engineered with a modern, high-performance stack chosen for scale and maintainability:
+
+- **Framework:** `React 19` + `Vite` for lightning-fast HMR and optimized production builds.
+- **Styling:** `Tailwind CSS v4` leveraging utility-first paradigms for a bespoke "Physical Glassmorphism" UI.
+- **Physics Engine:** `Framer Motion` driving Apple-tier spring transitions, magnetic cards, and seamless multi-step wizards.
+- **Infrastructure:** Configured for `Netlify` Edge deployment with automatic internal routing (`_redirects`).
+- **Data Layer:** Zero-config `FormSubmit` REST integration for frictionless client acquisition.
+
+---
+
+## ✦ Engaging My Services
+
+I specialize in architecting scalable SaaS platforms, integrating complex AI workflows, and shipping premium user interfaces for clients globally. 
+
+If you require strategic technical leadership or a full-stack architect to build your next flagship product, let's talk.
+
+### Connect With Me:
+
+<div align="center">
+  <a href="mailto:josuesegatofilho@gmail.com">
+    <img src="https://img.shields.io/badge/Contact_Me-josuesegatofilho@gmail.com-black?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</div>
+
+<br>
+
+<p align="center">
+  <i>"Efficiency via AI. Precision via Engineering."</i>
+</p>

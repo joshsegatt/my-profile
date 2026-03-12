@@ -1,66 +1,123 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Code, Zap, Sparkles } from 'lucide-react';
+
+const TEXTS = ['digital experiences', 'intelligent automation', 'production-ready apps'];
 
 const Hero: React.FC = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % TEXTS.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-screen bg-brand-hero pt-40 flex flex-col lg:flex-row overflow-hidden">
-      {/* Left side: AI Developer (40%) */}
-      <div className="w-full lg:w-[40%] flex flex-col justify-start lg:pt-32 px-6 lg:pl-[60px] lg:pr-10 py-12 lg:py-0 text-center lg:text-left z-10">
-        <h1 className="text-4xl lg:text-5xl font-bold text-brand-black lowercase mb-3 leading-tight tracking-tight">
-          ai developer
-        </h1>
-        <p className="text-sm lg:text-base text-brand-textSecondary leading-relaxed max-w-sm mx-auto lg:mx-0 opacity-80 mb-8">
-          AI Developer building high-performance web applications with intelligent automation. Delivering production-ready solutions that combine speed, quality, and cutting-edge AI integration.
-        </p>
+    <section className="relative min-h-screen bg-[#FAFAFA] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden">
+      {/* Cinematic Glowing Orbs */}
+      <div className="absolute top-[10%] lg:top-[20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-paintCyan/10 rounded-[100%] blur-[120px] pointer-events-none z-0 rotate-12 mix-blend-multiply" />
+      <div className="absolute top-[30%] lg:top-[40%] left-1/2 -translate-x-[40%] w-[600px] h-[400px] bg-brand-paintRed/10 rounded-[100%] blur-[120px] pointer-events-none z-0 -rotate-12 mix-blend-multiply" />
 
-        <div className="flex justify-center lg:justify-start">
-          <Link
-            to="/lab"
-            className="group relative inline-flex items-center px-8 py-3.5 bg-brand-black text-white text-sm font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg"
-          >
-            <span className="relative z-10">Let's talk</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-textTertiary to-brand-black opacity-0 group-hover:opacity-20 transition-opacity" />
-          </Link>
-        </div>
-      </div>
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full max-w-5xl px-6 flex flex-col items-center text-center">
 
-      {/* Center: Portrait (20%) */}
-      <div className="w-full lg:w-[20%] relative flex items-center justify-center lg:items-end h-[350px] lg:h-auto z-20">
-        <div className="relative w-[280px] lg:w-[400px] lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 pointer-events-none">
-          {/* Main Portrait */}
-          <img
-            src="/hero-portrait.jpg"
-            alt="Portrait of Builder"
-            className="w-full object-cover"
-            style={{ maskImage: 'linear-gradient(to top, black 80%, transparent 100%)' }}
-          />
+        {/* Top Avatar Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center mb-8 lg:mb-12"
+        >
+          {/* Avatar Base */}
+          <div className="relative group">
+            {/* Pulsing Status Ring */}
+            <div className="absolute -inset-1.5 bg-gradient-to-tr from-brand-paintCyan/40 to-brand-paintRed/40 rounded-full blur-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-        </div>
-      </div>
-
-      {/* Right side: Builder (40%) */}
-      <div className="w-full lg:w-[40%] flex flex-col justify-start lg:pt-32 px-6 lg:pr-[60px] lg:pl-10 py-12 lg:py-0 text-center lg:text-right relative z-10">
-        <h1 className="text-4xl lg:text-5xl font-mono text-brand-black mb-3 leading-tight tracking-tight">
-          &lt;builder&gt;
-        </h1>
-        <p className="text-sm lg:text-base text-brand-textSecondary leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0 relative z-10 opacity-80">
-          Full-stack developer who ships fast without compromising quality. Next.js, TypeScript, Python, serverless architecture. Clean code, optimized performance, measurable results.
-        </p>
-
-        {/* Faded Code Background */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-end select-none pr-10 lg:pr-20 opacity-30">
-          <div className="font-mono text-[12px] text-brand-codeGray text-left transform translate-x-10 translate-y-10">
-            <div className="mb-1">&lt;html&gt;</div>
-            <div className="ml-4 mb-1">height: 184px;</div>
-            <div className="ml-4 mb-1">class='jedi'</div>
-            <div className="ml-4 mb-1">S3 HTML5</div>
-            <div className="ml-4 mb-1">color: #000;</div>
-            <div className="ml-4 mb-1">jQuery</div>
+            {/* The Avatar */}
+            <div className="relative w-32 h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border-[3px] border-white shadow-2xl bg-brand-hero z-10">
+              <img
+                src="/hero-portrait.jpg"
+                alt="Josh Segat"
+                className="w-full h-full object-cover object-top filter hover:contrast-110 transition-all duration-500 hover:scale-105"
+              />
+            </div>
           </div>
-        </div>
+
+          <div className="mt-6 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-black/5 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-brand-paintCyan" />
+            <span className="text-xs lg:text-sm font-medium text-brand-textSecondary tracking-wide">
+              Full-Stack AI Developer
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Massive Typography */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          className="w-full"
+        >
+          <h1 className="text-5xl lg:text-7xl xl:text-[84px] font-bold text-brand-black tracking-tight leading-[1.1] mb-4">
+            Crafting high-performance<br className="hidden md:block" />
+            <span className="relative inline-block h-[1.1em] overflow-hidden align-bottom w-full max-w-[800px] mx-auto">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={index}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 flex justify-center bg-clip-text text-transparent bg-gradient-to-r from-brand-paintCyan via-brand-paintRed to-brand-paintOrange pb-2"
+                >
+                  {TEXTS[index]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </h1>
+
+          <p className="text-base lg:text-xl text-brand-textSecondary leading-relaxed max-w-2xl mx-auto mt-6 lg:mt-8 font-light">
+            I engineer web applications that prioritize <strong className="font-semibold text-brand-black">speed, quality, and clean architecture</strong>. Specializing in Next.js, Node, and AI capabilities.
+          </p>
+        </motion.div>
+
+        {/* Magnetic Button Area */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="mt-10 lg:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 lg:gap-6"
+        >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group inline-block">
+            {/* Animated Glow Ring */}
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-brand-paintCyan via-brand-paintRed to-brand-paintYellow rounded-full blur-[8px] opacity-40 group-hover:opacity-80 transition duration-500"></div>
+
+            <Link
+              to="/lab"
+              className="relative flex items-center justify-center px-10 py-4 lg:px-12 bg-brand-black text-white text-base font-medium rounded-full overflow-hidden shadow-2xl transition-all"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Let's talk
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </Link>
+          </motion.div>
+
+          <div className="flex items-center gap-3 text-sm font-mono text-brand-textTertiary mt-4 sm:mt-0">
+            <Code size={16} />
+            <Zap size={16} />
+            <span>&lt;builder/&gt;</span>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Decorative extension of image boundaries */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[40px] bg-gradient-to-t from-brand-hero to-transparent z-40" />
+
     </section>
   );
 };

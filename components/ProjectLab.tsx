@@ -18,7 +18,6 @@ import {
     Layers,
     Settings
 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 // Types
 type ProjectType = 'ai' | 'saas' | 'security' | 'custom';
@@ -105,25 +104,51 @@ const ProjectLab: React.FC = () => {
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setSubmitSuccess(true);
-        setTimeout(() => {
-            setFormData({
-                projectType: null,
-                features: [],
-                timeline: 3,
-                teamSize: 'small',
-                budgetRange: 'growing',
-                description: '',
-                successCriteria: '',
-                name: '',
-                email: '',
-                company: ''
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/josuesegatofilho@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `New Project Lab Proposal: ${formData.projectType}`,
+                    project_type: formData.projectType,
+                    features: formData.features.join(', '),
+                    timeline_months: formData.timeline,
+                    team_size: formData.teamSize,
+                    budget_range: formData.budgetRange,
+                    description: formData.description,
+                    success_criteria: formData.successCriteria,
+                    name: formData.name,
+                    email: formData.email,
+                })
             });
-            setCurrentStep(1);
-            setSubmitSuccess(false);
-        }, 3000);
-        setIsSubmitting(false);
+
+            if (response.ok) {
+                setSubmitSuccess(true);
+                setTimeout(() => {
+                    setFormData({
+                        projectType: null,
+                        features: [],
+                        timeline: 3,
+                        teamSize: 'small',
+                        budgetRange: 'growing',
+                        description: '',
+                        successCriteria: '',
+                        name: '',
+                        email: '',
+                        company: ''
+                    });
+                    setCurrentStep(1);
+                    setSubmitSuccess(false);
+                }, 3000);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const getComplexity = () => {
@@ -202,13 +227,16 @@ const ProjectLab: React.FC = () => {
                                     {projectTypes.map((type) => {
                                         const Icon = type.icon;
                                         return (
-                                            <button
+                                            <motion.button
+                                                whileHover={{ scale: 1.02, y: -4 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                                 key={type.id}
                                                 onClick={() => handleProjectTypeSelect(type.id)}
-                                                className="group bg-white border-2 border-black/[0.03] rounded-2xl md:rounded-3xl p-6 md:p-8 hover:border-black/20 hover:-translate-y-1 transition-all duration-500 shadow-[0_8px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] text-left flex flex-col h-full"
+                                                className="group bg-white hover:bg-black/[0.01] border-2 border-black/[0.03] rounded-[32px] p-6 md:p-8 hover:border-black/[0.08] transition-colors duration-500 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] text-left flex flex-col h-full"
                                             >
-                                                <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-brand-hero flex items-center justify-center mb-4 md:mb-6 group-hover:bg-brand-black transition-all">
-                                                    <Icon className="w-7 h-7 md:w-10 md:h-10 text-brand-black group-hover:text-white transition-colors" />
+                                                <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-black/[0.02] border border-black/[0.03] flex items-center justify-center mb-4 md:mb-6 group-hover:bg-brand-black transition-colors duration-500 shadow-sm">
+                                                    <Icon className="w-7 h-7 md:w-10 md:h-10 text-brand-black group-hover:text-white transition-colors duration-500" />
                                                 </div>
                                                 <h4 className="text-lg md:text-2xl font-bold text-brand-black mb-2 tracking-tight">
                                                     {type.title}
@@ -216,7 +244,7 @@ const ProjectLab: React.FC = () => {
                                                 <p className="text-brand-textSecondary text-sm md:text-base leading-snug opacity-80">
                                                     {type.description}
                                                 </p>
-                                            </button>
+                                            </motion.button>
                                         );
                                     })}
                                 </div>
@@ -255,27 +283,34 @@ const ProjectLab: React.FC = () => {
                                         const FeatureIcon = feature.icon;
                                         const isSelected = formData.features.includes(feature.id);
                                         return (
-                                            <button
+                                            <motion.button
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                                 key={feature.id}
                                                 onClick={() => toggleFeature(feature.id)}
-                                                className={`relative bg-white border-2 rounded-2xl md:rounded-3xl p-4 md:p-6 transition-all duration-300 text-left flex items-center gap-4 ${isSelected
-                                                    ? 'border-brand-black bg-brand-hero shadow-[0_8px_16px_rgba(0,0,0,0.08)] scale-[1.01]'
-                                                    : 'border-black/[0.03] hover:border-black/20 hover:shadow-[0_8px_16px_rgba(0,0,0,0.04)]'
+                                                className={`relative bg-white border-2 rounded-[32px] p-4 md:p-6 transition-colors duration-500 text-left flex items-center gap-4 ${isSelected
+                                                    ? 'border-brand-black shadow-[0_10px_30px_rgba(0,0,0,0.08)]'
+                                                    : 'border-black/[0.03] hover:border-black/[0.08] hover:bg-black/[0.01] hover:shadow-[0_10px_30px_rgba(0,0,0,0.04)]'
                                                     }`}
                                             >
                                                 {isSelected && (
-                                                    <div className="absolute top-3 right-3 md:top-4 md:right-4 w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-black flex items-center justify-center shadow-md">
-                                                        <Check size={16} className="text-white md:w-5 md:h-5" />
-                                                    </div>
+                                                    <motion.div
+                                                        initial={{ scale: 0 }}
+                                                        animate={{ scale: 1 }}
+                                                        className="absolute top-4 right-4 md:top-5 md:right-5 w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-black flex items-center justify-center shadow-md"
+                                                    >
+                                                        <Check size={16} className="text-white md:w-4 md:h-4" />
+                                                    </motion.div>
                                                 )}
-                                                <div className={`shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-all ${isSelected ? 'bg-brand-black' : 'bg-brand-hero'
+                                                <div className={`shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-colors duration-500 border ${isSelected ? 'bg-brand-black border-brand-black' : 'bg-black/[0.02] border-black/[0.03]'
                                                     }`}>
-                                                    <FeatureIcon size={24} className={`md:w-8 md:h-8 ${isSelected ? 'text-white' : 'text-brand-black'}`} />
+                                                    <FeatureIcon size={24} className={`md:w-8 md:h-8 transition-colors duration-500 ${isSelected ? 'text-white' : 'text-brand-black'}`} />
                                                 </div>
-                                                <h5 className="text-base md:text-xl font-bold text-brand-black leading-tight flex-1 pr-6">
+                                                <h5 className="text-base md:text-xl font-bold text-brand-black leading-tight flex-1 pr-6 tracking-tight">
                                                     {feature.label}
                                                 </h5>
-                                            </button>
+                                            </motion.button>
                                         );
                                     })}
                                 </div>
@@ -317,13 +352,13 @@ const ProjectLab: React.FC = () => {
                                     Help us understand your expectations
                                 </p>
 
-                                <div className="space-y-8 md:space-y-12 bg-white border-2 border-black/[0.03] rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.06)] mb-8 md:mb-12 mx-4">
+                                <div className="space-y-8 md:space-y-12 bg-white border border-black/[0.04] rounded-[32px] p-6 md:p-10 shadow-[0_20px_40px_rgba(0,0,0,0.06)] mb-8 md:mb-12 mx-4">
                                     {/* Timeline */}
                                     <div>
-                                        <label className="flex items-center justify-between text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6">
+                                        <label className="flex items-center justify-between text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6 tracking-tight">
                                             <span>Timeline</span>
-                                            <span className="bg-brand-hero px-4 py-1.5 rounded-full text-brand-black border border-black/5">
-                                                {formData.timeline} months
+                                            <span className="bg-black/[0.02] px-4 py-1.5 rounded-full text-brand-black border border-black/[0.03] text-sm md:text-base">
+                                                {formData.timeline} {formData.timeline === 1 ? 'month' : 'months'}
                                             </span>
                                         </label>
                                         <input
@@ -334,7 +369,7 @@ const ProjectLab: React.FC = () => {
                                             onChange={(e) => setFormData({ ...formData, timeline: parseInt(e.target.value) })}
                                             className="w-full h-2 md:h-3 bg-black/10 rounded-full appearance-none cursor-pointer accent-brand-black hover:accent-gray-800 transition-all"
                                         />
-                                        <div className="flex justify-between text-xs md:text-sm text-brand-textSecondary mt-3 font-bold uppercase tracking-wider opacity-80">
+                                        <div className="flex justify-between text-xs md:text-sm text-brand-textSecondary mt-3 font-bold uppercase tracking-[0.15em] opacity-70">
                                             <span>Urgent</span>
                                             <span>Long-term</span>
                                         </div>
@@ -342,38 +377,44 @@ const ProjectLab: React.FC = () => {
 
                                     {/* Team Size */}
                                     <div>
-                                        <label className="block text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6">Team Size Required</label>
+                                        <label className="block text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6 tracking-tight">Team Size Required</label>
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                                             {['solo', 'small', 'medium', 'large'].map((size) => (
-                                                <button
+                                                <motion.button
+                                                    whileHover={{ scale: 1.05 }}
+                                                    whileTap={{ scale: 0.95 }}
+                                                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                                     key={size}
                                                     onClick={() => setFormData({ ...formData, teamSize: size as any })}
-                                                    className={`px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-bold capitalize transition-all duration-300 border-2 ${formData.teamSize === size
-                                                        ? 'bg-brand-black border-brand-black text-white shadow-lg scale-[1.02]'
-                                                        : 'bg-white border-black/10 text-brand-textSecondary hover:border-black/30 hover:bg-brand-hero'
+                                                    className={`px-4 py-3 md:px-6 md:py-4 rounded-[20px] text-sm md:text-lg font-bold capitalize transition-colors duration-500 border-2 ${formData.teamSize === size
+                                                        ? 'bg-brand-black border-brand-black text-white shadow-lg'
+                                                        : 'bg-white border-black/[0.04] text-brand-textSecondary hover:border-black/[0.1] hover:bg-black/[0.01]'
                                                         }`}
                                                 >
                                                     {size}
-                                                </button>
+                                                </motion.button>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Budget */}
                                     <div>
-                                        <label className="block text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6">Investment Range</label>
+                                        <label className="block text-base md:text-xl font-bold text-brand-black mb-4 md:mb-6 tracking-tight">Investment Range</label>
                                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                                             {['startup', 'growing', 'enterprise'].map((budget) => (
-                                                <button
+                                                <motion.button
+                                                    whileHover={{ scale: 1.05 }}
+                                                    whileTap={{ scale: 0.95 }}
+                                                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                                     key={budget}
                                                     onClick={() => setFormData({ ...formData, budgetRange: budget as any })}
-                                                    className={`px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-bold capitalize transition-all duration-300 border-2 ${formData.budgetRange === budget
-                                                        ? 'bg-brand-black border-brand-black text-white shadow-lg scale-[1.02]'
-                                                        : 'bg-white border-black/10 text-brand-textSecondary hover:border-black/30 hover:bg-brand-hero'
+                                                    className={`px-4 py-3 md:px-6 md:py-4 rounded-[20px] text-sm md:text-lg font-bold capitalize transition-colors duration-500 border-2 ${formData.budgetRange === budget
+                                                        ? 'bg-brand-black border-brand-black text-white shadow-lg'
+                                                        : 'bg-white border-black/[0.04] text-brand-textSecondary hover:border-black/[0.1] hover:bg-black/[0.01]'
                                                         }`}
                                                 >
                                                     {budget}
-                                                </button>
+                                                </motion.button>
                                             ))}
                                         </div>
                                     </div>
@@ -415,9 +456,9 @@ const ProjectLab: React.FC = () => {
                                     The more detail, the better
                                 </p>
 
-                                <div className="space-y-6 md:space-y-8 bg-white border-2 border-black/[0.03] rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.06)] mb-8 md:mb-12 mx-4">
+                                <div className="space-y-6 md:space-y-8 bg-white border border-black/[0.04] rounded-[32px] p-6 md:p-10 shadow-[0_20px_40px_rgba(0,0,0,0.06)] mb-8 md:mb-12 mx-4">
                                     <div>
-                                        <label className="block text-xs md:text-sm font-bold text-brand-textTertiary mb-3 md:mb-4 uppercase tracking-wider">
+                                        <label className="block text-[11px] md:text-[13px] font-bold text-brand-textTertiary mb-3 md:mb-4 uppercase tracking-[0.15em]">
                                             Project Description *
                                         </label>
                                         <textarea
@@ -425,20 +466,20 @@ const ProjectLab: React.FC = () => {
                                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                             placeholder="Describe the core problem you are solving, your target audience, and main goals..."
                                             rows={5}
-                                            className="w-full px-5 py-4 border-2 border-black/10 rounded-xl md:rounded-2xl focus:border-brand-black focus:ring-4 focus:ring-black/5 focus:outline-none resize-none text-base md:text-lg bg-brand-hero/50 transition-all placeholder:text-black/30"
+                                            className="w-full px-6 py-5 border-2 border-transparent rounded-[24px] focus:border-brand-black focus:bg-white focus:outline-none resize-none text-sm md:text-base font-medium bg-black/[0.02] transition-all placeholder:text-black/30 placeholder:font-normal"
                                         />
-                                        <div className="flex justify-between items-center mt-2 px-1">
-                                            <div className="text-xs md:text-sm font-semibold text-brand-textTertiary">
+                                        <div className="flex justify-between items-center mt-3 px-2">
+                                            <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-brand-textTertiary opacity-70">
                                                 Minimum 50 characters
                                             </div>
-                                            <div className={`text-xs md:text-sm font-bold ${formData.description.length >= 50 ? 'text-green-600' : 'text-brand-textTertiary'}`}>
+                                            <div className={`text-[10px] md:text-[11px] font-bold uppercase tracking-widest ${formData.description.length >= 50 ? 'text-green-600' : 'text-brand-textTertiary opacity-70'}`}>
                                                 {formData.description.length} / 50
                                             </div>
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-xs md:text-sm font-bold text-brand-textTertiary mb-3 md:mb-4 uppercase tracking-wider">
+                                        <label className="block text-[11px] md:text-[13px] font-bold text-brand-textTertiary mb-3 md:mb-4 uppercase tracking-[0.15em]">
                                             Success Criteria
                                         </label>
                                         <input
@@ -446,7 +487,7 @@ const ProjectLab: React.FC = () => {
                                             value={formData.successCriteria}
                                             onChange={(e) => setFormData({ ...formData, successCriteria: e.target.value })}
                                             placeholder="e.g., Reach 10k users, 99.9% uptime, Process 1M transactions"
-                                            className="w-full px-5 py-4 border-2 border-black/10 rounded-xl md:rounded-2xl focus:border-brand-black focus:ring-4 focus:ring-black/5 focus:outline-none text-base md:text-lg bg-brand-hero/50 transition-all placeholder:text-black/30"
+                                            className="w-full px-6 py-4.5 border-2 border-transparent rounded-[24px] focus:border-brand-black focus:bg-white focus:outline-none text-sm md:text-base font-medium bg-black/[0.02] transition-all placeholder:text-black/30 placeholder:font-normal"
                                         />
                                     </div>
                                 </div>
@@ -490,58 +531,58 @@ const ProjectLab: React.FC = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12 px-4">
                                     {/* Summary */}
-                                    <div className="bg-white border-2 border-black/[0.03] rounded-[24px] md:rounded-[32px] p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.06)] h-full">
-                                        <div className="flex justify-between items-center mb-6 md:mb-8 pb-4 border-b-2 border-black/5">
-                                            <h4 className="text-lg md:text-2xl font-bold text-brand-black">Summary</h4>
+                                    <div className="bg-white border border-black/[0.04] rounded-[32px] p-6 md:p-10 shadow-[0_20px_40px_rgba(0,0,0,0.06)] h-full">
+                                        <div className="flex justify-between items-center mb-6 md:mb-8 pb-5 border-b-2 border-black/5">
+                                            <h4 className="text-lg md:text-2xl font-bold text-brand-black tracking-tight">Summary</h4>
                                             <button
                                                 onClick={() => setCurrentStep(1)}
-                                                className="text-xs md:text-sm font-bold text-brand-textTertiary hover:text-brand-black uppercase tracking-wider bg-brand-hero px-3 py-1.5 rounded-lg transition-colors"
+                                                className="text-[10px] md:text-[11px] font-bold text-brand-textTertiary hover:text-brand-black uppercase tracking-widest bg-black/[0.02] hover:bg-black/[0.05] border border-black/[0.03] px-3 py-1.5 rounded-[10px] transition-all"
                                             >
                                                 Edit steps
                                             </button>
                                         </div>
                                         <div className="space-y-4 md:space-y-6">
                                             <div className="flex justify-between items-center">
-                                                <span className="font-bold text-brand-textTertiary text-xs md:text-sm uppercase tracking-wider w-1/3">Type</span>
-                                                <p className="text-brand-black font-semibold text-base md:text-lg capitalize text-right">{formData.projectType}</p>
+                                                <span className="font-bold text-brand-textTertiary text-[11px] md:text-[13px] uppercase tracking-[0.15em] w-1/3">Type</span>
+                                                <p className="text-brand-black font-bold text-sm md:text-base capitalize text-right">{formData.projectType}</p>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="font-bold text-brand-textTertiary text-xs md:text-sm uppercase tracking-wider w-1/3">Features</span>
-                                                <p className="text-brand-black font-semibold text-base md:text-lg text-right bg-brand-hero px-3 py-1 rounded-lg">{formData.features.length} selected</p>
+                                                <span className="font-bold text-brand-textTertiary text-[11px] md:text-[13px] uppercase tracking-[0.15em] w-1/3">Features</span>
+                                                <p className="text-brand-black font-bold text-sm md:text-base text-right bg-black/[0.02] border border-black/[0.03] px-3 py-1 rounded-[10px]">{formData.features.length} selected</p>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="font-bold text-brand-textTertiary text-xs md:text-sm uppercase tracking-wider w-1/3">Timeline</span>
-                                                <p className="text-brand-black font-semibold text-base md:text-lg text-right">{formData.timeline} months</p>
+                                                <span className="font-bold text-brand-textTertiary text-[11px] md:text-[13px] uppercase tracking-[0.15em] w-1/3">Timeline</span>
+                                                <p className="text-brand-black font-bold text-sm md:text-base text-right">{formData.timeline} {formData.timeline === 1 ? 'month' : 'months'}</p>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="font-bold text-brand-textTertiary text-xs md:text-sm uppercase tracking-wider w-1/3">Scale</span>
-                                                <p className="text-brand-black font-semibold text-base md:text-lg capitalize text-right">{formData.teamSize} team</p>
+                                                <span className="font-bold text-brand-textTertiary text-[11px] md:text-[13px] uppercase tracking-[0.15em] w-1/3">Scale</span>
+                                                <p className="text-brand-black font-bold text-sm md:text-base capitalize text-right">{formData.teamSize} team</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Contact */}
-                                    <div className="bg-white border-2 border-black/[0.03] rounded-[24px] md:rounded-[32px] p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.06)] h-full">
-                                        <h4 className="text-lg md:text-2xl font-bold text-brand-black mb-6 md:mb-8 pb-4 border-b-2 border-black/5">Contact Info</h4>
+                                    <div className="bg-white border border-black/[0.04] rounded-[32px] p-6 md:p-10 shadow-[0_20px_40px_rgba(0,0,0,0.06)] h-full">
+                                        <h4 className="text-lg md:text-2xl font-bold text-brand-black mb-6 md:mb-8 pb-5 border-b-2 border-black/5 tracking-tight">Contact Info</h4>
                                         <div className="space-y-5 md:space-y-6">
                                             <div>
-                                                <label className="block text-xs md:text-sm font-bold text-brand-textTertiary mb-2 uppercase tracking-wider">Name *</label>
+                                                <label className="block text-[11px] md:text-[13px] font-bold text-brand-textTertiary mb-3 uppercase tracking-[0.15em]">Name *</label>
                                                 <input
                                                     type="text"
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                     placeholder="Full name"
-                                                    className="w-full px-4 py-3 border-2 border-black/10 rounded-xl md:rounded-2xl focus:border-brand-black focus:ring-4 focus:ring-black/5 focus:outline-none text-base md:text-lg bg-brand-hero/50 transition-all font-medium"
+                                                    className="w-full px-5 py-4 border-2 border-transparent rounded-[20px] focus:border-brand-black focus:bg-white focus:outline-none text-sm md:text-base bg-black/[0.02] transition-all font-medium placeholder:text-black/30 placeholder:font-normal"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-xs md:text-sm font-bold text-brand-textTertiary mb-2 uppercase tracking-wider">Email *</label>
+                                                <label className="block text-[11px] md:text-[13px] font-bold text-brand-textTertiary mb-3 uppercase tracking-[0.15em]">Email *</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                     placeholder="your@email.com"
-                                                    className="w-full px-4 py-3 border-2 border-black/10 rounded-xl md:rounded-2xl focus:border-brand-black focus:ring-4 focus:ring-black/5 focus:outline-none text-base md:text-lg bg-brand-hero/50 transition-all font-medium"
+                                                    className="w-full px-5 py-4 border-2 border-transparent rounded-[20px] focus:border-brand-black focus:bg-white focus:outline-none text-sm md:text-base bg-black/[0.02] transition-all font-medium placeholder:text-black/30 placeholder:font-normal"
                                                 />
                                             </div>
                                         </div>
