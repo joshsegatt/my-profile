@@ -7,14 +7,22 @@ interface Project {
   title: string;
   subtitle: string;
   image: string;
+  link: string;
 }
 
 const Projects: React.FC = () => {
   const projects: Project[] = [
     {
+      title: "LabelGuardUK | Compliance Automated",
+      subtitle: "SaaS & AI - United Kingdom",
+      image: "/projects/labelguard-screenshot.png",
+      link: "https://www.labelguarduk.co.uk",
+    },
+    {
       title: "Batimove | Premium Moving Services",
       subtitle: "Moving & Tech - Switzerland",
       image: "/projects/batimove-screenshot.png",
+      link: "https://www.batimove.ch",
     },
   ];
 
@@ -28,16 +36,16 @@ const Projects: React.FC = () => {
           Selected Works
         </h2>
 
-        <div className="flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, idx) => (
             <motion.a
               whileHover={{ scale: 1.02, y: -10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               key={idx}
-              href="https://www.batimove.ch"
+              href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-white/90 backdrop-blur-xl border border-white/80 rounded-[32px] p-4 lg:p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_40px_80px_rgba(0,0,0,0.08)] cursor-pointer w-full max-w-[800px] block"
+              className="group relative bg-white/90 backdrop-blur-xl border border-white/80 rounded-[32px] p-4 lg:p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_40px_80px_rgba(0,0,0,0.08)] cursor-pointer w-full block"
             >
               <div className="relative aspect-video w-full bg-black/5 rounded-[24px] overflow-hidden mb-6">
                 <img
@@ -58,7 +66,7 @@ const Projects: React.FC = () => {
                     {project.subtitle}
                   </p>
                 </div>
-                <div className="w-12 h-12 rounded-full border border-black/5 bg-brand-hero flex items-center justify-center transform group-hover:bg-brand-black group-hover:text-white group-hover:rotate-45 transition-all duration-500 shadow-sm">
+                <div className="w-12 h-12 rounded-full border border-black/5 bg-brand-hero flex items-center justify-center transform group-hover:bg-brand-black group-hover:text-white group-hover:rotate-45 transition-all duration-500 shadow-sm flex-shrink-0 ml-4">
                   <ArrowUpRight size={20} className="text-brand-black group-hover:text-white transition-colors" />
                 </div>
               </div>

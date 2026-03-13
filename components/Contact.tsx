@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="bg-brand-hero h-screen flex flex-col pt-28 pb-8 px-6 lg:px-12 overflow-hidden relative">
+        <section id="contact" className="bg-brand-hero min-h-screen flex flex-col pt-28 pb-12 px-6 lg:px-12 relative">
             <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-start lg:pt-10 relative z-10">
                 {/* Header Section - High Density */}
                 <div className="mb-6 lg:mb-8 text-center">
@@ -53,11 +53,11 @@ const Contact: React.FC = () => {
                 </div>
 
                 {/* Contact Content Grid - Ultra Compact */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-stretch max-h-[500px]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-stretch">
 
                     {/* Contact Info (4 Columns) - Micro Scale */}
                     <div className="lg:col-span-4 flex flex-col justify-between h-full">
-                        <div className="space-y-4">
+                        <div className="space-y-6 lg:space-y-4">
                             {/* Email Card */}
                             <motion.div
                                 whileHover={{ scale: 1.02, y: -4 }}
