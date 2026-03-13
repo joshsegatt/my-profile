@@ -84,24 +84,6 @@ const Hero: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Featured Project Mockup - The "Capa" */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 lg:mt-24 relative w-full h-[300px] lg:h-[450px] group"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-brand-paintCyan/20 to-brand-paintRed/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-          <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.1)] transition-transform duration-700 hover:scale-[1.02] hover:-rotate-1">
-             <img 
-               src="/portfolio-cover.png" 
-               alt="Featured Project" 
-               className="w-full h-full object-cover object-top"
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </div>
-        </motion.div>
-
         {/* Magnetic Button Area */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

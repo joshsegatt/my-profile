@@ -2,10 +2,6 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Josh%20Segatt&fontSize=60&fontAlignY=35&desc=AI-Powered%20Senior%20Software%20Engineer&descAlignY=55&descAlign=62&fontColor=ffffff" alt="Header" />
 </div>
 
-<div align="center">
-  <img src="/public/portfolio-cover.png" alt="Portfolio Cover" width="800" style="border-radius: 20px; border: 1px solid #eee; margin-top: 20px;" />
-</div>
-
 <h1 align="center">Premium Technical Portfolio</h1>
 
 <p align="center">
