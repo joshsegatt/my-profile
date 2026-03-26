@@ -48,9 +48,9 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed left-1/2 -translate-x-1/2 z-[100] flex items-center px-3 lg:px-4 justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-[92%] max-w-[800px] h-[56px] lg:h-[60px] rounded-full border border-white/[0.08] ${scrolled
-        ? 'top-4 bg-[rgba(10,10,10,0.85)] backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.3)]'
-        : 'top-6 bg-[rgba(15,15,15,0.65)] backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)]'
+      className={`fixed left-1/2 -translate-x-1/2 z-[100] flex items-center px-3 lg:px-4 justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-[92%] max-w-[800px] h-[56px] lg:h-[60px] rounded-full border border-white/10 ${scrolled
+        ? 'top-4 bg-white/[0.04] backdrop-blur-2xl shadow-2xl'
+        : 'top-6 bg-white/[0.02] backdrop-blur-xl shadow-lg'
         }`}
     >
       {/* Logo Area */}

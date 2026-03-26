@@ -22,7 +22,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white text-brand-textPrimary font-sans">
+      <div className="min-h-screen bg-brand-black text-brand-textPrimary font-sans">
         <Header />
         <main>
           <Routes>

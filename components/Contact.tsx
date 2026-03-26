@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
             <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-start lg:pt-10 relative z-10">
                 {/* Header Section - High Density */}
                 <div className="mb-6 lg:mb-8 text-center">
-                    <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter text-brand-black leading-tight mb-2">
+                    <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter text-brand-textPrimary leading-tight mb-2">
                         Let's build the <br />
                         <span className="text-brand-textTertiary">next big thing together.</span>
                     </h2>
@@ -62,13 +62,13 @@ const Contact: React.FC = () => {
                             <motion.div
                                 whileHover={{ scale: 1.02, y: -4 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="group bg-white/90 backdrop-blur-xl border border-white/80 shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_24px_48px_rgba(0,0,0,0.08)] rounded-[32px] p-6 cursor-default"
+                                className="group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 rounded-[32px] p-6 cursor-default transition-all duration-500"
                             >
-                                <div className="w-10 h-10 rounded-xl bg-black/[0.02] border border-black/[0.03] flex items-center justify-center mb-4 group-hover:bg-brand-black transition-colors duration-500 shadow-sm">
-                                    <Mail className="text-brand-black group-hover:text-white transition-colors duration-500" size={18} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-brand-textPrimary transition-colors duration-500 shadow-sm">
+                                    <Mail className="text-brand-textPrimary group-hover:text-brand-hero transition-colors duration-500" size={18} />
                                 </div>
                                 <p className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] mb-1">Email me at</p>
-                                <a href="mailto:josuesegatofilho@gmail.com" className="text-brand-black text-[12px] lg:text-sm font-bold hover:text-brand-textSecondary transition-colors break-all">
+                                <a href="mailto:josuesegatofilho@gmail.com" className="text-brand-textPrimary text-[12px] lg:text-sm font-bold hover:text-white transition-colors break-all">
                                     josuesegatofilho@gmail.com
                                 </a>
                             </motion.div>
@@ -77,13 +77,13 @@ const Contact: React.FC = () => {
                             <motion.div
                                 whileHover={{ scale: 1.02, y: -4 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="group bg-white/90 backdrop-blur-xl border border-white/80 shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_24px_48px_rgba(0,0,0,0.08)] rounded-[32px] p-6 cursor-default"
+                                className="group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 rounded-[32px] p-6 cursor-default transition-all duration-500"
                             >
-                                <div className="w-10 h-10 rounded-xl bg-black/[0.02] border border-black/[0.03] flex items-center justify-center mb-4 group-hover:bg-brand-black transition-colors duration-500 shadow-sm">
-                                    <MapPin className="text-brand-black group-hover:text-white transition-colors duration-500" size={18} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-brand-textPrimary transition-colors duration-500 shadow-sm">
+                                    <MapPin className="text-brand-textPrimary group-hover:text-brand-hero transition-colors duration-500" size={18} />
                                 </div>
                                 <p className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] mb-1">Location</p>
-                                <p className="text-brand-black text-base font-bold">
+                                <p className="text-brand-textPrimary text-base font-bold">
                                     London, UK
                                 </p>
                             </motion.div>
@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
 
                     {/* Contact Form (8 Columns) - Professional Density */}
                     <div className="lg:col-span-8 h-full">
-                        <div className="bg-white/90 backdrop-blur-xl border border-white/80 rounded-[32px] p-8 lg:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),_0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-700 h-full flex flex-col justify-center">
+                        <div className="bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-700 h-full flex flex-col justify-center">
                             <form className="space-y-5" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div className="space-y-2">
@@ -103,7 +103,7 @@ const Contact: React.FC = () => {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             placeholder="Jane Doe"
-                                            className="w-full bg-black/[0.02] border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-brand-black focus:bg-white transition-all text-brand-black font-medium text-sm placeholder:text-black/20"
+                                            className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -114,7 +114,7 @@ const Contact: React.FC = () => {
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             placeholder="jane@example.com"
-                                            className="w-full bg-black/[0.02] border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-brand-black focus:bg-white transition-all text-brand-black font-medium text-sm placeholder:text-black/20"
+                                            className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
                                         />
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
                                         value={formData.subject}
                                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                         placeholder="Project Inquiry"
-                                        className="w-full bg-black/[0.02] border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-brand-black focus:bg-white transition-all text-brand-black font-medium text-sm placeholder:text-black/20"
+                                        className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
                                     />
                                 </div>
 
@@ -139,13 +139,13 @@ const Contact: React.FC = () => {
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         placeholder="Tell me about your vision..."
-                                        className="w-full bg-black/[0.02] border-2 border-transparent rounded-2xl px-5 py-4 outline-none focus:border-brand-black focus:bg-white transition-all text-brand-black font-medium resize-none text-sm placeholder:text-black/20"
+                                        className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-4 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium resize-none text-sm placeholder:text-white/20"
                                     ></textarea>
                                 </div>
 
                                 <button
                                     disabled={isSubmitting || isSuccess}
-                                    className="bg-brand-black text-white px-8 py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-[0.98] transition-all shadow-[0_10px_20px_rgba(0,0,0,0.15)] disabled:opacity-70 disabled:hover:translate-y-0 group text-sm mt-2 relative overflow-hidden disabled:cursor-not-allowed"
+                                    className="bg-brand-textPrimary text-brand-hero px-8 py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-[0.98] transition-all shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] disabled:opacity-70 disabled:hover:translate-y-0 group text-sm mt-2 relative overflow-hidden disabled:cursor-not-allowed"
                                 >
                                     <span className="relative z-10">
                                         {isSubmitting ? 'Sending via FormSubmit...' : isSuccess ? 'Delivered!' : 'Send Message'}
