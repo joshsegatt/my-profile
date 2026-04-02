@@ -1,120 +1,231 @@
 import React from 'react';
-import { Cpu, Zap, Globe, Layout, ArrowUpRight } from 'lucide-react';
+import { 
+    Cpu, Zap, Globe, ArrowUpRight, 
+    Shield, Code2, Layers, Terminal, 
+    Sparkles, Workflow, Database, Binary, Rocket
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
+    // Technical Stack Categories
+    const techStack = [
+        { category: 'AI & Machine Learning', tools: ['OpenAI / Anthropic SDKs', 'LangChain / LangGraph', 'Vector Databases', 'Fine-tuning Workflows'] },
+        { category: 'Frontend Architecture', tools: ['React 19 / Next.js', 'Typescript (Strict)', 'Framer Motion', 'Tailwind Engineering'] },
+        { category: 'Backend & Systems', tools: ['Node / Bun', 'PostgreSQL / Neon', 'Edge Computing', 'Modular APIs'] },
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants: any = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    };
+
     return (
-        <section id="about" className="bg-brand-hero min-h-screen flex flex-col pt-24 pb-16 px-6 lg:px-12 relative overflow-hidden">
-            {/* Background blending */}
-            <div className="absolute top-0 left-0 w-full h-[150px] bg-gradient-to-b from-white to-transparent pointer-events-none z-10 opacity-30" />
-
-            <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col justify-start lg:pt-10 relative z-20">
-                {/* Header Section - Global Tech Minimalist */}
-                <div className="mb-8 lg:mb-12">
-                    <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-brand-textPrimary leading-[1.1] mb-2">
-                        AI-Powered Senior Developer <br />
-                        <span className="text-brand-textTertiary">Crafting Digital Excellence.</span>
+        <section id="about" className="py-12 lg:py-24 relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
+            
+            <div className="max-w-6xl mx-auto px-6">
+                
+                {/* 01. The Strategic Manifesto */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-20 lg:mb-32"
+                >
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="w-12 h-[2px] bg-brand-yellow" />
+                        <span className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-[10px]">Strategic Manifesto</span>
+                    </div>
+                    <h2 className="text-4xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-8 max-w-4xl italic">
+                        Software architecture <span className="text-brand-yellow not-italic underline decoration-white/20 underline-offset-8">is not a game.</span> <br />
+                        It's the skeleton of your business.
                     </h2>
-                </div>
+                    <p className="text-brand-textSecondary text-lg lg:text-2xl font-medium leading-relaxed max-w-3xl">
+                        I don't just write code. I architect scalable ecosystems that integrate human ingenuity with AI-powered efficiency to drive exponential results.
+                    </p>
+                </motion.div>
 
-                {/* Bento Grid Layout - High Density / Ultra Clean */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-5 auto-rows-[minmax(120px,auto)]">
-
-                    {/* Main Story Card */}
-                    <motion.div
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="md:col-span-8 md:row-span-2 group relative overflow-hidden bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 lg:p-8 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-500 cursor-default h-full flex flex-col justify-between"
+                {/* 02. The Bento Grid of Expertise */}
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 mb-24"
+                >
+                    {/* Hero Card: AI Engineering */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-8 p-10 bg-brand-card rounded-[40px] border border-white/5 relative overflow-hidden group hover:border-brand-yellow/30 transition-all duration-500"
                     >
                         <div className="relative z-10">
-                            <div className="w-10 h-10 rounded-xl bg-black/[0.02] border border-black/[0.03] flex items-center justify-center mb-5 group-hover:bg-brand-black group-hover:text-white transition-colors duration-500 shadow-sm">
-                                <Cpu className="text-brand-textPrimary group-hover:text-white transition-colors duration-500" size={20} />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-yellow/10 border border-brand-yellow/20 flex items-center justify-center text-brand-yellow mb-8">
+                                <Cpu size={28} />
                             </div>
-                            <h3 className="text-xl lg:text-3xl font-bold text-brand-textPrimary mb-3 leading-[1.1] tracking-tighter">
-                                Augmenting Creativity <br /> with Artificial Intelligence
-                            </h3>
-                            <p className="text-brand-textSecondary text-xs lg:text-sm leading-relaxed max-w-xl font-medium opacity-80">
-                                As an Elite-level developer, I leverage cutting-edge AI workflows to deliver software that isn't just functional—it's visionary. I provide 10x efficiency with the precision required by world-class clients.
+                            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight italic">AI-First <br/> <span className="text-brand-yellow underline">Engineering.</span></h3>
+                            <p className="text-brand-textSecondary text-lg font-medium max-w-xl leading-relaxed">
+                                Moving beyond simple wrappers. I implement advanced RAG pipelines, autonomous agentic workflows, 
+                                and localized LLM integrations that redefine operational velocity.
+                            </p>
+                            <div className="mt-10 flex items-center gap-6">
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-bold text-white">10x</span>
+                                    <span className="text-[10px] font-bold text-brand-textTertiary uppercase tracking-widest">Efficiency GAIN</span>
+                                </div>
+                                <div className="w-[1px] h-10 bg-white/10" />
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-bold text-white">99%</span>
+                                    <span className="text-[10px] font-bold text-brand-textTertiary uppercase tracking-widest">Automated Tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Small Card: Systems Architecture */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-4 p-8 bg-brand-card rounded-[40px] border border-white/5 flex flex-col justify-between group hover:border-brand-yellow/30 transition-all duration-500"
+                    >
+                        <div>
+                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-yellow mb-6">
+                                <Layers size={24} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Swiss-Grade <br/> Quality</h3>
+                            <p className="text-brand-textSecondary text-sm font-medium leading-relaxed">
+                                Robust, typed, and modular systems inspired by Swiss precision. Scalability is baked into the foundation.
                             </p>
                         </div>
-                        <div className="mt-6 flex items-center gap-3 text-brand-textPrimary font-bold group-hover:gap-5 transition-all text-[11px] lg:text-[12px] uppercase tracking-[0.15em]">
-                            <span>The Future of Code</span>
-                            <div className="w-7 h-7 rounded-full bg-black/5 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
-                                <ArrowUpRight size={14} className="text-brand-textPrimary" />
+                        <div className="pt-8 flex flex-wrap gap-2">
+                            {['Scalable', 'Modular', 'Secure'].map(tag => (
+                                <span key={tag} className="px-3 py-1 bg-white/5 rounded-full text-[9px] font-bold text-brand-textTertiary uppercase tracking-tighter border border-white/10">{tag}</span>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Small Card: Code Excellence */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-4 p-8 bg-brand-card rounded-[40px] border border-white/5 group hover:border-brand-yellow/30 transition-all duration-500 flex flex-col justify-center items-center text-center italic"
+                    >
+                        <div className="w-20 h-20 rounded-full bg-brand-yellow text-black flex items-center justify-center mb-6">
+                            <Terminal size={32} className="stroke-[2.5px]" />
+                        </div>
+                        <h4 className="text-xl font-bold text-white mb-2 underline decoration-brand-yellow/30 underline-offset-4">Clean. Tested. Secure.</h4>
+                        <p className="text-brand-textTertiary text-xs font-bold uppercase tracking-[0.2em]">The Senior Standard</p>
+                    </motion.div>
+
+                    {/* Wide Card: Product Strategy */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-8 p-10 bg-brand-card rounded-[40px] border border-white/5 flex flex-col lg:flex-row items-center gap-10 group hover:border-brand-yellow/30 transition-all duration-500"
+                    >
+                        <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-6 text-brand-yellow">
+                                <Workflow size={24} />
+                                <span className="font-bold uppercase tracking-[0.3em] text-[10px]">Product Partner</span>
                             </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Efficiency Metric Card */}
-                    <motion.div
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="md:col-span-4 md:row-span-1 group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-500 overflow-hidden relative flex flex-col justify-center cursor-default"
-                    >
-                        <div className="relative z-10 flex flex-col items-center text-center">
-                            <Zap className="text-brand-textTertiary mb-3 group-hover:text-brand-textPrimary transition-colors duration-500" size={24} />
-                            <div className="text-4xl lg:text-5xl font-bold text-brand-textPrimary mb-1 tracking-tighter">10x</div>
-                            <p className="text-brand-textTertiary font-bold text-[9px] uppercase tracking-[0.2em]">Efficiency via AI</p>
-                        </div>
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-zinc-100 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    </motion.div>
-
-                    {/* European Market Card */}
-                    <motion.div
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="md:col-span-4 md:row-span-1 group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-500 overflow-hidden relative flex items-center gap-5 cursor-default"
-                    >
-                        <div className="w-12 h-12 rounded-full bg-black/[0.02] border border-black/[0.03] flex items-center justify-center flex-shrink-0 group-hover:bg-brand-black transition-colors duration-500">
-                            <Globe className="text-brand-textTertiary group-hover:text-white transition-colors duration-500" size={20} />
-                        </div>
-                        <div className="relative z-10">
-                            <h4 className="text-brand-textPrimary font-bold text-lg mb-0.5 tracking-tight">Swiss Grade</h4>
-                            <p className="text-brand-textSecondary text-[10px] font-bold uppercase tracking-[0.1em] opacity-60">Precision Engineering</p>
-                        </div>
-                    </motion.div>
-
-                    {/* Design Stack Card */}
-                    <motion.div
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="md:col-span-4 md:row-span-1 group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-500 overflow-hidden relative flex flex-col justify-center cursor-default"
-                    >
-                        <div className="relative z-10 flex flex-col items-center w-full">
-                            <h4 className="text-brand-textTertiary font-bold text-[9px] uppercase tracking-[0.2em] mb-3">Core Stack</h4>
-                            <div className="flex flex-wrap justify-center gap-1.5 w-full">
-                                {['Figma', 'Linear', 'Vercel', 'Next.js', 'React', 'Tailwind'].map(tech => (
-                                    <span key={tech} className="px-2.5 py-1 bg-black/[0.02] border border-black/[0.03] rounded-md text-[9px] font-bold text-brand-textSecondary group-hover:border-black/[0.08] group-hover:text-brand-textPrimary transition-all duration-500 shadow-sm">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Elite Callout Card */}
-                    <motion.div
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="md:col-span-8 md:row-span-1 group bg-brand-black border border-white/10 rounded-[32px] p-6 lg:p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),_0_20px_40px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),_0_30px_60px_rgba(0,0,0,0.4)] flex items-center justify-between relative overflow-hidden cursor-default"
-                    >
-                        <div className="relative z-10 max-w-sm">
-                            <h3 className="text-white text-xl lg:text-2xl font-bold mb-1.5 tracking-tight group-hover:tracking-tighter transition-all duration-700">Beyond the traditional.</h3>
-                            <p className="text-white/40 text-sm font-medium tracking-wide">
-                                Scalable &bull; Adaptive &bull; Visionary
+                            <h3 className="text-3xl font-bold text-white mb-4 italic tracking-tight">Building <span className="text-brand-yellow">Investible Assets.</span></h3>
+                            <p className="text-brand-textSecondary text-base font-medium leading-relaxed">
+                                I don't just build features; I build value. My architecture is designed to pass technical audits and scale with your growth.
                             </p>
                         </div>
-                        <div className="relative z-10 hidden lg:block">
-                            <div className="w-12 h-12 rounded-full bg-white text-brand-textPrimary flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 shadow-xl">
-                                <ArrowUpRight size={20} />
-                            </div>
+                        <div className="w-full lg:w-[250px] space-y-4">
+                            {[
+                                { icon: <Shield size={16} />, label: 'Technical Audit Ready' },
+                                { icon: <Rocket size={16} />, label: 'Fast Time-to-Market' },
+                                { icon: <Database size={16} />, label: 'Data Sovereignty' },
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 group-hover:border-brand-yellow/20 transition-all">
+                                    <div className="text-brand-yellow">{item.icon}</div>
+                                    <span className="text-[11px] font-bold text-white uppercase tracking-wider">{item.label}</span>
+                                </div>
+                            ))}
                         </div>
-                        {/* Animated Decoration */}
-                        <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px:16px]" />
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] pointer-events-none group-hover:opacity-100 opacity-0 transition-opacity duration-1000" />
                     </motion.div>
+                </motion.div>
 
+                {/* 03. The Elite Workflow Visualization */}
+                <div className="mb-24 lg:mb-32">
+                    <div className="text-center mb-16">
+                        <h3 className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-[10px] mb-4">Elite Execution Workflow</h3>
+                        <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight italic">From vision to <span className="underline decoration-brand-yellow">automated reality.</span></h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                        
+                        {[
+                            { step: '01', title: 'Architect', desc: 'Strategic planning, schema design, and AI workflow mapping.', icon: <Binary /> },
+                            { step: '02', title: 'Deploy', desc: 'Rapid development using agents and senior-tier engineering.', icon: <Code2 /> },
+                            { step: '03', title: 'Scale', desc: 'Performance optimization and automated maintenance layer.', icon: <Zap /> },
+                        ].map((item, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.2 }}
+                                viewport={{ once: true }}
+                                className="flex flex-col items-center text-center relative z-10"
+                            >
+                                <div className="w-20 h-20 rounded-full bg-brand-card border border-white/10 flex items-center justify-center text-brand-yellow mb-8 hover:scale-110 transition-transform duration-500 shadow-xl">
+                                    {(item.icon as any)}
+                                </div>
+                                <h4 className="text-brand-yellow font-bold text-xs uppercase tracking-[0.3em] mb-4">Step {item.step}</h4>
+                                <h5 className="text-2xl font-bold text-white mb-3 tracking-wide">{item.title}</h5>
+                                <p className="text-brand-textTertiary text-sm font-medium leading-relaxed max-w-xs">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
+
+                {/* 04. Technical Stack Showcase */}
+                <div className="py-20 border-y border-white/5">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+                        {techStack.map((stack, i) => (
+                            <div key={i} className="space-y-8">
+                                <h4 className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-[10px] italic">{stack.category}</h4>
+                                <div className="grid grid-cols-1 gap-4">
+                                    {stack.tools.map((tool, j) => (
+                                        <div key={j} className="flex items-center gap-4 group">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow/30 group-hover:bg-brand-yellow group-hover:scale-150 transition-all duration-300" />
+                                            <span className="text-white/60 font-medium text-sm group-hover:text-white transition-colors">{tool}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Footer Call to Action */}
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-24 lg:mt-32 p-12 lg:p-20 bg-brand-yellow rounded-[40px] text-black text-center relative overflow-hidden"
+                >
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+                    <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-8 italic relative z-10">Ready to build the <br/> <span className="underline decoration-black/20">next legacy?</span></h2>
+                    <button 
+                        onClick={() => window.location.href = '/onboard'}
+                        className="bg-black text-white px-12 py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl relative z-10 flex items-center gap-4 mx-auto"
+                    >
+                        Start Your Brief
+                        <ArrowUpRight size={24} />
+                    </button>
+                </motion.div>
+
             </div>
         </section>
     );

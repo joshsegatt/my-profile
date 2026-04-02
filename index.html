@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Josh Segat | UI/UX Designer & Front End Developer</title>
+  <title>Josh Segat | AI-Powered Senior Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,9 @@
           colors: {
             brand: {
               black: '#09090B',
-              hero: '#09090B',
-              footer: '#09090B',
+              window: '#0D0D0D', // Deeper black for window
+              card: '#1A1A1A',   // Slightly lighter for cards
+              yellow: '#FFC107',  // Primary accent
               textPrimary: '#FAFAFA',
               textSecondary: '#A1A1AA',
               textTertiary: '#52525B',
@@ -48,29 +49,38 @@
       padding: 0;
       overflow-x: hidden;
       font-family: 'Outfit', sans-serif;
+      background-color: #050505; /* True black for page background */
     }
 
-    /* Custom shadow for cards */
-    .project-card-shadow {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Window Container Base */
+    .window-frame {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 193, 7, 0.03);
     }
 
-    .project-card-shadow:hover {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    /* Custom scrollbars for the contained window */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 193, 7, 0.4);
     }
 
+    /* Shimmer effect for buttons and accents */
     @keyframes shimmer {
-      0% {
-        background-position: -200% center;
-      }
-
-      100% {
-        background-position: 200% center;
-      }
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
 
     .shimmer-text {
-      background: linear-gradient(90deg, #fff 0%, #aaa 50%, #fff 100%);
+      background: linear-gradient(90deg, #FFC107 0%, #FFF 50%, #FFC107 100%);
       background-size: 200% auto;
       color: transparent;
       -webkit-background-clip: text;

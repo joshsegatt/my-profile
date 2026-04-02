@@ -1,165 +1,140 @@
-
-import * as React from 'react';
-import { Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { Mail, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { submitInquiry } from '../utils/emailService';
 
 const Contact: React.FC = () => {
-    const [formData, setFormData] = React.useState({ name: '', email: '', subject: '', message: '' });
-    const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const [isSuccess, setIsSuccess] = React.useState(false);
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            const response = await fetch("https://formsubmit.co/ajax/josuesegatofilho@gmail.com", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    _subject: formData.subject || "New Portfolio Contact Form Submission",
-                    ...formData
-                })
-            });
-
-            if (response.ok) {
-                setIsSuccess(true);
-                setFormData({ name: '', email: '', subject: '', message: '' });
-                setTimeout(() => setIsSuccess(false), 5000);
+        setStatus('loading');
+        
+        const success = await submitInquiry({
+            name: formData.name,
+            email: formData.email,
+            subject: `Contact Form: ${formData.name}`,
+            message: formData.message,
+            details: {
+                message_content: formData.message,
+                sender_info: `Source: Contact Form`
             }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setIsSubmitting(false);
+        });
+
+        if (success) {
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+        } else {
+            setStatus('error');
         }
     };
 
     return (
-        <section id="contact" className="bg-brand-hero min-h-screen flex flex-col pt-28 pb-12 px-6 lg:px-12 relative">
-            <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-start lg:pt-10 relative z-10">
-                {/* Header Section - High Density */}
-                <div className="mb-6 lg:mb-8 text-center">
-                    <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter text-brand-textPrimary leading-tight mb-2">
-                        Let's build the <br />
-                        <span className="text-brand-textTertiary">next big thing together.</span>
+        <section id="contact" className="py-12 lg:py-20 relative">
+            <div className="max-w-4xl mx-auto w-full">
+                {/* Header Section */}
+                <div className="mb-12 text-center lg:text-left">
+                    <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+                        Start your project <br /> 
+                        <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">with a Senior Partner.</span>
                     </h2>
-                    <p className="text-brand-textSecondary text-xs lg:text-sm max-w-md mx-auto font-medium opacity-70">
-                        Available for select AI-powered projects and strategic technical leadership.
-                        Based in Europe, working globally.
+                    <p className="text-brand-textSecondary text-base lg:text-lg max-w-2xl font-medium leading-relaxed">
+                        I'm available for production-grade software architecture and AI-driven initiatives. 
+                        A document summary will be sent to your inbox upon submission.
                     </p>
                 </div>
 
-                {/* Contact Content Grid - Ultra Compact */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-stretch">
-
-                    {/* Contact Info (4 Columns) - Micro Scale */}
-                    <div className="lg:col-span-4 flex flex-col justify-between h-full">
-                        <div className="space-y-6 lg:space-y-4">
-                            {/* Email Card */}
-                            <motion.div
-                                whileHover={{ scale: 1.02, y: -4 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 rounded-[32px] p-6 cursor-default transition-all duration-500"
-                            >
-                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-brand-textPrimary transition-colors duration-500 shadow-sm">
-                                    <Mail className="text-brand-textPrimary group-hover:text-brand-hero transition-colors duration-500" size={18} />
-                                </div>
-                                <p className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] mb-1">Email me at</p>
-                                <a href="mailto:josuesegatofilho@gmail.com" className="text-brand-textPrimary text-[12px] lg:text-sm font-bold hover:text-white transition-colors break-all">
-                                    josuesegatofilho@gmail.com
-                                </a>
-                            </motion.div>
-
-                            {/* Location Card */}
-                            <motion.div
-                                whileHover={{ scale: 1.02, y: -4 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="group bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 rounded-[32px] p-6 cursor-default transition-all duration-500"
-                            >
-                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-brand-textPrimary transition-colors duration-500 shadow-sm">
-                                    <MapPin className="text-brand-textPrimary group-hover:text-brand-hero transition-colors duration-500" size={18} />
-                                </div>
-                                <p className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] mb-1">Location</p>
-                                <p className="text-brand-textPrimary text-base font-bold">
-                                    London, UK
-                                </p>
-                            </motion.div>
+                {/* Contact Form */}
+                <div className="bg-brand-card rounded-[32px] border border-white/5 p-8 lg:p-12 relative overflow-hidden group">
+                    {/* Decorative glow */}
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-brand-yellow/20 transition-all duration-500" />
+                    
+                    <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-brand-textTertiary uppercase tracking-[0.2em] ml-2">Name</label>
+                                <input
+                                    type="text"
+                                    required
+                                    placeholder="e.g. John Wick"
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 focus:ring-4 focus:ring-brand-yellow/5 transition-all text-sm font-medium"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-brand-textTertiary uppercase tracking-[0.2em] ml-2">Email Address</label>
+                                <input
+                                    type="email"
+                                    required
+                                    placeholder="john@wick.com"
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 focus:ring-4 focus:ring-brand-yellow/5 transition-all text-sm font-medium"
+                                />
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Contact Form (8 Columns) - Professional Density */}
-                    <div className="lg:col-span-8 h-full">
-                        <div className="bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-[inset_0_1px_rgba(255,255,255,0.05)] hover:border-white/20 transition-all duration-700 h-full flex flex-col justify-center">
-                            <form className="space-y-5" onSubmit={handleSubmit}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                    <div className="space-y-2">
-                                        <label className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] ml-2">Full Name</label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            placeholder="Jane Doe"
-                                            className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] ml-2">Email Address</label>
-                                        <input
-                                            type="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            placeholder="jane@example.com"
-                                            className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] ml-2">Subject</label>
-                                    <input
-                                        type="text"
-                                        required
-                                        value={formData.subject}
-                                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                        placeholder="Project Inquiry"
-                                        className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-3.5 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium text-sm placeholder:text-white/20"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-brand-textTertiary text-[10px] font-bold uppercase tracking-[0.15em] ml-2">Message</label>
-                                    <textarea
-                                        rows={3}
-                                        required
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        placeholder="Tell me about your vision..."
-                                        className="w-full bg-white/5 border-2 border-transparent rounded-2xl px-5 py-4 outline-none focus:border-white/30 focus:bg-white/10 transition-all text-brand-textPrimary font-medium resize-none text-sm placeholder:text-white/20"
-                                    ></textarea>
-                                </div>
-
-                                <button
-                                    disabled={isSubmitting || isSuccess}
-                                    className="bg-brand-textPrimary text-brand-hero px-8 py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-[0.98] transition-all shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] disabled:opacity-70 disabled:hover:translate-y-0 group text-sm mt-2 relative overflow-hidden disabled:cursor-not-allowed"
-                                >
-                                    <span className="relative z-10">
-                                        {isSubmitting ? 'Sending via FormSubmit...' : isSuccess ? 'Delivered!' : 'Send Message'}
-                                    </span>
-                                    {isSuccess ? (
-                                        <CheckCircle2 size={16} className="relative z-10 text-green-400" />
-                                    ) : (
-                                        <Send size={14} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    )}
-                                </button>
-                            </form>
+                        
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-bold text-brand-textTertiary uppercase tracking-[0.2em] ml-2">Your Message</label>
+                            <textarea
+                                required
+                                rows={4}
+                                placeholder="Tell me about your vision..."
+                                value={formData.message}
+                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 focus:ring-4 focus:ring-brand-yellow/5 transition-all text-sm font-medium resize-none"
+                            />
                         </div>
-                    </div>
 
+                        <div className="pt-4">
+                            <button
+                                type="submit"
+                                disabled={status === 'loading'}
+                                className="w-full lg:w-auto bg-brand-yellow text-black font-bold py-4 px-10 rounded-2xl flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:grayscale group"
+                            >
+                                {status === 'loading' ? (
+                                    <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        Send Message
+                                        <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    </form>
+
+                    {/* Notification Toast */}
+                    <AnimatePresence>
+                        {status === 'success' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                className="mt-8 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center gap-3 text-emerald-400 font-medium text-sm"
+                            >
+                                <CheckCircle2 size={18} />
+                                Inquiry sent! A project overview PDF has been sent to your email.
+                            </motion.div>
+                        )}
+                        {status === 'error' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                className="mt-8 p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-3 text-rose-400 font-medium text-sm"
+                            >
+                                <AlertCircle size={18} />
+                                Something went wrong. Please try again or reach out directly.
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </section>
