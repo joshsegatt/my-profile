@@ -9,6 +9,7 @@ const Header: React.FC = () => {
 
     const navLinks = [
         { name: 'Home', href: '/', external: false },
+        { name: 'Tools', href: '/tools', external: false },
         { name: 'About', href: '/about', external: false },
         { name: 'Onboarding', href: '/onboard', external: false },
         { name: 'Contact', href: '/contact', external: false },

@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import ProjectLab from './components/ProjectLab';
 import Sidebar from './components/Sidebar';
 import Onboarding from './components/Onboarding';
+import Tools from './components/Tools';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Intro from './components/Intro';
@@ -82,6 +83,7 @@ const App: React.FC = () => {
                   </div>
                 } />
                 <Route path="/about" element={<About />} />
+                <Route path="/tools" element={<Tools />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/onboard" element={<Onboarding />} />
                 <Route path="/lab" element={<ProjectLab />} />
