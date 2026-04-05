@@ -19,9 +19,9 @@ const Tools: React.FC = () => {
                 <div className="flex items-center gap-4">
                     <div className="px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Official Release</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Neural Core Engine</span>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">v1.0.1</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">v1.5.0 Stable</span>
                 </div>
 
                 <div className="flex flex-col gap-4">
@@ -29,7 +29,7 @@ const Tools: React.FC = () => {
                         Segatt <span className="text-brand-yellow">Tools</span>
                     </h1>
                     <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
-                        The ultimate Windows optimization utility. A high-density, performance-driven toolkit inspired by CTT WinUtil, designed for power users who demand efficiency.
+                        The ultimate Windows optimization utility. A high-density, performance-driven toolkit featuring local AI diagnostics, batch software management, and one-click system refinement.
                     </p>
                 </div>
             </section>
@@ -62,6 +62,43 @@ const Tools: React.FC = () => {
                 </div>
             </section>
 
+            {/* Technical Showcase Gallery */}
+            <section className="flex flex-col gap-6">
+                <div className="flex items-center justify-between px-2">
+                    <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30">Neural Showcase</h3>
+                    <span className="text-[10px] text-brand-yellow/60 font-mono">5 High-Res Captures</span>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                        { title: 'Neural Dashboard', img: '/assets/projects/segatt-v150-dashboard.png', tag: 'System Overview' },
+                        { title: 'Gamer Cleaner', img: '/assets/projects/segatt-v150-cleaner.png', tag: 'Performance' },
+                        { title: 'Package Hub', img: '/assets/projects/segatt-v150-installer.png', tag: 'Automation' },
+                        { title: 'System Tweaks', img: '/assets/projects/segatt-v150-tweaks.png', tag: 'Privacy' },
+                        { title: 'Segatt AI Chat', img: '/assets/projects/segatt-v150-ai.png', tag: 'Local LLM' }
+                    ].map((s, i) => (
+                        <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="group/item relative aspect-video rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02]"
+                        >
+                            <img 
+                                src={s.img} 
+                                alt={s.title} 
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110 group-hover/item:rotate-1"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 p-4 flex flex-col justify-end gap-1">
+                                <span className="text-[9px] font-bold text-brand-yellow uppercase tracking-widest">{s.tag}</span>
+                                <h4 className="text-white font-bold text-sm">{s.title}</h4>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
             {/* Features & Downloads Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Features List */}
@@ -69,9 +106,9 @@ const Tools: React.FC = () => {
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 px-2">Core Modules</h3>
                     <div className="flex flex-col gap-3">
                         {[
-                            { icon: <Zap size={18} />, title: 'App Installer', desc: 'Batch install 40+ essential apps in seconds.' },
-                            { icon: <Shield size={18} />, title: 'System Tweaks', desc: 'Optimize telemetry, privacy, and performance.' },
-                            { icon: <Cpu size={18} />, title: 'Local AI Assistant', desc: 'Smart diagnostics and system help on-device.' }
+                            { icon: <Zap size={18} />, title: 'App Installer', desc: 'Batch install 40+ essential apps powered by WinGet.' },
+                            { icon: <Shield size={18} />, title: 'System Tweaks', desc: 'Optimize telemetry, bloatware, and deep system privacy.' },
+                            { icon: <Cpu size={18} />, title: 'Neural Engine AI', desc: 'On-device LLM inference for local system diagnostics.' }
                         ].map((f, i) => (
                             <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all">
                                 <div className="p-2.5 rounded-xl bg-brand-yellow/5 text-brand-yellow border border-brand-yellow/10">
@@ -91,23 +128,23 @@ const Tools: React.FC = () => {
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 px-2">Offline Installers</h3>
                     <div className="bg-brand-window/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 flex flex-col gap-4">
                         <a 
-                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.0.1/Segatt.Tools_1.0.1_x64-setup.exe"
+                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.5.0/Segatt.Tools_1.5.0_x64-setup.exe"
                             className="flex items-center justify-between p-5 rounded-2xl bg-brand-yellow text-black font-bold text-sm tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all"
                         >
                             <div className="flex items-center gap-3">
                                 <Download size={20} />
-                                <span>Download .EXE (Setup)</span>
+                                <span>Download .EXE (v1.5.0)</span>
                             </div>
                             <ExternalLink size={16} className="opacity-40" />
                         </a>
                         
                         <a 
-                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.0.1/Segatt.Tools_1.0.1_x64_en-US.msi"
+                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.5.0/Segatt.Tools_1.5.0_x64_en-US.msi"
                             className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm tracking-wide hover:bg-white/10 transition-all"
                         >
                             <div className="flex items-center gap-3">
                                 <Download size={20} className="text-brand-yellow" />
-                                <span>Download .MSI Installer</span>
+                                <span>Download .MSI (v1.5.0)</span>
                             </div>
                             <ExternalLink size={16} className="opacity-20" />
                         </a>
