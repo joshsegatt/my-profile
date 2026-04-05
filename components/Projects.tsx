@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
     {
       title: "Segatt Tools v1.5.0",
       subtitle: "Neural Core Utility Engine",
-      image: "/assets/projects/segatt-v150-dashboard.png",
+      image: "/projects/segatt-v150-dashboard.png",
       link: "/tools",
     },
   ];

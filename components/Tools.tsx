@@ -71,11 +71,11 @@ const Tools: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                        { title: 'Neural Dashboard', img: '/assets/projects/segatt-v150-dashboard.png', tag: 'System Overview' },
-                        { title: 'Gamer Cleaner', img: '/assets/projects/segatt-v150-cleaner.png', tag: 'Performance' },
-                        { title: 'Package Hub', img: '/assets/projects/segatt-v150-installer.png', tag: 'Automation' },
-                        { title: 'System Tweaks', img: '/assets/projects/segatt-v150-tweaks.png', tag: 'Privacy' },
-                        { title: 'Segatt AI Chat', img: '/assets/projects/segatt-v150-ai.png', tag: 'Local LLM' }
+                        { title: 'Neural Dashboard', img: '/projects/segatt-v150-dashboard.png', tag: 'System Overview' },
+                        { title: 'Gamer Cleaner', img: '/projects/segatt-v150-cleaner.png', tag: 'Performance' },
+                        { title: 'Package Hub', img: '/projects/segatt-v150-installer.png', tag: 'Automation' },
+                        { title: 'System Tweaks', img: '/projects/segatt-v150-tweaks.png', tag: 'Privacy' },
+                        { title: 'Segatt AI Chat', img: '/projects/segatt-v150-ai.png', tag: 'Local LLM' }
                     ].map((s, i) => (
                         <motion.div 
                             key={i}
