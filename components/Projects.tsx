@@ -24,9 +24,9 @@ const Projects: React.FC = () => {
       link: "https://www.batimove.ch",
     },
     {
-      title: "Segatt Tools v1.5.0",
+      title: "Segatt Tools v1.7.7",
       subtitle: "Neural Core Utility Engine",
-      image: "/projects/segatt-v150-dashboard.png",
+      image: "/projects/segatt-v177-dashboard.png",
       link: "/tools",
     },
   ];
