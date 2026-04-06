@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { motion } from 'framer-motion';
-import { Terminal, Download, Cpu, Shield, Zap, Copy, Check, ExternalLink, Github } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Terminal, Download, Cpu, Shield, Zap, Copy, Check, ExternalLink, Github, X } from 'lucide-react';
 
 const Tools: React.FC = () => {
     const [copied, setCopied] = React.useState(false);
+    const [zoomedImg, setZoomedImg] = React.useState<string | null>(null);
     const psCommand = 'iex (irm https://raw.githubusercontent.com/joshsegatt/Segatt-Tools/main/install.ps1)';
 
     const copyToClipboard = () => {
@@ -21,7 +22,7 @@ const Tools: React.FC = () => {
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
                         <span className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow">Neural Core Engine</span>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">v1.5.0 Stable</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">v1.7.7 Stable</span>
                 </div>
 
                 <div className="flex flex-col gap-4">
@@ -66,16 +67,17 @@ const Tools: React.FC = () => {
             <section className="flex flex-col gap-6">
                 <div className="flex items-center justify-between px-2">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30">Neural Showcase</h3>
-                    <span className="text-[10px] text-brand-yellow/60 font-mono">5 High-Res Captures</span>
+                    <span className="text-[10px] text-brand-yellow/60 font-mono">6 High-Res Captures</span>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                        { title: 'Neural Dashboard', img: '/projects/segatt-v150-dashboard.png', tag: 'System Overview' },
-                        { title: 'Gamer Cleaner', img: '/projects/segatt-v150-cleaner.png', tag: 'Performance' },
-                        { title: 'Package Hub', img: '/projects/segatt-v150-installer.png', tag: 'Automation' },
-                        { title: 'System Tweaks', img: '/projects/segatt-v150-tweaks.png', tag: 'Privacy' },
-                        { title: 'Segatt AI Chat', img: '/projects/segatt-v150-ai.png', tag: 'Local LLM' }
+                        { title: 'Neural Dashboard', img: '/projects/segatt-v177-dashboard.png', tag: 'System Overview' },
+                        { title: 'Package Hub', img: '/projects/segatt-v177-installer.png', tag: 'Automation' },
+                        { title: 'System Tweaks', img: '/projects/segatt-v177-tweaks.png', tag: 'Performance' },
+                        { title: 'Architectural Fixes', img: '/projects/segatt-v177-fixes.png', tag: 'Repair' },
+                        { title: 'System Management', img: '/projects/segatt-v177-management.png', tag: 'Controls' },
+                        { title: 'Gamer Cleaner', img: '/projects/segatt-v177-cleaner.png', tag: 'Optimization' }
                     ].map((s, i) => (
                         <motion.div 
                             key={i}
@@ -83,7 +85,8 @@ const Tools: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="group/item relative aspect-video rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02]"
+                            className="group/item relative aspect-video rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] cursor-zoom-in"
+                            onClick={() => setZoomedImg(s.img)}
                         >
                             <img 
                                 src={s.img} 
@@ -128,23 +131,23 @@ const Tools: React.FC = () => {
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 px-2">Offline Installers</h3>
                     <div className="bg-brand-window/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 flex flex-col gap-4">
                         <a 
-                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.5.0/Segatt.Tools_1.5.0_x64-setup.exe"
+                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.7.7/Segatt.Tools_1.7.7_x64-setup.exe"
                             className="flex items-center justify-between p-5 rounded-2xl bg-brand-yellow text-black font-bold text-sm tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all"
                         >
                             <div className="flex items-center gap-3">
                                 <Download size={20} />
-                                <span>Download .EXE (v1.5.0)</span>
+                                <span>Download .EXE (v1.7.7)</span>
                             </div>
                             <ExternalLink size={16} className="opacity-40" />
                         </a>
                         
                         <a 
-                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.5.0/Segatt.Tools_1.5.0_x64_en-US.msi"
+                            href="https://github.com/joshsegatt/Segatt-Tools/releases/download/v1.7.7/Segatt.Tools_1.7.7_x64_en-US.msi"
                             className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm tracking-wide hover:bg-white/10 transition-all"
                         >
                             <div className="flex items-center gap-3">
                                 <Download size={20} className="text-brand-yellow" />
-                                <span>Download .MSI (v1.5.0)</span>
+                                <span>Download .MSI (v1.7.7)</span>
                             </div>
                             <ExternalLink size={16} className="opacity-20" />
                         </a>
@@ -163,6 +166,36 @@ const Tools: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Fullscreen Zoom Modal */}
+            <AnimatePresence>
+                {zoomedImg && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-12 bg-black/90 backdrop-blur-md"
+                        onClick={() => setZoomedImg(null)}
+                    >
+                        <button 
+                            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all border border-white/10"
+                            onClick={() => setZoomedImg(null)}
+                        >
+                            <X size={24} />
+                        </button>
+                        <motion.img 
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            src={zoomedImg}
+                            className="max-w-full max-h-full object-contain rounded-xl border border-white/10 shadow-2xl"
+                            alt="Zoomed interface"
+                            onClick={(e) => e.stopPropagation()} // Prevent close when clicking the image itself
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
