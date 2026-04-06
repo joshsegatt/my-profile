@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import TechRays from './TechRays';
 
 const TEXTS = ['digital experiences', 'intelligent automation', 'production-ready apps'];
 
@@ -86,6 +87,9 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.8 }}
                 className="relative flex-shrink-0"
             >
+                {/* High-Level Animated Rays */}
+                <TechRays />
+
                 {/* Image Background Glow */}
                 <div className="absolute -inset-4 bg-brand-yellow/10 blur-[60px] pointer-events-none rounded-full" />
                 
