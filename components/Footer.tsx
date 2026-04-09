@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
       <div className="w-full max-w-7xl flex flex-col items-center">
         {/* Copyright */}
         <div className="text-brand-textTertiary text-[13px] font-medium tracking-tight opacity-60 hover:opacity-100 transition-opacity">
-          © {new Date().getFullYear()} Josh Segat • AI-Powered Senior Developer
+          © {new Date().getFullYear()} Josh Segatt • AI-Powered Senior Developer
         </div>
       </div>
     </footer>

@@ -82,7 +82,7 @@ const Intro: React.FC<IntroProps> = ({ onComplete }) => {
                                 `
                             }}
                         >
-                            Josh Segat
+                            Josh Segatt
                         </motion.h2>
 
                         {/* Light Sweep Effect (Chrome/Unreal Strike) */}
@@ -107,8 +107,8 @@ const Intro: React.FC<IntroProps> = ({ onComplete }) => {
                             transition={{ duration: 0.1, delay: 2.2, repeat: 3 }}
                             className="absolute inset-0 z-40 pointer-events-none flex items-center justify-center"
                         >
-                            <h2 className="text-[40px] md:text-[80px] font-black uppercase text-red-500/30 translate-x-1 tracking-[0.4em]">Josh Segat</h2>
-                            <h2 className="absolute text-[40px] md:text-[80px] font-black uppercase text-blue-500/30 -translate-x-1 tracking-[0.4em]">Josh Segat</h2>
+                            <h2 className="text-[40px] md:text-[80px] font-black uppercase text-red-500/30 translate-x-1 tracking-[0.4em]">Josh Segatt</h2>
+                            <h2 className="absolute text-[40px] md:text-[80px] font-black uppercase text-blue-500/30 -translate-x-1 tracking-[0.4em]">Josh Segatt</h2>
                         </motion.div>
                         
                         {/* Sub-text Initialization */}

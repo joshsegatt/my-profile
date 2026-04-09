@@ -55,7 +55,7 @@ export const generateProjectBrief = (data: Record<string, any>, title: string = 
     // Footer
     doc.setFontSize(9);
     doc.setTextColor(180);
-    doc.text('© 2026 Josh Segat | AI-Powered Senior Developer', margin, 285);
+    doc.text('© 2026 Josh Segatt | AI-Powered Senior Developer', margin, 285);
 
     return doc.output('blob');
 };

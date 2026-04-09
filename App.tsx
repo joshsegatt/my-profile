@@ -30,8 +30,14 @@ const App: React.FC = () => {
   const [isReady, setIsReady] = React.useState(false);
 
   React.useEffect(() => {
+    const isInternalTools = window.location.pathname === '/tools';
     const introSeen = sessionStorage.getItem('josh_intro_seen');
-    if (!introSeen) {
+    
+    if (isInternalTools) {
+      sessionStorage.setItem('josh_intro_seen', 'true');
+      setIsReady(true);
+      setShowIntro(false);
+    } else if (!introSeen) {
       setShowIntro(true);
     } else {
       setIsReady(true);

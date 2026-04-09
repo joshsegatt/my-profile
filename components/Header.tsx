@@ -26,7 +26,7 @@ const Header: React.FC = () => {
                     <span 
                         className="text-[14px] font-black uppercase tracking-[0.3em] text-brand-yellow drop-shadow-[0_1px_0_#b38700,0_2px_0_#997400,0_4px_12px_rgba(255,193,7,0.4)] transition-all group-hover:drop-shadow-[0_1px_0_#b38700,0_2px_0_#997400,0_3px_0_#806100,0_8px_20px_rgba(255,193,7,0.6)]"
                     >
-                        Josh Segat
+                        Josh Segatt
                     </span>
                     <div className="h-[2px] w-0 bg-brand-yellow transition-all duration-500 group-hover:w-full opacity-50" />
                 </div>

@@ -1,13 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ProjectTechRays } from './ProjectTechRays';
 
 interface Project {
   title: string;
   subtitle: string;
   image: string;
   link: string;
+  isInternal?: boolean;
 }
+
+const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, delay }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const cardInner = (
+    <div className="relative w-full h-full flex flex-col">
+      {/* TechRays Aura Layer */}
+      <ProjectTechRays isActive={isHovered} />
+
+      {/* Project Image Container */}
+      <div className="relative aspect-[16/11] overflow-hidden bg-black/40 m-2 rounded-2xl">
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[1.2s] ease-out opacity-70 group-hover:opacity-100"
+        />
+        
+        {/* Cinematic Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111210] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+        
+        {/* Dynamic Center CTA */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <motion.div 
+                animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="w-11 h-11 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.4)]"
+            >
+                <ArrowUpRight size={18} className="stroke-[2.5px]" />
+            </motion.div>
+        </div>
+      </div>
+
+      {/* Project Info Section */}
+      <div className="px-5 pb-5 pt-2 space-y-1 relative z-10">
+        <p className="text-brand-yellow/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-1">
+          {project.subtitle}
+        </p>
+        <h3 className="text-white text-[17px] font-bold tracking-tight group-hover:text-brand-yellow transition-colors duration-300">
+          {project.title}
+        </h3>
+        
+        {/* Status Line */}
+        <div className="pt-4 flex items-center justify-between border-t border-white/5 mt-4">
+            <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow/40 group-hover:bg-brand-yellow animate-pulse" />
+                <span className="text-[9px] font-bold text-brand-textTertiary uppercase tracking-[0.1em]">
+                    Case Study
+                </span>
+            </div>
+            <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.1em]">
+                2024
+            </span>
+        </div>
+      </div>
+    </div>
+  );
+
+  const containerClasses = "group relative block w-full h-full bg-[#111210]/50 backdrop-blur-sm rounded-[24px] overflow-hidden border border-white/5 hover:border-brand-yellow/30 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]";
+
+  return (
+    <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full h-full"
+    >
+        <motion.div
+            whileHover={{ y: -8 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="w-full h-full"
+        >
+            {project.isInternal ? (
+                <Link to={project.link} className={containerClasses}>
+                    {cardInner}
+                </Link>
+            ) : (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className={containerClasses}>
+                    {cardInner}
+                </a>
+            )}
+        </motion.div>
+    </motion.div>
+  );
+};
 
 const Projects: React.FC = () => {
   const projects: Project[] = [
@@ -18,78 +111,41 @@ const Projects: React.FC = () => {
       link: "https://www.labelguarduk.co.uk",
     },
     {
-      title: "Batimove",
-      subtitle: "Premium Swiss Moving Services",
+      title: "Batimove Sarl",
+      subtitle: "Premium Swiss Logistics",
       image: "/projects/batimove-screenshot.png",
       link: "https://www.batimove.ch",
     },
     {
-      title: "Segatt Tools v1.7.7",
-      subtitle: "Neural Core Utility Engine",
+      title: "Segatt Tools Suite",
+      subtitle: "Neural Utility Engine",
       image: "/projects/segatt-v177-dashboard.png",
       link: "/tools",
+      isInternal: true
     },
   ];
 
   return (
-    <section id="portfolio" className="py-12 relative overflow-hidden">
-      <div className="w-full">
-        <h2 className="text-white text-xl lg:text-2xl font-bold mb-10 flex items-center gap-4">
-          Featured Projects
-          <div className="h-[1px] flex-1 bg-white/5" />
-        </h2>
+    <section id="portfolio" className="relative overflow-hidden py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <header className="mb-16">
+            <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 mb-2"
+            >
+                <div className="w-8 h-[2px] bg-brand-yellow" />
+                <span className="text-brand-yellow text-[11px] font-bold uppercase tracking-[0.3em]">Portfolio</span>
+            </motion.div>
+            <h2 className="text-white text-3xl lg:text-4xl font-bold tracking-tight">
+                Featured Projects <span className="text-white/20">/ Selected Works</span>
+            </h2>
+        </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, idx) => (
-            <motion.a
-                key={idx}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative flex flex-col bg-brand-card rounded-3xl overflow-hidden border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 shadow-2xl"
-            >
-              {/* Project Image */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-black">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                
-                {/* Hover Button */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-2xl">
-                        <ArrowUpRight size={20} className="stroke-[3px]" />
-                    </div>
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div className="p-6 space-y-2">
-                <h3 className="text-white text-lg font-bold tracking-tight group-hover:text-brand-yellow transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-brand-textSecondary text-xs font-bold uppercase tracking-widest opacity-60">
-                  {project.subtitle}
-                </p>
-                
-                <div className="pt-4 flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">
-                        View Case Study
-                    </span>
-                    <div className="h-4 w-[1px] bg-white/10" />
-                    <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">
-                        2024
-                    </span>
-                </div>
-              </div>
-            </motion.a>
+            <ProjectCard key={idx} project={project} delay={idx * 0.1} />
           ))}
         </div>
       </div>
