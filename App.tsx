@@ -11,6 +11,7 @@ import ProjectLab from './components/ProjectLab';
 import Sidebar from './components/Sidebar';
 import Onboarding from './components/Onboarding';
 import Tools from './components/Tools';
+import GamerOptimizer from './components/GamerOptimizer';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Intro from './components/Intro';
@@ -80,21 +81,22 @@ const App: React.FC = () => {
           
           {/* Main Scrollable Content (Full Page Feel) */}
           <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative bg-transparent">
-            <div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32">
-              <Routes>
-                <Route path="/" element={
-                  <div className="flex flex-col gap-24 lg:gap-40">
-                    <Hero />
+            <Routes>
+              <Route path="/" element={
+                <div>
+                  <Hero />
+                  <div className="max-w-[1440px] mx-auto px-8 lg:px-16 pb-24 lg:pb-32">
                     <Projects />
                   </div>
-                } />
-                <Route path="/about" element={<About />} />
-                <Route path="/tools" element={<Tools />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/onboard" element={<Onboarding />} />
-                <Route path="/lab" element={<ProjectLab />} />
-              </Routes>
-            </div>
+                </div>
+              } />
+              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><About /></div>} />
+              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Tools /></div>} />
+              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><GamerOptimizer /></div>} />
+              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Contact /></div>} />
+              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Onboarding /></div>} />
+              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><ProjectLab /></div>} />
+            </Routes>
             
             <Footer />
           </main>

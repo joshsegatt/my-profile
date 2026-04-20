@@ -1,34 +1,38 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TOOLS_HUB_DATA, ToolModule, HubCategory } from '@/data/hubData';
-import ToolsHero from '@/components/tools/ToolsHero';
+import { GAMER_HUB_DATA, ToolModule, HubCategory } from '@/data/hubData';
+import OptimizerHero from '@/components/gamer/OptimizerHero';
 import TabFilter from '@/components/ui/TabFilter';
 import ToolCard from '@/components/ui/ToolCard';
 import Modal from '@/components/ui/Modal';
 
 // App Imports
-import ToolsMasterApp from '@/components/ToolsMasterApp';
+import OptimizerApp from '@/components/gamer/OptimizerApp';
+import LatencyApp from '@/components/gamer/LatencyApp';
+import FPSAnalystApp from '@/components/gamer/FPSAnalystApp';
 
-const Tools: React.FC = () => {
+const GamerOptimizer: React.FC = () => {
   const [activeTab, setActiveTab] = useState<HubCategory>('All');
   const [selectedTool, setSelectedTool] = useState<ToolModule | null>(null);
 
-  const categories: HubCategory[] = ['All', 'Core', 'Optimization', 'AI', 'System'];
+  const categories: HubCategory[] = ['All', 'Optimization', 'Diagnosis', 'Network'];
   
-  const filteredTools = TOOLS_HUB_DATA.filter(t => 
+  const filteredTools = GAMER_HUB_DATA.filter(t => 
     activeTab === 'All' || t.category === activeTab
   );
 
   const renderApp = (id: string) => {
     switch (id) {
-      case 'ToolsMaster': return <ToolsMasterApp />;
+      case 'GamerOptimizerApp': return <OptimizerApp />;
+      case 'LatencyApp':        return <LatencyApp />;
+      case 'FPSAnalystApp':      return <FPSAnalystApp />;
       default: return (
         <div className="p-20 flex flex-col items-center justify-center text-center gap-4">
           <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-brand-yellow">
             <span className="text-2xl font-black">!</span>
           </div>
-          <h2 className="text-xl font-bold text-white uppercase tracking-widest">Neural Link Offline</h2>
-          <p className="text-white/40 max-w-sm">This AI module is currently recalibrating its neural weights. Check back soon.</p>
+          <h2 className="text-xl font-bold text-white uppercase tracking-widest">Under Construction</h2>
+          <p className="text-white/40 max-w-sm">This module is being trained by our neural networks. Check back soon.</p>
         </div>
       );
     }
@@ -36,7 +40,7 @@ const Tools: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-16 lg:gap-24 animate-in fade-in duration-700">
-      <ToolsHero />
+      <OptimizerHero />
 
       <div className="flex flex-col gap-12">
         <TabFilter 
@@ -75,4 +79,4 @@ const Tools: React.FC = () => {
   );
 };
 
-export default Tools;
+export default GamerOptimizer;

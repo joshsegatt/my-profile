@@ -3,16 +3,19 @@ import { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
+import Logo3D from './Logo3D';
+
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 
     const navLinks = [
-        { name: 'Home', href: '/', external: false },
-        { name: 'Tools', href: '/tools', external: false },
-        { name: 'About', href: '/about', external: false },
+        { name: 'Home',       href: '/',       external: false },
         { name: 'Onboarding', href: '/onboard', external: false },
-        { name: 'Contact', href: '/contact', external: false },
+        { name: 'Tools',      href: '/tools',   external: false },
+        { name: 'Gamer',      href: '/gamer',   external: false },
+        { name: 'About',      href: '/about',   external: false },
+        { name: 'Contact',    href: '/contact', external: false },
     ];
 
     return (
@@ -20,11 +23,14 @@ const Header: React.FC = () => {
             {/* Brand / Logo (Left) */}
             <Link 
                 to="/" 
-                className="group relative flex items-center gap-3 transition-transform hover:scale-[1.02] active:scale-95"
+                className="group relative flex items-center gap-4 transition-transform hover:scale-[1.01] active:scale-95"
             >
+                {/* 3D Neural Shard */}
+                <Logo3D />
+
                 <div className="flex flex-col">
                     <span 
-                        className="text-[14px] font-black uppercase tracking-[0.3em] text-brand-yellow drop-shadow-[0_1px_0_#b38700,0_2px_0_#997400,0_4px_12px_rgba(255,193,7,0.4)] transition-all group-hover:drop-shadow-[0_1px_0_#b38700,0_2px_0_#997400,0_3px_0_#806100,0_8px_20px_rgba(255,193,7,0.6)]"
+                        className="text-[14px] font-black uppercase tracking-[0.3em] text-white transition-colors group-hover:text-brand-yellow drop-shadow-[0_4px_12px_rgba(255,255,255,0.05)] group-hover:drop-shadow-[0_4px_12px_rgba(255,193,7,0.3)]"
                     >
                         Josh Segatt
                     </span>
