@@ -1,0 +1,330 @@
+
+> adham-dannaway-style-portfolio@0.0.0 dev
+> vite
+
+Port 3001 is in use, trying another one...
+Port 3002 is in use, trying another one...
+Port 3003 is in use, trying another one...
+
+  [32m[1mVITE[22m v6.4.1[39m  [2mready in [0m[1m183[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3004[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.0.163:[1m3004[22m/[39m
+[2m12:24:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Expected corresponding JSX closing tag for <section>. (100:4)
+
+[0m [90m  98 |[39m         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m  99 |[39m       [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 100 |[39m     [33m<[39m[33m/[39m[33mmotion[39m[33m.[39mdiv[33m>[39m
+ [90m     |[39m     [31m[1m^[22m[39m
+ [90m 101 |[39m   )[33m;[39m
+ [90m 102 |[39m }[33m;[39m
+ [90m 103 |[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:100:4
+[33m  98 |          </div>
+  99 |        </div>
+  100|      </motion.div>
+     |      ^
+  101|    );
+  102|  };[39m
+[2m12:24:42[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Expected corresponding JSX closing tag for <section>. (100:4)
+
+[0m [90m  98 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m  99 |[31m       [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 100 |[31m     [33m<[31m[33m/[31m[33mmotion[31m[33m.[31mdiv[33m>[31m
+ [90m     |[31m     [31m[1m^[22m[31m
+ [90m 101 |[31m   )[33m;[31m
+ [90m 102 |[31m }[33m;[31m
+ [90m 103 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:100:4
+[33m  98 |          </div>
+  99 |        </div>
+  100|      </motion.div>
+     |      ^
+  101|    );
+  102|  };[39m
+      at constructor (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6599:19)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4727:16)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9775:39
+      at TypeScriptParserMixin.tryParse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9775:18)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10780:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13142:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12798:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12767:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12747:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13316:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13309:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13297:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12100:24)
+      at TypeScriptParserMixin.parseArrowExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12075:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11687:12)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+[2m12:24:48[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33mreact-dom/client, react-router-dom, framer-motion, lucide-react, jspdf[32m[39m
+[2m12:24:48[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m12:24:48[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Expected corresponding JSX closing tag for <section>. (100:4)
+
+[0m [90m  98 |[39m         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m  99 |[39m       [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 100 |[39m     [33m<[39m[33m/[39m[33mmotion[39m[33m.[39mdiv[33m>[39m
+ [90m     |[39m     [31m[1m^[22m[39m
+ [90m 101 |[39m   )[33m;[39m
+ [90m 102 |[39m }[33m;[39m
+ [90m 103 |[39m[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:100:4
+[33m  98 |          </div>
+  99 |        </div>
+  100|      </motion.div>
+     |      ^
+  101|    );
+  102|  };[39m
+[2m12:24:48[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Expected corresponding JSX closing tag for <section>. (100:4)
+
+[0m [90m  98 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m  99 |[31m       [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 100 |[31m     [33m<[31m[33m/[31m[33mmotion[31m[33m.[31mdiv[33m>[31m
+ [90m     |[31m     [31m[1m^[22m[31m
+ [90m 101 |[31m   )[33m;[31m
+ [90m 102 |[31m }[33m;[31m
+ [90m 103 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:100:4
+[33m  98 |          </div>
+  99 |        </div>
+  100|      </motion.div>
+     |      ^
+  101|    );
+  102|  };[39m
+      at constructor (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6599:19)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4727:16)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4749:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4759:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10831:21)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9775:39
+      at TypeScriptParserMixin.tryParse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6907:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9775:18)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11675:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9786:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10780:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10780:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13142:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12798:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12767:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12747:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13316:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13309:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13297:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12100:24)
+      at TypeScriptParserMixin.parseArrowExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12075:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11687:12)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11331:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:11081:23)
+[2m12:26:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33mreact-countup[32m[39m
+[2m12:26:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m12:27:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m12:29:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/LiveDashboard.tsx[22m
+[2m12:29:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m12:34:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/App.tsx[22m
+[2m13:11:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m13:11:11[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Identifier 'Zap' has already been declared. (4:9)
+
+[0m [90m 2 |[31m [36mimport[31m { motion } [36mfrom[31m [32m'framer-motion'[31m[33m;[31m
+ [90m 3 |[31m [36mimport[31m { [33mZap[31m[33m,[31m [33mCheckCircle2[31m[33m,[31m [33mChevronRight[31m } [36mfrom[31m [32m'lucide-react'[31m[33m;[31m
+[31m[1m>[22m[31m[90m 4 |[31m [36mimport[31m { [33mZap[31m[33m,[31m [33mCheckCircle2[31m[33m,[31m [33mChevronRight[31m } [36mfrom[31m [32m'lucide-react'[31m[33m;[31m
+ [90m   |[31m          [31m[1m^[22m[31m
+ [90m 5 |[31m [36mimport[31m [32m'./Hero.css'[31m[33m;[31m
+ [90m 6 |[31m
+ [90m 7 |[31m [36mconst[31m [33mHero[31m[33m:[31m [33mReact[31m[33m.[31m[33mFC[31m [33m=[31m () [33m=>[31m {[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:4:9
+[33m  2  |  import { motion } from 'framer-motion';
+  3  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+  4  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+     |           ^
+  5  |  import './Hero.css';
+  6  |  [39m
+      at constructor (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6599:19)
+      at TypeScriptScopeHandler.declareName (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4866:21)
+      at TypeScriptParserMixin.declareNameFromIdentifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7567:16)
+      at TypeScriptParserMixin.checkIdentifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7563:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7500:12)
+      at TypeScriptParserMixin.finishImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14266:10)
+      at TypeScriptParserMixin.parseImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14419:17)
+      at TypeScriptParserMixin.parseImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10148:18)
+      at TypeScriptParserMixin.parseNamedImportSpecifiers (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14398:36)
+      at TypeScriptParserMixin.parseImportSpecifiersAndAfter (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14242:37)
+      at TypeScriptParserMixin.parseImport (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14235:17)
+      at TypeScriptParserMixin.parseImport (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9353:26)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12876:27)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12767:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12744:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13316:36)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13309:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12622:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12612:25)
+      at TypeScriptParserMixin.parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14488:25)
+      at TypeScriptParserMixin.parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10126:18)
+      at parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:261:32)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:223:11)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:189:28
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\gensync-utils\async.js:67:7
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:113:33
+      at step (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:287:14)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:223:11)
+[2m13:11:56[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Identifier 'Zap' has already been declared. (4:9)
+
+[0m [90m 2 |[39m [36mimport[39m { motion } [36mfrom[39m [32m'framer-motion'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { [33mZap[39m[33m,[39m [33mCheckCircle2[39m[33m,[39m [33mChevronRight[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { [33mZap[39m[33m,[39m [33mCheckCircle2[39m[33m,[39m [33mChevronRight[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m   |[39m          [31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m [32m'./Hero.css'[39m[33m;[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mconst[39m [33mHero[39m[33m:[39m [33mReact[39m[33m.[39m[33mFC[39m [33m=[39m () [33m=>[39m {[0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:4:9
+[33m  2  |  import { motion } from 'framer-motion';
+  3  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+  4  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+     |           ^
+  5  |  import './Hero.css';
+  6  |  [39m
+[2m13:11:56[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\Joshsegatt\Desktop\profile\my-profile\components\Hero.tsx: Identifier 'Zap' has already been declared. (4:9)
+
+[0m [90m 2 |[31m [36mimport[31m { motion } [36mfrom[31m [32m'framer-motion'[31m[33m;[31m
+ [90m 3 |[31m [36mimport[31m { [33mZap[31m[33m,[31m [33mCheckCircle2[31m[33m,[31m [33mChevronRight[31m } [36mfrom[31m [32m'lucide-react'[31m[33m;[31m
+[31m[1m>[22m[31m[90m 4 |[31m [36mimport[31m { [33mZap[31m[33m,[31m [33mCheckCircle2[31m[33m,[31m [33mChevronRight[31m } [36mfrom[31m [32m'lucide-react'[31m[33m;[31m
+ [90m   |[31m          [31m[1m^[22m[31m
+ [90m 5 |[31m [36mimport[31m [32m'./Hero.css'[31m[33m;[31m
+ [90m 6 |[31m
+ [90m 7 |[31m [36mconst[31m [33mHero[31m[33m:[31m [33mReact[31m[33m.[31m[33mFC[31m [33m=[31m () [33m=>[31m {[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/Joshsegatt/Desktop/profile/my-profile/components/Hero.tsx[39m:4:9
+[33m  2  |  import { motion } from 'framer-motion';
+  3  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+  4  |  import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+     |           ^
+  5  |  import './Hero.css';
+  6  |  [39m
+      at constructor (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:6599:19)
+      at TypeScriptScopeHandler.declareName (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:4866:21)
+      at TypeScriptParserMixin.declareNameFromIdentifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7567:16)
+      at TypeScriptParserMixin.checkIdentifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7563:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:7500:12)
+      at TypeScriptParserMixin.finishImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14266:10)
+      at TypeScriptParserMixin.parseImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14419:17)
+      at TypeScriptParserMixin.parseImportSpecifier (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10148:18)
+      at TypeScriptParserMixin.parseNamedImportSpecifiers (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14398:36)
+      at TypeScriptParserMixin.parseImportSpecifiersAndAfter (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14242:37)
+      at TypeScriptParserMixin.parseImport (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14235:17)
+      at TypeScriptParserMixin.parseImport (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9353:26)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12876:27)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:9508:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12767:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12744:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13316:36)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:13309:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12622:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:12612:25)
+      at TypeScriptParserMixin.parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14488:25)
+      at TypeScriptParserMixin.parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:10126:18)
+      at parse (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:261:32)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:223:11)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:189:28
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\@babel\core\lib\gensync-utils\async.js:67:7
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:113:33
+      at step (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:287:14)
+      at C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\Joshsegatt\Desktop\profile\my-profile\node_modules\gensync\index.js:223:11)
+[2m13:11:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m13:14:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m13:20:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m13:22:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.tsx[22m
+[2m13:25:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/gamer/OptimizerHero.tsx[22m
+[2m13:25:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/gamer/GamerMosaic.tsx[22m
+[2m13:29:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.css[22m
+[2m13:31:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.css[22m

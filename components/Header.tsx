@@ -1,89 +1,83 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Search, Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-
-import Logo3D from './Logo3D';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    const navLinks = [
-        { name: 'Home',       href: '/',       external: false },
-        { name: 'Onboarding', href: '/onboard', external: false },
-        { name: 'Tools',      href: '/tools',   external: false },
-        { name: 'Gamer',      href: '/gamer',   external: false },
-        { name: 'About',      href: '/about',   external: false },
-        { name: 'Contact',    href: '/contact', external: false },
-    ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <header className="fixed top-6 left-6 right-6 h-20 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl flex items-center justify-between px-10 relative z-50 flex-shrink-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-500">
-            {/* Brand / Logo (Left) */}
-            <Link 
-                to="/" 
-                className="group relative flex items-center gap-4 transition-transform hover:scale-[1.01] active:scale-95"
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Tools', href: '/tools' },
+    { name: 'Gamer', href: '/gamer' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  return (
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 z-[100] transition-all duration-500 xl:w-[calc(100%-380px)] w-full ${
+        isScrolled 
+          ? 'py-4 surface-glass backdrop-blur-2xl border-b border-white/5 bg-[#020617]/95' 
+          : 'py-8 bg-[#020617]/20 backdrop-blur-md'
+      }`}
+    >
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between">
+          
+          {/* Elite Branding System */}
+          <a href="/" className="cursor-pointer">
+            <Logo />
+          </a>
+
+          {/* Minimalist Navigation */}
+          <nav className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors duration-300"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {link.name}
+              </motion.a>
+            ))}
+          </nav>
+
+          {/* Action Area */}
+          <div className="hidden lg:flex items-center gap-6">
+            <motion.a
+              href="/onboard"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2.5 rounded-full bg-brand-yellow/10 border border-brand-yellow/30 text-[10px] font-black uppercase tracking-[0.2em] text-brand-yellow hover:bg-brand-yellow/20 transition-all cursor-pointer"
             >
-                {/* 3D Neural Shard */}
-                <Logo3D />
+              Start Onboarding
+            </motion.a>
+          </div>
 
-                <div className="flex flex-col">
-                    <span 
-                        className="text-[14px] font-black uppercase tracking-[0.3em] text-white transition-colors group-hover:text-brand-yellow drop-shadow-[0_4px_12px_rgba(255,255,255,0.05)] group-hover:drop-shadow-[0_4px_12px_rgba(255,193,7,0.3)]"
-                    >
-                        Josh Segatt
-                    </span>
-                    <div className="h-[2px] w-0 bg-brand-yellow transition-all duration-500 group-hover:w-full opacity-50" />
-                </div>
-            </Link>
+          {/* Mobile Menu Icon (Placeholder) */}
+          <div className="md:hidden text-white/60">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </div>
 
-            {/* Desktop Navigation (Right) */}
-            <div className="hidden md:flex items-center gap-8">
-                <nav className="flex items-center gap-10">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.href}
-                            className={`text-[12px] font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:text-brand-yellow hover:translate-y-[-1px] ${
-                                location.pathname === link.href ? 'text-brand-yellow font-black' : 'text-white/40'
-                            }`}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </nav>
-            </div>
-
-            {/* Mobile Toggle */}
-            <div className="md:hidden flex items-center">
-                <button
-                    className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-white/80 hover:text-white transition-all active:scale-95"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                    {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
-            </div>
-
-            {/* Mobile Menu Overlay */}
-            {isMenuOpen && (
-                <div className="fixed top-28 left-6 right-6 bg-brand-window/95 backdrop-blur-3xl border border-white/10 rounded-2xl flex flex-col items-center py-12 gap-8 md:hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-in fade-in zoom-in-95 duration-300">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.href}
-                            className={`text-[14px] font-bold uppercase tracking-[0.3em] transition-all hover:text-brand-yellow ${
-                                location.pathname === link.href ? 'text-brand-yellow' : 'text-white/60'
-                            }`}
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
-            )}
-        </header>
-    );
+        </div>
+      </div>
+    </motion.header>
+  );
 };
 
 export default Header;

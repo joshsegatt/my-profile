@@ -1,68 +1,62 @@
 import React from 'react';
-import { Zap, Globe, Activity, ChevronRight } from 'lucide-react';
+import { Zap, Globe, Activity } from 'lucide-react';
 import GamerMosaic from './GamerMosaic';
+import './OptimizerHero.css';
 
 const OptimizerHero: React.FC = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section className="hero-section">
       
       {/* Left Column: Cinematic Mosaic */}
-      <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
+      <div className="mosaic-col">
         <GamerMosaic />
       </div>
 
       {/* Right Column: CTA Content */}
-      <div className="order-1 lg:order-2 flex flex-col gap-8">
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-4">
-            <div className="px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-yellow">Neural AI · Optimizer</span>
-            </div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Latency Node v1.1</span>
-          </div>
+      <div className="cta-col">
+        <div className="content-group">
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-5xl lg:text-7xl font-black text-white tracking-tight leading-[0.95]">
+
+          <div className="title-group">
+            <h1 className="hero-title">
               Squeeze every <br />
-              <span className="text-brand-yellow">FPS</span> from your <br />
+              <span className="brand-span">FPS</span> from your <br />
               battle rig.
             </h1>
-            <p className="text-lg text-white/50 leading-relaxed max-w-xl">
-              Engineered for competitive excellence. Our neural optimizer runs deep system analysis 
-              to eliminate latency, stabilize frame-times, and reclaim lost performance. 
-              No bloat. Just pure speed.
+            <p className="hero-description">
+              Enterprise-grade performance tuning. Our neural engine eliminates micro-stutters and 
+              stabilizes frame-pacing for absolute competitive advantage.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-8 flex-wrap">
+        <div className="stats-container">
+          <div className="stats-grid">
             {[
-              { icon: <Zap size={16} />,      label: '+30–60 AVG FPS', detail: 'Gain realized' },
-              { icon: <Globe size={16} />,     label: '−40MS LATENCY', detail: 'Packet optimization' },
-              { icon: <Activity size={16} />,  label: '5 MIN SETUP',   detail: 'Quick injection' },
+              { icon: <Zap size={18} />,      label: '+30-60 AVG FPS', detail: 'Guaranteed boost' },
+              { icon: <Globe size={18} />,     label: '-40MS PING',    detail: 'Latency optimized' },
+              { icon: <Activity size={18} />,  label: 'LOW DPC',       detail: 'Priority handling' },
             ].map(stat => (
-              <div key={stat.label} className="flex flex-col gap-1">
-                <div className="flex items-center gap-2 text-sm font-black text-white tracking-wide">
-                  <span className="text-brand-yellow">{stat.icon}</span>
+              <div key={stat.label} className="stat-item">
+                <div className="stat-header">
+                  <span className="stat-icon">{stat.icon}</span>
                   {stat.label}
                 </div>
-                <span className="text-[10px] text-white/20 uppercase font-bold tracking-widest">{stat.detail}</span>
+                <span className="stat-detail">{stat.detail}</span>
               </div>
             ))}
           </div>
 
-          <div className="h-px w-full bg-white/5" />
+          <div className="divider-line" />
 
-          <div className="flex items-center gap-4 text-white/40 text-[11px] font-bold uppercase tracking-[0.2em]">
-            <span className="flex items-center gap-2">
-              <div className="w-1 h-1 rounded-full bg-green-500" />
-              Direct-X 12 Ready
+          <div className="specs-footer">
+            <span className="specs-item">
+              <div className="specs-dot" />
+              Direct-X 12 + Vulkan
             </span>
-            <span className="flex items-center gap-2">
-              <div className="w-1 h-1 rounded-full bg-green-500" />
-              Win 11 Pro Verified
+            <span className="specs-item">
+              <div className="specs-dot" />
+              Windows 11 Optimized
             </span>
           </div>
         </div>

@@ -83,19 +83,19 @@ const App: React.FC = () => {
           <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative bg-transparent">
             <Routes>
               <Route path="/" element={
-                <div>
+                <div className="w-full">
                   <Hero />
                   <div className="max-w-[1440px] mx-auto px-8 lg:px-16 pb-24 lg:pb-32">
                     <Projects />
                   </div>
                 </div>
               } />
-              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><About /></div>} />
-              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Tools /></div>} />
-              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><GamerOptimizer /></div>} />
-              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Contact /></div>} />
-              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><Onboarding /></div>} />
-              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-32 pb-24 lg:pt-40 lg:pb-32"><ProjectLab /></div>} />
+              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><About /></div>} />
+              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Tools /></div>} />
+              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><GamerOptimizer /></div>} />
+              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Contact /></div>} />
+              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Onboarding /></div>} />
+              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><ProjectLab /></div>} />
             </Routes>
             
             <Footer />
