@@ -36,7 +36,7 @@ const MagneticButton: React.FC<{ children: React.ReactNode }> = ({ children }) =
   );
 };
 
-// --- Tier S Video Component ---
+// --- Tier S Hero Image Component ---
 const HeroVideo: React.FC = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -44,45 +44,6 @@ const HeroVideo: React.FC = () => {
   const mouseYSpring = useSpring(y);
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const videoRef1 = React.useRef<HTMLVideoElement>(null);
-  const videoRef2 = React.useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = React.useState(1);
-  const [opacity1, setOpacity1] = React.useState(1);
-  const [opacity2, setOpacity2] = React.useState(0);
-
-  // High-Precision Seamless Loop Logic - Ultra Slow Edition
-  React.useEffect(() => {
-    const v1 = videoRef1.current;
-    const v2 = videoRef2.current;
-    if (!v1 || !v2) return;
-
-    // Desacelera a reproduo para o nvel mais cinematico
-    v1.playbackRate = 0.5;
-    v2.playbackRate = 0.5;
-
-    let rafId: number;
-    const transitionTime = 2.0; // 2 segundos de overlap para suavidade total
-
-    const checkTime = () => {
-      const currentVid = activeVideo === 1 ? v1 : v2;
-      const nextVid = activeVideo === 1 ? v2 : v1;
-      
-      if (currentVid.duration && currentVid.currentTime > currentVid.duration - transitionTime) {
-        if (nextVid.paused) {
-          nextVid.currentTime = 0;
-          nextVid.play().catch(() => {});
-          setOpacity1(activeVideo === 1 ? 0 : 1);
-          setOpacity2(activeVideo === 1 ? 1 : 0);
-          setActiveVideo(activeVideo === 1 ? 2 : 1);
-        }
-      }
-      rafId = requestAnimationFrame(checkTime);
-    };
-
-    rafId = requestAnimationFrame(checkTime);
-    return () => cancelAnimationFrame(rafId);
-  }, [activeVideo]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -103,29 +64,12 @@ const HeroVideo: React.FC = () => {
       onMouseLeave={() => { x.set(0); y.set(0); }}
       className="relative w-full h-full aspect-video lg:aspect-auto overflow-hidden group bg-[#020202]"
     >
-      {/* Video Instance 1 */}
-      <video
-        ref={videoRef1}
-        autoPlay
-        muted
-        playsInline
-        poster="/assets/hero_dashboard.png"
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms]"
-        style={{ opacity: opacity1, transform: "translateZ(20px)" }}
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
-
-      {/* Video Instance 2 (Hidden by default) */}
-      <video
-        ref={videoRef2}
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms]"
-        style={{ opacity: opacity2, transform: "translateZ(20px)" }}
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+      <img 
+        src="/assets/images/gamer_hero.png" 
+        alt="Hero Dashboard" 
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ transform: "translateZ(20px)" }}
+      />
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#020202]/80 via-transparent to-transparent pointer-events-none" />

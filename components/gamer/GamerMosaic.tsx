@@ -5,10 +5,10 @@ import './GamerMosaic.css';
 // Using high-quality user assets for a premium global gaming vibe
 const MOSAIC_ASSETS = [
   { 
-    type: 'image', 
-    path: '/assets/images/gamer_hero.png', 
+    type: 'video', 
+    path: '/assets/videos/main_4k.mp4', 
     className: 'span-main vibrant-4k',
-    label: 'OPTIMIZER STATUS' 
+    label: '4K TACTICAL FEED' 
   },
   { 
     type: 'image', 
