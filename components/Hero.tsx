@@ -65,7 +65,7 @@ const HeroVideo: React.FC = () => {
       className="relative w-full h-full aspect-video lg:aspect-auto overflow-hidden group bg-[#020202]"
     >
       <img 
-        src="/assets/images/gamer_hero.png" 
+        src="/assets/hero_dashboard.png" 
         alt="Hero Dashboard" 
         className="absolute inset-0 w-full h-full object-cover"
         style={{ transform: "translateZ(20px)" }}
