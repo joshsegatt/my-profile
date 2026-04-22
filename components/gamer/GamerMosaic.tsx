@@ -36,46 +36,59 @@ const MOSAIC_ASSETS = [
   },
 ];
 
+const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: idx * 0.05, ease: "easeOut" }}
+      className={`mosaic-tile ${asset.className}`}
+    >
+      {/* Skeleton - Only visible until image is fully loaded */}
+      {!imageLoaded && (
+        <div className="absolute inset-0 bg-white/5 animate-pulse z-10" />
+      )}
+
+      {asset.type === 'video' ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="mosaic-video"
+          onLoadedData={() => setImageLoaded(true)}
+        >
+          <source src={asset.path} type="video/mp4" />
+        </video>
+      ) : (
+        <img 
+          src={asset.path} 
+          alt={asset.label} 
+          loading="eager"
+          className={`mosaic-image transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+        />
+      )}
+
+      {/* Tactical Label */}
+      <div className="tile-label">
+        {asset.label}
+      </div>
+
+      <div className="mosaic-overlay" />
+      <div className="mosaic-scanlines" />
+    </motion.div>
+  );
+};
+
 const GamerMosaic: React.FC = () => {
   return (
     <div className="mosaic-container">
       {MOSAIC_ASSETS.map((asset, idx) => (
-        <motion.div
-          key={`${asset.label}-${idx}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: idx * 0.05, ease: "easeOut" }}
-          className={`mosaic-tile ${asset.className}`}
-        >
-          {asset.type === 'video' ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="mosaic-video"
-            >
-              <source src={asset.path} type="video/mp4" />
-            </video>
-          ) : (
-            <img 
-              src={asset.path} 
-              alt={asset.label} 
-              loading="eager"
-              className="mosaic-image"
-            />
-          )}
-
-          {/* Tactical Label (Bottom Right) */}
-          <div className="tile-label">
-            {asset.label}
-          </div>
-
-          {/* Overlays */}
-          <div className="mosaic-overlay" />
-          <div className="mosaic-scanlines" />
-        </motion.div>
+        <MosaicTile key={`${asset.label}-${idx}`} asset={asset} idx={idx} />
       ))}
     </div>
   );

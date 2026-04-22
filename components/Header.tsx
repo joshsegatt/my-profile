@@ -24,6 +24,8 @@ const Header: React.FC = () => {
     { name: t('nav.home'), href: '/' },
     { name: t('nav.tools'), href: '/tools' },
     { name: t('nav.gamer'), href: '/gamer' },
+    { name: t('nav.wallpapers'), href: '/wallpapers' },
+    { name: t('nav.prompts'), href: '/prompts' },
     { name: t('nav.about'), href: '/about' },
     { name: t('nav.contact'), href: '/contact' },
   ];
@@ -50,17 +52,33 @@ const Header: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-1 relative px-2 py-1 bg-white/[0.03] rounded-full border border-white/5">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
+              const isMaintenance = link.href === '/prompts';
+
               return (
-                <Link
+                <div
                   key={link.name}
-                  to={link.href}
-                  className="relative px-5 py-2 group"
-                  onMouseEnter={() => setHoveredLink(link.name)}
+                  className={`relative px-5 py-2 group ${isMaintenance ? 'cursor-not-allowed opacity-50' : ''}`}
+                  onMouseEnter={() => !isMaintenance && setHoveredLink(link.name)}
                   onMouseLeave={() => setHoveredLink(null)}
                 >
+                  <Link
+                    to={isMaintenance ? '#' : link.href}
+                    onClick={(e) => isMaintenance && e.preventDefault()}
+                    className={`relative z-10 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
+                      isActive ? 'text-brand-yellow' : 'text-white/40 group-hover:text-white'
+                    } ${isMaintenance ? 'pointer-events-none' : ''}`}
+                  >
+                    {link.name}
+                    {isMaintenance && (
+                      <span className="text-[8px] bg-white/10 px-1.5 py-0.5 rounded text-white/40 border border-white/5">
+                        OFF
+                      </span>
+                    )}
+                  </Link>
+                  
                   {/* Hover Pill Background */}
                   <AnimatePresence>
-                    {(hoveredLink === link.name || isActive) && (
+                    {(hoveredLink === link.name || isActive) && !isMaintenance && (
                       <motion.div
                         layoutId="nav-pill"
                         initial={{ opacity: 0 }}
@@ -73,13 +91,7 @@ const Header: React.FC = () => {
                       />
                     )}
                   </AnimatePresence>
-                  
-                  <span className={`relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
-                    isActive ? 'text-brand-yellow' : 'text-white/40 group-hover:text-white'
-                  }`}>
-                    {link.name}
-                  </span>
-                </Link>
+                </div>
               );
             })}
           </nav>
@@ -138,24 +150,33 @@ const Header: React.FC = () => {
                 />
               </div>
               <div className="flex flex-col gap-6">
-                {navLinks.map((link, idx) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + idx * 0.05 }}
-                  >
-                    <Link
-                      to={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-lg font-bold tracking-tight transition-colors ${
-                        location.pathname === link.href ? 'text-brand-yellow' : 'text-white/60'
-                      }`}
+                {navLinks.map((link, idx) => {
+                  const isMaintenance = link.href === '/prompts';
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + idx * 0.05 }}
+                      className={isMaintenance ? 'opacity-40 pointer-events-none' : ''}
                     >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        to={isMaintenance ? '#' : link.href}
+                        onClick={() => !isMaintenance && setIsMobileMenuOpen(false)}
+                        className={`flex items-center gap-2 text-lg font-bold tracking-tight transition-colors ${
+                          location.pathname === link.href ? 'text-brand-yellow' : 'text-white/60'
+                        }`}
+                      >
+                        {link.name}
+                        {isMaintenance && (
+                          <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/40 border border-white/5 font-black uppercase">
+                            OFF
+                          </span>
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </div>
               <div className="mt-auto">
                 <Link

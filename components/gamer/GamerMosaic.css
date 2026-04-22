@@ -14,6 +14,16 @@
   contain: layout; /* Prevent ripples */
 }
 
+.mosaic-item {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Faz o item ocupar o espaço definido pelo grid area */
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .mosaic-tile {
   position: relative;
   height: 100%;
@@ -34,16 +44,19 @@
 }
 
 /* CRITICAL: Object-fit cover eliminates all black borders */
-.mosaic-video, 
+.mosaic-video,
 .mosaic-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures 100% card coverage */
-  opacity: 1;
-  filter: grayscale(0%) contrast(1.05);
+  object-fit: cover;
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.mosaic-image {
+  filter: contrast(1.05);
 }
 
 .mosaic-tile:hover .mosaic-video,

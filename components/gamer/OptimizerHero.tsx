@@ -8,7 +8,7 @@ const OptimizerHero: React.FC = () => {
   const { t } = useLanguage();
   return (
     <section id="gamer-hero-section" className="hero-section">
-      <div className="mosaic-col">
+      <div className="mosaic-col w-full h-full">
         <GamerMosaic />
       </div>
 

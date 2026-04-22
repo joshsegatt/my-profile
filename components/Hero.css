@@ -110,3 +110,183 @@
     padding-bottom: 80px;
   }
 }
+/* Cinematic Grain Animation */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.animate-grain {
+  animation: grain 8s steps(10) infinite;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+}
+/* Hero Mosaic - Triptych Layout (3 Vertical Cards) */
+.hero-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 500px; /* Altura imponente e comprida */
+  gap: 20px;
+  width: 100%;
+  max-width: 900px; /* Expandido para acomodar os 3 cards largos */
+  margin: 0;
+}
+
+.mosaic-card {
+  position: relative;
+  background: rgba(8, 8, 8, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Elite Border Beam - Top Layer Masking */
+.mosaic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.5px; /* Espessura do Neon */
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    #ffc700 0%,
+    transparent 15%,
+    transparent 45%,
+    #a855f7 50%,
+    transparent 65%,
+    transparent 90%,
+    #ffc700 100%
+  );
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-border 8s linear infinite; /* Mais lento e elegante */
+  pointer-events: none;
+  z-index: 20;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  from { --border-angle: 0deg; }
+  to { --border-angle: 360deg; }
+}
+
+.mosaic-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(12, 12, 12, 0.6);
+  box-shadow: 
+    0 0 40px rgba(168, 85, 247, 0.25), /* Purple Glow */
+    0 0 80px rgba(255, 199, 0, 0.2); /* Yellow Glow */
+}
+
+/* Tactical Elements Persistence */
+.tile-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 900;
+  color: rgba(255, 199, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 199, 0, 0.2);
+  letter-spacing: 0.1em;
+  z-index: 20;
+}
+
+.tactical-label {
+  font-family: ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.scan-line-anim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scan 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+.vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
+}
+
+/* All cards follow the same column rules now for "lado a lado" */
+.main-card, .sub-card-1, .sub-card-2 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.sub-card-3 {
+  display: none; /* Removed for the 3-card clean layout */
+}
+
+.placeholder-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .hero-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-mosaic {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 350px;
+  }
+}

@@ -12,16 +12,24 @@ import Sidebar from './components/Sidebar';
 import Onboarding from './components/Onboarding';
 import Tools from './components/Tools';
 import GamerOptimizer from './components/GamerOptimizer';
+import Wallpapers from './components/Wallpapers';
+import Prompts from './components/Prompts';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import Intro from './components/Intro';
+
 
 // Helper component to scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
     const mainContent = document.getElementById('main-scroll-area');
-    if (mainContent) mainContent.scrollTo(0, 0);
+    if (mainContent) {
+      // Usar requestAnimationFrame para garantir que o scroll aconteça de forma sincronizada
+      requestAnimationFrame(() => {
+        mainContent.scrollTo({ top: 0, behavior: 'instant' });
+      });
+    }
   }, [pathname]);
   return null;
 };
@@ -102,25 +110,33 @@ const App: React.FC = () => {
         <div className="flex-1 flex overflow-hidden">
           
           {/* Main Scrollable Content (Full Page Feel) */}
-          <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative bg-transparent">
-            <Routes>
-              <Route path="/" element={
-                <div className="w-full">
-                  <Hero />
-                  <div className="max-w-[1440px] mx-auto px-8 lg:px-16 pb-24 lg:pb-32">
-                    <Projects />
-                  </div>
+          <main id="main-scroll-area" className="flex-1 overflow-y-scroll custom-scrollbar relative bg-transparent">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15, ease: "linear" }}
+                className="w-full min-h-screen pt-36 pb-24 lg:pb-32 px-8 lg:px-16"
+              >
+                <div className="max-w-[1440px] mx-auto">
+                  <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<div className="mt-[-9rem]"><Hero /><Projects /></div>} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/tools" element={<Tools />} />
+                    <Route path="/wallpapers" element={<Wallpapers />} />
+                    <Route path="/prompts" element={<Prompts />} />
+                    <Route path="/gamer" element={<GamerOptimizer />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/onboard" element={<Onboarding />} />
+                    <Route path="/lab" element={<ProjectLab />} />
+                  </Routes>
                 </div>
-              } />
-              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><About /></div>} />
-              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Tools /></div>} />
-              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><GamerOptimizer /></div>} />
-              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Contact /></div>} />
-              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Onboarding /></div>} />
-              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><ProjectLab /></div>} />
-            </Routes>
-            
-            <Footer />
+                
+                <Footer />
+              </motion.div>
+            </AnimatePresence>
           </main>
 
           {/* Sidebar (Right-Side Panel - Desktop Only) */}
