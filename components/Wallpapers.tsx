@@ -77,17 +77,27 @@ const Wallpapers: React.FC = () => {
         ? `https://wallhaven.cc/api/v1/search?purity=100&sorting=toplist&page=${pageNum}`
         : `https://wallhaven.cc/api/v1/search?q=${query}&purity=100&sorting=relevance&page=${pageNum}`;
 
-      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(wallhavenUrl)}`;
+      // Usando AllOrigins para garantir compatibilidade total em produção (CORS fix)
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(wallhavenUrl)}`;
       const response = await fetch(proxyUrl);
-      const data = await response.json();
+      const json = await response.json();
       
-      if (isLoadMore) {
-        setWallpapers(prev => [...prev, ...data.data]);
+      // AllOrigins retorna os dados dentro de um campo 'contents' como string
+      const data = JSON.parse(json.contents);
+      
+      if (data && data.data) {
+        if (isLoadMore) {
+          setWallpapers(prev => [...prev, ...data.data]);
+        } else {
+          setWallpapers(data.data);
+        }
       } else {
-        setWallpapers(data.data || []);
+        console.warn("Nenhum dado retornado da API");
+        if (!isLoadMore) setWallpapers([]);
       }
     } catch (error) {
       console.error("Wallhaven API Error:", error);
+      if (!isLoadMore) setWallpapers([]);
     } finally {
       setLoading(false);
       setLoadingMore(false);
