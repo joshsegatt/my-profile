@@ -328,3 +328,4 @@ Port 3003 is in use, trying another one...
 [2m13:25:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/gamer/GamerMosaic.tsx[22m
 [2m13:29:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.css[22m
 [2m13:31:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/components/Hero.css[22m
+[2m13:35:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/index.css?direct[22m

@@ -60,10 +60,32 @@ const App: React.FC = () => {
         {showIntro && <Intro onComplete={handleIntroComplete} />}
       </AnimatePresence>
 
-      {/* Background Layer (Global) */}
-      <div className="fixed inset-0 bg-[#050505] z-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-yellow/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-full h-[500px] bg-gradient-to-b from-brand-yellow/[0.03] to-transparent pointer-events-none" />
+      {/* Global "Obsidian Nexus" Canvas System */}
+      <div className="fixed inset-0 bg-[#020202] z-0 overflow-hidden pointer-events-none">
+        
+        {/* Dynamic Mesh Aura Blobs */}
+        <motion.div 
+          animate={{ 
+            x: [0, 80, -40, 0], 
+            y: [0, -40, 80, 0],
+            scale: [1, 1.1, 0.95, 1]
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="aura-blob w-[800px] h-[800px] bg-brand-yellow/5 top-[-10%] left-[-10%]"
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -60, 100, 0], 
+            y: [0, 80, -60, 0],
+            scale: [1, 0.9, 1.05, 1]
+          }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          className="aura-blob w-[700px] h-[700px] bg-brand-yellow/[0.03] bottom-[-10%] right-[-5%]"
+        />
+
+        {/* Global Grid & Noise */}
+        <div className="global-grid" />
+        <div className="global-noise" />
       </div>
 
       <motion.div 
@@ -90,12 +112,12 @@ const App: React.FC = () => {
                   </div>
                 </div>
               } />
-              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><About /></div>} />
-              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Tools /></div>} />
-              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><GamerOptimizer /></div>} />
-              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Contact /></div>} />
-              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><Onboarding /></div>} />
-              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-28 pb-24 lg:pb-32"><ProjectLab /></div>} />
+              <Route path="/about" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><About /></div>} />
+              <Route path="/tools" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Tools /></div>} />
+              <Route path="/gamer" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><GamerOptimizer /></div>} />
+              <Route path="/contact" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Contact /></div>} />
+              <Route path="/onboard" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><Onboarding /></div>} />
+              <Route path="/lab" element={<div className="max-w-[1440px] mx-auto px-8 lg:px-16 pt-36 pb-24 lg:pb-32"><ProjectLab /></div>} />
             </Routes>
             
             <Footer />

@@ -1,0 +1,219 @@
+{
+    "nav": {
+        "home": "Início",
+        "tools": "Ferramentas",
+        "gamer": "Gamer",
+        "about": "Sobre",
+        "contact": "Contato",
+        "onboarding": "Onboarding",
+        "start_project": "Iniciar Projeto"
+    },
+    "global": {
+        "portfolio": "Portfólio",
+        "case_study": "Caso de Estudo"
+    },
+    "intro": {
+        "name": "Josh Segatt",
+        "role": "Arquiteto de Performance",
+        "initializing": "Inicializando Interface do Sistema"
+    },
+    "footer": {
+        "back_to_top": "Voltar ao topo",
+        "role": "Desenvolvedor Sênior impulsionado por IA"
+    },
+    "hero": {
+        "title": "Arquitetura de SaaS Escalável <br /> e <span class=\"highlight-pro\">Performance Extrema</span>.",
+        "subhead": "Fundindo desenvolvimento de software de nível empresarial com ajuste de sistema bare-metal. Eu projeto aplicações SaaS escaláveis e realizo otimização de Windows e hardware de alto nível.",
+        "cta": "Iniciar Fluxo de Onboarding"
+    },
+    "gamer": {
+        "hero": {
+            "title": "Extraia cada <span class=\"highlight-pro\">FPS</span> da sua máquina de combate.",
+            "desc": "Ajuste de performance de nível empresarial. Nosso motor neural elimina micro-travamentos e estabiliza o frame-pacing para uma vantagem competitiva absoluta.",
+            "stat1": { "label": "+30-60 AVG FPS", "detail": "Ganho garantido" },
+            "stat2": { "label": "-40MS PING", "detail": "Latência otimizada" },
+            "stat3": { "label": "LOW DPC", "detail": "Manipulação prioritária" },
+            "footer1": "Direct-X 12 + Vulkan",
+            "footer2": "Otimizado para Windows 11"
+        },
+        "tabs": {
+            "all": "Todos",
+            "opt": "Otimização",
+            "diag": "Diagnóstico",
+            "net": "Rede"
+        },
+        "construction": {
+            "title": "Em Construção",
+            "desc": "Este módulo está sendo treinado por nossas redes neurais. Volte em breve."
+        },
+        "tools": {
+            "rig_optimizer": { "title": "Otimizador de Rig", "desc": "Sintonizador de performance e latência profissional em várias etapas." },
+            "latency_sniper": { "title": "Sniper de Latência", "desc": "Meça e corrija jitter de sistema e rede de ponta a ponta." },
+            "fps_analyst": { "title": "Analista de FPS", "desc": "Analise gargalos e gere configurações de jogo ideais." }
+        },
+        "status": {
+            "locked": "Bloqueado",
+            "beta": "Beta",
+            "live": "Live"
+        }
+    },
+    "about": {
+        "title": "AS CRÔNICAS DA PERFORMANCE",
+        "journey": "Uma Odisseia da Engenharia Obsidian",
+        "arsenal": {
+            "title": "O ARSENAL DO ARQUITETO",
+            "subtitle": "Bases Técnicas e Maestria Estratégica",
+            "items": {
+                "ai": { "title": "Engenharia de IA", "desc": "Workflows agentivos, pipelines RAG e automação de LLM." },
+                "perf": { "title": "Arquitetura de Performance", "desc": "Otimização em nível de kernel e engenharia de latência zero." },
+                "ui": { "title": "Interface Nível Vercel", "desc": "Next.js, Framer Motion e design obsidian de alta fidelidade." }
+            }
+        },
+        "chapters": {
+            "prologo": {
+                "id": "PROLÓGO",
+                "subtitle": "Capítulo 0: A Grande Estagnação",
+                "title": "O Abismo Digital",
+                "content": "Antes da arquitetura, havia o caos. Ambientes modernos estão sobrecarregados por excesso de processos sistêmicos, latência de legado e subprocessos ineficientes que sufocam o potencial real do hardware profissional."
+            },
+            "chapter1": {
+                "id": "CAPÍTULO I",
+                "subtitle": "Capítulo 1: A Primeira Invasão",
+                "title": "Penetração Inicial",
+                "content": "Percebi que o código é tão poderoso quanto o motor que o impulsiona. Meu caminho começou com uma invasão fundamental nas operações de nível de kernel, removendo o desnecessário para revelar a essência central da performance."
+            },
+            "chapter2": {
+                "id": "CAPÍTULO II",
+                "subtitle": "Capítulo 2: A Forja Obsidian",
+                "title": "Maestria Estrutural",
+                "content": "O nascimento da estética 'Obsidian'—minimalista, autoritária e precisa. Aqui, a arquitetura encontra a estética. Eu construo sistemas que não apenas funcionam; eles dominam com um padrão de execução intransigente."
+            },
+            "chapter3": {
+                "id": "CAPÍTULO III",
+                "subtitle": "Capítulo 3: Arquiteto da Velocidade",
+                "title": "Velocidade Transcendente",
+                "content": "Velocidade é a métrica definitiva. Ao orquestrar hardware e software em perfeita sincronia, elimino as barreiras entre pensamento e execução. É aqui que a latência zero se torna realidade."
+            },
+            "epilogo": {
+                "id": "EPÍLOGO",
+                "subtitle": "O Arquivo Final: Seu Legado",
+                "title": "Um Novo Paradigma",
+                "content": "A jornada não termina aqui. Ela evolui. Seja através de SaaS impulsionado por IA ou ajuste de sistema de elite, nossa colaboração estabelece um padrão que definirá o futuro de suas operações digitais."
+            }
+        },
+        "cta": {
+            "title": "COMECE O PRÓXIMO CAPÍTULO.",
+            "button": "Inicializar Onboarding"
+        }
+    },
+    "tools_hero": {
+        "title": "O Blueprint de Performance Profissional para Windows.",
+        "subhead": "Elimine a latência, limpe serviços desnecessários e libere todo o potencial do seu hardware com metodologias de engenharia de elite.",
+        "cta": "Obter Blueprint de Otimização",
+        "stats": {
+            "input_delay": "Input Delay",
+            "fps_gain": "Ganho de FPS",
+            "tweaks": "Ajustes Aplicados"
+        }
+    },
+    "contact": {
+        "title": "Inicie seu projeto com um Sócio Sênior.",
+        "subhead": "Disponível para arquitetura de software de nível de produção e iniciativas de alta performance.",
+        "labels": {
+            "name": "Nome",
+            "email": "Endereço de E-mail",
+            "message": "Sua Mensagem"
+        },
+        "placeholders": {
+            "name": "ex. John Wick",
+            "email": "john@wick.com",
+            "message": "Conte-me sobre sua visão..."
+        },
+        "button": "Enviar Mensagem",
+        "success": "Consulta enviada! Um PDF com a visão do projeto foi enviado para o seu e-mail.",
+        "error": "Algo deu errado. Por favor, tente novamente ou entre em contato diretamente."
+    },
+    "projects": {
+        "label": "Portfólio",
+        "title": "Projetos em Destaque",
+        "subtitle": "Trabalhos Selecionados",
+        "case_study": "Estudo de Caso",
+        "items": {
+            "labelguard": { "sub": "SaaS de Conformidade Automatizada" },
+            "batimove": { "sub": "Logística Suíça Premium" },
+            "segatt": { "sub": "Motor Utilitário Neural" }
+        }
+    },
+    "onboarding": {
+        "step_of": "Passo {{step}} de 5 do Onboarding",
+        "step1": {
+            "question": "Qual a natureza do projeto que estamos arquitetando?",
+            "sub": "Selecione o domínio principal da sua visão.",
+            "saas": "Plataforma SaaS",
+            "saas_desc": "Aplicações em nuvem escaláveis",
+            "ai": "Integração de IA",
+            "ai_desc": "LLMs, RAG e automação",
+            "web": "Website Premium",
+            "web_desc": "Presença de marca de alto nível",
+            "custom": "Software Personalizado",
+            "custom_desc": "Soluções empresariais sob medida"
+        },
+        "step2": {
+            "question": "Qual o objetivo principal?",
+            "sub": "Defina o resultado pretendido para esta missão.",
+            "growth": "Hipercrescimento",
+            "growth_desc": "Impulsionado por conversão e velocidade",
+            "brand": "Majestade da Marca",
+            "brand_desc": "Estética e presença de elite",
+            "efficiency": "Eficiência de IA",
+            "efficiency_desc": "Automatize fluxos de trabalho manuais",
+            "legacy": "Modernização Legada",
+            "legacy_desc": "Reconstrua sistemas antigos"
+        },
+        "step3": {
+            "question": "Estabeleça o cronograma.",
+            "sub": "Quando alcançaremos nosso primeiro marco?",
+            "asap": "Imediato (ASAP)",
+            "short": "1-3 Meses",
+            "mid": "3-6 Meses",
+            "long": "Visão de Longo Prazo"
+        },
+        "step4": {
+            "question": "Espectro de Investimento.",
+            "sub": "Aloque capital para desenvolvimento e escala.",
+            "tier1": "$10k - $25k",
+            "tier2": "$25k - $50k",
+            "tier3": "$50k - $100k",
+            "tier4": "$100k+"
+        },
+        "step5": {
+            "question": "Identifique-se.",
+            "sub": "Como devo me dirigir a você ou à sua equipe?",
+            "name": "Nome Completo",
+            "email": "E-mail Profissional",
+            "button": "Estabelecer Conexão",
+            "sending": "Estabelecendo Conexão..."
+        },
+        "step6": {
+            "title": "Visão Recebida.",
+            "sub": "Eu gerei o seu PDF de resumo do projeto e o enviei para sua caixa de entrada. Entrarei em contato em até 24 horas.",
+            "button": "Voltar ao Início"
+        }
+    },
+    "sidebar": {
+        "about_title": "Sobre Mim",
+        "about_desc": "Sou um Desenvolvedor Sênior impulsionado por IA, especializado em aplicações web de alta performance e arquitetura de software de nível de produção.",
+        "connect_title": "Conectar",
+        "contact_title": "Contate-me",
+        "labels": {
+            "name": "Nome",
+            "email": "E-mail",
+            "message": "Mensagem"
+        },
+        "button": "Enviar Mensagem",
+        "status": {
+            "sending": "Enviando...",
+            "delivered": "Entregue!"
+        }
+    }
+}

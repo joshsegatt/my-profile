@@ -38,12 +38,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-md cursor-zoom-out"
+            className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md cursor-zoom-out"
             onClick={onClose}
           />
 
           {/* Modal Container */}
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8 lg:p-12 pointer-events-none">
+          <div className="fixed inset-0 z-[210] flex items-center justify-center p-4 md:p-8 lg:p-12 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

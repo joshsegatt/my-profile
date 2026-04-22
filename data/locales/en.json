@@ -1,0 +1,214 @@
+{
+    "nav": {
+        "home": "Home",
+        "tools": "Tools",
+        "gamer": "Gamer",
+        "about": "About",
+        "contact": "Contact",
+        "onboarding": "Onboarding",
+        "start_project": "Start Project"
+    },
+    "global": {
+        "portfolio": "Portfolio",
+        "case_study": "Case Study"
+    },
+    "intro": {
+        "name": "Josh Segatt",
+        "role": "Performance Architect",
+        "initializing": "Initializing System UI"
+    },
+    "footer": {
+        "back_to_top": "Back to top",
+        "role": "AI-Powered Senior Developer"
+    },
+    "hero": {
+        "title": "Architecting Scalable SaaS <br /> & <span class=\"highlight-pro\">Extreme Performance</span>.",
+        "subhead": "Merging enterprise-grade software development with bare-metal system tuning. I architect scalable SaaS applications and perform high-level Windows & hardware optimization.",
+        "cta": "Start Onboarding Flow"
+    },
+    "gamer": {
+        "hero": {
+            "title": "Squeeze every <span class=\"highlight-pro\">FPS</span> from your battle rig.",
+            "desc": "Enterprise-grade performance tuning. Our neural engine eliminates micro-stutters and stabilizes frame-pacing for absolute competitive advantage.",
+            "stat1": { "label": "+30-60 AVG FPS", "detail": "Guaranteed boost" },
+            "stat2": { "label": "-40MS PING", "detail": "Latency optimized" },
+            "stat3": { "label": "LOW DPC", "detail": "Priority handling" },
+            "footer1": "Direct-X 12 + Vulkan",
+            "footer2": "Windows 11 Optimized"
+        },
+        "tabs": {
+            "all": "All",
+            "opt": "Optimization",
+            "diag": "Diagnosis",
+            "net": "Network"
+        },
+        "construction": {
+            "title": "Under Construction",
+            "desc": "This module is being trained by our neural networks. Check back soon."
+        },
+        "tools": {
+            "rig_optimizer": { "title": "Rig Optimizer", "desc": "Professional multi-step performance and latency tuner." },
+            "latency_sniper": { "title": "Latency Sniper", "desc": "Measure and fix end-to-end system and network jitter." },
+            "fps_analyst": { "title": "FPS Analyst", "desc": "Analyze bottlenecks and generate golden game settings." }
+        }
+    },
+    "about": {
+        "title": "THE CHRONICLES OF PERFORMANCE",
+        "journey": "An Obsidian Engineering Odyssey",
+        "arsenal": {
+            "title": "THE ARCHITECT'S ARSENAL",
+            "subtitle": "Technical Foundations & Strategic Mastery",
+            "items": {
+                "ai": { "title": "AI Engineering", "desc": "Agentic workflows, RAG pipelines, and LLM automation." },
+                "perf": { "title": "Performance Architecture", "desc": "Kernel-level optimization and zero-latency engineering." },
+                "ui": { "title": "Vercel Grade UI", "desc": "Next.js, Framer Motion, and high-fidelity obsidian design." }
+            }
+        },
+        "chapters": {
+            "prologo": {
+                "id": "PROLÓGO",
+                "subtitle": "Chapter 0: The Great Stagnation",
+                "title": "The Digital Abyss",
+                "content": "Before the architecture, there was chaos. Modern environments are burdened by systemic bloat, legacy latency, and inefficient sub-processes that stifle the raw potential of professional hardware."
+            },
+            "chapter1": {
+                "id": "CAPÍTULO I",
+                "subtitle": "Chapter 1: The First Breach",
+                "title": "Initial Penetration",
+                "content": "I realized that code is only as powerful as the engine driving it. My path began with a fundamental breach into kernel-level operations, stripping away the unnecessary to reveal the core essence of performance."
+            },
+            "chapter2": {
+                "id": "CAPÍTULO II",
+                "subtitle": "Chapter 2: The Obsidian Forge",
+                "title": "Structural Mastery",
+                "content": "The birth of the 'Obsidian' aesthetic—minimalist, authoritative, and precise. Here, architecture meets aesthetics. I build systems that don't just function; they dominate with an uncompromising standard of execution."
+            },
+            "chapter3": {
+                "id": "CAPÍTULO III",
+                "subtitle": "Chapter 3: Architect of Velocity",
+                "title": "Transcendent Speed",
+                "content": "Velocity is the ultimate metric. By orchestrating hardware and software in perfect synchronicity, I eliminate the barriers between thought and execution. This is where zero-latency becomes a reality."
+            },
+            "epilogo": {
+                "id": "EPÍLOGO",
+                "subtitle": "The Final Archive: Your Legacy",
+                "title": "A New Paradigm",
+                "content": "The journey doesn't end here. It evolves. Whether through AI-driven SaaS or elite system tuning, our collaboration establishes a standard that will define the future of your digital operations."
+            }
+        },
+        "cta": {
+            "title": "START THE NEXT CHAPTER.",
+            "button": "Initialize Onboarding Flow"
+        }
+    },
+    "tools_hero": {
+        "title": "The Professional Windows Performance Blueprint.",
+        "subhead": "Eliminate latency, debloat services, and unlock your hardware's full potential with elite engineering methodologies.",
+        "cta": "Get Optimization Blueprint",
+        "stats": {
+            "input_delay": "Input Delay",
+            "fps_gain": "FPS Gain",
+            "tweaks": "Tweaks Applied"
+        }
+    },
+    "contact": {
+        "title": "Start your project with a Senior Partner.",
+        "subhead": "Available for production-grade software architecture and high-performance initiatives.",
+        "labels": {
+            "name": "Name",
+            "email": "Email Address",
+            "message": "Your Message"
+        },
+        "placeholders": {
+            "name": "e.g. John Wick",
+            "email": "john@wick.com",
+            "message": "Tell me about your vision..."
+        },
+        "button": "Send Message",
+        "success": "Inquiry sent! A project overview PDF has been sent to your email.",
+        "error": "Something went wrong. Please try again or reach out directly."
+    },
+    "projects": {
+        "label": "Portfolio",
+        "title": "Featured Projects",
+        "subtitle": "Selected Works",
+        "case_study": "Case Study",
+        "items": {
+            "labelguard": { "sub": "Automated Compliance SaaS" },
+            "batimove": { "sub": "Premium Swiss Logistics" },
+            "segatt": { "sub": "Neural Utility Engine" }
+        }
+    },
+    "onboarding": {
+        "step_of": "Onboarding Step {{step}} of 5",
+        "step1": {
+            "question": "What nature of project are we architecting?",
+            "sub": "Select the primary domain of your vision.",
+            "saas": "SaaS Platform",
+            "saas_desc": "Scalable cloud applications",
+            "ai": "AI Integration",
+            "ai_desc": "LLMs, RAG and automation",
+            "web": "Premium Website",
+            "web_desc": "High-end brand presence",
+            "custom": "Custom Software",
+            "custom_desc": "Tailored enterprise solutions"
+        },
+        "step2": {
+            "question": "What is the primary objective?",
+            "sub": "Define the target outcome for this mission.",
+            "growth": "Hyper Growth",
+            "growth_desc": "Driven by conversion & speed",
+            "brand": "Brand Majesty",
+            "brand_desc": "Elite aesthetics & presence",
+            "efficiency": "AI Efficiency",
+            "efficiency_desc": "Automate manual workflows",
+            "legacy": "Legacy Modernization",
+            "legacy_desc": "Rebuild old systems tech"
+        },
+        "step3": {
+            "question": "Establish the timeline.",
+            "sub": "When do we reach our first milestone?",
+            "asap": "Immediate (ASAP)",
+            "short": "1-3 Months",
+            "mid": "3-6 Months",
+            "long": "Long-term Vision"
+        },
+        "step4": {
+            "question": "Investment Spectrum.",
+            "sub": "Allocate capital for development & scaling.",
+            "tier1": "$10k - $25k",
+            "tier2": "$25k - $50k",
+            "tier3": "$50k - $100k",
+            "tier4": "$100k+"
+        },
+        "step5": {
+            "question": "Identify yourself.",
+            "sub": "How should I address you or your team?",
+            "name": "Full Name",
+            "email": "Business Email",
+            "button": "Establish Connection",
+            "sending": "Establishing Connection..."
+        },
+        "step6": {
+            "title": "Vision Received.",
+            "sub": "I've generated your Project Brief PDF and dispatched it to your inbox. I'll reach out within 24 hours.",
+            "button": "Return Home"
+        }
+    },
+    "sidebar": {
+        "about_title": "About Me",
+        "about_desc": "I am an AI-Powered Senior Developer specialized in high-performance web applications and production-grade software architecture.",
+        "connect_title": "Connect",
+        "contact_title": "Contact Me",
+        "labels": {
+            "name": "Name",
+            "email": "Email",
+            "message": "Message"
+        },
+        "button": "Send Message",
+        "status": {
+            "sending": "Sending...",
+            "delivered": "Delivered!"
+        }
+    }
+}

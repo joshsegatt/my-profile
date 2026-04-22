@@ -1,0 +1,29 @@
+.about-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; /* Extrabold for senior refinement */
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  color: #FFFFFF;
+  font-size: 22px; /* Base Mobile Size */
+}
+
+@media (min-width: 1024px) {
+  .about-title {
+    font-size: 30px; /* Compact Desktop Size */
+  }
+}
+
+.about-chapter-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: #FFFFFF;
+  font-size: 26px;
+}
+
+@media (min-width: 1024px) {
+  .about-chapter-title {
+    font-size: 32px;
+  }
+}

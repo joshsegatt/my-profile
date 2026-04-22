@@ -197,12 +197,33 @@ export function generateTweaks(d: FormData): Tweak[] {
     });
   }
 
-  // Windows
+  // Windows Extended
   tw.push({
-    id: 'diagtrack', category: 'windows', impact: 'MEDIUM',
-    title: 'Disable DiagTrack Telemetry Service',
-    desc:  'Windows sends diagnostics data periodically, triggering disk I/O spikes that can cause frame drops.',
-    command: 'Stop-Service DiagTrack -Force; Set-Service DiagTrack -StartupType Disabled',
+    id: 'ultimate-plan', category: 'windows', impact: 'HIGH',
+    title: 'Unlock Ultimate Performance Power Plan',
+    desc: 'Unlocks a hidden Windows power scheme designed for high-end workstations. Minimizes micro-latencies.',
+    command: 'powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61',
+  });
+
+  tw.push({
+    id: 'vbs-disable', category: 'windows', impact: 'HIGH',
+    title: 'Disable Virtualization-Based Security (VBS)',
+    desc: 'VBS can cause 5–25% FPS loss on some CPUs. Disabling it improves gaming stability at the cost of some enterprise security features.',
+    command: 'reg add "HKLM\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f',
+  });
+
+  tw.push({
+    id: 'fso-disable', category: 'windows', impact: 'MEDIUM',
+    title: 'Disable Global Fullscreen Optimizations',
+    desc: 'Prevents Windows from "optimizing" (overlaying) fullscreen games, which often causes input lag in DX11 titles.',
+    command: 'reg add "HKCU\\System\\GameConfigStore" /v GameDVR_FSEBehavior /t REG_DWORD /d 2 /f',
+  });
+
+  tw.push({
+    id: 'hibernate-off', category: 'windows', impact: 'LOW',
+    title: 'Disable Hibernation & Fast Startup',
+    desc: 'Deletes hiberfil.sys (saving GBs of SSD space) and ensures a clean kernel boot every time, preventing "uptime" bugs.',
+    command: 'powercfg -h off',
   });
 
   // Thermal

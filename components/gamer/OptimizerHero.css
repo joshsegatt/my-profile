@@ -43,15 +43,15 @@
 
 .hero-title {
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 800; /* Extrabold */
   color: #FFFFFF;
   letter-spacing: -0.05em;
-  line-height: 0.9;
+  line-height: 1.0;
 }
 
 @media (min-width: 1024px) {
   .hero-title {
-    font-size: 5.5rem;
+    font-size: 5.25rem; /* Slightly reduced for better balance */
   }
 }
 

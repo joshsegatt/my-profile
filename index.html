@@ -99,6 +99,141 @@
   }
 }
 </script>
+  <style>
+    /* 🛡️ ELITE TYPOGRAPHY SYSTEM (Contextual Scaling) */
+    
+    /* Home & About: Compact Architectural Style */
+    #home-hero-section .hero-title, 
+    #about .about-title {
+      font-size: 30px !important; /* Increased Mobile Size */
+      font-weight: 700 !important; /* Architectural Weight */
+      letter-spacing: -0.06em !important;
+      line-height: 1.0 !important;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%); /* Frosted Steel */
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2.5rem !important;
+      max-width: 850px !important;
+    }
+
+    /* 🏷️ Senior Figma Highlighting & Liquid Gold */
+    .highlight-pro {
+      font-weight: 900 !important; /* Visual Hierarchy Boost */
+      background: linear-gradient(to bottom, #FFC700 0%, #B8860B 100%) !important; /* Liquid Gold */
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 1px rgba(255, 199, 0, 0.8));
+      text-shadow: 
+        0 0 10px rgba(255, 199, 0, 0.4),
+        0 0 30px rgba(255, 199, 0, 0.2),
+        0 0 60px rgba(255, 199, 0, 0.1); /* Triple-Layer Glow */
+    }
+
+    /* Gamer: High-Impact Dominance Style */
+    #gamer-hero-section .hero-title {
+      font-size: 42px !important; /* Proportional Mobile Increase */
+      font-weight: 800 !important;
+      letter-spacing: -0.06em !important;
+      line-height: 1.0 !important;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%); /* Frosted Steel */
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem !important;
+    }
+
+    /* Subtitles & Descriptions: Senior Proportionality */
+    .hero-description, .hero-subhead {
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      max-width: 580px !important;
+      margin-bottom: 3.5rem !important; /* Extra Respiro */
+    }
+
+    @media (min-width: 1024px) {
+      #home-hero-section .hero-title, 
+      #about .about-title {
+        font-size: 48px !important; /* Senior Impact Scale */
+      }
+      
+      #gamer-hero-section .hero-title {
+        font-size: 64px !important; /* Maintained Dominance Gap */
+      }
+
+      .hero-description, .hero-subhead {
+        font-size: 18px !important;
+      }
+    }
+
+    /* ⚡ Elite CTA: Magnetic Obsidian System */
+    .cta-button {
+      background-color: #FFC700 !important;
+      color: #000 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+      box-shadow: 0 0 0 rgba(255, 199, 0, 0) !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      z-index: 10 !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+    }
+
+    /* Premium Light Sweep (Shimmer) */
+    .cta-button::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: -100% !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      ) !important;
+      transition: all 0.6s !important;
+      pointer-events: none !important;
+    }
+
+    .cta-button:hover::before {
+      left: 100% !important;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px) scale(1.02) !important;
+      background-color: #FFD600 !important;
+      box-shadow: 
+        0 15px 45px rgba(255, 199, 0, 0.35),
+        0 0 20px rgba(255, 199, 0, 0.1) !important;
+    }
+
+    .cta-button:active {
+      transform: translateY(-2px) scale(0.98) !important;
+    }
+
+    /* Arrow Glide Animation */
+    .cta-button .arrow-icon {
+      transition: transform 0.3s ease !important;
+    }
+
+    .cta-button:hover .arrow-icon {
+      transform: translateX(8px) !important;
+    }
+
+    @keyframes pulse-glow-elite {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 199, 0, 0.2); }
+      50% { box-shadow: 0 0 60px rgba(255, 199, 0, 0.45); }
+    }
+
+    .animate-pulse-slow {
+      animation: pulse-glow-elite 3s infinite ease-in-out !important;
+    }
+  </style>
   <link rel="stylesheet" href="/index.css">
 </head>
 

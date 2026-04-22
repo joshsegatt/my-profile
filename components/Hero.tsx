@@ -1,17 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../utils/i18n';
 import './Hero.css';
 
 const Hero: React.FC = () => {
-  return (
-    <section className="hero-container">
-      {/* Background System */}
-      <div className="hero-background" />
-      <div className="hero-conic" />
-      <div className="hero-grid" />
-      <div className="hero-noise" />
+  const { t } = useLanguage();
 
+  return (
+    <section id="home-hero-section" className="hero-container">
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
           
@@ -23,20 +20,18 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="hero-title text-[44px] lg:text-[68px] mb-8"
-            >
-              Build Elite SaaS. <br />
-              Optimize Everything.
-            </motion.h1>
+              className="hero-title"
+              dangerouslySetInnerHTML={{ __html: t('hero.title') }}
+            />
 
             {/* Subhead */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="hero-subhead text-white/65 text-lg mb-10"
+              className="hero-subhead text-white/65 text-lg mb-10 leading-relaxed"
             >
-              Merging enterprise-grade web development with bare-metal system tuning. I architect scalable <span className="text-white font-bold">SaaS apps</span>, build premium digital products, and perform <span className="text-white font-bold">extreme Windows & gaming optimization</span>.
+              {t('hero.subhead')}
             </motion.p>
 
             {/* Social Proof Line */}
@@ -66,9 +61,12 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <a href="/onboard" className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] animate-pulse-slow">
-                Start Onboarding
-                <ChevronRight size={18} />
+              <a 
+                href="/onboard" 
+                className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] animate-pulse-slow active:scale-95 transition-all"
+              >
+                {t('hero.cta')}
+                <ChevronRight size={18} className="arrow-icon" />
               </a>
             </motion.div>
 

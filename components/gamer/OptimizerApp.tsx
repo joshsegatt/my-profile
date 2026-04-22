@@ -96,6 +96,17 @@ const OptimizerApp: React.FC = () => {
     a.click();
   };
 
+  const handleDownloadScripts = () => {
+    const commands = tweaks.filter(t => t.command).map(t => `# ${t.title}\n# ${t.desc}\n${t.command}\n`).join('\n');
+    const scriptHeader = `# SEGATT GAMER OPTIMIZER - AUTOMATED SCRIPT\n# Target Rig: ${form.cpu} + ${form.gpu}\n# Targeted Game: ${form.game}\n# Run in an Administrative PowerShell window.\n\n`;
+    const blob = new Blob([scriptHeader + commands], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `optimize_segatt.ps1`;
+    a.click();
+  };
+
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-700">
       <WindowFrame title="AI RIG OPTIMIZER V1" icon={<Gamepad2 size={20} />}>
@@ -149,6 +160,7 @@ const OptimizerApp: React.FC = () => {
                   onCopy={handleCopy}
                   copiedId={copiedId}
                   onExport={handleExport}
+                  onDownloadScripts={handleDownloadScripts}
                 />
               </motion.div>
             )}

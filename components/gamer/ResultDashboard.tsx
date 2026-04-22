@@ -14,6 +14,7 @@ interface ResultDashboardProps {
   onCopy: (tweak: Tweak) => void;
   copiedId: string | null;
   onExport: () => void;
+  onDownloadScripts: () => void;
 }
 
 const TABS: Array<{ id: Category; label: string; icon: React.ReactNode }> = [
@@ -32,7 +33,8 @@ const ResultDashboard: React.FC<ResultDashboardProps> = ({
   toggleDone,
   onCopy,
   copiedId,
-  onExport
+  onExport,
+  onDownloadScripts
 }) => {
   const visibleTweaks = tweaks.filter(t => t.category === activeTab);
   
@@ -51,12 +53,21 @@ const ResultDashboard: React.FC<ResultDashboardProps> = ({
           </div>
         </div>
 
-        <button
-          onClick={onExport}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm font-bold hover:bg-white/10 hover:text-white transition-all"
-        >
-          <Download size={14} /> Export Report (.TXT)
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onExport}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm font-bold hover:bg-white/10 hover:text-white transition-all"
+          >
+            <Download size={14} /> Report (.TXT)
+          </button>
+          
+          <button
+            onClick={onDownloadScripts}
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-yellow text-black text-sm font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_0_20px_rgba(255,184,0,0.3)]"
+          >
+            <Zap size={14} /> Download All (.PS1)
+          </button>
+        </div>
       </div>
 
       <div className="flex items-center gap-1 p-1 rounded-2xl bg-white/[0.03] border border-white/5 self-start">

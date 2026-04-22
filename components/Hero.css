@@ -1,62 +1,29 @@
 .hero-container {
   position: relative;
   min-height: 100vh;
-  background-color: #0A0A0A;
+  background-color: transparent; /* Flowing from Global */
   overflow: hidden;
   display: flex;
   align-items: center;
+  padding-top: 140px;
+  padding-bottom: 80px;
   z-index: 1;
-}
-
-/* Refined Global Gradient Aesthetic */
-.hero-background {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: 
-    radial-gradient(circle at 10% 40%, rgba(255, 199, 0, 0.15) 0%, transparent 55%),
-    radial-gradient(circle at 90% 60%, rgba(245, 158, 11, 0.12) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(255, 199, 0, 0.03) 0%, #0A0A0A 100%);
-}
-
-.hero-conic {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, 0.015) 0deg, transparent 360deg);
-  opacity: 0.5;
-}
-
-/* Industrial 1px Grid Overlay */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 80%);
-  pointer-events: none;
-}
-
-/* Subtle Film Grain Noise */
-.hero-noise {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.03;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Typography & Layout Spacing */
 .hero-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 800; /* Extrabold for better refinement */
+  letter-spacing: -0.05em;
   line-height: 1.1;
   color: #FFFFFF;
+  font-size: 22px; /* Base Mobile Size */
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 30px; /* Compact Desktop Size */
+  }
 }
 
 .hero-subhead {
@@ -66,29 +33,68 @@
 }
 
 /* Haptics & Pulsing UI */
+/* Elite CTA: Magnetic Obsidian System */
 .cta-button {
   background-color: #FFC700;
-  color: #0A0A0A;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 40px rgba(255, 199, 0, 0.25);
+  color: #000000;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 0 0 rgba(255, 199, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Premium Light Sweep (Shimmer) */
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s;
+  pointer-events: none;
+}
+
+.cta-button:hover::before {
+  left: 100%;
 }
 
 .cta-button:hover {
-  box-shadow: 0 0 60px rgba(255, 199, 0, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.02);
+  background-color: #FFD600;
+  box-shadow: 
+    0 10px 40px rgba(255, 199, 0, 0.3),
+    0 0 20px rgba(255, 199, 0, 0.1);
 }
 
 .cta-button:active {
-  transform: scale(0.98);
+  transform: translateY(-2px) scale(0.98);
 }
 
-@keyframes slow-pulse {
-  0%, 100% { box-shadow: 0 0 40px rgba(255, 199, 0, 0.25); }
-  50% { box-shadow: 0 0 60px rgba(255, 199, 0, 0.4); }
+/* Arrow Glide Animation */
+.cta-button .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow-icon {
+  transform: translateX(6px);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 199, 0, 0.15); }
+  50% { box-shadow: 0 0 50px rgba(255, 199, 0, 0.3); }
 }
 
 .animate-pulse-slow {
-  animation: slow-pulse 4s infinite ease-in-out;
+  animation: pulse-glow 3s infinite ease-in-out;
 }
 
 .lightning-bolt {

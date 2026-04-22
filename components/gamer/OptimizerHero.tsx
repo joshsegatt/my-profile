@@ -1,31 +1,23 @@
 import React from 'react';
 import { Zap, Globe, Activity } from 'lucide-react';
 import GamerMosaic from './GamerMosaic';
+import { useLanguage } from '../../utils/i18n';
 import './OptimizerHero.css';
 
 const OptimizerHero: React.FC = () => {
+  const { t } = useLanguage();
   return (
-    <section className="hero-section">
-      
-      {/* Left Column: Cinematic Mosaic */}
+    <section id="gamer-hero-section" className="hero-section">
       <div className="mosaic-col">
         <GamerMosaic />
       </div>
 
-      {/* Right Column: CTA Content */}
       <div className="cta-col">
         <div className="content-group">
-
-
           <div className="title-group">
-            <h1 className="hero-title">
-              Squeeze every <br />
-              <span className="brand-span">FPS</span> from your <br />
-              battle rig.
-            </h1>
+            <h1 className="hero-title" dangerouslySetInnerHTML={{ __html: t('gamer.hero.title').replace('FPS', '<span className="brand-span">FPS</span>') }} />
             <p className="hero-description">
-              Enterprise-grade performance tuning. Our neural engine eliminates micro-stutters and 
-              stabilizes frame-pacing for absolute competitive advantage.
+              {t('gamer.hero.desc')}
             </p>
           </div>
         </div>
@@ -33,10 +25,10 @@ const OptimizerHero: React.FC = () => {
         <div className="stats-container">
           <div className="stats-grid">
             {[
-              { icon: <Zap size={18} />,      label: '+30-60 AVG FPS', detail: 'Guaranteed boost' },
-              { icon: <Globe size={18} />,     label: '-40MS PING',    detail: 'Latency optimized' },
-              { icon: <Activity size={18} />,  label: 'LOW DPC',       detail: 'Priority handling' },
-            ].map(stat => (
+              { icon: <Zap size={18} />,      label: t('gamer.hero.stat1.label'), detail: t('gamer.hero.stat1.detail') },
+              { icon: <Globe size={18} />,     label: t('gamer.hero.stat2.label'), detail: t('gamer.hero.stat2.detail') },
+              { icon: <Activity size={18} />,  label: t('gamer.hero.stat3.label'), detail: t('gamer.hero.stat3.detail') },
+            ].map((stat: any) => (
               <div key={stat.label} className="stat-item">
                 <div className="stat-header">
                   <span className="stat-icon">{stat.icon}</span>
@@ -52,11 +44,11 @@ const OptimizerHero: React.FC = () => {
           <div className="specs-footer">
             <span className="specs-item">
               <div className="specs-dot" />
-              Direct-X 12 + Vulkan
+              {t('gamer.hero.footer1')}
             </span>
             <span className="specs-item">
               <div className="specs-dot" />
-              Windows 11 Optimized
+              {t('gamer.hero.footer2')}
             </span>
           </div>
         </div>

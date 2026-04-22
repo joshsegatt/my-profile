@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import './GamerMosaic.css';
 
@@ -39,14 +39,12 @@ const MOSAIC_ASSETS = [
 const GamerMosaic: React.FC = () => {
   return (
     <div className="mosaic-container">
-      
-
       {MOSAIC_ASSETS.map((asset, idx) => (
         <motion.div
-          key={idx}
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
+          key={`${asset.label}-${idx}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: idx * 0.05, ease: "easeOut" }}
           className={`mosaic-tile ${asset.className}`}
         >
           {asset.type === 'video' ? (
@@ -55,6 +53,7 @@ const GamerMosaic: React.FC = () => {
               muted
               loop
               playsInline
+              preload="auto"
               className="mosaic-video"
             >
               <source src={asset.path} type="video/mp4" />
@@ -63,6 +62,7 @@ const GamerMosaic: React.FC = () => {
             <img 
               src={asset.path} 
               alt={asset.label} 
+              loading="eager"
               className="mosaic-image"
             />
           )}
@@ -81,4 +81,4 @@ const GamerMosaic: React.FC = () => {
   );
 };
 
-export default GamerMosaic;
+export default memo(GamerMosaic);
