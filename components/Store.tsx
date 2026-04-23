@@ -775,6 +775,12 @@ const Store: React.FC = () => {
                                                         headers: { 'Content-Type': 'application/json' },
                                                         body: JSON.stringify({ items: cart }),
                                                     });
+
+                                                    if (!response.ok) {
+                                                        const errorData = await response.json().catch(() => ({ error: 'Unknown server error' }));
+                                                        throw new Error(errorData.error || `HTTP ${response.status}`);
+                                                    }
+
                                                     const { url } = await response.json();
                                                     
                                                     const width = 500;
