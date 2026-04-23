@@ -804,9 +804,12 @@ const Store: React.FC = () => {
                                                             btn.style.border = '1px solid rgba(255,193,7,0.3)';
                                                         }
                                                     }
-                                                } catch (err) {
+                                                } catch (err: any) {
                                                     console.error('Payment Error:', err);
-                                                    if (btn) btn.innerText = 'Protocol Failed';
+                                                    if (btn) {
+                                                        btn.innerText = err.message || 'Protocol Failed';
+                                                        btn.style.fontSize = '8px'; // Shrink to fit long errors
+                                                    }
                                                 }
                                             }}
                                             id="pay-btn"
