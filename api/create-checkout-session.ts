@@ -5,41 +5,41 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export default async function handler(req: any, res: any) {
-  if (req.method === 'POST') {
-    try {
-      const { items } = req.body;
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
-      // Map cart items to Stripe line items
-      const line_items = items.map((item: any) => ({
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: item.title,
-            description: item.description,
-            images: [item.image.startsWith('http') ? item.image : `https://seusite.com${item.image}`],
-          },
-          unit_amount: Math.round(item.priceValue * 100), // Stripe uses cents
-        },
-        quantity: 1,
-      }));
+  try {
+    const { items } = req.body;
 
-      // Create Checkout Sessions from body params
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'], // Add 'google_pay', 'apple_pay' in Stripe Dashboard
-        line_items,
-        mode: 'payment',
-        success_url: `${req.headers.origin}/store?success=true`,
-        cancel_url: `${req.headers.origin}/store?canceled=true`,
-        // Automatically collect email for delivery
-        customer_creation: 'always',
-      });
-
-      res.status(200).json({ url: session.url });
-    } catch (err: any) {
-      res.status(err.statusCode || 500).json(err.message);
+    if (!items || !Array.isArray(items)) {
+      return res.status(400).json({ error: 'Invalid items array' });
     }
-  } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
+
+    const line_items = items.map((item: any) => ({
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: item.title || 'Digital Asset',
+          description: item.description || 'Premium Digital Content',
+          images: [item.image?.startsWith('http') ? item.image : `https://joshsegatt.com${item.image}`],
+        },
+        unit_amount: Math.round((item.priceValue || 0) * 100),
+      },
+      quantity: 1,
+    }));
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items,
+      mode: 'payment',
+      success_url: `https://joshsegatt.com/store?success=true`,
+      cancel_url: `https://joshsegatt.com/store?canceled=true`,
+    });
+
+    return res.status(200).json({ url: session.url });
+  } catch (err: any) {
+    console.error('Stripe Error:', err.message);
+    return res.status(500).json({ error: `Server Error: ${err.message}` });
   }
 }
