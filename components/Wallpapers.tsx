@@ -153,7 +153,6 @@ const Wallpapers: React.FC = () => {
             </motion.h1>
           </div>
 
-          {/* Tactical Control Area */}
           <motion.div 
             variants={{
               hidden: { opacity: 0, y: 10 },
@@ -161,7 +160,6 @@ const Wallpapers: React.FC = () => {
             }}
             className="flex items-center gap-4"
           >
-            {/* Device Toggle */}
             <div className="flex bg-white/5 p-1 rounded-xl border border-white/10">
               <button 
                 onClick={() => setDeviceType('desktop')}
@@ -179,7 +177,6 @@ const Wallpapers: React.FC = () => {
               </button>
             </div>
 
-            {/* Shuffle Button */}
             <button 
               onClick={handleRefresh}
               className="p-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-brand-yellow hover:border-brand-yellow/50 transition-all"
@@ -187,10 +184,9 @@ const Wallpapers: React.FC = () => {
             >
               <Shuffle size={18} />
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Categories Bar */}
         <motion.div 
           variants={{
             hidden: { opacity: 0, y: 20 },
