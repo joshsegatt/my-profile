@@ -21,7 +21,13 @@ export const handler = async (event: any) => {
 
   try {
     if (!event.body) throw new Error('Empty request body');
-    const { items } = JSON.parse(event.body);
+    
+    // Decodificar Base64 se necessário (Bug comum do Netlify)
+    const rawBody = event.isBase64Encoded 
+      ? Buffer.from(event.body, 'base64').toString() 
+      : event.body;
+      
+    const { items } = JSON.parse(rawBody);
 
     if (!items || !Array.isArray(items)) {
       throw new Error('Invalid items array in request');
