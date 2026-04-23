@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Component Imports
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Contact from './components/Contact';
+import Store from '@/components/Store';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import ProjectLab from './components/ProjectLab';
@@ -12,15 +15,13 @@ import Onboarding from './components/Onboarding';
 import Tools from './components/Tools';
 import GamerOptimizer from './components/GamerOptimizer';
 import Wallpapers from './components/Wallpapers';
-import Prompts from './components/Prompts';
-
-import { motion, AnimatePresence } from 'framer-motion';
+import Prompts from '@/components/Prompts';
 import Intro from './components/Intro';
 
-// Helper component to scroll to top on route change (Instant)
+// Helper component to scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  React.useEffect(() => {
+  useEffect(() => {
     const mainContent = document.getElementById('main-scroll-area');
     if (mainContent) {
       mainContent.scrollTo(0, 0);
@@ -31,10 +32,10 @@ const ScrollToTop = () => {
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const [showIntro, setShowIntro] = React.useState(false);
-  const [isReady, setIsReady] = React.useState(false);
+  const [showIntro, setShowIntro] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const isInternalTools = window.location.pathname === '/tools';
     const introSeen = sessionStorage.getItem('josh_intro_seen');
     
@@ -63,7 +64,7 @@ const AppContent: React.FC = () => {
         {showIntro && <Intro onComplete={handleIntroComplete} />}
       </AnimatePresence>
 
-      {/* Global Background System (Static for performance) */}
+      {/* Global Background System */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px]" />
         <div className="global-grid opacity-20" />
@@ -84,7 +85,7 @@ const AppContent: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, ease: "linear" }}
-              className="w-full min-h-screen pt-36 pb-24 px-8 lg:px-16"
+              className={`w-full min-h-screen pt-24 pb-24 ${location.pathname === '/store' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
             >
               <div className="max-w-[1440px] mx-auto">
                 <Routes location={location}>
@@ -94,7 +95,7 @@ const AppContent: React.FC = () => {
                   <Route path="/wallpapers" element={<Wallpapers />} />
                   <Route path="/prompts" element={<Prompts />} />
                   <Route path="/gamer" element={<GamerOptimizer />} />
-                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/store" element={<Store />} />
                   <Route path="/onboard" element={<Onboarding />} />
                   <Route path="/lab" element={<ProjectLab />} />
                 </Routes>
@@ -103,11 +104,13 @@ const AppContent: React.FC = () => {
             </motion.div>
           </main>
 
-          <aside className="hidden xl:block w-[380px] h-full overflow-y-auto custom-scrollbar border-l border-white/5 bg-black/20 backdrop-blur-3xl">
-            <div className="p-10">
-              <Sidebar />
-            </div>
-          </aside>
+          {location.pathname !== '/store' && (
+            <aside className="hidden xl:block w-[380px] h-full overflow-y-auto custom-scrollbar border-l border-white/5 bg-black/20 backdrop-blur-3xl">
+              <div className="p-10">
+                <Sidebar />
+              </div>
+            </aside>
+          )}
         </div>
       </motion.div>
     </div>

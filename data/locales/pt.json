@@ -6,7 +6,7 @@
         "prompts": "Prompts AI",
         "gamer": "Gamer",
         "about": "Sobre",
-        "contact": "Contato",
+        "store": "Loja",
         "onboarding": "Onboarding",
         "start_project": "Iniciar Projeto"
     },
@@ -118,22 +118,63 @@
             "tweaks": "Ajustes Aplicados"
         }
     },
-    "contact": {
-        "title": "Inicie seu projeto com um Sócio Sênior.",
-        "subhead": "Disponível para arquitetura de software de nível de produção e iniciativas de alta performance.",
-        "labels": {
-            "name": "Nome",
-            "email": "Endereço de E-mail",
-            "message": "Sua Mensagem"
+    "store": {
+        "title": "Boutique de <span class=\"highlight-pro\">Performance</span> & Ativos Digitais.",
+        "subhead": "Equipe-se com ferramentas de nível sênior. Scripts de elite, prompts de IA curados e ativos visuais de alta fidelidade para elevar seu fluxo de trabalho.",
+        "tabs": {
+            "all": "Todos",
+            "scripts": "Scripts Elite",
+            "wallpapers": "Wallpaper Packs",
+            "prompts": "Prompts VIP"
         },
-        "placeholders": {
-            "name": "ex. John Wick",
-            "email": "john@wick.com",
-            "message": "Conte-me sobre sua visão..."
+        "button": {
+            "buy": "Desbloquear Nó",
+            "preview": "Visualizar",
+            "checkout": "Ir para Pagamento",
+            "download": "Baixar Ativo",
+            "close": "Fechar Sessão Segura"
         },
-        "button": "Enviar Mensagem",
-        "success": "Consulta enviada! Um PDF com a visão do projeto foi enviado para o seu e-mail.",
-        "error": "Algo deu errado. Por favor, tente novamente ou entre em contato diretamente."
+        "checkout": {
+            "vault": "Seu Cofre",
+            "manifest": "Revisão do Manifesto",
+            "manifest_sub": "Confirme a arquitetura do seu stack digital.",
+            "security": "Portão de Segurança",
+            "security_sub": "Selecione o protocolo de pagamento autorizado.",
+            "access": "Acesso Concedido",
+            "welcome": "Bem-vindo ao Círculo Interno.",
+            "success_msg": "Seus ativos proprietários foram descriptografados e implantados com sucesso no seu cofre.",
+            "total": "Investimento Total",
+            "stripe": "Protocolo Stripe",
+            "stripe_sub": "Gateway de Crédito Universal",
+            "connecting": "Estabelecendo Conexão Segura...",
+            "session_active": "Sessão Ativa"
+        },
+        "items": {
+            "v177": {
+                "title": "Otimizador V177",
+                "desc": "Otimização de kernel de nível elite para throughput máximo.",
+                "long_desc": "O Protocolo V177 é um otimizador de sistema de baixo nível projetado para contornar gargalos do Windows. Reconfigura prioridades de IRQ, parking de núcleos e rede para resposta inferior a 1ms.",
+                "features": ["Tuning de Nível Kernel", "Latência Inferior a 1ms", "Lógica Criptografada AES-256"]
+            },
+            "bible": {
+                "title": "Bíblia de Prompts",
+                "desc": "Coleção mestre de lógica generativa de alta fidelidade.",
+                "long_desc": "Um manifesto completo sobre engenharia de prompts técnicos. Contém fórmulas proprietárias para Flux, Midjourney e arquitetura LLM. Controle espaços latentes com precisão cirúrgica.",
+                "features": ["Prompts Mestres Flux", "Métodos de Pressão de Contexto", "Cláusulas de Integridade de Role-Play"]
+            },
+            "obsidian": {
+                "title": "Pack Obsidian",
+                "desc": "Wallpapers técnicos 4K ultra-realistas para setups de elite.",
+                "long_desc": "Três ativos digitais 4K exclusivos renderizados com ray-tracing cinematográfico. Apresentando a estética Cyber Obsidian: Ouro Líquido, Mercúrio Negro e arquitetura Neon.",
+                "features": ["Renders 4K Ray-Traced", "Ativos de Alto Bitrate", "Licença Comercial Incluída"]
+            },
+            "sdk": {
+                "title": "SDK Neural Bridge",
+                "desc": "Fundação de streaming de IA inferior a 100ms para React.",
+                "long_desc": "Um SDK React/TypeScript pronto para produção. Implementa gerenciamento de estado de alta performance para streaming de IA em tempo real e cálculos neurais.",
+                "features": ["Provedor Core React", "Redutores de Estado Otimizados", "Lógica de Throughput"]
+            }
+        }
     },
     "projects": {
         "label": "Portfólio",

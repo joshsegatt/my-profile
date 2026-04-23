@@ -62,3 +62,54 @@ body {
   pointer-events: none;
   opacity: 0.4;
 }
+
+/* Elite Typography Utilities */
+.highlight-pro {
+  background: linear-gradient(135deg, #FFD700 0%, #FFB800 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(255, 184, 0, 0.3);
+}
+
+.text-brand-purple {
+  color: #A855F7;
+}
+
+.bg-brand-purple {
+  background-color: #A855F7;
+}
+
+.text-brand-yellow {
+  color: #FFC107;
+}
+
+.bg-brand-yellow {
+  background-color: #FFC107;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 193, 7, 0.4);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

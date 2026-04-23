@@ -6,7 +6,7 @@
         "prompts": "AI Prompts",
         "gamer": "Gamer",
         "about": "About",
-        "contact": "Contact",
+        "store": "Store",
         "onboarding": "Onboarding",
         "start_project": "Start Project"
     },
@@ -113,22 +113,63 @@
             "tweaks": "Tweaks Applied"
         }
     },
-    "contact": {
-        "title": "Start your project with a Senior Partner.",
-        "subhead": "Available for production-grade software architecture and high-performance initiatives.",
-        "labels": {
-            "name": "Name",
-            "email": "Email Address",
-            "message": "Your Message"
+    "store": {
+        "title": "<span class=\"highlight-pro\">Performance</span> Boutique & Digital Assets.",
+        "subhead": "Equip yourself with senior-grade tools. Elite performance scripts, curated AI prompts, and high-fidelity visual assets to elevate your workflow.",
+        "tabs": {
+            "all": "All",
+            "scripts": "Elite Scripts",
+            "wallpapers": "Wallpaper Packs",
+            "prompts": "VIP Prompts"
         },
-        "placeholders": {
-            "name": "e.g. John Wick",
-            "email": "john@wick.com",
-            "message": "Tell me about your vision..."
+        "button": {
+            "buy": "Unlock Node",
+            "preview": "Preview",
+            "checkout": "Go to Payment",
+            "download": "Download Asset",
+            "close": "Close Secure Session"
         },
-        "button": "Send Message",
-        "success": "Inquiry sent! A project overview PDF has been sent to your email.",
-        "error": "Something went wrong. Please try again or reach out directly."
+        "checkout": {
+            "vault": "Your Vault",
+            "manifest": "Manifest Review",
+            "manifest_sub": "Confirm your digital stack architecture.",
+            "security": "Security Gate",
+            "security_sub": "Select authorized payment protocol.",
+            "access": "Access Granted",
+            "welcome": "Welcome to the Inner Circle.",
+            "success_msg": "Your proprietary assets have been successfully decrypted and deployed to your vault.",
+            "total": "Investment Total",
+            "stripe": "Stripe Protocol",
+            "stripe_sub": "Universal Credit Gateway",
+            "connecting": "Establishing Secure Uplink...",
+            "session_active": "Session Active"
+        },
+        "items": {
+            "v177": {
+                "title": "V177 Optimizer",
+                "desc": "Elite-grade kernel optimization for maximum throughput.",
+                "long_desc": "The V177 Protocol is a proprietary low-level system optimizer designed to bypass standard Windows bottlenecks. It reconfigures IRQ priorities, CPU core parking, and network throttling for sub-1ms system response.",
+                "features": ["Kernel-Level Tuning", "Sub-1ms Latency", "AES-256 Encrypted Logic"]
+            },
+            "bible": {
+                "title": "Prompt Bible",
+                "desc": "Master collection of high-fidelity generative logic gating.",
+                "long_desc": "A complete manifesto on technical prompt engineering. Contains proprietary formulas for Flux, Midjourney, and LLM architecture. Learn to control latent spaces with surgical precision.",
+                "features": ["Flux Master Prompts", "Context Pressure Methods", "Role-Play Integrity Clauses"]
+            },
+            "obsidian": {
+                "title": "Obsidian Pack",
+                "desc": "4K Ultra-Realistic technical wallpapers for elite setups.",
+                "long_desc": "Three exclusive 4K digital assets rendered with cinematic ray-tracing. Featuring the Cyber Obsidian aesthetic: Liquid Gold, Polished Black Mercury, and Neon Brutalist architecture.",
+                "features": ["4K Ray-Traced Renders", "High Bitrate Assets", "Commercial License Included"]
+            },
+            "sdk": {
+                "title": "Neural Bridge SDK",
+                "desc": "Sub-100ms AI streaming foundation for React apps.",
+                "long_desc": "A production-ready React/TypeScript SDK for developers. Implements high-performance state management for real-time AI streaming and neural throughput calculations.",
+                "features": ["React Core Provider", "Optimized State Reducers", "Throughput Logic"]
+            }
+        }
     },
     "projects": {
         "label": "Portfolio",

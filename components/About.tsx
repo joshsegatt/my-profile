@@ -60,7 +60,7 @@ const About: React.FC = () => {
     ];
 
     return (
-        <section id="about" className="relative min-h-screen bg-[#020202] pt-28 lg:pt-36 pb-24 lg:pb-40">
+        <section id="about" className="relative min-h-screen bg-transparent pt-28 lg:pt-36 pb-24 lg:pb-40">
             <motion.div 
                 className="fixed top-0 left-0 right-0 h-1 bg-brand-yellow origin-left z-50"
                 style={{ scaleX }}

@@ -2,42 +2,44 @@
     "nav": {
         "home": "Accueil",
         "tools": "Outils",
+        "wallpapers": "Fonds d'écran",
+        "prompts": "Prompts AI",
         "gamer": "Gamer",
         "about": "À Propos",
-        "contact": "Contact",
+        "store": "Boutique",
         "onboarding": "Onboarding",
         "start_project": "Démarrer Projet"
     },
     "global": {
-        "portfolio": "Portefeuille",
+        "portfolio": "Portfolio",
         "case_study": "Étude de Cas"
     },
     "intro": {
         "name": "Josh Segatt",
         "role": "Architecte de Performance",
-        "initializing": "Initialisation de l'Interface Système"
+        "initializing": "Initialisation du Système"
     },
     "footer": {
         "back_to_top": "Retour en haut",
-        "role": "Développeur Senior propulsé par l'IA"
+        "role": "Développeur Senior Propulsé par l'IA"
     },
     "hero": {
-        "title": "Architecture SaaS Évolutive & <span class=\"highlight-pro\">Performance Extrême</span>.",
-        "subhead": "Fusionner le développement logiciel de classe entreprise avec l'optimisation système de haut niveau. Je conçois des applications SaaS évolutives et réalise des optimisations Windows et hardware de pointe.",
-        "cta": "Démarrer le flux d'intégration"
+        "title": "Architecture SaaS Évolutive <br /> & <span class=\"highlight-pro\">Performance Extrême</span>.",
+        "subhead": "Fusion du développement logiciel d'entreprise et de l'optimisation système bare-metal. J'architecture des applications SaaS évolutives et réalise une optimisation Windows et matérielle de haut niveau.",
+        "cta": "Démarrer le Flux d'Onboarding"
     },
     "gamer": {
         "hero": {
-            "title": "Extrayez chaque <span class=\"highlight-pro\">FPS</span> de votre configuration.",
-            "desc": "Optimisation de performance de classe entreprise. Notre moteur neural élimine les micro-saccades et stabilise le frame-pacing pour un avantage compétitif absolu.",
+            "title": "Extrayez chaque <span class=\"highlight-pro\">FPS</span> de votre machine de combat.",
+            "desc": "Optimisation de performance de classe entreprise. Notre moteur neural élimine les micro-saccades et stabilise le frame-pacing pour um avantage compétitif absolu.",
             "stat1": { "label": "+30-60 AVG FPS", "detail": "Gain garanti" },
             "stat2": { "label": "-40MS PING", "detail": "Latence optimisée" },
-            "stat3": { "label": "BAS DPC", "detail": "Gestion prioritaire" },
+            "stat3": { "label": "LOW DPC", "detail": "Traitement prioritaire" },
             "footer1": "Direct-X 12 + Vulkan",
             "footer2": "Optimisé pour Windows 11"
         },
         "tabs": {
-            "all": "Tout",
+            "all": "Tous",
             "opt": "Optimisation",
             "diag": "Diagnostic",
             "net": "Réseau"
@@ -47,9 +49,9 @@
             "desc": "Ce module est en cours d'entraînement par nos réseaux neuraux. Revenez bientôt."
         },
         "tools": {
-            "rig_optimizer": { "title": "Optimiseur de Configuration", "desc": "Optimiseur professionnel de performance et de latence en plusieurs étapes." },
+            "rig_optimizer": { "title": "Optimiseur de Rig", "desc": "Syntoniseur de performance et latence professionnel en plusieurs étapes." },
             "latency_sniper": { "title": "Sniper de Latence", "desc": "Mesurez et corrigez le jitter système et réseau de bout en bout." },
-            "fps_analyst": { "title": "Analiste FPS", "desc": "Analysez les goulots d'étranglement et générez des réglages de jeu optimaux." }
+            "fps_analyst": { "title": "Analyste FPS", "desc": "Analysez les goulots d'étranglement et générez les réglages de jeu idéaux." }
         },
         "status": {
             "locked": "Verrouillé",
@@ -62,25 +64,25 @@
         "journey": "Une Odyssée de l'Ingénierie Obsidian",
         "arsenal": {
             "title": "L'ARSENAL DE L'ARCHITECTE",
-            "subtitle": "Fondations Techniques & Maîtrise Stratégique",
+            "subtitle": "Bases Techniques et Maîtrise Stratégique",
             "items": {
-                "ai": { "title": "Ingénierie IA", "desc": "Flux agentiques, pipelines RAG et automatisation LLM." },
-                "perf": { "title": "Architecture Performance", "desc": "Optimisation au niveau du noyau et ingénierie zéro latence." },
-                "ui": { "title": "Interface Style Vercel", "desc": "Next.js, Framer Motion et design obsidian haute fidélité." }
+                "ai": { "title": "Ingénierie IA", "desc": "Workflows agentifs, pipelines RAG et automatisation LLM." },
+                "perf": { "title": "Architecture de Performance", "desc": "Optimisation au niveau du noyau et ingénierie à latence zéro." },
+                "ui": { "title": "Interface Niveau Vercel", "desc": "Next.js, Framer Motion et design obsidian haute fidélité." }
             }
         },
         "chapters": {
             "prologo": {
                 "id": "PROLOGUE",
                 "subtitle": "Chapitre 0: La Grande Stagnation",
-                "title": "L'Abîme Numérique",
-                "content": "Avant l'architecture, il y avait le chaos. Les environnements modernes sont entravés par des processus systémiques excessifs, des latences héritées et des flux inefficaces qui étouffent le potentiel réel du matériel professionnel."
+                "title": "L'Abysse Numérique",
+                "content": "Avant l'architecture, il y avait le chaos. Les environnements modernes sont accablés par une surcharge systémique, une latence héritée et des sous-processus inefficaces qui étouffent le potentiel réel du matériel professionnel."
             },
             "chapter1": {
                 "id": "CHAPITRE I",
                 "subtitle": "Chapitre 1: La Première Brèche",
                 "title": "Pénétration Initiale",
-                "content": "J'ai réalisé que le code n'est puissant que par le moteur qui l'anime. Mon parcours a débuté par une brèche fondamentale dans les opérations système, éliminant le superflu pour révéler l'essence même de la performance."
+                "content": "J'ai réalisé que le code n'est puissant que par le moteur qui le propulse. Mon chemin a commencé par une brèche fondamentale dans les opérations au niveau du noyau, supprimant le superflu pour révéler l'essence même de la performance."
             },
             "chapter2": {
                 "id": "CHAPITRE II",
@@ -92,50 +94,91 @@
                 "id": "CHAPITRE III",
                 "subtitle": "Chapitre 3: Architecte de la Vélocité",
                 "title": "Vitesse Transcendante",
-                "content": "La vélocité est la métrique ultime. En orchestrant matériel et logiciel en parfaite synchronie, j'élimine les barrières entre la pensée et l'exécution. C'est ici que la latence zéro devient réalité."
+                "content": "La vélocité est la métrique ultime. En orchestrant le matériel et le logiciel en parfaite synchronie, j'élimine les barrières entre la pensée et l'exécution. C'est ici que la latence zéro devient une réalité."
             },
             "epilogo": {
                 "id": "ÉPILOGUE",
                 "subtitle": "L'Archive Finale: Votre Héritage",
                 "title": "Un Nouveau Paradigme",
-                "content": "Le voyage ne s'arrête pas ici. Il évolue. Que ce soit via des SaaS propulsés par l'IA ou des optimisations système d'élite, notre collaboration établit un standard qui définira l'avenir de vos opérations numériques."
+                "content": "Le voyage ne s'arrête pas ici. Il évolue. Que ce soit via un SaaS propulsé par l'IA ou un réglage système d'élite, notre collaboration établit un standard qui définira l'avenir de vos opérations numériques."
             }
         },
         "cta": {
-            "title": "COMMENCER LE PROCHAIN CHAPITRE.",
-            "button": "Initialiser l'Intégration"
+            "title": "DÉMARREZ LE PROCHAIN CHAPITRE.",
+            "button": "Initialiser l'Onboarding"
         }
     },
     "tools_hero": {
-        "title": "Le Blueprint de Performance Professionnelle Windows.",
-        "subhead": "Éliminez la latence, réduisez les services inutiles et liberez tout le potentiel de votre matériel grâce à des méthodologies d'ingénierie d'élite.",
+        "title": "Le Blueprint de Performance Windows Professionnel.",
+        "subhead": "Éliminez la latence, nettoyez les services inutiles et libérez tout le potentiel de votre matériel avec des méthodologies d'ingénierie d'élite.",
         "cta": "Obtenir le Blueprint d'Optimisation",
         "stats": {
-            "input_delay": "Réduction Latence",
+            "input_delay": "Délai d'Entrée",
             "fps_gain": "Gain de FPS",
             "tweaks": "Ajustements Appliqués"
         }
     },
-    "contact": {
-        "title": "Démarrez votre projet avec un Partenaire Senior.",
-        "subhead": "Disponible pour l'architecture logicielle de classe production et les initiatives de haute performance.",
-        "labels": {
-            "name": "Nom",
-            "email": "Adresse E-mail",
-            "message": "Votre Message"
+    "store": {
+        "title": "Boutique de <span class=\"highlight-pro\">Performance</span> & Atouts Numériques.",
+        "subhead": "Équipez-vous d'outils de niveau senior. Scripts de performance d'élite, prompts IA curatés et atouts visuels haute fidélité.",
+        "tabs": {
+            "all": "Tous",
+            "scripts": "Scripts d'Élite",
+            "wallpapers": "Packs Wallpaper",
+            "prompts": "Prompts VIP"
         },
-        "placeholders": {
-            "name": "ex: John Wick",
-            "email": "john@wick.com",
-            "message": "Parlez-moi de votre vision..."
+        "button": {
+            "buy": "Débloquer Nœud",
+            "preview": "Prévisualiser",
+            "checkout": "Passer au Paiement",
+            "download": "Télécharger l'Atout",
+            "close": "Fermer Session Sécurisée"
         },
-        "button": "Envoyer le Message",
-        "success": "Demande envoyée ! Un PDF de présentation du projet a été envoyé à votre adresse e-mail.",
-        "error": "Une erreur est survenue. Veuillez réessayer ou me contacter directement."
+        "checkout": {
+            "vault": "Votre Coffre-fort",
+            "manifest": "Révision du Manifeste",
+            "manifest_sub": "Confirmez l'architecture de votre stack numérique.",
+            "security": "Porte de Sécurité",
+            "security_sub": "Sélectionnez le protocole de paiement autorisé.",
+            "access": "Accès Accordé",
+            "welcome": "Bienvenue dans le Cercle Intérieur.",
+            "success_msg": "Vos atouts propriétaires ont été décryptés et déployés avec succès dans votre coffre-fort.",
+            "total": "Investissement Total",
+            "stripe": "Protocole Stripe",
+            "stripe_sub": "Passerelle de Crédit Universelle",
+            "connecting": "Établissement Liaison Sécurisée...",
+            "session_active": "Session Active"
+        },
+        "items": {
+            "v177": {
+                "title": "Optimiseur V177",
+                "desc": "Optimisation du noyau de niveau élite pour un débit maximal.",
+                "long_desc": "Le Protocole V177 est un optimiseur système de bas niveau conçu para contourner les goulots d'étranglement de Windows. Reconfigure les priorités IRQ, le parking des cœurs et le réseau.",
+                "features": ["Tuning Niveau Noyau", "Latence < 1ms", "Logique Chiffrée AES-256"]
+            },
+            "bible": {
+                "title": "Bible des Prompts",
+                "desc": "Collection maître de logique générative haute fidélité.",
+                "long_desc": "Un manifeste complet sur l'ingénierie des prompts techniques. Contient des formules propriétaires pour Flux, Midjourney et l'architecture LLM. Contrôlez les espaces latents.",
+                "features": ["Prompts Maîtres Flux", "Méthodes de Pression Contextuelle", "Clauses d'Intégrité Role-Play"]
+            },
+            "obsidian": {
+                "title": "Pack Obsidian",
+                "desc": "Fonds d'écran techniques 4K ultra-réalistes.",
+                "long_desc": "Trois atouts numériques 4K exclusifs rendus avec un ray-tracing cinématographique. Présentant l'esthétique Cyber Obsidian : Or Liquide, Mercure Noir et architecture Néon.",
+                "features": ["Rendus 4K Ray-Traced", "Atouts Haut Bitrate", "Licence Commerciale Incluse"]
+            },
+            "sdk": {
+                "title": "SDK Neural Bridge",
+                "desc": "Fondation de streaming IA < 100ms pour React.",
+                "long_desc": "Un SDK React/TypeScript prêt pour la production. Implémente une gestion d'état haute performance pour le streaming IA en temps réel et les calculs neuraux.",
+                "features": ["Fournisseur Core React", "Réducteurs d'État Optimisés", "Logique de Débit"]
+            }
+        }
     },
     "projects": {
         "label": "Portfolio",
-        "title": "Projets Vedettes",
+        "title": "Projets en Vedette",
         "subtitle": "Travaux Sélectionnés",
         "case_study": "Étude de Cas",
         "items": {
@@ -145,27 +188,27 @@
         }
     },
     "onboarding": {
-        "step_of": "Étape {{step}} sur 5 de l'Intégration",
+        "step_of": "Étape d'Onboarding {{step}} sur 5",
         "step1": {
-            "question": "Quelle nature de projet architecturons-nous ?",
+            "question": "Quelle est la nature du projet que nous architecturons ?",
             "sub": "Sélectionnez le domaine principal de votre vision.",
             "saas": "Plateforme SaaS",
             "saas_desc": "Applications cloud évolutives",
-            "ai": "Intégration d'IA",
+            "ai": "Intégration IA",
             "ai_desc": "LLMs, RAG et automatisation",
             "web": "Site Web Premium",
             "web_desc": "Présence de marque haut de gamme",
             "custom": "Logiciel Sur Mesure",
-            "custom_desc": "Solutions d'entreprise sur mesure"
+            "custom_desc": "Solutions d'entreprise personnalisées"
         },
         "step2": {
             "question": "Quel est l'objectif principal ?",
             "sub": "Définissez le résultat visé pour cette mission.",
             "growth": "Hyper Croissance",
-            "growth_desc": "Basée sur la conversion et la vitesse",
-            "brand": "Majestade de la Marque",
+            "growth_desc": "Propulsé par la conversion et la vitesse",
+            "brand": "Majesté de la Marque",
             "brand_desc": "Esthétique et présence d'élite",
-            "efficiency": "Efficacité de l'IA",
+            "efficiency": "Efficacité IA",
             "efficiency_desc": "Automatisez les flux de travail manuels",
             "legacy": "Modernisation de l'Héritage",
             "legacy_desc": "Reconstruisez les anciens systèmes"
@@ -180,37 +223,37 @@
         },
         "step4": {
             "question": "Spectre d'Investissement.",
-            "sub": "Allouez du capital pour le développement et la mise à l'échelle.",
-            "tier1": "$10k - $25k",
-            "tier2": "$25k - $50k",
-            "tier3": "$50k - $100k",
-            "tier4": "$100k+"
+            "sub": "Allouez le capital pour le développement et l'échelle.",
+            "tier1": "10k$ - 25k$",
+            "tier2": "25k$ - 50k$",
+            "tier3": "50k$ - 100k$",
+            "tier4": "100k$+"
         },
         "step5": {
             "question": "Identifiez-vous.",
-            "sub": "Comment dois-je vous appeler, vous ou votre équipe ?",
+            "sub": "Comment dois-je m'adresser à vous ou à votre équipe ?",
             "name": "Nom Complet",
-            "email": "E-mail Professionnel",
+            "email": "Email Professionnel",
             "button": "Établir la Connexion",
             "sending": "Établissement de la Connexion..."
         },
         "step6": {
             "title": "Vision Reçue.",
-            "sub": "J'ai généré votre résumé de projet au format PDF et l'ai envoyé à votre boîte de réception. Je vous recontacterai sous 24 heures.",
+            "sub": "J'ai généré votre dossier de projet PDF et l'ai envoyé dans votre boîte de réception. Je vous recontacterai sous 24 heures.",
             "button": "Retour à l'Accueil"
         }
     },
     "sidebar": {
         "about_title": "À Propos",
-        "about_desc": "Je suis un développeur senior propulsé par l'IA, spécialisé dans les applications Web hautes performances et l'architecture logicielle de classe production.",
+        "about_desc": "Je suis un Développeur Senior propulsé par l'IA, spécialisé dans les applications web haute performance et l'architecture logicielle de production.",
         "connect_title": "Se Connecter",
-        "contact_title": "Me Contacter",
+        "contact_title": "Contactez-moi",
         "labels": {
             "name": "Nom",
-            "email": "E-mail",
+            "email": "Email",
             "message": "Message"
         },
-        "button": "Envoyer le Message",
+        "button": "Envoyer Message",
         "status": {
             "sending": "Envoi...",
             "delivered": "Livré !"

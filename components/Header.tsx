@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, ShoppingBag } from 'lucide-react';
 import { useLanguage } from '../utils/i18n';
 import Logo from './Logo';
 
@@ -17,8 +17,8 @@ const Header: React.FC = () => {
     { name: t('nav.gamer'), href: '/gamer' },
     { name: t('nav.wallpapers'), href: '/wallpapers' },
     { name: 'Prompts AI', href: '/prompts' },
+    { name: t('nav.store'), href: '/store' },
     { name: t('nav.about'), href: '/about' },
-    { name: t('nav.contact'), href: '/contact' },
   ];
 
   useEffect(() => {
@@ -59,10 +59,29 @@ const Header: React.FC = () => {
                   to={link.href}
                   className={`
                     relative px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]
-                    transition-all duration-300
+                    transition-all duration-300 flex items-center gap-2
                     ${isActive ? 'text-black' : 'text-white/50 hover:text-white'}
                   `}
                 >
+                  {link.href === '/store' && (
+                    <>
+                      <motion.div 
+                        animate={{ 
+                          boxShadow: [
+                            "0 0 10px rgba(168, 85, 247, 0.4)", 
+                            "0 0 20px rgba(168, 85, 247, 0.7)", 
+                            "0 0 10px rgba(168, 85, 247, 0.4)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 rounded-full border border-purple-500/50 pointer-events-none"
+                      />
+                      <ShoppingBag 
+                        size={12} 
+                        className={`relative z-10 ${isActive ? 'text-black' : 'text-purple-400'}`} 
+                      />
+                    </>
+                  )}
                   <span className="relative z-10">{link.name}</span>
                   
                   {/* Shared Layout Pill */}
@@ -150,10 +169,25 @@ const Header: React.FC = () => {
                     <Link
                       to={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-2xl font-black tracking-tighter transition-colors ${
+                      className={`text-2xl font-black tracking-tighter transition-colors flex items-center gap-3 ${
                         location.pathname === link.href ? 'text-brand-yellow' : 'text-white/40'
                       }`}
                     >
+                      {link.href === '/store' && (
+                        <motion.div
+                          animate={{ 
+                            textShadow: [
+                              "0 0 5px rgba(168, 85, 247, 0.5)", 
+                              "0 0 15px rgba(168, 85, 247, 1)", 
+                              "0 0 5px rgba(168, 85, 247, 0.5)"
+                            ]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="text-purple-400"
+                        >
+                          <ShoppingBag size={24} />
+                        </motion.div>
+                      )}
                       {link.name}
                     </Link>
                   </motion.div>
