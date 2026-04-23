@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Monitor, Maximize2, ShieldCheck, X, ChevronRight, RefreshCw } from 'lucide-react';
+import { Download, Monitor, Maximize2, Smartphone, X, ChevronRight, RefreshCw, Shuffle } from 'lucide-react';
 import './Wallpapers.css';
 
 import { createPortal } from 'react-dom';
 
-const WallpaperCard: React.FC<{ wp: any, onPreview: (wp: any) => void }> = ({ wp, onPreview }) => {
+const WallpaperCard: React.FC<{ wp: any, deviceType: 'desktop' | 'mobile', onPreview: (wp: any) => void }> = ({ wp, deviceType, onPreview }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="group relative aspect-[16/10] rounded-3xl overflow-hidden border border-white/5 bg-[#080808] transition-all duration-500 hover:border-brand-yellow/30 cursor-pointer"
+      exit={{ opacity: 0, scale: 0.95 }}
+      className={`group relative rounded-3xl overflow-hidden border border-white/5 bg-[#080808] transition-all duration-500 hover:border-brand-yellow/30 cursor-pointer ${deviceType === 'mobile' ? 'aspect-[9/16]' : 'aspect-[16/10]'}`}
       onClick={() => onPreview(wp)}
     >
       {!imageLoaded && (
@@ -50,16 +52,16 @@ const WallpaperCard: React.FC<{ wp: any, onPreview: (wp: any) => void }> = ({ wp
 
 const Wallpapers: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [deviceType, setDeviceType] = useState<'desktop' | 'mobile'>('desktop');
   const [wallpapers, setWallpapers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
   const [previewWp, setPreviewWp] = useState<any | null>(null);
 
-  // Expanded Categories
   const categories = ['All', 'Animes', 'Cyberpunk', 'Gaming', 'Landscape', 'Heroes', 'Minimalist', 'Art'];
 
-  const fetchWallpapers = async (category: string, pageNum: number = 1, isLoadMore: boolean = false) => {
+  const fetchWallpapers = useCallback(async (category: string, pageNum: number = 1, isLoadMore: boolean = false, forceRandom: boolean = false) => {
     if (isLoadMore) setLoadingMore(true);
     else setLoading(true);
 
@@ -79,21 +81,17 @@ const Wallpapers: React.FC = () => {
       const baseUrl = `https://wallhaven.cc/api/v1/search`;
       const params = new URLSearchParams({
         purity: '100',
-        sorting: category === 'All' ? 'toplist' : 'relevance',
+        sorting: forceRandom ? 'random' : (category === 'All' ? 'toplist' : 'relevance'),
         page: pageNum.toString(),
+        ratios: deviceType === 'desktop' ? '16x9,16x10' : '9x16,10x16',
         ...(query && { q: query })
       });
 
-      // AllOrigins Proxy with cache buster
       const wallhavenUrl = `${baseUrl}?${params.toString()}`;
       const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(wallhavenUrl)}&_=${Date.now()}`;
       
       const response = await fetch(proxyUrl);
-      if (!response.ok) throw new Error("Proxy response failed");
-      
       const json = await response.json();
-      if (!json.contents) throw new Error("Empty content from proxy");
-      
       const data = JSON.parse(json.contents);
       
       if (data && data.data) {
@@ -104,17 +102,22 @@ const Wallpapers: React.FC = () => {
         }
       }
     } catch (error) {
-      console.error("Wallhaven Sync Error:", error);
+      console.error("Wallhaven API Error:", error);
     } finally {
       setLoading(false);
       setLoadingMore(false);
     }
-  };
+  }, [deviceType]);
 
   useEffect(() => {
     setPage(1);
     fetchWallpapers(selectedCategory, 1, false);
-  }, [selectedCategory]);
+  }, [selectedCategory, deviceType, fetchWallpapers]);
+
+  const handleRefresh = () => {
+    setPage(1);
+    fetchWallpapers(selectedCategory, 1, false, true);
+  };
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
@@ -132,23 +135,62 @@ const Wallpapers: React.FC = () => {
           hidden: { opacity: 0 },
           visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
           }
         }}
         className="mb-12"
       >
-        <motion.h1 
-          variants={{
-            hidden: { opacity: 0, scale: 0.98 },
-            visible: { opacity: 1, scale: 1 }
-          }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hub-title"
-        >
-          WALLPAPER <span>HUB</span>
-        </motion.h1>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
+          <div>
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, x: -20 },
+                visible: { opacity: 1, x: 0 }
+              }}
+              className="hub-title !mb-0"
+            >
+              WALLPAPER <span>HUB</span>
+            </motion.h1>
+          </div>
 
-        {/* Dynamic Category Navigation */}
+          {/* Tactical Control Area */}
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            className="flex items-center gap-4"
+          >
+            {/* Device Toggle */}
+            <div className="flex bg-white/5 p-1 rounded-xl border border-white/10">
+              <button 
+                onClick={() => setDeviceType('desktop')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${deviceType === 'desktop' ? 'bg-brand-yellow text-black' : 'text-white/40 hover:text-white'}`}
+              >
+                <Monitor size={14} />
+                Desktop
+              </button>
+              <button 
+                onClick={() => setDeviceType('mobile')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${deviceType === 'mobile' ? 'bg-brand-yellow text-black' : 'text-white/40 hover:text-white'}`}
+              >
+                <Smartphone size={14} />
+                Mobile
+              </button>
+            </div>
+
+            {/* Shuffle Button */}
+            <button 
+              onClick={handleRefresh}
+              className="p-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-brand-yellow hover:border-brand-yellow/50 transition-all"
+              title="Shuffle Wallpapers"
+            >
+              <Shuffle size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Categories Bar */}
         <motion.div 
           variants={{
             hidden: { opacity: 0, y: 20 },
@@ -168,22 +210,22 @@ const Wallpapers: React.FC = () => {
         </motion.div>
       </motion.section>
 
-      {/* Wallpapers Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px]">
+      {/* Grid Container */}
+      <div className={`grid gap-8 min-h-[400px] ${deviceType === 'mobile' ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
         {loading && wallpapers.length === 0 ? (
-          Array.from({ length: 6 }).map((_, i) => (
-            <div key={`skeleton-${i}`} className="aspect-[16/10] rounded-3xl bg-white/5 animate-pulse border border-white/10" />
+          Array.from({ length: 8 }).map((_, i) => (
+            <div key={`skeleton-${i}`} className={`rounded-3xl bg-white/5 animate-pulse border border-white/10 ${deviceType === 'mobile' ? 'aspect-[9/16]' : 'aspect-[16/10]'}`} />
           ))
         ) : (
           <AnimatePresence mode="popLayout">
             {wallpapers.map((wp) => (
-              <WallpaperCard key={wp.id} wp={wp} onPreview={setPreviewWp} />
+              <WallpaperCard key={wp.id} wp={wp} deviceType={deviceType} onPreview={setPreviewWp} />
             ))}
           </AnimatePresence>
         )}
       </div>
 
-      {/* Synchronize Button (Load More) */}
+      {/* Load More Area */}
       {!loading && wallpapers.length > 0 && (
         <div className="mt-20 flex justify-center">
           <button 
@@ -194,11 +236,11 @@ const Wallpapers: React.FC = () => {
             {loadingMore ? (
               <>
                 <RefreshCw size={16} className="animate-spin text-brand-yellow" />
-                Syncing Network...
+                Synchronizing...
               </>
             ) : (
               <>
-                Synchronize More Nodes
+                Load More Nodes
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform text-brand-yellow" />
               </>
             )}
@@ -206,7 +248,7 @@ const Wallpapers: React.FC = () => {
         </div>
       )}
 
-      {/* Preview Modal */}
+      {/* Lightbox Preview */}
       {previewWp && createPortal(
         <AnimatePresence>
           <motion.div 
@@ -229,9 +271,9 @@ const Wallpapers: React.FC = () => {
                 <X size={24} />
               </button>
               <div className="preview-actions">
-                <a href={previewWp.path} target="_blank" rel="noopener noreferrer" className="btn-preview-dl">
+                <a href={previewWp.path} target="_blank" rel="noopener noreferrer" className="btn-preview-dl shadow-2xl">
                   <Download size={18} />
-                  Download Source
+                  Download 4K Source
                 </a>
               </div>
             </motion.div>
