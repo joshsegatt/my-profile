@@ -1,59 +1,88 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Josh%20Segatt&fontSize=60&fontAlignY=35&desc=AI-Powered%20Senior%20Software%20Engineer&descAlignY=55&descAlign=62&fontColor=ffffff" alt="Header" />
-</div>
+# Obsidian Nexus — Professional Digital Instrument
 
-<h1 align="center">Premium Technical Portfolio</h1>
+![Portfolio Showcase](./public/assets/readme/showcase.png)
 
-<p align="center">
-  <strong>Crafting Digital Excellence for Global Markets</strong><br>
-  <em>London, UK 🇬🇧 • Operating Worldwide 🌍</em>
-</p>
+## 🌌 The Vision
+**Obsidian Nexus** is not just a portfolio; it's a high-fidelity digital instrument engineered for the modern web. Built with a focus on **Atmospheric UX** and **Technical Excellence**, this platform synthesizes four distinct digital ecosystems into a single, cohesive experience.
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Status-Available_for_Hire-success?style=for-the-badge&logo=opslevel&logoColor=white" alt="Hire Me" />
-  <img src="https://img.shields.io/badge/Location-London,_UK-black?style=for-the-badge&logo=google-maps&logoColor=white" alt="Location" />
-  <img src="https://img.shields.io/badge/Specialization-AI_&_SaaS-blue?style=for-the-badge&logo=openai&logoColor=white" alt="Specialization" />
-</div>
-
-<br />
-
-## ✦ The Vision
-
-This repository contains the proprietary source code for my professional portfolio. 
-Built to demonstrate **10x engineering efficiency** and **Figma Pro-level aesthetics**, it blends minimalist "Obsidian" design principles with hyper-fluid Framer Motion physics.
-
-> 🔒 **Closed Source:** The architecture, component logic, and design tokens housed in this repository are proprietary. This codebase serves exclusively as a testament to technical capability and is not licensed for public reuse or distribution.
+From high-performance SaaS interfaces to low-latency gaming optimization systems, every pixel is tuned for maximum impact.
 
 ---
 
-## ✦ Technical Supremacy
+## 💎 Core Ecosystems
 
-Engineered with a modern, high-performance stack chosen for scale and maintainability:
+### 1. Monte-Charge SaaS Dashboard
+A Swiss-engineered logistics management interface.
+- **Obsidian Design System:** A custom-built UI framework using glassmorphism and monochrome aesthetics.
+- **Data Visualization:** Real-time metrics and vertical logistics tracking.
+- **B2B Localization:** Full multi-language support (English, Portuguese, French) for international markets.
 
-- **Framework:** `React 19` + `Vite` for lightning-fast HMR and optimized production builds.
-- **Styling:** `Tailwind CSS v4` leveraging utility-first paradigms for a bespoke "Physical Glassmorphism" UI.
-- **Physics Engine:** `Framer Motion` driving Apple-tier spring transitions, magnetic cards, and seamless multi-step wizards.
-- **Infrastructure:** Configured for `Netlify` Edge deployment with automatic internal routing (`_redirects`).
-- **Data Layer:** Zero-config `FormSubmit` REST integration for frictionless client acquisition.
+### 2. Gamer Optimizer (LUMEN_SYNC)
+A tactical performance suite for competitive gamers.
+- **Low-Latency Architecture:** Engineered for 60FPS+ UI responsiveness.
+- **Technical Analysis:** Interactive hardware optimization flows with PowerShell generation for Windows performance tuning (FPS/Network/Thermal).
+- **Tactical Aesthetic:** High-contrast yellow accents inspired by Unreal Engine 5 and tactical military HUDs.
+
+### 3. Wallpaper Hub (4K NODE)
+A high-performance media delivery engine.
+- **Aggressive Pre-fetching:** Background caching logic for instantaneous category switching.
+- **Multi-Proxy Resiliency:** Fallback systems (AllOrigins/CORSProxy) ensuring 100% uptime for asset delivery.
+- **Adaptive Grid:** Device-aware layout switching (Mobile/Desktop) without layout shift.
+
+### 4. AI Prompt Hub (GEN_ASSET)
+A curated gallery of high-fidelity generative prompts.
+- **Editorial UX:** A clean, minimal layout focused on visual clarity and asset copying.
+- **Cinematic Lightbox:** High-performance media viewing system using `createPortal` and Framer Motion.
+- **Curated Assets:** 12+ premium AI prompt nodes with model-specific metadata.
 
 ---
 
-## ✦ Engaging My Services
+## 🛠️ Technical Stack
 
-I specialize in architecting scalable SaaS platforms, integrating complex AI workflows, and shipping premium user interfaces for clients globally. 
+- **Framework:** [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Styling:** [TailwindCSS](https://tailwindcss.com/) (Atomic CSS Architecture)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) (Shared Layout Transitions & Physics-based Motion)
+- **Navigation:** [React Router 6](https://reactrouter.com/) (Instantaneous Route Handling)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Performance:** Custom Caching Layer + AbortController API for network resilience.
 
-If you require strategic technical leadership or a full-stack architect to build your next flagship product, let's talk.
+---
 
-### Connect With Me:
+## ⚡ Engineering Highlights
 
-<div align="center">
-  <a href="mailto:josuesegatofilho@gmail.com">
-    <img src="https://img.shields.io/badge/Contact_Me-josuesegatofilho@gmail.com-black?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
-</div>
+### **Instantaneous Navigation**
+By refactoring the routing structure to handle location state at the top-level and eliminating staggered entrance delays, the platform achieves "Zero-Lag" perception. 
 
-<br>
+### **Shared Layout Animations**
+The navigation system uses Framer Motion `layoutId` to synchronize pill movements between routes, creating a "software-like" feel rather than a traditional website.
 
-<p align="center">
-  <i>"Efficiency via AI. Precision via Engineering."</i>
-</p>
+### **Internationalization (i18n)**
+A custom-built, lightweight i18n utility that handles nested JSON structures and dynamic parameter injection without the overhead of heavy external libraries.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm / pnpm / yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/your-username/my-profile.git
+
+# Enter the directory
+cd my-profile
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+
+---
+
+## 📜 License
+Proprietary License. All rights reserved. Designed and Developed by **Josh Segatt**.

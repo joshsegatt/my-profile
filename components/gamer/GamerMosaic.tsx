@@ -36,21 +36,14 @@ const MOSAIC_ASSETS = [
   },
 ];
 
-const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
-  const [imageLoaded, setImageLoaded] = React.useState(false);
+const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset }) => {
+  // We keep the loaded state for smooth transition, but remove the initial mount delay
+  const [isReady, setIsReady] = React.useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: idx * 0.05, ease: "easeOut" }}
-      className={`mosaic-tile ${asset.className}`}
-    >
-      {/* Skeleton - Only visible until image is fully loaded */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-white/5 animate-pulse z-10" />
-      )}
-
+    <div className={`mosaic-tile ${asset.className} bg-white/5`}>
+      {/* Remove explicit skeleton to prevent pulse flickering, use container background as fallback */}
+      
       {asset.type === 'video' ? (
         <video
           autoPlay
@@ -58,8 +51,8 @@ const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
           loop
           playsInline
           preload="auto"
-          className="mosaic-video"
-          onLoadedData={() => setImageLoaded(true)}
+          className={`mosaic-video transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+          onLoadedData={() => setIsReady(true)}
         >
           <source src={asset.path} type="video/mp4" />
         </video>
@@ -68,8 +61,8 @@ const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
           src={asset.path} 
           alt={asset.label} 
           loading="eager"
-          className={`mosaic-image transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setImageLoaded(true)}
+          className={`mosaic-image transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setIsReady(true)}
         />
       )}
 
@@ -80,7 +73,7 @@ const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
 
       <div className="mosaic-overlay" />
       <div className="mosaic-scanlines" />
-    </motion.div>
+    </div>
   );
 };
 

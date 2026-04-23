@@ -1,118 +1,108 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-import Logo from './Logo';
 import { useLanguage } from '../utils/i18n';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
   const { t } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.tools'), href: '/tools' },
     { name: t('nav.gamer'), href: '/gamer' },
     { name: t('nav.wallpapers'), href: '/wallpapers' },
-    { name: t('nav.prompts'), href: '/prompts' },
+    { name: 'Prompts AI', href: '/prompts' },
     { name: t('nav.about'), href: '/about' },
     { name: t('nav.contact'), href: '/contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 xl:right-[380px] z-[100] flex justify-center pointer-events-none pt-4 lg:pt-6 px-4 lg:px-0">
+      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center p-6 pointer-events-none">
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto relative flex items-center justify-between transition-all duration-500 rounded-full border border-white/10 ${
-            isScrolled 
-              ? 'w-full lg:w-[90%] max-w-[1200px] h-[64px] px-6 bg-[#020202]/80 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
-              : 'w-full lg:w-[95%] max-w-[1400px] h-[80px] px-8 bg-transparent border-transparent'
-          }`}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className={`
+            pointer-events-auto
+            flex items-center gap-12 px-8 py-2 rounded-full 
+            border transition-all duration-500
+            ${isScrolled 
+              ? 'bg-black/60 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] py-2' 
+              : 'bg-white/[0.03] backdrop-blur-md border-white/5 py-3'}
+          `}
         >
-          {/* Logo Section */}
-          <Link to="/" className="relative z-10">
-            <Logo />
+          {/* Logo Area */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <Logo variant="minimal" className="transition-transform duration-500 group-hover:rotate-[15deg]" />
           </Link>
 
-          {/* Desktop Navigation Link System */}
-          <nav className="hidden lg:flex items-center gap-1 relative px-2 py-1 bg-white/[0.03] rounded-full border border-white/5">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 relative">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
-              const isMaintenance = link.href === '/prompts';
-
+              
               return (
-                <div
-                  key={link.name}
-                  className={`relative px-5 py-2 group ${isMaintenance ? 'cursor-not-allowed opacity-50' : ''}`}
-                  onMouseEnter={() => !isMaintenance && setHoveredLink(link.name)}
-                  onMouseLeave={() => setHoveredLink(null)}
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`
+                    relative px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]
+                    transition-all duration-300
+                    ${isActive ? 'text-black' : 'text-white/50 hover:text-white'}
+                  `}
                 >
-                  <Link
-                    to={isMaintenance ? '#' : link.href}
-                    onClick={(e) => isMaintenance && e.preventDefault()}
-                    className={`relative z-10 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
-                      isActive ? 'text-brand-yellow' : 'text-white/40 group-hover:text-white'
-                    } ${isMaintenance ? 'pointer-events-none' : ''}`}
-                  >
-                    {link.name}
-                    {isMaintenance && (
-                      <span className="text-[8px] bg-white/10 px-1.5 py-0.5 rounded text-white/40 border border-white/5">
-                        OFF
-                      </span>
-                    )}
-                  </Link>
+                  <span className="relative z-10">{link.name}</span>
                   
-                  {/* Hover Pill Background */}
-                  <AnimatePresence>
-                    {(hoveredLink === link.name || isActive) && !isMaintenance && (
-                      <motion.div
-                        layoutId="nav-pill"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                        className={`absolute inset-0 rounded-full ${
-                          isActive ? 'bg-brand-yellow/10' : 'bg-white/5'
-                        }`}
-                      />
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {/* Shared Layout Pill */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-brand-yellow rounded-full shadow-[0_0_20px_rgba(255,184,0,0.3)]"
+                      transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                    />
+                  )}
+
+                  {/* Hover Indicator */}
+                  {!isActive && (
+                    <motion.div
+                      className="absolute inset-0 bg-white/5 rounded-full opacity-0 hover:opacity-100 transition-opacity"
+                      whileHover={{ scale: 1.05 }}
+                    />
+                  )}
+                </Link>
               );
             })}
           </nav>
 
-          {/* Actions & Mobile Trigger */}
+          {/* Right Action Button */}
           <div className="flex items-center gap-4">
             <motion.div
-              initial={false}
-              animate={isScrolled ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="hidden lg:block"
             >
               <Link
                 to="/onboard"
-                className="flex items-center gap-2 px-5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-[0.15em] hover:shadow-[0_0_20px_rgba(255,184,0,0.4)] transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-[9px] font-black uppercase tracking-[0.15em] hover:bg-white/10 transition-all"
               >
                 {t('nav.onboarding')}
-                <ChevronRight size={14} className="stroke-[3px]" />
+                <ChevronRight size={12} className="text-brand-yellow" />
               </Link>
             </motion.div>
 
-            {/* Mobile Toggle Button */}
+            {/* Mobile Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white"
@@ -132,57 +122,48 @@ const Header: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[110] lg:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[110] lg:hidden"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-[#020202] border-l border-white/10 z-[120] p-8 flex flex-col gap-8 lg:hidden"
+              className="fixed top-0 right-0 h-full w-[300px] bg-[#020202] border-l border-white/10 z-[120] p-10 flex flex-col lg:hidden"
             >
-              <div className="flex justify-between items-center mb-8">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">{t('nav.home').toUpperCase()}</span>
+              <div className="flex justify-between items-center mb-12">
+                <Logo className="w-8 h-8" />
                 <X 
                   size={24} 
                   className="text-white/40 cursor-pointer hover:text-white" 
                   onClick={() => setIsMobileMenuOpen(false)}
                 />
               </div>
-              <div className="flex flex-col gap-6">
-                {navLinks.map((link, idx) => {
-                  const isMaintenance = link.href === '/prompts';
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.05 }}
-                      className={isMaintenance ? 'opacity-40 pointer-events-none' : ''}
+              <div className="flex flex-col gap-8">
+                {navLinks.map((link, idx) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + idx * 0.05 }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-2xl font-black tracking-tighter transition-colors ${
+                        location.pathname === link.href ? 'text-brand-yellow' : 'text-white/40'
+                      }`}
                     >
-                      <Link
-                        to={isMaintenance ? '#' : link.href}
-                        onClick={() => !isMaintenance && setIsMobileMenuOpen(false)}
-                        className={`flex items-center gap-2 text-lg font-bold tracking-tight transition-colors ${
-                          location.pathname === link.href ? 'text-brand-yellow' : 'text-white/60'
-                        }`}
-                      >
-                        {link.name}
-                        {isMaintenance && (
-                          <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/40 border border-white/5 font-black uppercase">
-                            OFF
-                          </span>
-                        )}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
-              <div className="mt-auto">
+              <div className="mt-auto pt-10 border-t border-white/5">
                 <Link
                   to="/onboard"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-brand-yellow text-black text-[11px] font-black uppercase tracking-[0.2em]"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-5 rounded-2xl bg-brand-yellow text-black text-[11px] font-black uppercase tracking-[0.2em]"
                 >
                   {t('nav.start_project')}
                 </Link>

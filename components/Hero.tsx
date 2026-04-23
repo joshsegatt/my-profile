@@ -56,9 +56,6 @@ const HeroVideo: React.FC = () => {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
-      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: "1000px" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}

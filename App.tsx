@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -15,26 +14,23 @@ import GamerOptimizer from './components/GamerOptimizer';
 import Wallpapers from './components/Wallpapers';
 import Prompts from './components/Prompts';
 
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Intro from './components/Intro';
 
-
-// Helper component to scroll to top on route change
+// Helper component to scroll to top on route change (Instant)
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
     const mainContent = document.getElementById('main-scroll-area');
     if (mainContent) {
-      // Usar requestAnimationFrame para garantir que o scroll aconteça de forma sincronizada
-      requestAnimationFrame(() => {
-        mainContent.scrollTo({ top: 0, behavior: 'instant' });
-      });
+      mainContent.scrollTo(0, 0);
     }
   }, [pathname]);
   return null;
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const location = useLocation();
   const [showIntro, setShowIntro] = React.useState(false);
   const [isReady, setIsReady] = React.useState(false);
 
@@ -56,100 +52,74 @@ const App: React.FC = () => {
   const handleIntroComplete = () => {
     sessionStorage.setItem('josh_intro_seen', 'true');
     setShowIntro(false);
-    // Add a small delay for the reveal to feel more intentional
-    setTimeout(() => setIsReady(true), 200);
+    setIsReady(true);
   };
 
   return (
-    <Router>
+    <div className="relative min-h-screen w-full bg-[#020202] text-white">
       <ScrollToTop />
       
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {showIntro && <Intro onComplete={handleIntroComplete} />}
       </AnimatePresence>
 
-      {/* Global "Obsidian Nexus" Canvas System */}
-      <div className="fixed inset-0 bg-[#020202] z-0 overflow-hidden pointer-events-none">
-        
-        {/* Dynamic Mesh Aura Blobs */}
-        <motion.div 
-          animate={{ 
-            x: [0, 80, -40, 0], 
-            y: [0, -40, 80, 0],
-            scale: [1, 1.1, 0.95, 1]
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="aura-blob w-[800px] h-[800px] bg-brand-yellow/5 top-[-10%] left-[-10%]"
-        />
-        <motion.div 
-          animate={{ 
-            x: [0, -60, 100, 0], 
-            y: [0, 80, -60, 0],
-            scale: [1, 0.9, 1.05, 1]
-          }}
-          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-          className="aura-blob w-[700px] h-[700px] bg-brand-yellow/[0.03] bottom-[-10%] right-[-5%]"
-        />
-
-        {/* Global Grid & Noise */}
-        <div className="global-grid" />
-        <div className="global-noise" />
+      {/* Global Background System (Static for performance) */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px]" />
+        <div className="global-grid opacity-20" />
+        <div className="global-noise opacity-[0.03]" />
       </div>
 
       <motion.div 
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: isReady ? 1 : 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 flex flex-col h-screen w-full overflow-hidden font-sans selection:bg-brand-yellow selection:text-black"
+        className="relative z-10 flex flex-col h-screen w-full overflow-hidden"
       >
-        
-        {/* Elite System Header (Global Fixed) */}
         <Header />
 
-        {/* Global Content Area */}
         <div className="flex-1 flex overflow-hidden">
-          
-          {/* Main Scrollable Content (Full Page Feel) */}
-          <main id="main-scroll-area" className="flex-1 overflow-y-scroll custom-scrollbar relative bg-transparent">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={location.pathname}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.15, ease: "linear" }}
-                className="w-full min-h-screen pt-36 pb-24 lg:pb-32 px-8 lg:px-16"
-              >
-                <div className="max-w-[1440px] mx-auto">
-                  <Routes location={location} key={location.pathname}>
-                    <Route path="/" element={<div className="mt-[-9rem]"><Hero /><Projects /></div>} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/tools" element={<Tools />} />
-                    <Route path="/wallpapers" element={<Wallpapers />} />
-                    <Route path="/prompts" element={<Prompts />} />
-                    <Route path="/gamer" element={<GamerOptimizer />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/onboard" element={<Onboarding />} />
-                    <Route path="/lab" element={<ProjectLab />} />
-                  </Routes>
-                </div>
-                
-                <Footer />
-              </motion.div>
-            </AnimatePresence>
+          <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.15, ease: "linear" }}
+              className="w-full min-h-screen pt-36 pb-24 px-8 lg:px-16"
+            >
+              <div className="max-w-[1440px] mx-auto">
+                <Routes location={location}>
+                  <Route path="/" element={<div className="mt-[-9rem]"><Hero /><Projects /></div>} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/tools" element={<Tools />} />
+                  <Route path="/wallpapers" element={<Wallpapers />} />
+                  <Route path="/prompts" element={<Prompts />} />
+                  <Route path="/gamer" element={<GamerOptimizer />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/onboard" element={<Onboarding />} />
+                  <Route path="/lab" element={<ProjectLab />} />
+                </Routes>
+              </div>
+              <Footer />
+            </motion.div>
           </main>
 
-          {/* Sidebar (Right-Side Panel - Desktop Only) */}
           <aside className="hidden xl:block w-[380px] h-full overflow-y-auto custom-scrollbar border-l border-white/5 bg-black/20 backdrop-blur-3xl">
-            <div className="p-8 lg:p-10">
+            <div className="p-10">
               <Sidebar />
             </div>
           </aside>
         </div>
       </motion.div>
+    </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };
 
 export default App;
-

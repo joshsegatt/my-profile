@@ -2,18 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../utils/i18n';
 
-const Logo: React.FC = () => {
+interface LogoProps {
+  className?: string;
+  variant?: 'full' | 'minimal';
+}
+
+const Logo: React.FC<LogoProps> = ({ className, variant = 'full' }) => {
   const { t } = useLanguage();
+  const isMinimal = variant === 'minimal';
   
   return (
     <motion.div 
-      className="flex items-center gap-4 cursor-pointer group select-none"
+      className={`flex items-center gap-3 cursor-pointer group select-none ${className}`}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* UE5-Inspired "Engine Core" Icon */}
-      <div className="relative w-11 h-11 flex items-center justify-center">
+      <div className={`relative ${isMinimal ? 'w-8 h-8' : 'w-11 h-11'} flex items-center justify-center`}>
         {/* Atmospheric Glow Base */}
         <motion.div 
           animate={{ 
@@ -46,12 +52,6 @@ const Logo: React.FC = () => {
                 <stop offset="0%" stopColor="#FFEB3B" />
                 <stop offset="100%" stopColor="#FF9800" />
               </linearGradient>
-              <filter id="bevel">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" />
-                <feOffset dx="0.5" dy="0.5" />
-                <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" />
-                <feColorMatrix type="matrix" values="1 0 0 0 1  0 1 0 0 1  0 0 1 0 1  0 0 0 1 0" />
-              </filter>
             </defs>
 
             <circle cx="22" cy="22" r="20" stroke="url(#metal-gradient)" strokeWidth="3" />
@@ -73,24 +73,23 @@ const Logo: React.FC = () => {
               strokeOpacity="0.3"
               strokeLinecap="square"
             />
-            
-            <rect x="21" y="2" width="2" height="4" fill="#FFB800" fillOpacity="0.6" />
-            <rect x="21" y="38" width="2" height="4" fill="#FFB800" fillOpacity="0.6" />
           </svg>
         </motion.div>
       </div>
 
       <div className="flex flex-col -space-y-1">
         <div className="flex items-baseline gap-1.5">
-          <span className="text-[22px] font-black tracking-[-0.02em] text-white">JOSH</span>
-          <span className="text-[22px] font-extralight tracking-[0.15em] text-white/40 uppercase">SEGATT</span>
+          <span className={`${isMinimal ? 'text-[16px]' : 'text-[22px]'} font-black tracking-[-0.02em] text-white`}>JOSH</span>
+          <span className={`${isMinimal ? 'text-[16px]' : 'text-[22px]'} font-extralight tracking-[0.1em] text-white/40 uppercase`}>SEGATT</span>
         </div>
-        <div className="flex items-center gap-2">
-            <div className="h-[1px] w-3 bg-brand-yellow/30" />
-            <span className="text-[8px] font-black tracking-[0.4em] text-brand-yellow/60 uppercase">
-                {t('intro.role')}
-            </span>
-        </div>
+        {!isMinimal && (
+          <div className="flex items-center gap-2">
+              <div className="h-[1px] w-3 bg-brand-yellow/30" />
+              <span className="text-[8px] font-black tracking-[0.4em] text-brand-yellow/60 uppercase">
+                  {t('intro.role')}
+              </span>
+          </div>
+        )}
       </div>
     </motion.div>
   );
