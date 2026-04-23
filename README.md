@@ -1,88 +1,52 @@
-# Obsidian Nexus — Professional Digital Instrument
+# JOSH SEGATT — Senior Digital Product Engineer
 
-![Portfolio Showcase](./public/assets/readme/showcase.png)
+<p align="center">
+  <img src="./public/assets/readme/home.png" width="100%" alt="Josh Segatt Portfolio Hero" />
+</p>
 
-## 🌌 The Vision
-**Obsidian Nexus** is not just a portfolio; it's a high-fidelity digital instrument engineered for the modern web. Built with a focus on **Atmospheric UX** and **Technical Excellence**, this platform synthesizes four distinct digital ecosystems into a single, cohesive experience.
-
-From high-performance SaaS interfaces to low-latency gaming optimization systems, every pixel is tuned for maximum impact.
-
----
-
-## 💎 Core Ecosystems
-
-### 1. Monte-Charge SaaS Dashboard
-A Swiss-engineered logistics management interface.
-- **Obsidian Design System:** A custom-built UI framework using glassmorphism and monochrome aesthetics.
-- **Data Visualization:** Real-time metrics and vertical logistics tracking.
-- **B2B Localization:** Full multi-language support (English, Portuguese, French) for international markets.
-
-### 2. Gamer Optimizer (LUMEN_SYNC)
-A tactical performance suite for competitive gamers.
-- **Low-Latency Architecture:** Engineered for 60FPS+ UI responsiveness.
-- **Technical Analysis:** Interactive hardware optimization flows with PowerShell generation for Windows performance tuning (FPS/Network/Thermal).
-- **Tactical Aesthetic:** High-contrast yellow accents inspired by Unreal Engine 5 and tactical military HUDs.
-
-### 3. Wallpaper Hub (4K NODE)
-A high-performance media delivery engine.
-- **Aggressive Pre-fetching:** Background caching logic for instantaneous category switching.
-- **Multi-Proxy Resiliency:** Fallback systems (AllOrigins/CORSProxy) ensuring 100% uptime for asset delivery.
-- **Adaptive Grid:** Device-aware layout switching (Mobile/Desktop) without layout shift.
-
-### 4. AI Prompt Hub (GEN_ASSET)
-A curated gallery of high-fidelity generative prompts.
-- **Editorial UX:** A clean, minimal layout focused on visual clarity and asset copying.
-- **Cinematic Lightbox:** High-performance media viewing system using `createPortal` and Framer Motion.
-- **Curated Assets:** 12+ premium AI prompt nodes with model-specific metadata.
+## 🚀 Elevando o Padrão Digital
+Especializado na criação de interfaces de alto impacto que fundem **estética de luxo** com **performance de nível industrial**. Este portfólio é a materialização de uma filosofia: o design deve ser invisível, mas o impacto deve ser inesquecível.
 
 ---
 
-## 🛠️ Technical Stack
+## 💎 Vitrine de Projetos (Real Work)
 
-- **Framework:** [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-- **Styling:** [TailwindCSS](https://tailwindcss.com/) (Atomic CSS Architecture)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/) (Shared Layout Transitions & Physics-based Motion)
-- **Navigation:** [React Router 6](https://reactrouter.com/) (Instantaneous Route Handling)
-- **Icons:** [Lucide React](https://lucide.dev/)
-- **Performance:** Custom Caching Layer + AbortController API for network resilience.
+| **SaaS & Enterprise Architecture** | **Gaming & Performance Tuning** |
+|:---:|:---:|
+| <img src="./public/assets/readme/home.png" width="100%" /> | <img src="./public/assets/readme/gamer.png" width="100%" /> |
+| *Arquitetura Escalável e Design Obsidian.* | *Otimização Bare-Metal e UI Tática.* |
 
----
-
-## ⚡ Engineering Highlights
-
-### **Instantaneous Navigation**
-By refactoring the routing structure to handle location state at the top-level and eliminating staggered entrance delays, the platform achieves "Zero-Lag" perception. 
-
-### **Shared Layout Animations**
-The navigation system uses Framer Motion `layoutId` to synchronize pill movements between routes, creating a "software-like" feel rather than a traditional website.
-
-### **Internationalization (i18n)**
-A custom-built, lightweight i18n utility that handles nested JSON structures and dynamic parameter injection without the overhead of heavy external libraries.
+| **Wallpapers Hub (4K Media)** | **AI Prompt Engineering Hub** |
+|:---:|:---:|
+| <img src="./public/assets/readme/wallpapers.png" width="100%" /> | <img src="./public/assets/readme/prompts.png" width="100%" /> |
+| *Entrega de Ativos em Alta Performance.* | *Curadoria de Ativos Generativos Premium.* |
 
 ---
 
-## 🚀 Getting Started
+## ✨ Por que meu trabalho é diferente?
 
-### Prerequisites
-- Node.js 18+
-- npm / pnpm / yarn
+### 🌑 Estética Obsidian Nexus
+Trabalho com um sistema de design proprietário focado em **Glassmorphism**, tipografia de elite e contrastes que guiam o olhar do usuário com precisão cirúrgica.
 
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/your-username/my-profile.git
+### ⚡ Performance 60FPS+
+Cada página foi otimizada para ser instantânea. Clicou, entrou. Sem stuttering, sem delays, sem distrações. A fluidez do software nativo diretamente no seu navegador.
 
-# Enter the directory
-cd my-profile
-
-# Install dependencies
-npm install
-
-# Start the dev server
-npm run dev
-```
+### 🌎 Alcance Global
+Plataforma totalmente localizada para mercados internacionais, garantindo que sua marca fale a língua do seu cliente, seja em Português, Inglês ou Francês.
 
 ---
 
-## 📜 License
-Proprietary License. All rights reserved. Designed and Developed by **Josh Segatt**.
+## 🤝 Vamos construir algo extraordinário?
+Estou sempre em busca de desafios que exijam o máximo de criatividade e precisão técnica. Se você busca um produto digital que se destaque na multidão, vamos conversar.
+
+<div align="center">
+  <a href="https://joshsegatt.com"><strong>VISITAR SITE OFICIAL</strong></a> | 
+  <a href="mailto:contato@joshsegatt.com"><strong>ENTRAR EM CONTATO</strong></a> | 
+  <a href="https://linkedin.com/in/joshsegatt"><strong>LINKEDIN</strong></a>
+</div>
+
+---
+
+<p align="center">
+  <small>© 2026 JOSH SEGATT. Engenharia de Produtos Digitais sob Medida.</small>
+</p>
