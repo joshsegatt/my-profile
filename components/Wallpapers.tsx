@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Monitor, Maximize2, Smartphone, X, ChevronRight, RefreshCw, Shuffle } from 'lucide-react';
+import { Download, Monitor, Maximize2, Smartphone, X, ChevronRight, RefreshCw, Shuffle, AlertCircle } from 'lucide-react';
 import './Wallpapers.css';
 
 import { createPortal } from 'react-dom';
@@ -46,6 +46,89 @@ const WallpaperCard: React.FC<{ wp: any, deviceType: 'desktop' | 'mobile', onPre
           </div>
         </div>
       </div>
+    </motion.div>
+  );
+};
+
+const PreviewModal: React.FC<{ wp: any, onClose: () => void }> = ({ wp, onClose }) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="preview-overlay"
+      style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        className="relative max-w-6xl w-full max-h-[90vh] bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Close Button */}
+        <button 
+          className="absolute top-6 right-6 z-50 p-3 rounded-full bg-black/40 text-white/60 hover:text-white hover:bg-black/60 border border-white/10 transition-all"
+          onClick={onClose}
+        >
+          <X size={20} />
+        </button>
+
+        {/* Loading State Inside Modal */}
+        {loading && !error && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0a0a0a] z-40">
+            <RefreshCw size={32} className="animate-spin text-brand-yellow" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Syncing Source...</span>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0a0a0a] z-40 p-8 text-center">
+            <AlertCircle size={32} className="text-red-500" />
+            <span className="text-sm font-bold text-white">Falha ao carregar fonte 4K</span>
+            <p className="text-xs text-white/40 max-w-xs">O servidor da Wallhaven não respondeu. Tente novamente em alguns instantes.</p>
+          </div>
+        )}
+
+        {/* Main Image Viewport */}
+        <div className="w-full h-full overflow-auto flex items-center justify-center bg-black/20">
+          <img 
+            src={wp.path} 
+            alt="Source" 
+            className={`max-w-full max-h-[75vh] object-contain transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}
+            onLoad={() => setLoading(false)}
+            onError={() => { setLoading(false); setError(true); }}
+          />
+        </div>
+
+        {/* Action Footer */}
+        <div className="p-8 border-t border-white/5 bg-[#0d0d0d] flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black text-brand-yellow uppercase tracking-widest">Node Resolution</span>
+            <div className="flex items-center gap-3">
+              <h4 className="text-xl font-black text-white">{wp.resolution}</h4>
+              <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[9px] font-mono text-white/40">MASTER_REF</span>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4 w-full md:w-auto">
+            <a 
+              href={wp.path} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex-1 md:flex-none flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-brand-yellow transition-all"
+            >
+              <Download size={18} />
+              Get 4K Source
+            </a>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -127,7 +210,7 @@ const Wallpapers: React.FC = () => {
 
   return (
     <div className="wallpapers-container w-full pb-20">
-      {/* Page Header */}
+      {/* Page Header Area */}
       <motion.section
         initial="hidden"
         animate="visible"
@@ -221,7 +304,7 @@ const Wallpapers: React.FC = () => {
         )}
       </div>
 
-      {/* Load More Area */}
+      {/* Sync Button */}
       {!loading && wallpapers.length > 0 && (
         <div className="mt-20 flex justify-center">
           <button 
@@ -236,7 +319,7 @@ const Wallpapers: React.FC = () => {
               </>
             ) : (
               <>
-                Load More Nodes
+                Synchronize More Nodes
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform text-brand-yellow" />
               </>
             )}
@@ -244,36 +327,10 @@ const Wallpapers: React.FC = () => {
         </div>
       )}
 
-      {/* Lightbox Preview */}
+      {/* Lightbox Preview Modal via Portal */}
       {previewWp && createPortal(
         <AnimatePresence>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="preview-overlay"
-            style={{ position: 'fixed', inset: 0, zIndex: 9999 }}
-            onClick={() => setPreviewWp(null)}
-          >
-            <motion.div 
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="preview-content"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img src={previewWp.path} alt="Preview" className="preview-image" />
-              <button className="preview-close" onClick={() => setPreviewWp(null)}>
-                <X size={24} />
-              </button>
-              <div className="preview-actions">
-                <a href={previewWp.path} target="_blank" rel="noopener noreferrer" className="btn-preview-dl shadow-2xl">
-                  <Download size={18} />
-                  Download 4K Source
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
+          <PreviewModal wp={previewWp} onClose={() => setPreviewWp(null)} />
         </AnimatePresence>,
         document.body
       )}
