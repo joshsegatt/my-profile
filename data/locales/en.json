@@ -179,6 +179,7 @@
         "items": {
             "labelguard": { "sub": "Automated Compliance SaaS" },
             "batimove": { "sub": "Premium Swiss Logistics" },
+            "montecharge": { "sub": "Precision Vertical Logistics" },
             "segatt": { "sub": "Neural Utility Engine" }
         }
     },

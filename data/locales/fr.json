@@ -184,6 +184,7 @@
         "items": {
             "labelguard": { "sub": "SaaS de Conformité Automatisé" },
             "batimove": { "sub": "Logistique Suisse Premium" },
+            "montecharge": { "sub": "Logistique Verticale de Précision" },
             "segatt": { "sub": "Moteur Utilitaire Neural" }
         }
     },

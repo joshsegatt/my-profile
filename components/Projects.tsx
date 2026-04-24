@@ -10,6 +10,7 @@ interface Project {
   subtitle: string;
   image: string;
   link: string;
+  year?: string;
   isInternal?: boolean;
 }
 
@@ -56,7 +57,7 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
                     {t('projects.case_study')}
                 </span>
             </div>
-            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.1em]">2024</span>
+            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.1em]">{project.year || '2024'}</span>
         </div>
       </div>
     </div>
@@ -99,18 +100,28 @@ const Projects: React.FC = () => {
       subtitle: t('projects.items.labelguard.sub'),
       image: "/projects/labelguard-screenshot.png",
       link: "https://www.labelguarduk.co.uk",
+      year: "2024"
     },
     {
       title: "Batimove Sarl",
       subtitle: t('projects.items.batimove.sub'),
       image: "/projects/batimove-screenshot.png",
       link: "https://www.batimove.ch",
+      year: "2025"
+    },
+    {
+      title: "Monte Charge",
+      subtitle: t('projects.items.montecharge.sub'),
+      image: "/mokupmontecharge.png",
+      link: "https://locationmontecharge.ch",
+      year: "2026"
     },
     {
       title: "Segatt Tools Suite",
       subtitle: t('projects.items.segatt.sub'),
       image: "/projects/segatt-v177-dashboard.png",
       link: "/tools",
+      year: "2026",
       isInternal: true
     },
   ];
