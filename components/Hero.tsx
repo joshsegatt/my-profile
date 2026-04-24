@@ -146,15 +146,13 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <MagneticButton>
                 <a 
                   href="/onboard" 
-                  className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] animate-pulse-slow active:scale-95 transition-all"
+                  className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all"
                 >
                   {t('hero.cta')}
                   <ChevronRight size={18} className="arrow-icon" />
                 </a>
-              </MagneticButton>
             </motion.div>
 
           </div>
