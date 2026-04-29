@@ -20,6 +20,7 @@ import Prompts from '@/components/Prompts';
 import Intro from './components/Intro';
 import { PostHogProvider } from './components/analytics/PostHogProvider';
 import AsyncIntakeForm from './components/AsyncIntakeForm';
+import AIChat from './components/AIChat';
 
 // Helper component to scroll to top on route change
 const ScrollToTop = () => {
@@ -116,6 +117,7 @@ const AppContent: React.FC = () => {
             </aside>
           )}
         </div>
+        <AIChat />
       </motion.div>
     </div>
   );
