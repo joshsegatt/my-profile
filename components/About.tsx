@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useLanguage } from '../utils/i18n';
+import QualificationFilter from './QualificationFilter';
 import './About.css';
 
 const About: React.FC = () => {
@@ -184,6 +185,9 @@ const About: React.FC = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Qualification Filter Section */}
+                <QualificationFilter />
 
                 <motion.div 
                     initial={{ opacity: 0, scale: 0.98, y: 30 }}

@@ -242,8 +242,6 @@ const Onboarding: React.FC = () => {
                                     {[
                                         { id: 't1', label: t('onboarding.step4.tier1') },
                                         { id: 't2', label: t('onboarding.step4.tier2') },
-                                        { id: 't3', label: t('onboarding.step4.tier3') },
-                                        { id: 't4', label: t('onboarding.step4.tier4') },
                                     ].map(budget => (
                                         <motion.button key={budget.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => { setFormData({ ...formData, budget: budget.label }); nextStep(); }} className="p-8 bg-white/[0.03] border border-white/10 rounded-3xl hover:border-brand-yellow/40 hover:bg-white/[0.08] transition-all text-center text-white font-black uppercase tracking-widest text-sm">{budget.label}</motion.button>
                                     ))}
@@ -252,26 +250,52 @@ const Onboarding: React.FC = () => {
                             </motion.div>
                         )}
 
-                        {/* Step 5: Contact */}
+                        {/* Step 5: Contact / Bifurcation */}
                         {step === 5 && (
                             <motion.div key="step5" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
-                                <div className="text-center">
-                                    <h3 className="text-4xl lg:text-5xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step5.question')}</h3>
-                                    <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step5.sub')}</p>
-                                </div>
-                                <form onSubmit={handleSubmit} className="space-y-5 max-w-md mx-auto">
-                                    <div className="relative group">
-                                        <User className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-brand-yellow transition-colors" size={20} />
-                                        <input type="text" required placeholder={t('onboarding.step5.name')} value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[28px] pl-14 pr-6 py-5 text-white outline-none focus:border-brand-yellow/40 focus:bg-white/[0.06] transition-all font-medium" />
-                                    </div>
-                                    <div className="relative group">
-                                        <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-brand-yellow transition-colors" size={20} />
-                                        <input type="email" required placeholder={t('onboarding.step5.email')} value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-white/[0.03] border border-white/10 rounded-[28px] pl-14 pr-6 py-5 text-white outline-none focus:border-brand-yellow/40 focus:bg-white/[0.06] transition-all font-medium" />
-                                    </div>
-                                    <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={status === 'loading'} className="w-full bg-brand-yellow text-black font-black py-6 rounded-[28px] hover:brightness-110 transition-all flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(255,184,0,0.15)] uppercase tracking-widest text-[11px]">
-                                        {status === 'loading' ? t('onboarding.step5.sending') : t('onboarding.step5.button')} <ArrowRight size={20} className="stroke-[3px]" />
-                                    </motion.button>
-                                </form>
+                                {formData.budget === t('onboarding.step4.tier2') ? (
+                                    <>
+                                        <div className="text-center">
+                                            <h3 className="text-3xl lg:text-4xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step5.cal_title')}</h3>
+                                            <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step5.sub')}</p>
+                                        </div>
+                                        <div className="w-full bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden p-2">
+                                            <iframe src={`${(import.meta as any).env.VITE_CALCOM_URL || "https://cal.com/joshsegatt/discovery"}`} className="w-full h-[600px] border-0" />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="text-center">
+                                            <h3 className="text-3xl lg:text-4xl font-black text-brand-yellow mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step5.async_title')}</h3>
+                                            <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step5.sub')}</p>
+                                        </div>
+                                        <div className="bg-[#0a0a0a] border border-brand-yellow/20 p-8 lg:p-12 rounded-[32px] text-center max-w-2xl mx-auto shadow-[0_20px_50px_rgba(255,184,0,0.1)] relative overflow-hidden">
+                                            <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/[0.05] to-transparent pointer-events-none" />
+                                            <div className="w-16 h-16 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-yellow mx-auto mb-8 border border-brand-yellow/20 relative z-10">
+                                                <Zap size={32} />
+                                            </div>
+                                            <p className="text-white/80 font-medium text-lg leading-relaxed mb-10 relative z-10">
+                                                {t('onboarding.step5.async_msg')}
+                                            </p>
+                                            <motion.button 
+                                                whileHover={{ scale: 1.02 }} 
+                                                whileTap={{ scale: 0.98 }} 
+                                                onClick={() => {
+                                                    const params = new URLSearchParams({
+                                                        type: formData.projectType,
+                                                        goal: formData.goal,
+                                                        time: formData.timeline,
+                                                        budget: formData.budget
+                                                    });
+                                                    window.location.href = `/intake?${params.toString()}`;
+                                                }}
+                                                className="w-full bg-brand-yellow text-black font-black py-6 rounded-[28px] hover:brightness-110 transition-all flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(255,184,0,0.15)] uppercase tracking-widest text-[11px] relative z-10"
+                                            >
+                                                {t('onboarding.step5.async_cta')} <ArrowRight size={20} className="stroke-[3px]" />
+                                            </motion.button>
+                                        </div>
+                                    </>
+                                )}
                                 <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Retornar</button>
                             </motion.div>
                         )}

@@ -8,6 +8,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Store from '@/components/Store';
 import Projects from './components/Projects';
+import QualificationSection from './components/QualificationSection';
 import Footer from './components/Footer';
 import ProjectLab from './components/ProjectLab';
 import Sidebar from './components/Sidebar';
@@ -17,6 +18,8 @@ import GamerOptimizer from './components/GamerOptimizer';
 import Wallpapers from './components/Wallpapers';
 import Prompts from '@/components/Prompts';
 import Intro from './components/Intro';
+import { PostHogProvider } from './components/analytics/PostHogProvider';
+import AsyncIntakeForm from './components/AsyncIntakeForm';
 
 // Helper component to scroll to top on route change
 const ScrollToTop = () => {
@@ -78,25 +81,26 @@ const AppContent: React.FC = () => {
       >
         <Header />
 
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex overflow-hidden pt-24 lg:pt-[104px]">
           <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative">
             <motion.div
               key={location.pathname}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, ease: "linear" }}
-              className={`w-full min-h-screen pt-24 pb-24 ${location.pathname === '/store' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
+              className={`w-full min-h-screen pb-24 ${location.pathname === '/store' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
             >
               <div className="max-w-[1440px] mx-auto">
                 <Routes location={location}>
-                  <Route path="/" element={<div className="mt-[-9rem]"><Hero /><Projects /></div>} />
+                  <Route path="/" element={<div><Hero /><Projects /><QualificationSection /></div>} />
                   <Route path="/about" element={<About />} />
                   <Route path="/tools" element={<Tools />} />
                   <Route path="/wallpapers" element={<Wallpapers />} />
                   <Route path="/prompts" element={<Prompts />} />
                   <Route path="/gamer" element={<GamerOptimizer />} />
                   <Route path="/store" element={<Store />} />
-                  <Route path="/onboard" element={<Onboarding />} />
+                  <Route path="/onboarding" element={<Onboarding />} />
+                  <Route path="/intake" element={<AsyncIntakeForm />} />
                   <Route path="/lab" element={<ProjectLab />} />
                 </Routes>
               </div>
@@ -120,7 +124,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
-      <AppContent />
+      <PostHogProvider>
+        <AppContent />
+      </PostHogProvider>
     </Router>
   );
 };

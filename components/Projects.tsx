@@ -12,6 +12,7 @@ interface Project {
   link: string;
   year?: string;
   isInternal?: boolean;
+  businessROI?: string[];
 }
 
 const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, delay }) => {
@@ -49,6 +50,16 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
         <h3 className="text-white text-[13px] font-bold tracking-tight group-hover:text-brand-yellow transition-colors duration-300">
           {project.title}
         </h3>
+
+        {project.businessROI && project.businessROI.length > 0 && (
+          <div className="mt-2.5 flex flex-wrap gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
+            {project.businessROI.map((roi, idx) => (
+              <span key={idx} className="inline-flex items-center px-1.5 py-0.5 rounded-sm bg-white/[0.04] border border-white/5 text-[8.5px] font-medium text-white/80 uppercase tracking-widest whitespace-nowrap">
+                {roi}
+              </span>
+            ))}
+          </div>
+        )}
         
         <div className="pt-2 flex items-center justify-between border-t border-white/5 mt-2">
             <div className="flex items-center gap-2">
@@ -100,21 +111,24 @@ const Projects: React.FC = () => {
       subtitle: t('projects.items.labelguard.sub'),
       image: "/projects/labelguard-screenshot.png",
       link: "https://www.labelguarduk.co.uk",
-      year: "2024"
+      year: "2024",
+      businessROI: [t('projects.items.labelguard.roi1'), t('projects.items.labelguard.roi2')]
     },
     {
       title: "Batimove Sarl",
       subtitle: t('projects.items.batimove.sub'),
       image: "/projects/batimove-screenshot.png",
       link: "https://www.batimove.ch",
-      year: "2025"
+      year: "2025",
+      businessROI: [t('projects.items.batimove.roi1'), t('projects.items.batimove.roi2')]
     },
     {
       title: "Monte Charge",
       subtitle: t('projects.items.montecharge.sub'),
       image: "/mokupmontecharge.png",
       link: "https://locationmontecharge.ch",
-      year: "2026"
+      year: "2026",
+      businessROI: [t('projects.items.montecharge.roi1'), t('projects.items.montecharge.roi2')]
     },
     {
       title: "Segatt Tools Suite",
@@ -122,7 +136,8 @@ const Projects: React.FC = () => {
       image: "/projects/segatt-v177-dashboard.png",
       link: "/tools",
       year: "2026",
-      isInternal: true
+      isInternal: true,
+      businessROI: [t('projects.items.segatt.roi1'), t('projects.items.segatt.roi2')]
     },
   ];
 

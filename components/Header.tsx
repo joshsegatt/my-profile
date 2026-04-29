@@ -107,19 +107,7 @@ const Header: React.FC = () => {
 
           {/* Right Action Button */}
           <div className="flex items-center gap-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden lg:block"
-            >
-              <Link
-                to="/onboard"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-[9px] font-black uppercase tracking-[0.15em] hover:bg-white/10 transition-all"
-              >
-                {t('nav.onboarding')}
-                <ChevronRight size={12} className="text-brand-yellow" />
-              </Link>
-            </motion.div>
+
 
             {/* Mobile Toggle */}
             <button 

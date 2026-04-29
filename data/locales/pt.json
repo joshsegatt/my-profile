@@ -24,9 +24,9 @@
         "role": "Desenvolvedor Sênior impulsionado por IA"
     },
     "hero": {
-        "title": "Arquitetura de SaaS Escalável <br /> e <span class=\"highlight-pro\">Performance Extrema</span>.",
-        "subhead": "Fundindo desenvolvimento de software de nível empresarial com ajuste de sistema bare-metal. Eu projeto aplicações SaaS escaláveis e realizo otimização de Windows e hardware de alto nível.",
-        "cta": "Iniciar Fluxo de Onboarding"
+        "title": "Arquitetura de Sistemas SaaS <br /> e <span class=\"highlight-pro\">IA de Alta Performance</span>.",
+        "subhead": "Engenharia de elite para fundadores que exigem escala, segurança e performance extrema. Do código de baixo nível à interface de alta conversão.",
+        "cta": "Solicitar Avaliação Técnica"
     },
     "gamer": {
         "hero": {
@@ -182,10 +182,10 @@
         "subtitle": "Trabalhos Selecionados",
         "case_study": "Estudo de Caso",
         "items": {
-            "labelguard": { "sub": "SaaS de Conformidade Automatizada" },
-            "batimove": { "sub": "Logística Suíça Premium" },
-            "montecharge": { "sub": "Logística Vertical de Precisão" },
-            "segatt": { "sub": "Motor Utilitário Neural" }
+            "labelguard": { "sub": "SaaS de Conformidade Automatizada", "roi1": "Tempo de carregamento reduzido em 50%", "roi2": "Retenção aumentada em 20%" },
+            "batimove": { "sub": "Logística Suíça Premium", "roi1": "Taxa de conversão +35%", "roi2": "Interface de latência zero" },
+            "montecharge": { "sub": "Logística Vertical de Precisão", "roi1": "Tráfego orgânico +150%", "roi2": "Fluxo de reservas fluido" },
+            "segatt": { "sub": "Motor Utilitário Neural", "roi1": "Resposta sub-10ms", "roi2": "Escala empresarial" }
         }
     },
     "onboarding": {
@@ -225,10 +225,8 @@
         "step4": {
             "question": "Espectro de Investimento.",
             "sub": "Aloque capital para desenvolvimento e escala.",
-            "tier1": "$10k - $25k",
-            "tier2": "$25k - $50k",
-            "tier3": "$50k - $100k",
-            "tier4": "$100k+"
+            "tier1": "$1,000 - $5,000 (Rapid Tech Sprints)",
+            "tier2": "$5,000+ (Custom SaaS Architecture)"
         },
         "step5": {
             "question": "Identifique-se.",
@@ -236,13 +234,39 @@
             "name": "Nome Completo",
             "email": "E-mail Profissional",
             "button": "Estabelecer Conexão",
-            "sending": "Estabelecendo Conexão..."
+            "sending": "Estabelecendo Conexão...",
+            "async_title": "Protocolo Assíncrono Ativado.",
+            "async_msg": "Para garantir máxima eficiência e início imediato neste escopo, utilizamos um processo de Onboarding Assíncrono. Submeta os detalhes técnicos e iniciaremos o sprint.",
+            "async_cta": "Submeter Escopo do Projeto ->",
+            "cal_title": "Architecture Discovery Call"
         },
         "step6": {
             "title": "Visão Recebida.",
             "sub": "Eu gerei o seu PDF de resumo do projeto e o enviei para sua caixa de entrada. Entrarei em contato em até 24 horas.",
             "button": "Voltar ao Início"
         }
+    },
+    "qualification": {
+        "title": "Somos um bom fit?",
+        "partner_title": "Com quem eu formo parcerias",
+        "partner1": "Fundadores SaaS a escalar operações.",
+        "partner2": "Startups a integrar pipelines de IA.",
+        "partner3": "Negócios que perdem dinheiro com infraestrutura lenta.",
+        "not_for_title": "Para quem isto NÃO é",
+        "not_for1": "Projetos sem orçamento definido.",
+        "not_for2": "Lojas WordPress ou templates genéricos.",
+        "not_for3": "Quem procura \"apenas um programador barato\"."
+    },
+    "qualification_home": {
+        "ideal_title": "Parcerias Ideais",
+        "ideal1": "Startups SaaS",
+        "ideal2": "Projetos com foco em Escala",
+        "ideal3": "Líderes que valorizam Performance",
+        "not_fit_title": "Não é um bom fit",
+        "not_fit1": "Orçamentos 'low-cost'",
+        "not_fit2": "Projetos sem visão de longo prazo",
+        "not_fit3": "Copiar ideias existentes sem inovação",
+        "footer": "Assumo apenas 2 projetos de alto risco por trimestre para garantir uma entrega de elite. És o próximo?"
     },
     "sidebar": {
         "about_title": "Sobre Mim",

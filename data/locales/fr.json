@@ -24,9 +24,9 @@
         "role": "Développeur Senior Propulsé par l'IA"
     },
     "hero": {
-        "title": "Architecture SaaS Évolutive <br /> & <span class=\"highlight-pro\">Performance Extrême</span>.",
-        "subhead": "Fusion du développement logiciel d'entreprise et de l'optimisation système bare-metal. J'architecture des applications SaaS évolutives et réalise une optimisation Windows et matérielle de haut niveau.",
-        "cta": "Démarrer le Flux d'Onboarding"
+        "title": "Architecture de Systèmes SaaS <br /> et <span class=\"highlight-pro\">IA à Haute Performance</span>.",
+        "subhead": "Ingénierie d'élite pour les fondateurs exigeant évolutivité, sécurité et performances extrêmes. Du code de bas niveau à l'interface à haute conversion.",
+        "cta": "Demander une Évaluation Technique"
     },
     "gamer": {
         "hero": {
@@ -182,10 +182,10 @@
         "subtitle": "Travaux Sélectionnés",
         "case_study": "Étude de Cas",
         "items": {
-            "labelguard": { "sub": "SaaS de Conformité Automatisé" },
-            "batimove": { "sub": "Logistique Suisse Premium" },
-            "montecharge": { "sub": "Logistique Verticale de Précision" },
-            "segatt": { "sub": "Moteur Utilitaire Neural" }
+            "labelguard": { "sub": "SaaS de Conformité Automatisé", "roi1": "Temps de chargement réduit de 50%", "roi2": "Rétention augmentée de 20%" },
+            "batimove": { "sub": "Logistique Suisse Premium", "roi1": "Taux de conversion +35%", "roi2": "Interface à latence zéro" },
+            "montecharge": { "sub": "Logistique Verticale de Précision", "roi1": "Trafic organique +150%", "roi2": "Flux de réservation fluide" },
+            "segatt": { "sub": "Moteur Utilitaire Neural", "roi1": "Réponse sub-10ms", "roi2": "Échelle entreprise" }
         }
     },
     "onboarding": {
@@ -225,10 +225,8 @@
         "step4": {
             "question": "Spectre d'Investissement.",
             "sub": "Allouez le capital pour le développement et l'échelle.",
-            "tier1": "10k$ - 25k$",
-            "tier2": "25k$ - 50k$",
-            "tier3": "50k$ - 100k$",
-            "tier4": "100k$+"
+            "tier1": "$1,000 - $5,000 (Rapid Tech Sprints)",
+            "tier2": "$5,000+ (Custom SaaS Architecture)"
         },
         "step5": {
             "question": "Identifiez-vous.",
@@ -236,13 +234,39 @@
             "name": "Nom Complet",
             "email": "Email Professionnel",
             "button": "Établir la Connexion",
-            "sending": "Établissement de la Connexion..."
+            "sending": "Établissement de la Connexion...",
+            "async_title": "Protocole Asynchrone Activé.",
+            "async_msg": "Pour assurer une efficacité maximale et un démarrage immédiat, nous utilisons un processus d'Onboarding Asynchrone. Soumettez vos détails techniques et nous lancerons le sprint.",
+            "async_cta": "Soumettre la Portée du Projet ->",
+            "cal_title": "Architecture Discovery Call"
         },
         "step6": {
             "title": "Vision Reçue.",
             "sub": "J'ai généré votre dossier de projet PDF et l'ai envoyé dans votre boîte de réception. Je vous recontacterai sous 24 heures.",
             "button": "Retour à l'Accueil"
         }
+    },
+    "qualification": {
+        "title": "Sommes-nous compatibles ?",
+        "partner_title": "Avec qui je m'associe",
+        "partner1": "Fondateurs de SaaS faisant évoluer leurs opérations.",
+        "partner2": "Startups intégrant des pipelines d'IA.",
+        "partner3": "Entreprises perdant de l'argent avec une infrastructure lente.",
+        "not_for_title": "Pour qui ce n'est PAS",
+        "not_for1": "Projets sans budget défini.",
+        "not_for2": "Boutiques WordPress ou modèles génériques.",
+        "not_for3": "Ceux qui cherchent \"juste un développeur pas cher\"."
+    },
+    "qualification_home": {
+        "ideal_title": "Partenariats Idéaux",
+        "ideal1": "Startups SaaS",
+        "ideal2": "Projets axés sur l'Échelle",
+        "ideal3": "Leaders valorisant la Performance",
+        "not_fit_title": "Pas un bon ajustement",
+        "not_fit1": "Budgets 'low-cost'",
+        "not_fit2": "Projets sans vision à long terme",
+        "not_fit3": "Copier des idées existantes sans innovation",
+        "footer": "Je n'accepte que 2 projets à enjeux élevés par trimestre pour assurer une livraison d'élite. Êtes-vous le prochain ?"
     },
     "sidebar": {
         "about_title": "À Propos",

@@ -24,9 +24,9 @@
         "role": "AI-Powered Senior Developer"
     },
     "hero": {
-        "title": "Architecting Scalable SaaS <br /> & <span class=\"highlight-pro\">Extreme Performance</span>.",
-        "subhead": "Merging enterprise-grade software development with bare-metal system tuning. I architect scalable SaaS applications and perform high-level Windows & hardware optimization.",
-        "cta": "Start Onboarding Flow"
+        "title": "Architecting High-Performance SaaS <br /> & <span class=\"highlight-pro\">AI Systems</span>.",
+        "subhead": "Elite engineering for founders who demand scale, security, and extreme performance. From low-level code to high-conversion interfaces.",
+        "cta": "Request Technical Assessment"
     },
     "gamer": {
         "hero": {
@@ -177,10 +177,10 @@
         "subtitle": "Selected Works",
         "case_study": "Case Study",
         "items": {
-            "labelguard": { "sub": "Automated Compliance SaaS" },
-            "batimove": { "sub": "Premium Swiss Logistics" },
-            "montecharge": { "sub": "Precision Vertical Logistics" },
-            "segatt": { "sub": "Neural Utility Engine" }
+            "labelguard": { "sub": "Automated Compliance SaaS", "roi1": "Reduced load time by 50%", "roi2": "Increased retention by 20%" },
+            "batimove": { "sub": "Premium Swiss Logistics", "roi1": "Conversion rate +35%", "roi2": "Zero-latency UI" },
+            "montecharge": { "sub": "Precision Vertical Logistics", "roi1": "Organic traffic +150%", "roi2": "Seamless booking flow" },
+            "segatt": { "sub": "Neural Utility Engine", "roi1": "Sub-10ms response", "roi2": "Enterprise scale" }
         }
     },
     "onboarding": {
@@ -220,10 +220,8 @@
         "step4": {
             "question": "Investment Spectrum.",
             "sub": "Allocate capital for development & scaling.",
-            "tier1": "$10k - $25k",
-            "tier2": "$25k - $50k",
-            "tier3": "$50k - $100k",
-            "tier4": "$100k+"
+            "tier1": "$1,000 - $5,000 (Rapid Tech Sprints)",
+            "tier2": "$5,000+ (Custom SaaS Architecture)"
         },
         "step5": {
             "question": "Identify yourself.",
@@ -231,13 +229,39 @@
             "name": "Full Name",
             "email": "Business Email",
             "button": "Establish Connection",
-            "sending": "Establishing Connection..."
+            "sending": "Establishing Connection...",
+            "async_title": "Async Protocol Activated.",
+            "async_msg": "To ensure maximum efficiency and immediate start on this scope, we utilize an Async Onboarding process. Submit your technical details and we will initiate the sprint.",
+            "async_cta": "Submit Project Scope ->",
+            "cal_title": "Architecture Discovery Call"
         },
         "step6": {
             "title": "Vision Received.",
             "sub": "I've generated your Project Brief PDF and dispatched it to your inbox. I'll reach out within 24 hours.",
             "button": "Return Home"
         }
+    },
+    "qualification": {
+        "title": "Are We a Good Fit?",
+        "partner_title": "Who I Partner With",
+        "partner1": "SaaS founders scaling operations.",
+        "partner2": "Startups integrating AI pipelines.",
+        "partner3": "Businesses losing money on slow infrastructure.",
+        "not_for_title": "Who This is NOT For",
+        "not_for1": "Projects without a defined budget.",
+        "not_for2": "WordPress shops or generic templates.",
+        "not_for3": "Anyone looking for \"just a cheap developer\"."
+    },
+    "qualification_home": {
+        "ideal_title": "Ideal Partnerships",
+        "ideal1": "SaaS Startups",
+        "ideal2": "Scale-focused Projects",
+        "ideal3": "Leaders who value Performance",
+        "not_fit_title": "Not a Good Fit",
+        "not_fit1": "Low-cost budgets",
+        "not_fit2": "Projects lacking long-term vision",
+        "not_fit3": "Copying existing ideas without innovation",
+        "footer": "I only take on 2 high-stakes projects per quarter to ensure elite delivery. Are you next?"
     },
     "sidebar": {
         "about_title": "About Me",
