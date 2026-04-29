@@ -124,6 +124,7 @@
   grid-template-columns: 1fr;
   gap: 3rem;
   align-items: start;
+  padding-top: 2rem;
   padding-bottom: 5rem;
 }
 
@@ -131,6 +132,7 @@
   .hero-section {
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
+    padding-top: 4rem;
   }
 }
 

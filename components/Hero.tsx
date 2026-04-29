@@ -65,6 +65,7 @@ const HeroVideo: React.FC = () => {
       <img 
         src="/assets/hero_dashboard.png" 
         alt="Hero Dashboard" 
+        {...(true ? { fetchpriority: "high" } as any : {})}
         className="absolute inset-0 w-full h-full object-cover"
         style={{ transform: "translateZ(20px)" }}
       />
@@ -178,18 +179,28 @@ const HeroMosaic: React.FC = () => {
       </div>
       
       {/* Slot Secundrio 1 */}
-      <div className="mosaic-card sub-card-1">
+      <div className="mosaic-card sub-card-1 skeleton-pulse">
         <div className="placeholder-content">
-          <img src="/cardhero2.png" alt="Tactical Detail" className="absolute inset-0 w-full h-full object-cover" />
+          <img 
+            src="/cardhero2.png" 
+            alt="Tactical Detail" 
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
           <div className="scan-line-anim" />
           <div className="vignette-overlay" />
         </div>
       </div>
 
       {/* Slot Secundrio 2 */}
-      <div className="mosaic-card sub-card-2">
+      <div className="mosaic-card sub-card-2 skeleton-pulse">
         <div className="placeholder-content">
-          <img src="/cardhero3.png" alt="Performance Feed" className="absolute inset-0 w-full h-full object-cover" />
+          <img 
+            src="/cardhero3.png" 
+            alt="Performance Feed" 
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
           <div className="scan-line-anim" />
           <div className="vignette-overlay" />
         </div>

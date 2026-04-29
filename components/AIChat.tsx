@@ -149,7 +149,7 @@ const AIChat: React.FC = () => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
     
-    const hasSidebar = location.pathname !== '/store';
+    const hasSidebar = location.pathname !== '/solutions';
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

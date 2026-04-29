@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Store from '@/components/Store';
+import AISolutions from './components/AISolutions';
 import Projects from './components/Projects';
 import QualificationSection from './components/QualificationSection';
 import Footer from './components/Footer';
@@ -89,7 +89,7 @@ const AppContent: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, ease: "linear" }}
-              className={`w-full min-h-screen pb-24 ${location.pathname === '/store' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
+              className={`w-full min-h-screen pb-24 ${location.pathname === '/solutions' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
             >
               <div className="max-w-[1440px] mx-auto">
                 <Routes location={location}>
@@ -99,7 +99,7 @@ const AppContent: React.FC = () => {
                   <Route path="/wallpapers" element={<Wallpapers />} />
                   <Route path="/prompts" element={<Prompts />} />
                   <Route path="/gamer" element={<GamerOptimizer />} />
-                  <Route path="/store" element={<Store />} />
+                  <Route path="/solutions" element={<AISolutions />} />
                   <Route path="/onboarding" element={<Onboarding />} />
                   <Route path="/intake" element={<AsyncIntakeForm />} />
                   <Route path="/lab" element={<ProjectLab />} />
@@ -109,7 +109,7 @@ const AppContent: React.FC = () => {
             </motion.div>
           </main>
 
-          {location.pathname !== '/store' && (
+          {location.pathname !== '/solutions' && (
             <aside className="hidden xl:block w-[380px] h-full overflow-y-auto custom-scrollbar border-l border-white/5 bg-black/20 backdrop-blur-3xl">
               <div className="p-10">
                 <Sidebar />

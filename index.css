@@ -113,3 +113,93 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* Dual Neon Border Beam (Yellow & Purple) */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-beam-neon {
+  position: relative;
+}
+
+.border-beam-neon::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #FFC700 0%,
+    transparent 20%,
+    transparent 40%,
+    #A855F7 50%,
+    transparent 70%,
+    transparent 90%,
+    #FFC700 100%
+  );
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-border 6s linear infinite;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@keyframes rotate-border {
+  from { --border-angle: 0deg; }
+  to { --border-angle: 360deg; }
+}
+@keyframes skeleton-pulse {
+  0% { background-color: rgba(255, 255, 255, 0.03); }
+  50% { background-color: rgba(255, 255, 255, 0.08); }
+  100% { background-color: rgba(255, 255, 255, 0.03); }
+}
+
+.skeleton-pulse {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Redesign 2026 Utilities */
+.dot-matrix {
+  background-image: radial-gradient(rgba(255, 193, 7, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.radial-mask {
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+}
+
+@keyframes border-beam {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+.border-beam-path {
+  offset-path: rect(0% 100% 100% 0% round 40px);
+}
+
+.animate-border-beam {
+  animation: border-beam 4s linear infinite;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to right, #FFC107, #FFFFFF, #FFC107);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Menu, X, ChevronRight, ShoppingBag, Brain } from 'lucide-react';
 import { useLanguage } from '../utils/i18n';
 import Logo from './Logo';
 
@@ -13,11 +13,11 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { name: t('nav.home'), href: '/' },
+    { name: 'SOLUÇÕES AI', href: '/solutions' },
     { name: t('nav.tools'), href: '/tools' },
     { name: t('nav.gamer'), href: '/gamer' },
     { name: t('nav.wallpapers'), href: '/wallpapers' },
     { name: 'Prompts AI', href: '/prompts' },
-    { name: t('nav.store'), href: '/store' },
     { name: t('nav.about'), href: '/about' },
   ];
 
@@ -63,22 +63,18 @@ const Header: React.FC = () => {
                     ${isActive ? 'text-black' : 'text-white/50 hover:text-white'}
                   `}
                 >
-                  {link.href === '/store' && (
+                   {link.href === '/solutions' && (
                     <>
                       <motion.div 
                         animate={{ 
-                          boxShadow: [
-                            "0 0 10px rgba(168, 85, 247, 0.4)", 
-                            "0 0 20px rgba(168, 85, 247, 0.7)", 
-                            "0 0 10px rgba(168, 85, 247, 0.4)"
-                          ]
+                          opacity: [0.2, 0.4, 0.2],
                         }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute inset-0 rounded-full border border-purple-500/50 pointer-events-none"
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className={`absolute inset-0 rounded-full border ${isActive ? 'border-black/20' : 'border-brand-yellow/30'} pointer-events-none`}
                       />
-                      <ShoppingBag 
+                      <Brain 
                         size={12} 
-                        className={`relative z-10 ${isActive ? 'text-black' : 'text-purple-400'}`} 
+                        className={`relative z-10 transition-transform duration-500 group-hover:rotate-[15deg] ${isActive ? 'text-black' : 'text-brand-yellow'}`} 
                       />
                     </>
                   )}
@@ -161,20 +157,10 @@ const Header: React.FC = () => {
                         location.pathname === link.href ? 'text-brand-yellow' : 'text-white/40'
                       }`}
                     >
-                      {link.href === '/store' && (
-                        <motion.div
-                          animate={{ 
-                            textShadow: [
-                              "0 0 5px rgba(168, 85, 247, 0.5)", 
-                              "0 0 15px rgba(168, 85, 247, 1)", 
-                              "0 0 5px rgba(168, 85, 247, 0.5)"
-                            ]
-                          }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="text-purple-400"
-                        >
-                          <ShoppingBag size={24} />
-                        </motion.div>
+                       {link.href === '/solutions' && (
+                        <div className="p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow">
+                          <Brain size={20} />
+                        </div>
                       )}
                       {link.name}
                     </Link>

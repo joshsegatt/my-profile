@@ -36,22 +36,21 @@ const MOSAIC_ASSETS = [
   },
 ];
 
-const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset }) => {
+const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset, idx }) => {
   // We keep the loaded state for smooth transition, but remove the initial mount delay
   const [isReady, setIsReady] = React.useState(false);
 
   return (
-    <div className={`mosaic-tile ${asset.className} bg-white/5`}>
-      {/* Remove explicit skeleton to prevent pulse flickering, use container background as fallback */}
-      
+    <div className={`mosaic-tile ${asset.className} skeleton-pulse overflow-hidden relative shadow-2xl`}>
       {asset.type === 'video' ? (
         <video
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
-          className={`mosaic-video transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+          preload="metadata"
+          {...(idx === 0 ? { fetchpriority: "high" } as any : {})}
+          className={`mosaic-video transition-opacity duration-500 ${isReady ? 'opacity-100' : 'opacity-0'}`}
           onLoadedData={() => setIsReady(true)}
         >
           <source src={asset.path} type="video/mp4" />
@@ -60,8 +59,9 @@ const MosaicTile: React.FC<{ asset: any, idx: number }> = ({ asset }) => {
         <img 
           src={asset.path} 
           alt={asset.label} 
-          loading="eager"
-          className={`mosaic-image transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+          loading={idx < 2 ? "eager" : "lazy"}
+          {...(idx === 0 ? { fetchpriority: "high" } as any : {})}
+          className={`mosaic-image transition-opacity duration-500 ${isReady ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setIsReady(true)}
         />
       )}
