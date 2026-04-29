@@ -20,18 +20,23 @@ export default async function handler(req: Request) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    // [TAREFA 2] Limpeza do Histórico
-    const cleanHistory = (messages.slice(0, -1) || []).map((msg: any) => ({
-      role: msg.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: msg.content || "" }]
-    })).filter((msg: any) => msg.parts[0].text !== "");
+    // [LOGICA NUCLEAR] Limpeza Absoluta
+    let cleanHistory = (messages || []).map((m: any) => ({
+      role: m.role === 'assistant' || m.role === 'model' ? 'model' : 'user',
+      parts: [{ text: m.content || m.parts?.[0]?.text || "" }]
+    }));
 
-    // REGRA DE OURO: Se o primeiro item não for 'user', removemos até encontrar um 'user'
-    while (cleanHistory.length > 0 && cleanHistory[0].role !== 'user') {
-      cleanHistory.shift();
+    // Remove TUDO do início até encontrar a primeira mensagem de 'user'
+    const firstUserIndex = cleanHistory.findIndex((m: any) => m.role === 'user');
+    if (firstUserIndex === -1) {
+      cleanHistory = [];
+    } else {
+      cleanHistory = cleanHistory.slice(firstUserIndex);
     }
 
-    const latestMessage = messages[messages.length - 1].content;
+    // Extrair a última mensagem para o sendMessageStream
+    const lastMessageObj = cleanHistory.pop();
+    const latestMessage = lastMessageObj?.parts[0]?.text || "";
 
     // [TAREFA 1] Inicialização do Modelo com System Instruction
     const model = genAI.getGenerativeModel({ 
@@ -39,10 +44,11 @@ export default async function handler(req: Request) {
         systemInstruction: SYSTEM_PROMPT
     });
 
-    // [TAREFA 4] Log de Segurança
-    console.log("History being sent:", JSON.stringify(cleanHistory));
+    // [TAREFA 2] Log de Produção
+    console.log("FINAL HISTORY:", JSON.stringify(cleanHistory));
+    console.log("LATEST MESSAGE:", latestMessage);
 
-    // [TAREFA 3] Iniciar Chat
+    // Iniciar Chat
     const chat = model.startChat({
       history: cleanHistory,
       generationConfig: {
