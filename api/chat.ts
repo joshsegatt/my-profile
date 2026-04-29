@@ -36,9 +36,9 @@ export default async function handler(req: Request) {
       history.shift(); // Remove qualquer mensagem do bot que esteja no topo do histórico
     }
 
-    // [TAREFA 1] Inicialização do Modelo
+    // [TAREFA 1] Inicialização do Modelo (Usando -latest para evitar 404)
     const model = genAI.getGenerativeModel({ 
-        model: 'gemini-1.5-flash',
+        model: 'gemini-1.5-flash-latest',
         systemInstruction: SYSTEM_PROMPT
     });
 
