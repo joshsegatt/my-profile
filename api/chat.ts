@@ -20,27 +20,31 @@ export default async function handler(req: Request) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    const history = messages
-      .slice(0, -1)
-      .map((msg: any) => ({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.content }],
-      }))
-      // Filter out leading model messages to comply with Gemini requirements
-      .filter((msg: any, index: number, array: any[]) => {
-        if (index === 0 && msg.role === 'model') return false;
-        return true;
-      });
+    // [TAREFA 2] Limpeza do Histórico
+    const cleanHistory = (messages.slice(0, -1) || []).map((msg: any) => ({
+      role: msg.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: msg.content || "" }]
+    })).filter((msg: any) => msg.parts[0].text !== "");
+
+    // REGRA DE OURO: Se o primeiro item não for 'user', removemos até encontrar um 'user'
+    while (cleanHistory.length > 0 && cleanHistory[0].role !== 'user') {
+      cleanHistory.shift();
+    }
 
     const latestMessage = messages[messages.length - 1].content;
 
+    // [TAREFA 1] Inicialização do Modelo com System Instruction
     const model = genAI.getGenerativeModel({ 
         model: 'gemini-1.5-flash',
         systemInstruction: SYSTEM_PROMPT
     });
 
+    // [TAREFA 4] Log de Segurança
+    console.log("History being sent:", JSON.stringify(cleanHistory));
+
+    // [TAREFA 3] Iniciar Chat
     const chat = model.startChat({
-      history,
+      history: cleanHistory,
       generationConfig: {
         maxOutputTokens: 1000,
         temperature: 0.8,
