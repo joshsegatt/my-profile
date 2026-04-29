@@ -18,6 +18,7 @@ export default async function handler(req: Request) {
         throw new Error('GEMINI_API_KEY is not defined in the environment variables.');
     }
 
+    // Inicialização com a SDK v1beta para suporte aos modelos Gemini 3 Preview
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     // 2. Extração da última mensagem (User Message)
@@ -36,11 +37,11 @@ export default async function handler(req: Request) {
       history.shift(); // Remove qualquer mensagem do bot que esteja no topo do histórico
     }
 
-    // [TAREFA 1] Inicialização do Modelo (Usando -latest para evitar 404)
+    // [TAREFA 1] Inicialização do Modelo Gemini 3 Flash Preview com v1beta
     const model = genAI.getGenerativeModel({ 
-        model: 'gemini-1.5-flash-latest',
+        model: 'gemini-3-flash-preview',
         systemInstruction: SYSTEM_PROMPT
-    });
+    }, { apiVersion: 'v1beta' });
 
     // [LOG DE EMERGÊNCIA]
     console.log("PAYLOAD ENVIADO AO GEMINI:", JSON.stringify(history));
