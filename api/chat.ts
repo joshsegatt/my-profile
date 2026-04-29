@@ -20,44 +20,41 @@ export default async function handler(req: Request) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    // [LOGICA NUCLEAR] Limpeza Absoluta
-    let cleanHistory = (messages || []).map((m: any) => ({
-      role: m.role === 'assistant' || m.role === 'model' ? 'model' : 'user',
-      parts: [{ text: m.content || m.parts?.[0]?.text || "" }]
-    }));
+    // 2. Extração da última mensagem (User Message)
+    const userMessage = messages[messages.length - 1].content;
 
-    // Remove TUDO do início até encontrar a primeira mensagem de 'user'
-    const firstUserIndex = cleanHistory.findIndex((m: any) => m.role === 'user');
-    if (firstUserIndex === -1) {
-      cleanHistory = [];
-    } else {
-      cleanHistory = cleanHistory.slice(firstUserIndex);
+    // 3. Limpeza agressiva do histórico (O resto das mensagens)
+    const history = messages.slice(0, -1)
+      .map((m: any) => ({
+        role: (m.role === 'assistant' || m.role === 'model') ? 'model' : 'user',
+        parts: [{ text: m.content }]
+      }))
+      .filter((m: any) => m.parts[0].text && m.parts[0].text.trim() !== "");
+
+    // 4. REGRA DE OURO (CORREÇÃO DO ERRO):
+    while (history.length > 0 && history[0].role !== 'user') {
+      history.shift(); // Remove qualquer mensagem do bot que esteja no topo do histórico
     }
 
-    // Extrair a última mensagem para o sendMessageStream
-    const lastMessageObj = cleanHistory.pop();
-    const latestMessage = lastMessageObj?.parts[0]?.text || "";
-
-    // [TAREFA 1] Inicialização do Modelo com System Instruction
+    // [TAREFA 1] Inicialização do Modelo
     const model = genAI.getGenerativeModel({ 
         model: 'gemini-1.5-flash',
         systemInstruction: SYSTEM_PROMPT
     });
 
-    // [TAREFA 2] Log de Produção
-    console.log("FINAL HISTORY:", JSON.stringify(cleanHistory));
-    console.log("LATEST MESSAGE:", latestMessage);
+    // [LOG DE EMERGÊNCIA]
+    console.log("PAYLOAD ENVIADO AO GEMINI:", JSON.stringify(history));
 
     // Iniciar Chat
     const chat = model.startChat({
-      history: cleanHistory,
+      history: history,
       generationConfig: {
         maxOutputTokens: 1000,
         temperature: 0.8,
       },
     });
 
-    const result = await chat.sendMessageStream(latestMessage);
+    const result = await chat.sendMessageStream(userMessage);
 
     const stream = new ReadableStream({
       async start(controller) {
