@@ -20,23 +20,30 @@ export default async function handler(req: Request) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    const history = messages.slice(0, -1).map((msg: any) => ({
-      role: msg.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: msg.content }],
-    }));
+    const history = messages
+      .slice(0, -1)
+      .map((msg: any) => ({
+        role: msg.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: msg.content }],
+      }))
+      // Filter out leading model messages to comply with Gemini requirements
+      .filter((msg: any, index: number, array: any[]) => {
+        if (index === 0 && msg.role === 'model') return false;
+        return true;
+      });
 
     const latestMessage = messages[messages.length - 1].content;
 
     const model = genAI.getGenerativeModel({ 
         model: 'gemini-1.5-flash',
-        systemInstruction: { role: 'system', parts: [{ text: SYSTEM_PROMPT }] }
+        systemInstruction: SYSTEM_PROMPT
     });
 
     const chat = model.startChat({
       history,
       generationConfig: {
-        maxOutputTokens: 500,
-        temperature: 0.7,
+        maxOutputTokens: 1000,
+        temperature: 0.8,
       },
     });
 
