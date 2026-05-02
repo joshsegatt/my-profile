@@ -24,7 +24,8 @@
         "role": "AI-Powered Senior Developer"
     },
     "hero": {
-        "title": "Architecting High-Performance SaaS <br /> & <span class=\"highlight-pro\">AI Systems</span>.",
+        "title_line1": "AI-Driven SaaS Architecture",
+        "title_line2": "& LLM Orchestration.",
         "subhead": "Elite engineering for founders who demand scale, security, and extreme performance. From low-level code to high-conversion interfaces.",
         "cta": "Request Technical Assessment"
     },
@@ -180,6 +181,7 @@
             "labelguard": { "sub": "Automated Compliance SaaS", "roi1": "Reduced load time by 50%", "roi2": "Increased retention by 20%" },
             "batimove": { "sub": "Premium Swiss Logistics", "roi1": "Conversion rate +35%", "roi2": "Zero-latency UI" },
             "montecharge": { "sub": "Precision Vertical Logistics", "roi1": "Organic traffic +150%", "roi2": "Seamless booking flow" },
+            "cvletterai": { "sub": "Executive AI Studio", "roi1": "95% ATS Score", "roi2": "Elite UI/UX" },
             "segatt": { "sub": "Neural Utility Engine", "roi1": "Sub-10ms response", "roi2": "Enterprise scale" }
         }
     },

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ProjectTechRays } from './ProjectTechRays';
 import { useLanguage } from '../utils/i18n';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   title: string;
@@ -12,6 +16,7 @@ interface Project {
   link: string;
   year?: string;
   isInternal?: boolean;
+  isMaintenance?: boolean;
   businessROI?: string[];
 }
 
@@ -33,14 +38,25 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
         <div className="absolute inset-0 bg-gradient-to-t from-[#111210] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
         <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <motion.div 
-                animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="w-11 h-11 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.4)]"
-            >
-                <ArrowUpRight size={18} className="stroke-[2.5px]" />
-            </motion.div>
+            {project.isMaintenance ? (
+                <div className="bg-black/80 backdrop-blur-md px-4 py-2 border border-white/10 rounded-full">
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Em Manutenção</span>
+                </div>
+            ) : (
+                <motion.div 
+                    animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-11 h-11 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.4)]"
+                >
+                    <ArrowUpRight size={18} className="stroke-[2.5px]" />
+                </motion.div>
+            )}
         </div>
+        {project.isMaintenance && (
+            <div className="absolute top-0 right-0 bg-red-500/90 text-white text-[8px] font-black uppercase px-6 py-1 rotate-45 translate-x-[20px] translate-y-[10px] shadow-lg z-20">
+                Offline
+            </div>
+        )}
       </div>
 
       <div className="px-2.5 pb-2.5 pt-0.5 space-y-0 relative z-10">
@@ -92,7 +108,9 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
             onMouseLeave={() => setIsHovered(false)}
             className="w-full h-full"
         >
-            {project.isInternal ? (
+            {project.isMaintenance ? (
+                <div className={`${containerClasses} cursor-not-allowed grayscale-[0.5] opacity-80`}>{cardInner}</div>
+            ) : project.isInternal ? (
                 <Link to={project.link} className={containerClasses}>{cardInner}</Link>
             ) : (
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className={containerClasses}>{cardInner}</a>
@@ -102,16 +120,45 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
   );
 };
 
+
+
 const Projects: React.FC = () => {
   const { t } = useLanguage();
-  
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".project-card-gsap", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: ".projects-grid-gsap",
+          start: "top 85%",
+        }
+      });
+    }, projectsRef);
+    return () => ctx.revert();
+  }, []);
+
   const projects: Project[] = [
+    {
+      title: "CVLetterAI",
+      subtitle: t('projects.items.cvletterai.sub'),
+      image: "/projects/cvletterai.png",
+      link: "https://cvletterai.org",
+      year: "2026",
+      businessROI: [t('projects.items.cvletterai.roi1'), t('projects.items.cvletterai.roi2')]
+    },
     {
       title: "LabelGuardUK",
       subtitle: t('projects.items.labelguard.sub'),
       image: "/projects/labelguard-screenshot.png",
       link: "https://www.labelguarduk.co.uk",
       year: "2024",
+      isMaintenance: true,
       businessROI: [t('projects.items.labelguard.roi1'), t('projects.items.labelguard.roi2')]
     },
     {
@@ -159,9 +206,11 @@ const Projects: React.FC = () => {
             </h2>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        <div ref={projectsRef} className="projects-grid-gsap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           {projects.map((project, idx) => (
-            <ProjectCard key={idx} project={project} delay={idx * 0.1} />
+            <div key={idx} className="project-card-gsap">
+              <ProjectCard project={project} delay={0} />
+            </div>
           ))}
         </div>
       </div>

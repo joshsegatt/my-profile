@@ -6,7 +6,8 @@ import {
     CheckCircle2, Clock, DollarSign, Wallet, Star, Rocket, Mail, User
 } from 'lucide-react';
 import { submitInquiry } from '../utils/emailService';
-import OnboardingBackground from './ui/OnboardingBackground';
+import VisualBlueprint from './VisualBlueprint';
+import { useEffect } from 'react';
 
 type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -70,6 +71,26 @@ const Onboarding: React.FC = () => {
         email: ''
     });
 
+    // Contextual AI Nudge Logic
+    useEffect(() => {
+        if (step >= 5) return;
+        
+        const timer = setTimeout(() => {
+            const messages: Record<number, string> = {
+                1: "Parece que você está decidindo o tipo de projeto. Se quiser, posso te sugerir qual se encaixa melhor no seu modelo de negócio!",
+                4: "Decidir o orçamento é uma parte estratégica. Quer que eu te mostre como cada faixa de investimento impacta no tempo de entrega e escalabilidade?",
+            };
+            
+            if (messages[step]) {
+                window.dispatchEvent(new CustomEvent('nudge-ai', { 
+                    detail: { message: messages[step] } 
+                }));
+            }
+        }, 15000); // 15 seconds idle
+
+        return () => clearTimeout(timer);
+    }, [step, formData]);
+
     const nextStep = () => setStep(prev => (prev + 1) as Step);
     const prevStep = () => setStep(prev => (prev - 1) as Step);
 
@@ -106,15 +127,20 @@ const Onboarding: React.FC = () => {
     };
 
     return (
-        <section className="py-12 lg:py-24 relative min-h-[700px] flex flex-col items-center overflow-hidden">
-            <OnboardingBackground />
+        <section className="h-[calc(100vh-80px)] relative flex flex-col items-center justify-center overflow-hidden bg-transparent">
 
-            <div className="max-w-4xl mx-auto w-full relative z-10 px-6">
+
+            <div className="max-w-6xl mx-auto w-full relative z-10 px-6 flex flex-col lg:flex-row items-center lg:items-start gap-12">
+                
+                {/* Left Panel: Visual Blueprint (Desktop Only) */}
+                <VisualBlueprint data={formData} />
+
+                <div className="flex-1 flex flex-col items-center">
                 
                 {/* Senior Progress Header */}
                 {step < 6 && (
-                    <div className="mb-16 flex flex-col items-center">
-                        <div className="flex gap-2.5 mb-6 relative">
+                <div className="mb-6 lg:mb-10 flex flex-col items-center">
+                        <div className="flex gap-2.5 mb-4 relative">
                             {[1, 2, 3, 4, 5].map((s) => (
                                 <div 
                                     key={s}
@@ -160,17 +186,17 @@ const Onboarding: React.FC = () => {
                     </div>
                 )}
 
-                <div className="bg-[#050505]/60 backdrop-blur-3xl rounded-[48px] border border-white/10 p-8 lg:p-14 relative overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
+                <div className="bg-white/[0.02] backdrop-blur-3xl rounded-[32px] lg:rounded-[48px] border border-white/10 p-5 lg:p-10 relative overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)] w-full max-w-4xl">
                     <AnimatePresence mode="wait">
                         
                         {/* Step 1: Project Type */}
                         {step === 1 && (
-                            <motion.div key="step1" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+                            <motion.div key="step1" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-6" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
                                 <div className="text-center">
-                                    <h3 className="text-4xl lg:text-5xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step1.question')}</h3>
+                                    <h3 className="text-3xl lg:text-5xl font-black text-white mb-2 lg:mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step1.question')}</h3>
                                     <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step1.sub')}</p>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-5">
                                     {[
                                         { id: 'saas', icon: <Cpu />, label: t('onboarding.step1.saas'), desc: t('onboarding.step1.saas_desc') },
                                         { id: 'ai', icon: <Star />, label: t('onboarding.step1.ai'), desc: t('onboarding.step1.ai_desc') },
@@ -188,12 +214,12 @@ const Onboarding: React.FC = () => {
 
                         {/* Step 2: Goal */}
                         {step === 2 && (
-                            <motion.div key="step2" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+                            <motion.div key="step2" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-6" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
                                 <div className="text-center">
-                                    <h3 className="text-4xl lg:text-5xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step2.question')}</h3>
+                                    <h3 className="text-3xl lg:text-5xl font-black text-white mb-2 lg:mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step2.question')}</h3>
                                     <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step2.sub')}</p>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-5">
                                     {[
                                         { id: 'growth', icon: <Rocket />, label: t('onboarding.step2.growth'), desc: t('onboarding.step2.growth_desc') },
                                         { id: 'brand', icon: <Zap />, label: t('onboarding.step2.brand'), desc: t('onboarding.step2.brand_desc') },
@@ -212,7 +238,7 @@ const Onboarding: React.FC = () => {
 
                         {/* Step 3: Timeline */}
                         {step === 3 && (
-                            <motion.div key="step3" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+                            <motion.div key="step3" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-6" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
                                 <div className="text-center">
                                     <h3 className="text-4xl lg:text-5xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step3.question')}</h3>
                                     <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step3.sub')}</p>
@@ -233,7 +259,7 @@ const Onboarding: React.FC = () => {
 
                         {/* Step 4: Budget */}
                         {step === 4 && (
-                            <motion.div key="step4" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+                            <motion.div key="step4" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-6" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
                                 <div className="text-center">
                                     <h3 className="text-4xl lg:text-5xl font-black text-white mb-4 italic tracking-tight leading-[1.0] uppercase">{t('onboarding.step4.question')}</h3>
                                     <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px]">{t('onboarding.step4.sub')}</p>
@@ -252,7 +278,7 @@ const Onboarding: React.FC = () => {
 
                         {/* Step 5: Contact / Bifurcation */}
                         {step === 5 && (
-                            <motion.div key="step5" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-10" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+                            <motion.div key="step5" variants={containerVariants} initial="initial" animate="visible" exit="exit" className="space-y-6" transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
                                 {formData.budget === t('onboarding.step4.tier2') ? (
                                     <>
                                         <div className="text-center">
@@ -313,8 +339,9 @@ const Onboarding: React.FC = () => {
                     </AnimatePresence>
                 </div>
             </div>
-        </section>
-    );
+        </div>
+    </section>
+);
 };
 
 export default Onboarding;

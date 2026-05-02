@@ -1,71 +1,91 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLanguage } from '../utils/i18n';
+import Logo from './Logo';
 
 interface IntroProps {
-    onComplete: () => void;
+  onComplete: () => void;
 }
 
 const Intro: React.FC<IntroProps> = ({ onComplete }) => {
-    const [isFinished, setIsFinished] = React.useState(false);
-    const { t } = useLanguage();
+  const [progress, setProgress] = useState(0);
+  const [isExiting, setIsExiting] = useState(false);
 
-    React.useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsFinished(true);
-            setTimeout(onComplete, 800);
-        }, 3200);
-        return () => clearTimeout(timer);
-    }, [onComplete]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setIsExiting(true), 500);
+          setTimeout(onComplete, 1500);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 20);
 
-    return (
-        <AnimatePresence>
-            {!isFinished && (
-                <motion.div
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="fixed inset-0 z-[9999] bg-[#050505] flex items-center justify-center overflow-hidden"
-                >
-                    {/* ... (Atmospheric Depth & scanline omitted for brevity, keeping same) */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-                        {/* Particles kept here */}
-                    </div>
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 pointer-events-none bg-[length:100%_4px,3px_100%]" />
+    return () => clearInterval(timer);
+  }, [onComplete]);
 
-                    <div className="relative group text-center">
-                        <motion.h2
-                            initial={{ opacity: 0, letterSpacing: '0.8em', filter: 'blur(10px)' }}
-                            animate={{ opacity: 1, letterSpacing: '0.4em', filter: 'blur(0px)' }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
-                            className="text-[40px] md:text-[80px] font-black uppercase text-white selection:bg-brand-yellow tracking-[0.4em] relative z-20"
-                            style={{
-                                textShadow: `0 1px 0 #b38700, 0 2px 0 #997400, 0 3px 0 #806100, 0 4px 0 #664d00, 0 20px 40px rgba(0,0,0,0.6)`
-                            }}
-                        >
-                            {t('intro.name')}
-                        </motion.h2>
+  return (
+    <motion.div
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: isExiting ? 0 : 1 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+    >
+      <div className="relative flex flex-col items-center gap-12">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-yellow/5 rounded-full blur-[100px]" />
+          <div className="global-grid opacity-[0.03]" />
+        </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.8, duration: 0.8 }}
-                            className="mt-8 flex flex-col items-center gap-2"
-                        >
-                            <div className="flex gap-4 items-center">
-                                <div className="h-[1px] w-12 bg-white/10" />
-                                <span className="text-white/20 text-[10px] font-bold uppercase tracking-[0.5em] animate-pulse">
-                                    {t('intro.initializing')}
-                                </span>
-                                <div className="h-[1px] w-12 bg-white/10" />
-                            </div>
-                        </motion.div>
-                    </div>
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1.2, delay: 2.8 }} className="absolute inset-0 bg-white z-[100] pointer-events-none" />
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+        {/* Logo Section */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
+          <Logo variant="full" className="w-48 h-auto" />
+          <motion.div 
+            className="absolute -inset-4 border border-brand-yellow/20 rounded-full"
+            animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+
+        {/* Technical Data Stream */}
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex items-center gap-8">
+             <div className="flex flex-col items-end">
+                <span className="text-[10px] font-black tracking-[0.3em] text-white/20 uppercase">Core Status</span>
+                <span className="text-[10px] font-black tracking-[0.1em] text-brand-yellow italic">STABLE_SYSTEM</span>
+             </div>
+             <div className="h-8 w-[1px] bg-white/10" />
+             <div className="flex flex-col items-start">
+                <span className="text-[10px] font-black tracking-[0.3em] text-white/20 uppercase">Intelligence</span>
+                <span className="text-[10px] font-black tracking-[0.1em] text-brand-yellow italic">SYNCING_NODE_{progress}%</span>
+             </div>
+          </div>
+
+          {/* Progress Bar Container */}
+          <div className="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
+            <motion.div 
+              className="absolute inset-y-0 left-0 bg-brand-yellow shadow-[0_0_15px_rgba(255,193,7,0.5)]"
+              style={{ width: `${progress}%` }}
+              transition={{ ease: "linear" }}
+            />
+          </div>
+        </div>
+
+        {/* Footer Minimalist */}
+        <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 flex items-center gap-4">
+           <span className="text-[8px] font-black tracking-[0.5em] text-white/10 uppercase">Elite Protocol v1.7.8</span>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default Intro;

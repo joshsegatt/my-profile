@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../utils/i18n';
 import './Hero.css';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // --- Magnetic Button Component ---
 const MagneticButton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -93,30 +97,58 @@ const HeroVideo: React.FC = () => {
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const chars = titleRef.current?.querySelectorAll('.char-reveal');
+    if (chars) {
+      gsap.fromTo(chars, 
+        { y: 100, opacity: 0 }, 
+        { y: 0, opacity: 1, stagger: 0.03, duration: 0.8, ease: "power4.out" }
+      );
+    }
+  }, []);
 
   return (
     <section id="home-hero-section" className="hero-container">
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-8">
+        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-12">
           
-          {/* Left Column: Text Content (55%) */}
+          {/* Left Column: Text Content (60%) */}
           <div className="w-full lg:w-[55%] flex flex-col items-start text-left">
             
             {/* H1 Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="hero-title"
-              dangerouslySetInnerHTML={{ __html: t('hero.title') }}
-            />
+            <div className="hero-reveal-wrapper">
+              <h1 ref={titleRef} className="hero-title-reveal text-4xl md:text-5xl lg:text-[clamp(32px,4vw,68px)] font-black text-white leading-[1.15] tracking-tight uppercase mb-6">
+                {t('hero.title_line1').split(' ').map((word, wordIdx) => (
+                  <span key={`w1-${wordIdx}`} className="inline-block whitespace-nowrap">
+                    {word.split('').map((char, charIdx) => (
+                      <span key={`c1-${charIdx}`} className="inline-block char-reveal">{char}</span>
+                    ))}
+                    {/* Add space after word if not the last one */}
+                    {wordIdx < t('hero.title_line1').split(' ').length - 1 && '\u00A0'}
+                  </span>
+                ))}
+                <br />
+                <span className="text-brand-yellow">
+                  {t('hero.title_line2').split(' ').map((word, wordIdx) => (
+                    <span key={`w2-${wordIdx}`} className="inline-block whitespace-nowrap">
+                      {word.split('').map((char, charIdx) => (
+                        <span key={`c2-${charIdx}`} className="inline-block char-reveal">{char}</span>
+                      ))}
+                      {wordIdx < t('hero.title_line2').split(' ').length - 1 && '\u00A0'}
+                    </span>
+                  ))}
+                </span>
+              </h1>
+            </div>
 
             {/* Subhead */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="hero-subhead text-white/65 text-lg mb-10 leading-relaxed"
+              className="hero-subhead text-white/65 text-lg mb-8 leading-relaxed"
             >
               {t('hero.subhead')}
             </motion.p>
@@ -126,7 +158,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-6 mb-12"
+              className="flex flex-wrap items-center gap-6 mb-8"
             >
               {[
                 "Enterprise SaaS Dev",
@@ -149,7 +181,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
                 <Link 
-                  to="/onboarding" 
+                  to="/onboarding"
                   className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all"
                 >
                   {t('hero.cta')}
@@ -159,8 +191,8 @@ const Hero: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Mosaic Bento Grid (45%) */}
-          <div className="w-full lg:w-[45%]">
+          {/* Right Column: Mosaic Bento Grid (40%) */}
+          <div className="w-full lg:w-[40%]">
             <HeroMosaic />
           </div>
         </div>

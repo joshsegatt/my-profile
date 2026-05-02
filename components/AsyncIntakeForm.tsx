@@ -48,7 +48,7 @@ const AsyncIntakeForm: React.FC = () => {
     };
 
     return (
-        <section className="min-h-screen bg-[#050505] text-white py-24 flex items-center justify-center px-6 relative overflow-hidden">
+        <section className="min-h-screen text-white py-24 flex items-center justify-center px-6 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/[0.02] via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-yellow/[0.02] blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
@@ -120,17 +120,23 @@ const AsyncIntakeForm: React.FC = () => {
 
                                 <div className="space-y-2">
                                     <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Qual é o principal gargalo técnico hoje? *</label>
-                                    <select 
-                                        {...register("bottleneck")}
-                                        disabled={isSubmitting}
-                                        className={`w-full bg-[#0a0a0a] border ${errors.bottleneck ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium appearance-none cursor-pointer`}
-                                    >
-                                        <option value="" disabled hidden>Selecione um gargalo técnico...</option>
-                                        <option value="Necessito de integrar IA / Automação">Necessito de integrar IA / Automação</option>
-                                        <option value="Performance inaceitável / Tempo de carregamento">Performance inaceitável / Tempo de carregamento</option>
-                                        <option value="Refatoração de código / Arquitetura SaaS">Refatoração de código / Arquitetura SaaS</option>
-                                        <option value="Construir um MVP do zero">Construir um MVP do zero</option>
-                                    </select>
+                                    <div className="relative group">
+                                        <select 
+                                            {...register("bottleneck")}
+                                            disabled={isSubmitting}
+                                            style={{ colorScheme: 'dark' }}
+                                            className={`w-full bg-[#0a0a0a] border ${errors.bottleneck ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium appearance-none cursor-pointer pr-12`}
+                                        >
+                                            <option value="" disabled hidden className="bg-[#0a0a0a]">Selecione um gargalo técnico...</option>
+                                            <option value="Necessito de integrar IA / Automação" className="bg-[#0a0a0a]">Necessito de integrar IA / Automação</option>
+                                            <option value="Performance inaceitável / Tempo de carregamento" className="bg-[#0a0a0a]">Performance inaceitável / Tempo de carregamento</option>
+                                            <option value="Refatoração de código / Arquitetura SaaS" className="bg-[#0a0a0a]">Refatoração de código / Arquitetura SaaS</option>
+                                            <option value="Construir um MVP do zero" className="bg-[#0a0a0a]">Construir um MVP do zero</option>
+                                        </select>
+                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-brand-yellow transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                        </div>
+                                    </div>
                                     {errors.bottleneck && <p className="text-red-400 text-xs pl-2">{errors.bottleneck.message}</p>}
                                 </div>
 

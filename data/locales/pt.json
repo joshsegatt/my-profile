@@ -24,7 +24,8 @@
         "role": "Desenvolvedor Sênior impulsionado por IA"
     },
     "hero": {
-        "title": "Arquitetura de Sistemas SaaS <br /> e <span class=\"highlight-pro\">IA de Alta Performance</span>.",
+        "title_line1": "Arquitetura SaaS AI-Driven",
+        "title_line2": "& Orquestração de LLMs Profissionais.",
         "subhead": "Engenharia de elite para fundadores que exigem escala, segurança e performance extrema. Do código de baixo nível à interface de alta conversão.",
         "cta": "Solicitar Avaliação Técnica"
     },
@@ -185,6 +186,7 @@
             "labelguard": { "sub": "SaaS de Conformidade Automatizada", "roi1": "Tempo de carregamento reduzido em 50%", "roi2": "Retenção aumentada em 20%" },
             "batimove": { "sub": "Logística Suíça Premium", "roi1": "Taxa de conversão +35%", "roi2": "Interface de latência zero" },
             "montecharge": { "sub": "Logística Vertical de Precisão", "roi1": "Tráfego orgânico +150%", "roi2": "Fluxo de reservas fluido" },
+            "cvletterai": { "sub": "Estúdio Executivo de IA", "roi1": "95% de Pontuação ATS", "roi2": "UI/UX de Elite" },
             "segatt": { "sub": "Motor Utilitário Neural", "roi1": "Resposta sub-10ms", "roi2": "Escala empresarial" }
         }
     },

@@ -61,7 +61,7 @@ const About: React.FC = () => {
     ];
 
     return (
-        <section id="about" className="relative min-h-screen bg-transparent pt-28 lg:pt-36 pb-24 lg:pb-40">
+        <section id="about" className="relative min-h-screen bg-transparent pt-[160px] pb-24 lg:pb-40">
             <motion.div 
                 className="fixed top-0 left-0 right-0 h-1 bg-brand-yellow origin-left z-50"
                 style={{ scaleX }}
@@ -219,7 +219,7 @@ const About: React.FC = () => {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.location.href = '/onboard'}
+                        onClick={() => window.location.href = '/onboarding'}
                         className="bg-black text-white px-10 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] shadow-2xl relative z-10 hover:bg-zinc-900 transition-all active:scale-95"
                     >
                         {t('about.cta.button')}

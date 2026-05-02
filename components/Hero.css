@@ -5,7 +5,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding-top: 140px;
+  padding-top: 160px;
   padding-bottom: 80px;
   z-index: 1;
 }
@@ -33,60 +33,6 @@
 }
 
 /* Haptics & Pulsing UI */
-/* Elite CTA: Magnetic Obsidian System */
-.cta-button {
-  background-color: #FFC700;
-  color: #000000;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 0 0 rgba(255, 199, 0, 0);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-/* Premium Light Sweep (Shimmer) */
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: all 0.6s;
-  pointer-events: none;
-}
-
-.cta-button:hover::before {
-  left: 100%;
-}
-
-.cta-button:hover {
-  transform: translateY(-4px) scale(1.02);
-  background-color: #FFD600;
-  box-shadow: 
-    0 10px 40px rgba(255, 199, 0, 0.3),
-    0 0 20px rgba(255, 199, 0, 0.1);
-}
-
-.cta-button:active {
-  transform: translateY(-2px) scale(0.98);
-}
-
-/* Arrow Glide Animation */
-.cta-button .arrow-icon {
-  transition: transform 0.3s ease;
-}
-
-.cta-button:hover .arrow-icon {
-  transform: translateX(6px);
-}
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 30px rgba(255, 199, 0, 0.15); }
@@ -106,7 +52,7 @@
 @media (max-width: 1024px) {
   .hero-container {
     min-height: auto;
-    padding-top: 160px;
+    padding-top: 80px;
     padding-bottom: 80px;
   }
 }

@@ -21,6 +21,7 @@ import Intro from './components/Intro';
 import { PostHogProvider } from './components/analytics/PostHogProvider';
 import AsyncIntakeForm from './components/AsyncIntakeForm';
 import AIChat from './components/AIChat';
+import ContactModal from './components/ContactModal';
 
 // Helper component to scroll to top on route change
 const ScrollToTop = () => {
@@ -38,6 +39,13 @@ const AppContent: React.FC = () => {
   const location = useLocation();
   const [showIntro, setShowIntro] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenContact = () => setIsContactOpen(true);
+    window.addEventListener('open-contact', handleOpenContact);
+    return () => window.removeEventListener('open-contact', handleOpenContact);
+  }, []);
 
   useEffect(() => {
     const isInternalTools = window.location.pathname === '/tools';
@@ -54,6 +62,51 @@ const AppContent: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Advanced Schema Markup for Elite SEO
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Josh Segatt",
+      "jobTitle": "Elite Software Engineer & AI Architect",
+      "url": "https://joshsegatt.com",
+      "sameAs": [
+        "https://linkedin.com/in/joshsegatt",
+        "https://github.com/joshsegatt"
+      ],
+      "knowsAbout": ["AI Software Development", "SaaS Architecture", "B2B Scaling", "Premium Web Design"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Elite Engineering Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SaaS MVP Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Integration & Automation"
+            }
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   const handleIntroComplete = () => {
     sessionStorage.setItem('josh_intro_seen', 'true');
     setShowIntro(false);
@@ -61,7 +114,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-[#020202] text-white">
+    <div className="relative min-h-screen w-full bg-[#000000] text-white">
       <ScrollToTop />
       
       <AnimatePresence>
@@ -71,7 +124,7 @@ const AppContent: React.FC = () => {
       {/* Global Background System */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px]" />
-        <div className="global-grid opacity-20" />
+        <div className="global-grid opacity-[0.05]" />
         <div className="global-noise opacity-[0.03]" />
       </div>
 
@@ -82,14 +135,14 @@ const AppContent: React.FC = () => {
       >
         <Header />
 
-        <div className="flex-1 flex overflow-hidden pt-24 lg:pt-[104px]">
+        <div className="flex-1 flex overflow-hidden pt-20 lg:pt-[80px]">
           <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative">
             <motion.div
               key={location.pathname}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, ease: "linear" }}
-              className={`w-full min-h-screen pb-24 ${location.pathname === '/solutions' ? 'px-6 lg:px-12' : 'px-8 lg:px-16'}`}
+              className="w-full min-h-full px-6 lg:px-12"
             >
               <div className="max-w-[1440px] mx-auto">
                 <Routes location={location}>
@@ -108,16 +161,9 @@ const AppContent: React.FC = () => {
               <Footer />
             </motion.div>
           </main>
-
-          {location.pathname !== '/solutions' && (
-            <aside className="hidden xl:block w-[380px] h-full overflow-y-auto custom-scrollbar border-l border-white/5 bg-black/20 backdrop-blur-3xl">
-              <div className="p-10">
-                <Sidebar />
-              </div>
-            </aside>
-          )}
         </div>
         <AIChat />
+        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       </motion.div>
     </div>
   );

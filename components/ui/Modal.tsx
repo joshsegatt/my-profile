@@ -7,9 +7,10 @@ interface ModalProps {
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  maxWidth?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, maxWidth = "max-w-2xl" }) => {
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -48,10 +49,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-7xl max-h-full bg-[#080808] border border-white/10 rounded-[32px] shadow-[0_24px_120px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto"
+              className={`w-full ${maxWidth} max-h-full bg-[#050505] border border-white/[0.08] rounded-[32px] shadow-[0_24px_120px_rgba(0,0,0,1)] overflow-hidden flex flex-col pointer-events-auto relative`}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Background Glow */}
+              <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-brand-yellow/5 blur-[100px] pointer-events-none" />
+
               {/* Header */}
               <div className="flex items-center justify-between px-8 py-5 border-b border-white/5 bg-black/40">
                 <div className="flex items-center gap-3">

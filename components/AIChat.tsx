@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Bot, Loader2 } from 'lucide-react';
+import { X, Send, User, Bot, Loader2, Mic, MicOff } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 type Message = {
@@ -28,11 +28,11 @@ const CatIcon = ({ className = "" }: { className?: string }) => (
     </svg>
 );
 
-const OrganicTrigger = ({ setIsOpen, hasSidebar, isOpen }: { setIsOpen: (v: boolean) => void, hasSidebar: boolean, isOpen: boolean }) => {
+const OrganicTrigger = ({ setIsOpen, isOpen }: { setIsOpen: (v: boolean) => void, isOpen: boolean }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <div className={`fixed bottom-6 z-40 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] right-6 ${hasSidebar ? 'xl:right-[420px]' : 'xl:right-6'} ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`fixed bottom-6 z-40 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] right-6 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             
             {/* Subtle Outer Shadow (Default) */}
             <div 
@@ -149,7 +149,7 @@ const AIChat: React.FC = () => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
     
-    const hasSidebar = location.pathname !== '/solutions';
+    const hasSidebar = false;
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -158,6 +158,51 @@ const AIChat: React.FC = () => {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
+    // Contextual AI Nudge & Voice Interface Logic
+    const [isListening, setIsListening] = useState(false);
+    const recognitionRef = useRef<any>(null);
+
+    useEffect(() => {
+        const handleNudge = (e: any) => {
+            const { message } = e.detail;
+            setIsOpen(true);
+            setMessages(prev => [...prev, { role: 'assistant', content: message }]);
+        };
+
+        window.addEventListener('nudge-ai', handleNudge);
+
+        // Initialize Speech Recognition
+        const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            recognitionRef.current = new SpeechRecognition();
+            recognitionRef.current.continuous = false;
+            recognitionRef.current.interimResults = false;
+            recognitionRef.current.lang = 'pt-BR';
+
+            recognitionRef.current.onresult = (event: any) => {
+                const transcript = event.results[0][0].transcript;
+                setInput(transcript);
+                setIsListening(false);
+            };
+
+            recognitionRef.current.onerror = () => setIsListening(false);
+            recognitionRef.current.onend = () => setIsListening(false);
+        }
+
+        return () => window.removeEventListener('nudge-ai', handleNudge);
+    }, []);
+
+    const toggleListening = () => {
+        if (isListening) {
+            recognitionRef.current?.stop();
+            setIsListening(false);
+        } else {
+            setInput('');
+            recognitionRef.current?.start();
+            setIsListening(true);
+        }
+    };
 
     const handleSend = async (e?: React.FormEvent) => {
         if (e) e.preventDefault();
@@ -220,7 +265,7 @@ const AIChat: React.FC = () => {
     return (
         <>
             {/* Floating Trigger */}
-            <OrganicTrigger setIsOpen={setIsOpen} hasSidebar={hasSidebar} isOpen={isOpen} />
+            <OrganicTrigger setIsOpen={setIsOpen} isOpen={isOpen} />
 
             {/* Chat Panel */}
             <AnimatePresence>
@@ -230,7 +275,7 @@ const AIChat: React.FC = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 50, scale: 0.95 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className={`fixed bottom-6 z-[100] w-[380px] h-[600px] max-h-[85vh] flex flex-col bg-[#050505] border border-brand-yellow/20 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8),0_0_20px_rgba(255,215,0,0.05)] overflow-hidden right-6 ${hasSidebar ? 'xl:right-[420px]' : 'xl:right-6'}`}
+                        className={`fixed bottom-6 z-[100] w-[380px] h-[600px] max-h-[85vh] flex flex-col bg-[#050505] border border-brand-yellow/20 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8),0_0_20px_rgba(255,215,0,0.05)] overflow-hidden right-6`}
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between px-6 py-5 border-b border-brand-yellow/10 bg-black/40 backdrop-blur-md">
@@ -300,16 +345,25 @@ const AIChat: React.FC = () => {
                                     type="text"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
-                                    placeholder="Descreve o teu problema técnico..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-full py-3 pl-4 pr-12 text-xs text-white placeholder-white/30 focus:outline-none focus:border-brand-yellow/50 focus:ring-1 focus:ring-brand-yellow/50 transition-all font-mono"
+                                    placeholder={isListening ? "Ouvindo..." : "Descreve o teu problema..."}
+                                    className={`w-full bg-white/5 border ${isListening ? 'border-brand-yellow animate-pulse' : 'border-white/10'} rounded-full py-3 pl-4 pr-24 text-xs text-white placeholder-white/30 focus:outline-none focus:border-brand-yellow/50 transition-all font-mono`}
                                 />
-                                <button
-                                    type="submit"
-                                    disabled={!input.trim() || isTyping}
-                                    className="absolute right-2 flex items-center justify-center w-8 h-8 rounded-full bg-brand-yellow text-black disabled:opacity-50 disabled:bg-white/10 disabled:text-white/30 transition-all hover:scale-105 active:scale-95"
-                                >
-                                    <Send size={14} />
-                                </button>
+                                <div className="absolute right-2 flex items-center gap-1">
+                                    <button
+                                        type="button"
+                                        onClick={toggleListening}
+                                        className={`flex items-center justify-center w-8 h-8 rounded-full transition-all ${isListening ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-white/5 text-white/40 hover:text-brand-yellow'}`}
+                                    >
+                                        {isListening ? <MicOff size={14} /> : <Mic size={14} />}
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        disabled={!input.trim() || isTyping}
+                                        className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-yellow text-black disabled:opacity-50 disabled:bg-white/10 disabled:text-white/30 transition-all hover:scale-105 active:scale-95"
+                                    >
+                                        <Send size={14} />
+                                    </button>
+                                </div>
                             </form>
                             <div className="flex justify-center mt-3">
                                 <Link 

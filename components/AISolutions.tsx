@@ -3,10 +3,8 @@ import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
     Sparkles, Brain, Zap, Cpu, ArrowRight, 
-    ShieldCheck, Database, MessageSquareCode, 
-    Layers, FastForward, TrendingUp, Search,
-    ArrowDownRight, Activity, Terminal, Globe,
-    BarChart3, Fingerprint, Code2, Network
+    BarChart3, Fingerprint, Code2, Network, ChevronRight,
+    ShieldCheck, Database
 } from 'lucide-react';
 
 const AISolutions: React.FC = () => {
@@ -31,7 +29,7 @@ const AISolutions: React.FC = () => {
         <div className="min-h-screen bg-transparent text-white selection:bg-brand-yellow selection:text-black">
             
             {/* Elite Hero Section - More Compact */}
-            <section className="relative min-h-[75vh] flex items-center pt-12 pb-12 overflow-hidden">
+            <section className="relative min-h-[60vh] flex items-center pt-[160px] pb-12 overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         
@@ -68,11 +66,11 @@ const AISolutions: React.FC = () => {
                                 className="flex flex-col items-start"
                             >
                                 <Link
-                                    to="/intake"
-                                    className="group relative flex items-center gap-6 px-8 py-4 rounded-xl bg-brand-yellow text-black text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 shadow-[0_15px_40px_rgba(255,193,7,0.2)] overflow-hidden"
+                                    to="/onboarding"
+                                    className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all shadow-[0_15px_40px_rgba(255,193,7,0.2)]"
                                 >
                                     <span className="relative z-10 italic uppercase">Solicitar Avaliação</span>
-                                    <ArrowRight size={14} className="relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
+                                    <ChevronRight size={18} className="arrow-icon relative z-10" />
                                 </Link>
                             </motion.div>
                         </div>
@@ -82,7 +80,7 @@ const AISolutions: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.98, y: 30 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative lg:max-w-xl mx-auto"
+                            className="relative lg:max-w-sm mx-auto"
                         >
                             <div className="relative z-10 rounded-[24px] overflow-hidden border border-white/10 bg-black/40 shadow-2xl border-beam-neon skeleton-pulse aspect-video lg:aspect-auto">
                                 <img 
@@ -106,7 +104,7 @@ const AISolutions: React.FC = () => {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative lg:max-w-md mx-auto order-2 lg:order-1"
+                        className="relative lg:max-w-sm mx-auto order-2 lg:order-1"
                     >
                         <div className="relative z-10 rounded-[24px] overflow-hidden border border-white/5 bg-[#0A0A0A] shadow-xl border-beam-neon skeleton-pulse aspect-video lg:aspect-auto">
                             <img 
@@ -196,15 +194,19 @@ const AISolutions: React.FC = () => {
 
             {/* Investment Section - Compact Conversion */}
             <section className="container mx-auto px-6 pb-24">
-                <div className="max-w-4xl mx-auto rounded-[32px] p-10 lg:p-16 relative overflow-hidden text-center bg-white/[0.01] border border-white/5 border-beam-neon">
+                <div className="max-w-3xl mx-auto rounded-[32px] p-8 lg:p-12 relative overflow-hidden text-center bg-white/[0.01] border border-white/5 border-beam-neon">
                     <div className="relative z-10 space-y-8">
                         <div className="space-y-3">
                             <h2 className="text-2xl lg:text-5xl font-black italic tracking-tighter leading-[0.9]">Não é um custo. <br/><span className="text-brand-yellow">É a sua vantagem.</span></h2>
                             <p className="text-white/30 text-[8px] font-bold uppercase tracking-[0.4em]">Investment Profile: High-Tier B2B Strategy</p>
                         </div>
                         <div className="flex flex-col items-center">
-                            <Link to="/intake" className="group relative px-8 py-4 rounded-xl bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-brand-yellow hover:scale-105 active:scale-95 shadow-xl overflow-hidden">
+                            <Link 
+                                to="/onboarding" 
+                                className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all shadow-xl"
+                            >
                                 <span className="relative z-10 italic uppercase">Technical Audit Gratuita</span>
+                                <ChevronRight size={18} className="arrow-icon relative z-10" />
                             </Link>
                         </div>
                     </div>

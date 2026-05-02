@@ -9,7 +9,11 @@ const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
     </svg>
 );
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+    hideAbout?: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ hideAbout = false }) => {
     const { t } = useLanguage();
     const [formData, setFormData] = React.useState({ name: '', email: '', message: '' });
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -37,26 +41,27 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col gap-10">
-            {/* About Me Section */}
-            <section>
-                <div className="flex items-center gap-2 mb-5 text-brand-yellow">
-                    <User size={18} className="stroke-[2.5px]" />
-                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em]">{t('sidebar.about_title')}</h3>
-                </div>
-                <div className="space-y-4">
-                    <p className="text-brand-textSecondary text-[13px] leading-relaxed font-medium">
-                        {t('sidebar.about_desc')}
-                    </p>
-                    <div className="flex flex-wrap gap-2 pt-1">
-                        {['React', 'Next.js', 'Typescript', 'AI Workflows', 'Node.js'].map(tech => (
-                            <span key={tech} className="px-2.5 py-1 bg-white/[0.03] border border-white/10 rounded-md text-[9px] font-bold text-brand-textTertiary uppercase tracking-wider group hover:border-brand-yellow/30 hover:text-brand-textPrimary transition-all duration-300">
-                                {tech}
-                            </span>
-                        ))}
+        <div className={`flex flex-col ${hideAbout ? 'gap-8' : 'gap-10'}`}>
+            {!hideAbout && (
+                <section>
+                    <div className="flex items-center gap-2 mb-5 text-brand-yellow">
+                        <User size={18} className="stroke-[2.5px]" />
+                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em]">{t('sidebar.about_title')}</h3>
                     </div>
-                </div>
-            </section>
+                    <div className="space-y-4">
+                        <p className="text-brand-textSecondary text-[13px] leading-relaxed font-medium">
+                            {t('sidebar.about_desc')}
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {['React', 'Next.js', 'Typescript', 'AI Workflows', 'Node.js'].map(tech => (
+                                <span key={tech} className="px-2.5 py-1 bg-white/[0.03] border border-white/10 rounded-md text-[9px] font-bold text-brand-textTertiary uppercase tracking-wider group hover:border-brand-yellow/30 hover:text-brand-textPrimary transition-all duration-300">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Connect Section */}
             <section>

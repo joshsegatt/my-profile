@@ -24,7 +24,8 @@
         "role": "Développeur Senior Propulsé par l'IA"
     },
     "hero": {
-        "title": "Architecture de Systèmes SaaS <br /> et <span class=\"highlight-pro\">IA à Haute Performance</span>.",
+        "title_line1": "Architecture SaaS AI-Driven",
+        "title_line2": "& Orchestration de LLMs Elite.",
         "subhead": "Ingénierie d'élite pour les fondateurs exigeant évolutivité, sécurité et performances extrêmes. Du code de bas niveau à l'interface à haute conversion.",
         "cta": "Demander une Évaluation Technique"
     },
@@ -185,6 +186,7 @@
             "labelguard": { "sub": "SaaS de Conformité Automatisé", "roi1": "Temps de chargement réduit de 50%", "roi2": "Rétention augmentée de 20%" },
             "batimove": { "sub": "Logistique Suisse Premium", "roi1": "Taux de conversion +35%", "roi2": "Interface à latence zéro" },
             "montecharge": { "sub": "Logistique Verticale de Précision", "roi1": "Trafic organique +150%", "roi2": "Flux de réservation fluide" },
+            "cvletterai": { "sub": "Studio IA Exécutif", "roi1": "Score ATS de 95%", "roi2": "UI/UX d'Élite" },
             "segatt": { "sub": "Moteur Utilitaire Neural", "roi1": "Réponse sub-10ms", "roi2": "Échelle entreprise" }
         }
     },
