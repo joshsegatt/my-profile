@@ -94,7 +94,7 @@ const AppContent: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#000000] text-white">
+    <div className="relative min-h-screen w-full bg-transparent text-white">
       <ScrollToTop />
 
       {/* Global Split Background System (55% Orange / 45% White like Home Hero) */}

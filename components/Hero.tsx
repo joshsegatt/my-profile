@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <section className="relative h-[100dvh] min-h-[800px] w-full overflow-hidden bg-black">
+      <section className="relative h-[100dvh] min-h-[800px] w-full overflow-hidden bg-transparent">
         {/* CSS Background Split */}
         <div className="absolute inset-0 flex">
           {/* Approximate orange from the generated image */}
