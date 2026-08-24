@@ -89,7 +89,7 @@ const AISolutions: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="text-white selection:bg-[#FF5A00] selection:text-white h-[calc(100vh-125px)] max-h-[900px] flex flex-col justify-between overflow-hidden pt-4 pb-3">
+    <div className="text-white selection:bg-[#FF5A00] selection:text-white min-h-full lg:h-[calc(100vh-125px)] lg:max-h-[900px] flex flex-col justify-between pt-2 pb-12 lg:pb-3">
       
       {/* ── Interactive Full-Height Hover Mosaic ── */}
       <div className="flex-1 flex flex-col lg:flex-row gap-3 min-h-0 w-full">

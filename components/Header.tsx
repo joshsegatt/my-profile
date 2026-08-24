@@ -26,22 +26,21 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-6 pt-5 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 sm:px-6 pt-3 sm:pt-5 pointer-events-none">
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto w-full max-w-7xl flex items-center justify-between px-6 py-4 transition-all duration-500 bg-transparent border-transparent"
+          className="pointer-events-auto w-full max-w-7xl flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-4 transition-all duration-500 bg-transparent border-transparent"
         >
           {/* Logo — Josh Segatt (Segatt is black on all pages over the orange split) */}
           <Link
             to="/"
             className="shrink-0 flex items-center overflow-hidden group"
           >
-            <div className="flex items-baseline gap-0 text-white font-black tracking-tight select-none">
-              <span className="text-[18px]">Josh</span>
-              <span className="inline-block w-[0.3em]"></span>
-              <span className="text-[18px] text-black">
+            <div className="flex items-baseline gap-0.5 text-white font-black tracking-tight select-none drop-shadow-sm">
+              <span className="text-[17px] sm:text-[18px]">Josh</span>
+              <span className="text-[17px] sm:text-[18px] text-black font-black">
                 Segatt
               </span>
             </div>
@@ -93,9 +92,10 @@ const Header: React.FC = () => {
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/8 text-white/70 hover:text-white transition-colors"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-black/40 backdrop-blur-md border border-white/15 text-white hover:bg-black/60 transition-all shadow-md active:scale-95"
+              aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </motion.header>

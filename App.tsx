@@ -107,14 +107,14 @@ const AppContent: React.FC = () => {
       <div className="relative z-10 flex flex-col h-screen w-full overflow-hidden">
         <Header />
 
-        <div className={`flex-1 flex overflow-hidden ${isHome ? 'pt-0' : 'pt-24 lg:pt-[104px]'}`}>
+        <div className={`flex-1 flex overflow-hidden ${isHome ? 'pt-0' : 'pt-16 sm:pt-20 lg:pt-[96px]'}`}>
           <main
             id="main-scroll-area"
             className={`flex-1 relative ${
-              isFixedHeroPage ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'
+              isHome ? 'overflow-hidden' : 'overflow-y-auto lg:overflow-hidden custom-scrollbar'
             }`}
           >
-            <div className={`w-full ${isHome ? 'h-full px-0' : isFixedHeroPage ? 'h-full px-6 lg:px-12 max-w-[1440px] mx-auto' : 'min-h-full px-6 lg:px-12 max-w-[1440px] mx-auto'}`}>
+            <div className={`w-full ${isHome ? 'h-full px-0' : 'min-h-full lg:h-full px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto'}`}>
               <Routes location={location}>
                 <Route path="/" element={<Hero />} />
                 <Route path="/about" element={<About />} />

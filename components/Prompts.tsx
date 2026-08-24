@@ -270,13 +270,13 @@ const Prompts: React.FC = () => {
   };
 
   return (
-    <div className="text-white selection:bg-[#FF5A00] selection:text-white h-full flex flex-col justify-center items-center overflow-hidden py-2">
+    <div className="text-white selection:bg-[#FF5A00] selection:text-white min-h-full lg:h-full flex flex-col justify-start lg:justify-center items-center py-4 lg:py-2">
       
       {/* ── Main Studio Split View (Centered, Balanced Proportions) ── */}
-      <div className="w-full max-w-5xl h-[570px] max-h-[85vh] flex flex-col lg:flex-row gap-4">
+      <div className="w-full max-w-5xl h-auto lg:h-[570px] lg:max-h-[85vh] flex flex-col lg:flex-row gap-4 pb-12 lg:pb-0">
         
         {/* ── Left Pane: Studio Controls & Input ── */}
-        <div className="lg:w-[46%] h-full flex flex-col justify-between p-5 sm:p-6 rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 relative overflow-hidden">
+        <div className="w-full lg:w-[46%] h-auto lg:h-full flex flex-col justify-between p-5 sm:p-6 rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 relative overflow-hidden">
           
           {/* Subtle background ambient orange aura */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-[#FF5A00]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
@@ -427,7 +427,7 @@ const Prompts: React.FC = () => {
         </div>
 
         {/* ── Right Pane: Claude 3.7 / GPT Canvas Artifact Spec Window ── */}
-        <div className="lg:w-[54%] h-full flex flex-col rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 overflow-hidden relative border-beam-orange">
+        <div className="w-full lg:w-[54%] min-h-[420px] lg:h-full flex flex-col rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 overflow-hidden relative border-beam-orange">
           
           {/* Canvas Window Header Bar */}
           <div className="px-5 py-3.5 bg-white/[0.03] border-b border-white/8 flex items-center justify-between shrink-0">

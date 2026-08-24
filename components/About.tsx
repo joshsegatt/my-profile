@@ -28,7 +28,7 @@ const About: React.FC = () => {
     <div
       itemScope
       itemType="https://schema.org/Person"
-      className="text-white selection:bg-[#FF5A00] selection:text-white h-full flex flex-col justify-center items-center overflow-hidden py-2"
+      className="text-white selection:bg-[#FF5A00] selection:text-white min-h-full lg:h-full flex flex-col justify-start lg:justify-center items-center py-4 lg:py-2"
     >
       {/* Hidden SEO Microdata */}
       <meta itemProp="name" content="Josh Segatt" />
@@ -36,7 +36,7 @@ const About: React.FC = () => {
       <meta itemProp="address" content="London, United Kingdom" />
 
       {/* ── Main Compact Executive Cards (Centered, Balanced Proportions) ── */}
-      <div className="w-full max-w-5xl h-[560px] max-h-[85vh] grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <div className="w-full max-w-5xl h-auto lg:h-[560px] lg:max-h-[85vh] grid grid-cols-1 lg:grid-cols-12 gap-4 pb-12 lg:pb-0">
         
         {/* ── Left Column (7 cols): Identity & Direct Client Offer ── */}
         <div className="lg:col-span-7 h-full flex flex-col justify-between p-7 sm:p-9 rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 relative overflow-hidden">
