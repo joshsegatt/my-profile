@@ -27,7 +27,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
 
     // 2. Detect browser language
-    const browserLang = navigator.language.split('-')[0] as Locale;
+    const browserLang = "en" as Locale;
     if (dictionaries[browserLang]) {
       setLocale(browserLang);
     } else {

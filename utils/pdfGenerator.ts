@@ -18,7 +18,7 @@ export const generateProjectBrief = (data: Record<string, any>, title: string = 
     y += 15;
 
     // Separator line
-    doc.setDrawColor(255, 193, 7); // Brand Yellow #FFC107
+    doc.setDrawColor(255, 90, 0); // Brand Orange #FF5A00
     doc.setLineWidth(1.5);
     doc.line(margin, y, 190, y);
     y += 20;

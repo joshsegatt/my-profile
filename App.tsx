@@ -14,8 +14,6 @@ import ProjectLab from './components/ProjectLab';
 import Sidebar from './components/Sidebar';
 import Onboarding from './components/Onboarding';
 import Tools from './components/Tools';
-import GamerOptimizer from './components/GamerOptimizer';
-import Wallpapers from './components/Wallpapers';
 import Prompts from '@/components/Prompts';
 import Intro from './components/Intro';
 import { PostHogProvider } from './components/analytics/PostHogProvider';
@@ -38,28 +36,16 @@ const ScrollToTop = () => {
 const AppContent: React.FC = () => {
   const location = useLocation();
   const [showIntro, setShowIntro] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const isHome = location.pathname === '/' || location.pathname === '';
+  const isFixedHeroPage = isHome || location.pathname === '/solutions' || location.pathname === '/prompts' || location.pathname === '/about';
 
   useEffect(() => {
     const handleOpenContact = () => setIsContactOpen(true);
     window.addEventListener('open-contact', handleOpenContact);
     return () => window.removeEventListener('open-contact', handleOpenContact);
-  }, []);
-
-  useEffect(() => {
-    const isInternalTools = window.location.pathname === '/tools';
-    const introSeen = sessionStorage.getItem('josh_intro_seen');
-    
-    if (isInternalTools) {
-      sessionStorage.setItem('josh_intro_seen', 'true');
-      setIsReady(true);
-      setShowIntro(false);
-    } else if (!introSeen) {
-      setShowIntro(true);
-    } else {
-      setIsReady(true);
-    }
   }, []);
 
   useEffect(() => {
@@ -107,64 +93,46 @@ const AppContent: React.FC = () => {
     };
   }, []);
 
-  const handleIntroComplete = () => {
-    sessionStorage.setItem('josh_intro_seen', 'true');
-    setShowIntro(false);
-    setIsReady(true);
-  };
-
   return (
     <div className="relative min-h-screen w-full bg-[#000000] text-white">
       <ScrollToTop />
-      
-      <AnimatePresence>
-        {showIntro && <Intro onComplete={handleIntroComplete} />}
-      </AnimatePresence>
 
-      {/* Global Background System */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px]" />
-        <div className="global-grid opacity-[0.05]" />
-        <div className="global-noise opacity-[0.03]" />
+      {/* Global Split Background System (55% Orange / 45% White like Home Hero) */}
+      <div className="fixed inset-0 z-0 flex pointer-events-none overflow-hidden">
+        <div className="w-[55%] h-full bg-[#d64700]" />
+        <div className="w-[45%] h-full bg-white" />
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
-      <motion.div 
-        initial={false}
-        animate={{ opacity: isReady ? 1 : 0 }}
-        className="relative z-10 flex flex-col h-screen w-full overflow-hidden"
-      >
+      <div className="relative z-10 flex flex-col h-screen w-full overflow-hidden">
         <Header />
 
-        <div className="flex-1 flex overflow-hidden pt-20 lg:pt-[80px]">
-          <main id="main-scroll-area" className="flex-1 overflow-y-auto custom-scrollbar relative">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.15, ease: "linear" }}
-              className="w-full min-h-full px-6 lg:px-12"
-            >
-              <div className="max-w-[1440px] mx-auto">
-                <Routes location={location}>
-                  <Route path="/" element={<div><Hero /><Projects /><QualificationSection /></div>} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/tools" element={<Tools />} />
-                  <Route path="/wallpapers" element={<Wallpapers />} />
-                  <Route path="/prompts" element={<Prompts />} />
-                  <Route path="/gamer" element={<GamerOptimizer />} />
-                  <Route path="/solutions" element={<AISolutions />} />
-                  <Route path="/onboarding" element={<Onboarding />} />
-                  <Route path="/intake" element={<AsyncIntakeForm />} />
-                  <Route path="/lab" element={<ProjectLab />} />
-                </Routes>
-              </div>
-              <Footer />
-            </motion.div>
+        <div className={`flex-1 flex overflow-hidden ${isHome ? 'pt-0' : 'pt-24 lg:pt-[104px]'}`}>
+          <main
+            id="main-scroll-area"
+            className={`flex-1 relative ${
+              isFixedHeroPage ? 'overflow-hidden' : 'overflow-y-auto custom-scrollbar'
+            }`}
+          >
+            <div className={`w-full ${isHome ? 'h-full px-0' : isFixedHeroPage ? 'h-full px-6 lg:px-12 max-w-[1440px] mx-auto' : 'min-h-full px-6 lg:px-12 max-w-[1440px] mx-auto'}`}>
+              <Routes location={location}>
+                <Route path="/" element={<Hero />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/tools" element={<Tools />} />
+                <Route path="/prompts" element={<Prompts />} />
+                <Route path="/solutions" element={<AISolutions />} />
+                <Route path="/onboarding" element={<Onboarding />} />
+                <Route path="/intake" element={<AsyncIntakeForm />} />
+                <Route path="/lab" element={<ProjectLab />} />
+                <Route path="*" element={<Hero />} />
+              </Routes>
+            </div>
+            {!isFixedHeroPage && <Footer />}
           </main>
         </div>
         <AIChat />
         <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-      </motion.div>
+      </div>
     </div>
   );
 };

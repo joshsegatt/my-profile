@@ -80,7 +80,7 @@ const QualificationSection: React.FC = () => {
                             >
                                 {ideal.map((text, idx) => (
                                     <motion.li key={idx} variants={itemVariants} className="flex items-start gap-5 group/item">
-                                        <div className="mt-2 min-w-[6px] w-[6px] h-[6px] bg-brand-yellow shadow-[0_0_12px_rgba(255,199,0,1)] rounded-full group-hover/item:scale-150 transition-transform duration-300" />
+                                        <div className="mt-2 min-w-[6px] w-[6px] h-[6px] bg-brand-yellow shadow-[0_0_12px_rgba(255, 90, 0,1)] rounded-full group-hover/item:scale-150 transition-transform duration-300" />
                                         <span className="text-white/70 font-bold text-[13px] leading-relaxed group-hover/item:text-white transition-colors duration-300">
                                             {text}
                                         </span>

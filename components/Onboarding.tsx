@@ -77,8 +77,8 @@ const Onboarding: React.FC = () => {
         
         const timer = setTimeout(() => {
             const messages: Record<number, string> = {
-                1: "Parece que você está decidindo o tipo de projeto. Se quiser, posso te sugerir qual se encaixa melhor no seu modelo de negócio!",
-                4: "Decidir o orçamento é uma parte estratégica. Quer que eu te mostre como cada faixa de investimento impacta no tempo de entrega e escalabilidade?",
+                1: "It looks like you are deciding on the project type. If you want, I can suggest which one fits your business model best!",
+                4: "Setting the budget is a strategic part. Do you want me to show you how each investment bracket impacts delivery time and scalability?",
             };
             
             if (messages[step]) {
@@ -166,7 +166,7 @@ const Onboarding: React.FC = () => {
                         
                         <div className="flex items-center gap-3 overflow-hidden h-6">
                             <h2 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.4em]">
-                                PASSO
+                                STEP
                             </h2>
                             <AnimatePresence mode="wait">
                                 <motion.span 
@@ -180,7 +180,7 @@ const Onboarding: React.FC = () => {
                                 </motion.span>
                             </AnimatePresence>
                             <h2 className="text-white/30 font-bold text-[10px] uppercase tracking-[0.4em]">
-                                DE 05 DO ONBOARDING
+                                OF 05
                             </h2>
                         </div>
                     </div>
@@ -232,7 +232,7 @@ const Onboarding: React.FC = () => {
                                         </HapticCard>
                                     ))}
                                 </div>
-                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Retornar</button>
+                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Go Back</button>
                             </motion.div>
                         )}
 
@@ -253,7 +253,7 @@ const Onboarding: React.FC = () => {
                                         <motion.button key={time.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => { setFormData({ ...formData, timeline: time.label }); nextStep(); }} className="p-8 bg-white/[0.03] border border-white/10 rounded-3xl hover:border-brand-yellow/40 hover:bg-white/[0.08] transition-all text-center text-white font-black uppercase tracking-widest text-sm">{time.label}</motion.button>
                                     ))}
                                 </div>
-                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Retornar</button>
+                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Go Back</button>
                             </motion.div>
                         )}
 
@@ -272,7 +272,7 @@ const Onboarding: React.FC = () => {
                                         <motion.button key={budget.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => { setFormData({ ...formData, budget: budget.label }); nextStep(); }} className="p-8 bg-white/[0.03] border border-white/10 rounded-3xl hover:border-brand-yellow/40 hover:bg-white/[0.08] transition-all text-center text-white font-black uppercase tracking-widest text-sm">{budget.label}</motion.button>
                                     ))}
                                 </div>
-                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Retornar</button>
+                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Go Back</button>
                             </motion.div>
                         )}
 
@@ -322,7 +322,7 @@ const Onboarding: React.FC = () => {
                                         </div>
                                     </>
                                 )}
-                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Retornar</button>
+                                <button onClick={prevStep} className="flex items-center gap-2 text-white/20 hover:text-white transition-all mx-auto text-[10px] font-black uppercase tracking-[0.3em]"><ArrowLeft size={14} /> Go Back</button>
                             </motion.div>
                         )}
 

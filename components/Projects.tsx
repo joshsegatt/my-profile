@@ -1,13 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ProjectTechRays } from './ProjectTechRays';
 import { useLanguage } from '../utils/i18n';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   title: string;
@@ -40,13 +36,13 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             {project.isMaintenance ? (
                 <div className="bg-black/80 backdrop-blur-md px-4 py-2 border border-white/10 rounded-full">
-                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Em Manutenção</span>
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Under Maintenance</span>
                 </div>
             ) : (
                 <motion.div 
                     animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-11 h-11 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.4)]"
+                    className="w-11 h-11 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,90,0,0.4)]"
                 >
                     <ArrowUpRight size={18} className="stroke-[2.5px]" />
                 </motion.div>
@@ -124,24 +120,6 @@ const ProjectCard: React.FC<{ project: Project; delay: number }> = ({ project, d
 
 const Projects: React.FC = () => {
   const { t } = useLanguage();
-  const projectsRef = useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".project-card-gsap", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: ".projects-grid-gsap",
-          start: "top 85%",
-        }
-      });
-    }, projectsRef);
-    return () => ctx.revert();
-  }, []);
 
   const projects: Project[] = [
     {
@@ -206,10 +184,10 @@ const Projects: React.FC = () => {
             </h2>
         </header>
 
-        <div ref={projectsRef} className="projects-grid-gsap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card-gsap">
-              <ProjectCard project={project} delay={0} />
+            <div key={idx}>
+              <ProjectCard project={project} delay={idx * 0.05} />
             </div>
           ))}
         </div>

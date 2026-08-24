@@ -1,226 +1,281 @@
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-    Sparkles, Brain, Zap, Cpu, ArrowRight, 
-    BarChart3, Fingerprint, Code2, Network, ChevronRight,
-    ShieldCheck, Database
-} from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Sparkles, ExternalLink, ShieldAlert } from 'lucide-react';
+import { QuickQuoteModal } from './QuickQuoteModal';
+
+interface ProjectItem {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  image: string;
+  link: string;
+  year: string;
+  badge: string;
+  isInternal?: boolean;
+  isMaintenance?: boolean;
+  tags: string[];
+}
+
+const projectList: ProjectItem[] = [
+  {
+    id: 'cvletterai',
+    number: '01',
+    title: 'CVLetterAI',
+    subtitle: 'Executive AI Studio',
+    desc: 'Autonomous AI resume & cover letter generation platform with 95% ATS accuracy and sub-second generation.',
+    image: '/projects/cvletterai.png',
+    link: 'https://cvletterai.org',
+    year: '2026',
+    badge: 'Live SaaS',
+    tags: ['AI Engine', 'SaaS', 'React', 'Tailwind'],
+  },
+  {
+    id: 'batimove',
+    number: '02',
+    title: 'Batimove Sarl',
+    subtitle: 'Premium Swiss Logistics',
+    desc: 'High-conversion corporate digital experience for Geneva logistics leader with dynamic estimation engine.',
+    image: '/projects/batimove-screenshot.png',
+    link: 'https://www.batimove.ch',
+    year: '2025',
+    badge: 'Client Production',
+    tags: ['Web Experience', 'UI/UX', 'SEO', 'React'],
+  },
+  {
+    id: 'montecharge',
+    number: '03',
+    title: 'Monte Charge',
+    subtitle: 'Precision Vertical Logistics',
+    desc: 'Interactive booking and fleet rental interface with automated scheduling, instant quotes, and zero latency.',
+    image: '/mokupmontecharge.png',
+    link: 'https://locationmontecharge.ch',
+    year: '2026',
+    badge: 'Booking Engine',
+    tags: ['Custom Web App', 'Booking Flow', 'React'],
+  },
+  {
+    id: 'labelguard',
+    number: '04',
+    title: 'LabelGuardUK',
+    subtitle: 'Automated Compliance SaaS',
+    desc: 'B2B cloud compliance platform verifying product packaging regulations through automated document parsing.',
+    image: '/projects/labelguard-screenshot.png',
+    link: 'https://www.labelguarduk.co.uk',
+    year: '2024',
+    badge: 'Maintenance',
+    isMaintenance: true,
+    tags: ['Compliance', 'Node.js', 'AWS Cloud'],
+  },
+  {
+    id: 'segatt-tools',
+    number: '05',
+    title: 'Segatt Tools Suite',
+    subtitle: 'Neural Utility Engine',
+    desc: 'Proprietary performance tuning & latency sniper utilities designed for Windows kernel-level responsiveness.',
+    image: '/projects/segatt-v177-dashboard.png',
+    link: '/tools',
+    year: '2026',
+    badge: 'Internal Node',
+    isInternal: true,
+    tags: ['System Optimizer', 'TypeScript', 'React'],
+  },
+];
 
 const AISolutions: React.FC = () => {
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-        }
-    };
+  const [activeHoverId, setActiveHoverId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const cardVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
-        }
-    };
+  return (
+    <div className="text-white selection:bg-[#FF5A00] selection:text-white h-[calc(100vh-125px)] max-h-[900px] flex flex-col justify-between overflow-hidden pt-4 pb-3">
+      
+      {/* ── Interactive Full-Height Hover Mosaic ── */}
+      <div className="flex-1 flex flex-col lg:flex-row gap-3 min-h-0 w-full">
+        {projectList.map((project) => {
+          const isHovered = activeHoverId === project.id;
+          const isAnyHovered = activeHoverId !== null;
+          const isDimmed = isAnyHovered && !isHovered;
 
-    return (
-        <div className="min-h-screen bg-transparent text-white selection:bg-brand-yellow selection:text-black">
-            
-            {/* Elite Hero Section - More Compact */}
-            <section className="relative min-h-[60vh] flex items-center pt-[160px] pb-12 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        
-                        {/* Left Column: Strategic Copy */}
-                        <div className="text-left space-y-6 lg:max-w-xl">
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                <h1 className="text-4xl lg:text-5xl font-black tracking-[-0.05em] leading-[0.9] italic">
-                                    <span className="block mb-2">A IA não vai substituir</span>
-                                    <span className="text-gradient-gold">o seu negócio.</span>
-                                    <span className="block text-xl lg:text-3xl mt-4 opacity-80 not-italic tracking-tighter">
-                                        Um concorrente usando a <br className="hidden lg:block"/>minha arquitetura vai.
-                                    </span>
-                                </h1>
-                            </motion.div>
+          const panelContent = (
+            <div
+              className={`relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between p-5 sm:p-6 ${
+                isHovered
+                  ? 'border border-[#FF5A00] shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_30px_rgba(255,90,0,0.3)] bg-[#0A0A0D]/95'
+                  : 'border border-black/30 bg-black/40 shadow-xl shadow-black/20 hover:border-[#FF5A00]/40'
+              } ${isDimmed ? 'opacity-35 grayscale-[0.6] scale-[0.99]' : 'opacity-100'}`}
+            >
+              {/* Background Image with Zoom & Dark Gradient */}
+              <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
+                    isHovered ? 'scale-110 opacity-60' : 'scale-100 opacity-30 group-hover:opacity-45'
+                  } ${project.isMaintenance ? 'grayscale' : ''}`}
+                />
+                <div
+                  className={`absolute inset-0 transition-opacity duration-700 ${
+                    isHovered
+                      ? 'bg-gradient-to-t from-black via-black/60 to-transparent'
+                      : 'bg-gradient-to-t from-black via-black/80 to-black/30'
+                  }`}
+                />
+                {isHovered && (
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#FF5A00]/15 via-transparent to-transparent pointer-events-none" />
+                )}
+              </div>
 
-                            <motion.p
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.1 }}
-                                className="text-white/40 text-sm lg:text-base font-medium tracking-tight leading-relaxed"
-                            >
-                                Engenharia de Gêmeos Digitais e Sistemas RAG de Alta Performance. 
-                                Transformo latência em lucro e dados em agentes autónomos.
-                            </motion.p>
-
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.5, delay: 0.3 }}
-                                className="flex flex-col items-start"
-                            >
-                                <Link
-                                    to="/onboarding"
-                                    className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all shadow-[0_15px_40px_rgba(255,193,7,0.2)]"
-                                >
-                                    <span className="relative z-10 italic uppercase">Solicitar Avaliação</span>
-                                    <ChevronRight size={18} className="arrow-icon relative z-10" />
-                                </Link>
-                            </motion.div>
-                        </div>
-
-                        {/* Right Column: Hero Mockup - Scaled Down */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.98, y: 30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative lg:max-w-sm mx-auto"
-                        >
-                            <div className="relative z-10 rounded-[24px] overflow-hidden border border-white/10 bg-black/40 shadow-2xl border-beam-neon skeleton-pulse aspect-video lg:aspect-auto">
-                                <img 
-                                    src="/assets/images/mockup_hero.png" 
-                                    alt="AI Command Center Mockup" 
-                                    {...(true ? { fetchpriority: "high" } as any : {})}
-                                    className="w-full h-auto object-cover"
-                                />
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Technical Section - More Compact Layout */}
-            <section className="py-12 lg:py-24 container mx-auto px-6 overflow-hidden">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    
-                    {/* Mockup Column - Scaled Down */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative lg:max-w-sm mx-auto order-2 lg:order-1"
-                    >
-                        <div className="relative z-10 rounded-[24px] overflow-hidden border border-white/5 bg-[#0A0A0A] shadow-xl border-beam-neon skeleton-pulse aspect-video lg:aspect-auto">
-                            <img 
-                                src="/assets/images/mockup_rag.png" 
-                                alt="RAG Knowledge Base Mockup" 
-                                loading="lazy"
-                                className="w-full h-auto object-cover opacity-90"
-                            />
-                        </div>
-                    </motion.div>
-
-                    {/* Content Column */}
-                    <div className="space-y-6 order-1 lg:order-2">
-                        <div className="space-y-2">
-                            <h2 className="text-[9px] font-black text-brand-yellow uppercase tracking-[0.5em]">The Core Engine</h2>
-                            <h3 className="text-2xl lg:text-4xl font-black italic tracking-tighter text-white leading-tight">Arquitetura de <br/>Soberania de Dados.</h3>
-                        </div>
-                        <p className="text-white/40 text-sm font-medium leading-relaxed max-w-md">
-                            Sistemas RAG que permitem à sua IA conversar com dados proprietários em ambientes SOC2 protegidos.
-                        </p>
-                        <div className="grid grid-cols-1 gap-3 pt-2">
-                            {[
-                                { icon: <Database size={16} />, title: "Enterprise RAG", desc: "Vector DB Connectivity." },
-                                { icon: <ShieldCheck size={16} />, title: "Private Compute", desc: "Local or SOC2 Clouds." }
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 group hover:border-brand-yellow/20 transition-all">
-                                    <div className="shrink-0 w-8 h-8 rounded-lg bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
-                                        {item.icon}
-                                    </div>
-                                    <div className="space-y-0.5">
-                                        <h4 className="text-white font-black uppercase tracking-widest text-[8px]">{item.title}</h4>
-                                        <p className="text-white/30 text-[10px] font-medium leading-tight">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Tight Bento Grid: Elite Capabilities */}
-            <section className="container mx-auto px-6 mb-24">
-                <div className="text-center mb-12 space-y-2">
-                    <h2 className="text-[9px] font-black text-brand-yellow uppercase tracking-[0.5em]">Capabilities</h2>
-                    <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter">O Arsenal Técnico.</h3>
-                </div>
-                
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto"
+              {/* ── Top Panel Elements: Number + Badge ── */}
+              <div className="relative z-10 flex items-start justify-between">
+                <span
+                  className={`font-mono text-xl sm:text-2xl font-black tracking-tight transition-colors duration-300 ${
+                    isHovered ? 'text-[#FF5A00]' : 'text-white/30'
+                  }`}
                 >
-                    {[
-                        { 
-                            icon: <Brain size={20} />, 
-                            title: "Digital Twins", 
-                            desc: "Automação de vendas baseada na sua inteligência de negócio."
-                        },
-                        { 
-                            icon: <Network size={20} />, 
-                            title: "Autonomous Agents", 
-                            desc: "Pipelines que executam tarefas complexas entre ferramentas."
-                        },
-                        { 
-                            icon: <Code2 size={20} />, 
-                            title: "Custom LLMs", 
-                            desc: "Fine-tuning de modelos para casos de uso específicos."
-                        }
-                    ].map((card, i) => (
-                        <motion.div 
-                            key={i}
-                            variants={cardVariants}
-                            whileHover={{ y: -4 }}
-                            className="p-6 rounded-[24px] bg-white/[0.01] border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 group border-beam-neon"
+                  {project.number}
+                </span>
+
+                <span
+                  className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest backdrop-blur-md border transition-all duration-300 ${
+                    project.isMaintenance
+                      ? 'bg-red-500/10 text-red-400 border-red-500/20'
+                      : isHovered
+                      ? 'bg-[#FF5A00] text-white border-[#FF5A00] shadow-[0_0_15px_rgba(255,90,0,0.6)]'
+                      : 'bg-black/50 text-white/70 border border-white/[0.04]'
+                  }`}
+                >
+                  {project.badge}
+                </span>
+              </div>
+
+              {/* ── Bottom Panel Elements ── */}
+              <div className="relative z-10 space-y-3">
+                <div>
+                  <p className="text-[#FF5A00] text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] mb-1">
+                    {project.subtitle}
+                  </p>
+                  <h3
+                    className={`font-black tracking-tight text-white transition-all duration-300 ${
+                      isHovered ? 'text-2xl sm:text-3xl text-white' : 'text-lg sm:text-xl text-white/90'
+                    }`}
+                  >
+                    {project.title}
+                  </h3>
+                </div>
+
+                {/* Expanded details revealed on hover */}
+                <div
+                  className={`grid transition-all duration-500 ease-out overflow-hidden ${
+                    isHovered ? 'grid-rows-[1fr] opacity-100 pt-2' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="min-h-0 space-y-3">
+                    <p className="text-white/70 text-xs sm:text-sm leading-relaxed max-w-md">
+                      {project.desc}
+                    </p>
+
+                    {/* Tech tags */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.04] text-[9px] font-semibold text-white/80 uppercase tracking-wider"
                         >
-                            <div className="w-10 h-10 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 flex items-center justify-center text-brand-yellow mb-6">
-                                {card.icon}
-                            </div>
-                            <h4 className="text-lg font-black italic text-white mb-3 tracking-tighter">{card.title}</h4>
-                            <p className="text-white/40 text-xs font-medium leading-relaxed">{card.desc}</p>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </section>
-
-            {/* Investment Section - Compact Conversion */}
-            <section className="container mx-auto px-6 pb-24">
-                <div className="max-w-3xl mx-auto rounded-[32px] p-8 lg:p-12 relative overflow-hidden text-center bg-white/[0.01] border border-white/5 border-beam-neon">
-                    <div className="relative z-10 space-y-8">
-                        <div className="space-y-3">
-                            <h2 className="text-2xl lg:text-5xl font-black italic tracking-tighter leading-[0.9]">Não é um custo. <br/><span className="text-brand-yellow">É a sua vantagem.</span></h2>
-                            <p className="text-white/30 text-[8px] font-bold uppercase tracking-[0.4em]">Investment Profile: High-Tier B2B Strategy</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <Link 
-                                to="/onboarding" 
-                                className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all shadow-xl"
-                            >
-                                <span className="relative z-10 italic uppercase">Technical Audit Gratuita</span>
-                                <ChevronRight size={18} className="arrow-icon relative z-10" />
-                            </Link>
-                        </div>
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                </div>
-            </section>
 
-            {/* Footer Minimal */}
-            <footer className="container mx-auto px-6 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div className="flex items-center gap-4 text-white/20 text-[8px] font-black uppercase tracking-[0.4em]">
-                    <span>&copy; 2026 JOSH SEGATT AI</span>
+                    {/* Action button */}
+                    <div className="pt-2">
+                      {project.isMaintenance ? (
+                        <div className="inline-flex items-center gap-2 text-xs font-semibold text-white/40">
+                          <ShieldAlert size={14} />
+                          <span>Under Scheduled Maintenance</span>
+                        </div>
+                      ) : (
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF5A00] text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,90,0,0.5)]">
+                          <span>{project.isInternal ? 'Launch Tool' : 'Visit Live Deployment'}</span>
+                          <ArrowUpRight size={15} className="stroke-[2.5px]" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-            </footer>
+
+                {/* Year Metadata line */}
+                <div className="flex items-center justify-between text-[10px] text-white/30 pt-2 border-t border-white/5">
+                  <span className="font-mono">{project.year}</span>
+                  <span className="uppercase tracking-widest text-[9px] font-semibold text-white/40">
+                    {project.isInternal ? 'Internal Node' : 'Client System'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+
+          return (
+            <div
+              key={project.id}
+              onMouseEnter={() => setActiveHoverId(project.id)}
+              onMouseLeave={() => setActiveHoverId(null)}
+              className={`h-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isHovered
+                  ? 'lg:flex-[2.8] flex-[2]'
+                  : isAnyHovered
+                  ? 'lg:flex-[0.7] flex-1'
+                  : 'flex-1'
+              }`}
+            >
+              {project.isMaintenance ? (
+                <div className="h-full cursor-not-allowed">{panelContent}</div>
+              ) : project.isInternal ? (
+                <Link to={project.link} className="h-full block">
+                  {panelContent}
+                </Link>
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-full block"
+                >
+                  {panelContent}
+                </a>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Minimalist Bottom Action Bar ── */}
+      <div className="shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 px-1 border-t border-white/5">
+        <div className="flex items-center gap-2.5 text-xs text-white/60">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
+          <span className="font-medium">Available for Custom Websites, SaaS MVPs & AI Architectures</span>
         </div>
-    );
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-5 py-2.5 rounded-xl bg-[#FF5A00] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff6f1f] transition-all active:scale-95 shadow-[0_0_20px_rgba(255,90,0,0.35)] cursor-pointer flex items-center gap-2"
+          >
+            <span>Request a Quote</span>
+            <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+
+      {/* Quick Quote Modal */}
+      <QuickQuoteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </div>
+  );
 };
 
 export default AISolutions;

@@ -134,7 +134,7 @@ const LiveDashboard: React.FC = () => {
               initial={{ width: 0 }}
               whileInView={{ width: "75%" }}
               transition={{ delay: 1, duration: 1.5, ease: "easeOut" }}
-              className="h-full bg-brand-yellow shadow-[0_0_10px_rgba(255,193,7,0.5)]"
+              className="h-full bg-brand-yellow shadow-[0_0_10px_rgba(255,90,0,0.5)]"
             />
           </div>
         </motion.div>

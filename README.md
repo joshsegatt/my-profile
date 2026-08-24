@@ -1,52 +1,77 @@
-# JOSH SEGATT — Senior Digital Product Engineer
+# JOSH SEGATT — Principal AI Software Architect & Full-Stack Engineer
 
 <p align="center">
   <img src="./public/assets/readme/home.png" width="100%" alt="Josh Segatt Portfolio Hero" />
 </p>
 
-## 🚀 Elevando o Padrão Digital
-Especializado na criação de interfaces de alto impacto que fundem **estética de luxo** com **performance de nível industrial**. Este portfólio é a materialização de uma filosofia: o design deve ser invisível, mas o impacto deve ser inesquecível.
+<p align="center">
+  <a href="https://segatt.com"><strong>Explore Live Portfolio</strong></a> ·
+  <a href="mailto:contato@joshsegatt.com"><strong>Request a Quote</strong></a> ·
+  <a href="https://linkedin.com/in/joshsegatt"><strong>LinkedIn Profile</strong></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Available%20for%20Q3%20Sprints-FF5A00?style=for-the-badge" alt="Status" />
+  <img src="https://img.shields.io/badge/Location-London%2C%20UK%20%7C%20Europe-0B0B0E?style=for-the-badge&logo=googlemaps&logoColor=FF5A00" alt="Location" />
+  <img src="https://img.shields.io/badge/Stack-React%2019%20%7C%20Next.js%20%7C%20AI%20RAG-FF5A00?style=for-the-badge" alt="Stack" />
+</p>
 
 ---
 
-## 💎 Vitrine de Projetos (Real Work)
+## ⚡ Executive Overview
 
-| **SaaS & Enterprise Architecture** | **Gaming & Performance Tuning** |
+London-based **Principal AI Software Architect & Senior Full-Stack Engineer** specializing in production-grade SaaS platforms, autonomous AI/RAG pipelines, and ultra-fast web systems for founders and companies who want to ship fast without technical debt.
+
+- 🚀 **14-Day Rapid MVP Sprints:** Complete turnaround from concept to production-ready SaaS with Next.js, Supabase, and Stripe.
+- 🧠 **Autonomous AI & RAG Orchestration:** Bespoke LLM agents, vector search pipelines, and enterprise automation workflows.
+- 🔒 **100% IP Ownership & Clean Code:** Full repository handover with zero vendor lock-in or recurring maintenance fees.
+- ⚡ **Zero-Latency Performance:** P99 sub-50ms server responses, 100/100 Lighthouse performance metrics.
+
+---
+
+## 💎 Project & Studio Showcase
+
+| **01. Brand Split Hero (Fixed Viewport)** | **02. Interactive Services & Client Solutions** |
 |:---:|:---:|
-| <img src="./public/assets/readme/home.png" width="100%" /> | <img src="./public/assets/readme/gamer.png" width="100%" /> |
-| *Arquitetura Escalável e Design Obsidian.* | *Otimização Bare-Metal e UI Tática.* |
+| <img src="./public/assets/readme/home.png" width="100%" alt="Hero Section" /> | <img src="./public/assets/readme/solutions.png" width="100%" alt="Solutions Showcase" /> |
+| *Signature 55% Orange / 45% White Split Layout.* | *Interactive hover mosaic with live production SaaS.* |
 
-| **Wallpapers Hub (4K Media)** | **AI Prompt Engineering Hub** |
+| **03. AI Prompt Engineering Canvas Studio** | **04. Executive About & Conversion Dossier** |
 |:---:|:---:|
-| <img src="./public/assets/readme/wallpapers.png" width="100%" /> | <img src="./public/assets/readme/prompts.png" width="100%" /> |
-| *Entrega de Ativos em Alta Performance.* | *Curadoria de Ativos Generativos Premium.* |
+| <img src="./public/assets/readme/prompts.png" width="100%" alt="AI Prompts Studio" /> | <img src="./public/assets/readme/about.png" width="100%" alt="About Section" /> |
+| *Claude 3.7 & Vibe Coding spec synthesizer with 3D Cyber Bot.* | *High-contrast obsidian glass with 14-day turnaround guarantee.* |
 
 ---
 
-## ✨ Por que meu trabalho é diferente?
+## 🛠️ Tech Stack & Architecture
 
-### 🌑 Estética Obsidian Nexus
-Trabalho com um sistema de design proprietário focado em **Glassmorphism**, tipografia de elite e contrastes que guiam o olhar do usuário com precisão cirúrgica.
-
-### ⚡ Performance 60FPS+
-Cada página foi otimizada para ser instantânea. Clicou, entrou. Sem stuttering, sem delays, sem distrações. A fluidez do software nativo diretamente no seu navegador.
-
-### 🌎 Alcance Global
-Plataforma totalmente localizada para mercados internacionais, garantindo que sua marca fale a língua do seu cliente, seja em Português, Inglês ou Francês.
+- **Frontend & UI:** React 19, TypeScript, Tailwind CSS v4, Framer Motion, Three.js / React Three Fiber (`@react-three/drei`).
+- **AI & Reasoning Engines:** Google Gemini AI API, Claude 3.7 Sonnet, OpenAI o1/GPT-4o, Cursor AI Agent Specs.
+- **Backend & Cloud Services:** Node.js, Express, Supabase (PostgreSQL), Stripe API integration, Resend / EmailJS.
+- **SEO & Performance Suite:** Schema.org JSON-LD structured data (`Person`, `ProfessionalService`), Geotargeting (London/UK/Europe), XML Sitemap, Robots.txt.
+- **Deployment & Hosting:** Optimized for instant zero-config deployments on **Vercel** with full SPA rewrite routing.
 
 ---
 
-## 🤝 Vamos construir algo extraordinário?
-Estou sempre em busca de desafios que exijam o máximo de criatividade e precisão técnica. Se você busca um produto digital que se destaque na multidão, vamos conversar.
+## 🚀 Getting Started Locally
 
-<div align="center">
-  <a href="https://joshsegatt.com"><strong>VISITAR SITE OFICIAL</strong></a> | 
-  <a href="mailto:contato@joshsegatt.com"><strong>ENTRAR EM CONTATO</strong></a> | 
-  <a href="https://linkedin.com/in/joshsegatt"><strong>LINKEDIN</strong></a>
-</div>
+```bash
+# 1. Clone the repository
+git clone https://github.com/Joshsegatt/profile.git
+cd profile/my-profile
+
+# 2. Install dependencies
+npm install
+
+# 3. Start local development server
+npm run dev
+
+# 4. Build for production (Vercel)
+npm run build
+```
 
 ---
 
 <p align="center">
-  <small>© 2026 JOSH SEGATT. Engenharia de Produtos Digitais sob Medida.</small>
+  <small>© 2026 JOSH SEGATT. All rights reserved. Designed & Engineered for High-Growth Digital Products.</small>
 </p>

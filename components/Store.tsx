@@ -194,7 +194,7 @@ const Store: React.FC = () => {
                             }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.8, ease: "backIn" }}
-                            className="absolute text-brand-yellow drop-shadow-[0_0_10px_rgba(255,193,7,0.8)]"
+                            className="absolute text-brand-yellow drop-shadow-[0_0_10px_rgba(255,90,0,0.8)]"
                         >
                             <Banknote size={32} />
                         </motion.div>
@@ -223,7 +223,7 @@ const Store: React.FC = () => {
                                     className={`
                                         px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all duration-500
                                         ${activeTab === tab 
-                                            ? 'bg-brand-yellow text-black shadow-[0_4px_16px_rgba(255,193,7,0.2)]' 
+                                            ? 'bg-brand-yellow text-black shadow-[0_4px_16px_rgba(255,90,0,0.2)]' 
                                             : 'text-white/30 hover:text-white'}
                                     `}
                                 >
@@ -312,7 +312,7 @@ const Store: React.FC = () => {
                                             </button>
                                             <button 
                                                 onClick={(e) => addToCart(product, e)}
-                                                className="flex-[1.5] px-4 h-10 bg-brand-yellow rounded-xl text-[10px] font-black uppercase tracking-widest text-black flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-[0_6px_16px_rgba(255,193,7,0.1)] group/btn"
+                                                className="flex-[1.5] px-4 h-10 bg-brand-yellow rounded-xl text-[10px] font-black uppercase tracking-widest text-black flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-[0_6px_16px_rgba(255,90,0,0.1)] group/btn"
                                             >
                                                 {t('store.button.buy')}
                                                 <ShoppingCart size={12} className="group-hover/btn:scale-110 transition-transform duration-300" />
@@ -354,7 +354,7 @@ const Store: React.FC = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setIsCartOpen(true)}
-                            className="h-20 w-20 md:w-auto md:h-16 md:px-6 bg-black border-2 border-brand-yellow text-brand-yellow rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_20px_rgba(255,193,7,0.2)] flex items-center justify-center gap-4 group overflow-hidden relative"
+                            className="h-20 w-20 md:w-auto md:h-16 md:px-6 bg-black border-2 border-brand-yellow text-brand-yellow rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_20px_rgba(255,90,0,0.2)] flex items-center justify-center gap-4 group overflow-hidden relative"
                         >
                             <div className="absolute inset-0 bg-brand-yellow opacity-[0.03] group-hover:opacity-[0.08] transition-opacity" />
                             
@@ -364,7 +364,7 @@ const Store: React.FC = () => {
                                 className="relative"
                             >
                                 <Wallet size={24} className="group-hover:scale-110 transition-transform" />
-                                <span className="absolute -top-3 -right-3 w-6 h-6 bg-brand-yellow text-black text-[10px] font-black rounded-full flex items-center justify-center border-2 border-black shadow-[0_0_15px_rgba(255,193,7,0.5)]">
+                                <span className="absolute -top-3 -right-3 w-6 h-6 bg-brand-yellow text-black text-[10px] font-black rounded-full flex items-center justify-center border-2 border-black shadow-[0_0_15px_rgba(255,90,0,0.5)]">
                                     {cart.length}
                                 </span>
                             </motion.div>
@@ -508,7 +508,7 @@ const Store: React.FC = () => {
                                 <button 
                                     disabled={cart.length === 0}
                                     onClick={() => setCheckoutStep('review')}
-                                    className="group relative w-full h-14 bg-brand-yellow disabled:opacity-20 disabled:grayscale rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(255,193,7,0.2)] hover:shadow-[0_20px_50px_rgba(255,193,7,0.3)] transition-all active:scale-[0.98]"
+                                    className="group relative w-full h-14 bg-brand-yellow disabled:opacity-20 disabled:grayscale rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(255,90,0,0.2)] hover:shadow-[0_20px_50px_rgba(255,90,0,0.3)] transition-all active:scale-[0.98]"
                                 >
                                     {/* Shimmer Effect */}
                                     <motion.div 
@@ -599,7 +599,7 @@ const Store: React.FC = () => {
                                             <div className="grid grid-cols-1 gap-3">
                                                 {previewProduct.features.map(f => (
                                                     <div key={f} className="flex items-center gap-3 text-[11px] font-black text-white/80 uppercase tracking-wider">
-                                                        <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_8px_rgba(255,193,7,0.5)]" />
+                                                        <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_8px_rgba(255,90,0,0.5)]" />
                                                         {f}
                                                     </div>
                                                 ))}
@@ -610,7 +610,7 @@ const Store: React.FC = () => {
                                     <div className="pt-6 mt-auto">
                                         <button 
                                             onClick={(e) => { addToCart(previewProduct, e); setPreviewProduct(null); }}
-                                            className="w-full h-14 bg-brand-yellow rounded-[20px] text-[12px] font-black uppercase tracking-[0.2em] text-black hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-[0_12px_32px_rgba(255,193,7,0.3)]"
+                                            className="w-full h-14 bg-brand-yellow rounded-[20px] text-[12px] font-black uppercase tracking-[0.2em] text-black hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-[0_12px_32px_rgba(255,90,0,0.3)]"
                                         >
                                             BUY NOW
                                             <Lock size={16} />
@@ -716,7 +716,7 @@ const Store: React.FC = () => {
 
                                         <button 
                                             onClick={() => setCheckoutStep('payment')} 
-                                            className="w-full h-14 bg-brand-yellow rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] text-black flex items-center justify-center gap-3 shadow-[0_15px_40px_rgba(255,193,7,0.3),0_0_30px_rgba(168,85,247,0.4)] border border-brand-purple/20 hover:scale-[1.01] active:scale-[0.98] transition-all group"
+                                            className="w-full h-14 bg-brand-yellow rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] text-black flex items-center justify-center gap-3 shadow-[0_15px_40px_rgba(255,90,0,0.3),0_0_30px_rgba(168,85,247,0.4)] border border-brand-purple/20 hover:scale-[1.01] active:scale-[0.98] transition-all group"
                                         >
                                             {t('store.button.checkout')}
                                             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -735,7 +735,7 @@ const Store: React.FC = () => {
                                             {/* Stripe Card - Ultra Compact */}
                                             <button className="w-full p-6 rounded-2xl bg-gradient-to-br from-brand-yellow/[0.05] to-transparent border border-brand-yellow/30 flex items-center justify-between group transition-all relative overflow-hidden">
                                                 <div className="flex items-center gap-5 relative z-10">
-                                                    <div className="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.2)] transition-transform group-hover:scale-105">
+                                                    <div className="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,90,0,0.2)] transition-transform group-hover:scale-105">
                                                         <CreditCard size={20} />
                                                     </div>
                                                     <div className="text-left">
@@ -744,7 +744,7 @@ const Store: React.FC = () => {
                                                     </div>
                                                 </div>
                                                 <div className="w-6 h-6 rounded-full border border-brand-yellow/40 flex items-center justify-center">
-                                                    <div className="w-2.5 h-2.5 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(255,193,7,1)]" />
+                                                    <div className="w-2.5 h-2.5 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(255,90,0,1)]" />
                                                 </div>
                                             </button>
 
@@ -799,9 +799,9 @@ const Store: React.FC = () => {
                                                     } else {
                                                         if (btn) {
                                                             btn.innerHTML = `${t('store.checkout.session_active')} <div class="w-2 h-2 rounded-full bg-brand-yellow animate-ping ml-2" />`;
-                                                            btn.style.background = 'rgba(255,193,7,0.1)';
-                                                            btn.style.color = '#FFC107';
-                                                            btn.style.border = '1px solid rgba(255,193,7,0.3)';
+                                                            btn.style.background = 'rgba(255,90,0,0.1)';
+                                                            btn.style.color = '#FF5A00';
+                                                            btn.style.border = '1px solid rgba(255,90,0,0.3)';
                                                         }
                                                     }
                                                 } catch (err: any) {
@@ -813,7 +813,7 @@ const Store: React.FC = () => {
                                                 }
                                             }}
                                             id="pay-btn"
-                                            className="w-full h-20 py-6 bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#F59E0B] rounded-[28px] text-[12px] font-black uppercase tracking-[0.4em] text-black flex items-center justify-center gap-4 shadow-[0_30px_70px_rgba(255,193,7,0.25),0_0_40px_rgba(168,85,247,0.3)] border border-brand-purple/30 hover:shadow-[0_40px_80px_rgba(255,193,7,0.4),0_0_50px_rgba(168,85,247,0.5)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-500 group"
+                                            className="w-full h-20 py-6 bg-gradient-to-r from-[#FF7A20] via-[#FF5A00] to-[#d64700] rounded-[28px] text-[12px] font-black uppercase tracking-[0.4em] text-black flex items-center justify-center gap-4 shadow-[0_30px_70px_rgba(255,90,0,0.25),0_0_40px_rgba(168,85,247,0.3)] border border-brand-purple/30 hover:shadow-[0_40px_80px_rgba(255,90,0,0.4),0_0_50px_rgba(168,85,247,0.5)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-500 group"
                                         >
                                             {t('store.button.buy')}
                                             <div className="relative">
@@ -839,7 +839,7 @@ const Store: React.FC = () => {
                                                 initial={{ scale: 0 }}
                                                 animate={{ scale: 1 }}
                                                 transition={{ type: 'spring', damping: 15 }}
-                                                className="w-20 h-20 rounded-full bg-brand-yellow flex items-center justify-center text-black shadow-[0_0_50px_rgba(255,193,7,0.4)] relative z-10"
+                                                className="w-20 h-20 rounded-full bg-brand-yellow flex items-center justify-center text-black shadow-[0_0_50px_rgba(255,90,0,0.4)] relative z-10"
                                             >
                                                 <Check size={32} strokeWidth={4} />
                                             </motion.div>

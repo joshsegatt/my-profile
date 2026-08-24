@@ -113,7 +113,7 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
 
       <button
         onClick={onAnalyze}
-        className="self-start flex items-center gap-3 bg-brand-yellow text-black px-10 py-4 rounded-2xl font-bold text-[15px] tracking-wide hover:-translate-y-[2px] active:translate-y-0 transition-all shadow-[0_16px_32px_rgba(255,193,7,0.22)] group"
+        className="self-start flex items-center gap-3 bg-brand-yellow text-black px-10 py-4 rounded-2xl font-bold text-[15px] tracking-wide hover:-translate-y-[2px] active:translate-y-0 transition-all shadow-[0_16px_32px_rgba(255,90,0,0.22)] group"
       >
         <Gamepad2 size={18} />
         Analyze My Rig

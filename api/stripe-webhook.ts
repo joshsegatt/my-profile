@@ -47,10 +47,10 @@ export default async function handler(req: any, res: any) {
       const domain = 'https://joshsegatt.com';
       const htmlBody = `
         <div style="background: #000; color: #fff; padding: 40px; font-family: sans-serif; border-radius: 20px;">
-          <h1 style="color: #FFC107; font-style: italic;">STACK DEPLOYED</h1>
+          <h1 style="color: #FF5A00; font-style: italic;">STACK DEPLOYED</h1>
           <p>Your proprietary assets are ready for immediate deployment.</p>
           <div style="margin-top: 30px;">
-            <a href="${domain}/assets/delivery/v177_optimizer.ps1" style="display: block; background: #FFC107; color: #000; padding: 15px; text-decoration: none; font-weight: bold; margin-bottom: 10px; border-radius: 10px; text-align: center;">DOWNLOAD V177 OPTIMIZER</a>
+            <a href="${domain}/assets/delivery/v177_optimizer.ps1" style="display: block; background: #FF5A00; color: #000; padding: 15px; text-decoration: none; font-weight: bold; margin-bottom: 10px; border-radius: 10px; text-align: center;">DOWNLOAD V177 OPTIMIZER</a>
             <a href="${domain}/assets/delivery/prompt_bible.md" style="display: block; background: #fff; color: #000; padding: 15px; text-decoration: none; font-weight: bold; margin-bottom: 10px; border-radius: 10px; text-align: center;">DOWNLOAD PROMPT BIBLE</a>
           </div>
         </div>

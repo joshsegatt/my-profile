@@ -73,7 +73,7 @@ const VisualBlueprint: React.FC<BlueprintProps> = ({ data }) => {
               <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">Active Stack</span>
             </div>
             <div className="text-[10px] text-white/60 font-medium leading-relaxed italic">
-              Deploying {data.projectType} architecture optimized for {data.goal || 'growth'}...
+              Deploying {data.projectType} architecture optimised for {data.goal || 'growth'}...
             </div>
           </motion.div>
         )}

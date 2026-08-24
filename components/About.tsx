@@ -1,234 +1,190 @@
-import React from 'react';
-import { 
-    Cpu, Zap, ChevronDown, 
-    Shield, Layers, BookOpen, Quote
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import {
+  MapPin,
+  Zap,
+  Code2,
+  Brain,
+  ShieldCheck,
+  Rocket,
+  CheckCircle2,
+  ChevronRight,
+  Send,
+  Award,
+  Sparkles,
+  Lock,
+  Clock
 } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { useLanguage } from '../utils/i18n';
-import QualificationFilter from './QualificationFilter';
-import './About.css';
+import { QuickQuoteModal } from './QuickQuoteModal';
 
 const About: React.FC = () => {
-    const { t } = useLanguage();
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
-    const chapters = [
-        {
-            id: "01",
-            subtitle: "PRÓLOGO",
-            title: "The Great Stagnation",
-            content: "O silício estava cansado. Por décadas, fomos ensinados que o 'lag' era uma constante física, um subproduto inevitável de sistemas cada vez mais pesados. Você sentiu isso. O stutter no momento crítico, a interface que não acompanhava o seu pensamento. O mundo digital estava um caos de bloatwares e ineficiência.",
-            accent: "bg-red-500/10 text-red-500 border-red-500/20",
-            image: "/assets/images/about_stagnation.png"
-        },
-        {
-            id: "02",
-            subtitle: "CAPÍTULO I",
-            title: "The First Breach",
-            content: "Nas sombras das primeiras telas azuis, uma mente se recusou a aceitar a lentidão. O Segatt não nasceu programador; ele nasceu inconformado. O que começou como uma necessidade pessoal de vencer o atraso, tornou-se uma obsessão por entender cada milissegundo. O código não era o fim, era o meio para dobrar a máquina à sua vontade.",
-            accent: "bg-brand-yellow/10 text-brand-yellow border-brand-yellow/20",
-            image: "/assets/images/about_breach.png"
-        },
-        {
-            id: "03",
-            subtitle: "CAPÍTULO II",
-            title: "The Obsidian Forge",
-            content: "Anos foram gastos no silêncio das camadas mais baixas do Windows. Kernel, registros, serviços descartados. Cada desvio foi uma lição. O estilo 'Obsidian' não é apenas uma cor; é uma filosofia de remover o excesso até que reste apenas o que é vital. A forja estava quente, e o 'Blueprint' de performance estava sendo escrito.",
-            accent: "bg-brand-yellow/10 text-brand-yellow border-brand-yellow/20",
-            image: "/assets/images/about_forge.png"
-        },
-        {
-            id: "04",
-            subtitle: t('about.chapters.chapter3.subtitle'),
-            title: t('about.chapters.chapter3.title'),
-            content: t('about.chapters.chapter3.content'),
-            accent: "border-white/20 text-white/40",
-            image: "/assets/images/about_velocity.png"
-        },
-        {
-            id: "05",
-            subtitle: t('about.chapters.epilogo.subtitle'),
-            title: t('about.chapters.epilogo.title'),
-            content: t('about.chapters.epilogo.content'),
-            accent: "border-brand-yellow/50 text-brand-yellow shadow-[0_0_20px_rgba(255,184,0,0.2)]",
-            image: "/assets/images/about_legacy.png"
-        }
-    ];
+  const handleOpenContact = () => {
+    window.dispatchEvent(new CustomEvent('open-contact'));
+  };
 
-    return (
-        <section id="about" className="relative min-h-screen bg-transparent pt-[160px] pb-24 lg:pb-40">
-            <motion.div 
-                className="fixed top-0 left-0 right-0 h-1 bg-brand-yellow origin-left z-50"
-                style={{ scaleX }}
-            />
+  return (
+    <div
+      itemScope
+      itemType="https://schema.org/Person"
+      className="text-white selection:bg-[#FF5A00] selection:text-white h-full flex flex-col justify-center items-center overflow-hidden py-2"
+    >
+      {/* Hidden SEO Microdata */}
+      <meta itemProp="name" content="Josh Segatt" />
+      <meta itemProp="jobTitle" content="AI Software Architect & Full-Stack Engineer" />
+      <meta itemProp="address" content="London, United Kingdom" />
 
-            <div className="max-w-6xl mx-auto px-6 relative">
-                
-                <div className="flex flex-col items-center text-center mb-32 lg:mb-40">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="mb-8"
-                    >
-                        <BookOpen size={28} className="text-brand-yellow" />
-                    </motion.div>
-                    <motion.h1 
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="about-title mb-8 italic"
-                        style={{ fontSize: '30px', lineHeight: '1.1' }}
-                    >
-                         {t('about.title').split(' ').map((word, i) => (
-                             <span key={i} className={word === 'CHRONICLES' ? 'text-brand-yellow not-italic' : ''}>
-                                 {word}{' '}
-                                 {word === 'CHRONICLES' && <br className="lg:hidden" />}
-                             </span>
-                         ))}
-                    </motion.h1>
-                    <p className="text-white/30 text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.4em]">{t('about.journey')}</p>
-                    <motion.div 
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="mt-16 text-white/10"
-                    >
-                        <ChevronDown size={32} />
-                    </motion.div>
-                </div>
+      {/* ── Main Compact Executive Cards (Centered, Balanced Proportions) ── */}
+      <div className="w-full max-w-5xl h-[560px] max-h-[85vh] grid grid-cols-1 lg:grid-cols-12 gap-4">
+        
+        {/* ── Left Column (7 cols): Identity & Direct Client Offer ── */}
+        <div className="lg:col-span-7 h-full flex flex-col justify-between p-7 sm:p-9 rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 relative overflow-hidden">
+          
+          {/* Subtle Ambient Light */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF5A00]/8 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                <div className="relative">
-                    <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-brand-yellow/50 via-white/10 to-transparent lg:-translate-x-1/2" />
-
-                    {chapters.map((chapter, index) => (
-                        <motion.div 
-                            key={chapter.id}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            className={`relative mb-32 lg:mb-48 flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-24`}
-                        >
-                            <div className="absolute left-0 lg:left-1/2 -top-10 lg:top-1/2 -translate-y-1/2 lg:-translate-x-1/2 z-10">
-                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-xs border ${chapter.accent} backdrop-blur-xl shadow-[0_0_40px_rgba(255,184,0,0.1)]`}>
-                                    {chapter.id}
-                                </div>
-                            </div>
-
-                            <div className="flex-1 w-full pl-16 lg:pl-0 text-left">
-                                <div className="flex flex-col gap-4">
-                                    <span className="text-[10px] font-bold text-brand-yellow/60 tracking-[0.3em] uppercase">{chapter.subtitle}</span>
-                                    <h2 className="about-chapter-title italic">
-                                        {chapter.title}
-                                    </h2>
-                                    <p className="text-white/50 text-base lg:text-lg font-medium leading-relaxed max-w-xl">
-                                        {chapter.content}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex-1 w-full group">
-                                <div className="relative aspect-[4/3] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:border-brand-yellow/30 bg-zinc-900">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
-                                    <img 
-                                        src={chapter.image} 
-                                        alt={chapter.title}
-                                        className="w-full h-full object-cover transform transition-transform duration-[2000ms] group-hover:scale-105"
-                                    />
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="mt-40 pt-32 border-t border-white/5">
-                    <div className="flex flex-col items-center text-center mb-20">
-                        <Quote size={40} className="text-brand-yellow/20 mb-8" />
-                        <h2 className="text-4xl lg:text-[54px] font-extrabold text-white tracking-tighter mb-6 italic leading-[1.0]">
-                            {t('about.arsenal.title').split(' ').map((word, i) => (
-                                <span key={i} className={word === 'ARCHITECT\'S' ? 'text-brand-yellow not-italic' : ''}>
-                                    {word}{' '}
-                                    {word === 'ARCHITECT\'S' && <br className="lg:hidden" />}
-                                </span>
-                            ))}
-                        </h2>
-                        <p className="text-white/30 font-bold uppercase tracking-[0.4em] text-[10px]">{t('about.arsenal.subtitle')}</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[
-                            { title: t('about.arsenal.items.ai.title'), desc: t('about.arsenal.items.ai.desc'), icon: <Cpu />, tags: ["OpenAI", "LangChain"] },
-                            { title: t('about.arsenal.items.perf.title'), desc: t('about.arsenal.items.perf.desc'), icon: <Zap />, tags: ["Windows Pro", "Blueprints"] },
-                            { title: t('about.arsenal.items.ui.title'), desc: t('about.arsenal.items.ui.desc'), icon: <Layers />, tags: ["React 19", "Figma Senior"] }
-                        ].map((item, i) => (
-                            <motion.div 
-                                key={i}
-                                whileHover={{ y: -8 }}
-                                className="p-10 bg-white/[0.02] rounded-[40px] border border-white/5 group hover:border-brand-yellow/30 transition-all duration-500"
-                            >
-                                <div className="w-14 h-14 rounded-2xl bg-brand-yellow/5 border border-brand-yellow/10 flex items-center justify-center text-brand-yellow mb-6 group-hover:scale-110 transition-all duration-500">
-                                    {item.icon}
-                                </div>
-                                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3 tracking-tight">{item.title}</h3>
-                                <p className="text-white/40 text-sm lg:text-base font-medium leading-relaxed mb-6">
-                                    {item.desc}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {item.tags.map(tag => (
-                                        <span key={tag} className="px-3 py-1.5 bg-white/5 rounded-full text-[9px] font-black text-white/30 uppercase tracking-widest border border-white/5 group-hover:text-brand-yellow/60 group-hover:border-brand-yellow/20 transition-all">{tag}</span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Qualification Filter Section */}
-                <QualificationFilter />
-
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.98, y: 30 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    whileHover={{ y: -10, scale: 1.005, transition: { duration: 0.4, ease: "easeOut" } }}
-                    viewport={{ once: true }}
-                    className="mt-32 p-10 lg:p-16 bg-brand-yellow rounded-[40px] text-black text-center relative overflow-hidden group shadow-[0_40px_100px_rgba(255,184,0,0.1)] transition-all duration-500"
-                >
-                    {/* Senior Shimmer Overlay */}
-                    <motion.div 
-                        initial={{ x: "-100%" }}
-                        animate={{ x: "200%" }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] pointer-events-none opacity-30"
-                    />
-                    
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-50" />
-                    <Shield size={120} className="absolute -top-12 -right-12 text-black/5 rotate-12 transition-transform duration-700 group-hover:rotate-[25deg] group-hover:scale-110" />
-                    
-                    <h2 className="text-4xl lg:text-[56px] font-extrabold tracking-tight mb-10 italic relative z-10 leading-[0.95] uppercase">
-                        {t('about.cta.title').split('.').map((part, i) => (
-                            <React.Fragment key={i}>
-                                {part === 'NEXT CHAPTER' ? <span className="underline decoration-black/10">{part}</span> : part}
-                                {i === 0 && <br />}
-                            </React.Fragment>
-                        ))}
-                    </h2>
-                    
-                    <motion.button 
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => window.location.href = '/onboarding'}
-                        className="bg-black text-white px-10 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] shadow-2xl relative z-10 hover:bg-zinc-900 transition-all active:scale-95"
-                    >
-                        {t('about.cta.button')}
-                    </motion.button>
-                </motion.div>
-
+          <div className="flex flex-col gap-6 relative z-10 min-h-0">
+            
+            {/* Headline */}
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-none mb-2.5">
+                Josh Segatt.
+              </h1>
+              <p className="text-[#FF5A00] text-sm font-bold uppercase tracking-widest font-mono">
+                AI Architect & Principal Full-Stack Engineer
+              </p>
             </div>
-        </section>
-    );
+
+            {/* Direct Pitch (Zero Fluff) */}
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
+              I build production-grade SaaS platforms, bespoke AI pipelines, and ultra-fast web applications for founders and companies who want to ship fast without technical debt.
+            </p>
+
+            {/* 3 Core Conversion Pillars (Obsidian Glass Cards) */}
+            <div className="grid grid-cols-1 gap-2.5 pt-1">
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.04] hover:border-[#FF5A00]/40 transition-all flex items-center gap-3.5 group">
+                <div className="w-9 h-9 rounded-xl bg-[#FF5A00]/10 border border-[#FF5A00]/20 flex items-center justify-center text-[#FF5A00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Rocket size={17} />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold text-white tracking-tight">14-Day MVP Launch Sprints</h3>
+                  <p className="text-[11px] text-white/50 leading-snug truncate">From design to live production with Next.js 15, Supabase, and Stripe.</p>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.04] hover:border-[#FF5A00]/40 transition-all flex items-center gap-3.5 group">
+                <div className="w-9 h-9 rounded-xl bg-[#FF5A00]/10 border border-[#FF5A00]/20 flex items-center justify-center text-[#FF5A00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Brain size={17} />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold text-white tracking-tight">Autonomous AI & RAG Pipelines</h3>
+                  <p className="text-[11px] text-white/50 leading-snug truncate">LLM orchestration, vector search, and agentic workflows that automate operations.</p>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.04] hover:border-[#FF5A00]/40 transition-all flex items-center gap-3.5 group">
+                <div className="w-9 h-9 rounded-xl bg-[#FF5A00]/10 border border-[#FF5A00]/20 flex items-center justify-center text-[#FF5A00] shrink-0 group-hover:scale-105 transition-transform">
+                  <ShieldCheck size={17} />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold text-white tracking-tight">100% IP Ownership & Clean Code</h3>
+                  <p className="text-[11px] text-white/50 leading-snug truncate">Complete code repository handover with zero vendor lock-in or recurring dev fees.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Action CTAs */}
+          <div className="pt-4 border-t border-white/[0.06] flex items-center gap-3 relative z-10">
+            <button
+              onClick={() => setIsQuoteOpen(true)}
+              className="flex-1 py-3.5 rounded-xl bg-[#FF5A00] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff6f1f] transition-all active:scale-95 shadow-[0_0_25px_rgba(255,90,0,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Request a Quote</span>
+              <ChevronRight size={14} />
+            </button>
+            <button
+              onClick={handleOpenContact}
+              className="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/[0.08] text-xs font-bold uppercase tracking-wider transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+            >
+              <Send size={13} />
+              <span>Contact</span>
+            </button>
+          </div>
+
+        </div>
+
+        {/* ── Right Column (5 cols): Proven Stats & Client Guarantee ── */}
+        <div className="lg:col-span-5 h-full flex flex-col justify-between p-7 sm:p-9 rounded-3xl bg-[#0B0B0E]/95 backdrop-blur-3xl border border-white/[0.04] shadow-2xl shadow-black/50 relative overflow-hidden border-beam-orange">
+          
+          <div className="flex flex-col gap-4 relative z-10 min-h-0 flex-1 justify-between">
+            
+            {/* 4 Stats Bento Grid (Pure Glass Style) */}
+            <div className="grid grid-cols-2 gap-3 flex-1 items-center">
+              <div className="p-4 rounded-2xl bg-black/60 border border-white/[0.04] flex flex-col justify-center">
+                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-1">14 Days</div>
+                <div className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Avg. MVP Delivery</div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/60 border border-white/[0.04] flex flex-col justify-center">
+                <div className="text-2xl sm:text-3xl font-black text-[#FF5A00] tracking-tight mb-1">&lt; 50ms</div>
+                <div className="text-[10px] font-mono text-white/50 uppercase tracking-wider">P99 Server Latency</div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/60 border border-white/[0.04] flex flex-col justify-center">
+                <div className="text-2xl sm:text-3xl font-black text-[#FF5A00] tracking-tight mb-1">100/100</div>
+                <div className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Lighthouse Score</div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/60 border border-white/[0.04] flex flex-col justify-center">
+                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-1">100%</div>
+                <div className="text-[10px] font-mono text-white/50 uppercase tracking-wider">IP Ownership Handover</div>
+              </div>
+            </div>
+
+            {/* Testimonial Quote */}
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.04] relative">
+              <p className="text-white/85 text-xs italic leading-relaxed mb-3">
+                “Josh delivered our SaaS platform weeks ahead of schedule. The architecture is fast, clean, and handles scale effortlessly.”
+              </p>
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-[#FF5A00] text-white flex items-center justify-center text-[10px] font-bold">
+                  JS
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-white leading-none">James Carter</div>
+                  <div className="text-[9px] text-white/50 uppercase font-mono">Founder, SaaS Co.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Guarantee Badges Footer */}
+          <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-white/50">
+            <div className="flex items-center gap-1.5">
+              <Lock size={12} className="text-[#FF5A00]" />
+              <span>Strict NDA Protected</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock size={12} className="text-emerald-400" />
+              <span>24h Quote Guarantee</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Quick Quote Intake Modal */}
+      <QuickQuoteModal
+        isOpen={isQuoteOpen}
+        onClose={() => setIsQuoteOpen(false)}
+      />
+    </div>
+  );
 };
 
 export default About;

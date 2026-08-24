@@ -2,7 +2,7 @@ export interface IntakeData {
     name: string;
     email: string;
     url?: string;
-    bottleneck: string;
+    budget?: string; bottleneck?: string;
     description?: string;
 }
 

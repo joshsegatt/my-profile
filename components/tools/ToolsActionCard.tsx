@@ -15,7 +15,7 @@ const ToolsActionCard: React.FC = () => {
   return (
     <WindowFrame 
       className="p-8 lg:p-12 flex flex-col gap-8"
-      glowColor="rgba(255,193,7,0.08)"
+      glowColor="rgba(255,90,0,0.08)"
     >
       <div className="flex flex-col gap-4 relative z-10">
         <div className="flex items-center gap-3 text-brand-yellow">

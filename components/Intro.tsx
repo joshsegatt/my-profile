@@ -72,7 +72,7 @@ const Intro: React.FC<IntroProps> = ({ onComplete }) => {
           {/* Progress Bar Container */}
           <div className="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
             <motion.div 
-              className="absolute inset-y-0 left-0 bg-brand-yellow shadow-[0_0_15px_rgba(255,193,7,0.5)]"
+              className="absolute inset-y-0 left-0 bg-brand-yellow shadow-[0_0_15px_rgba(255,90,0,0.5)]"
               style={{ width: `${progress}%` }}
               transition={{ ease: "linear" }}
             />

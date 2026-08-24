@@ -26,7 +26,7 @@ const TechRays: React.FC<TechRaysProps> = ({ isAccelerated = false }) => {
             <div 
                 className="absolute inset-0 opacity-[0.08]" 
                 style={{ 
-                    backgroundImage: `radial-gradient(#FFC107 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(#FF5A00 1px, transparent 1px)`,
                     backgroundSize: '32px 32px'
                 }} 
             />
@@ -40,9 +40,9 @@ const TechRays: React.FC<TechRaysProps> = ({ isAccelerated = false }) => {
             >
                 <defs>
                     <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FFC107" stopOpacity="0" />
-                        <stop offset="50%" stopColor="#FFC107" stopOpacity="1" />
-                        <stop offset="100%" stopColor="#FFC107" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#FF5A00" stopOpacity="0" />
+                        <stop offset="50%" stopColor="#FF5A00" stopOpacity="1" />
+                        <stop offset="100%" stopColor="#FF5A00" stopOpacity="0" />
                     </linearGradient>
                     
                     <filter id="premiumGlow">
@@ -59,7 +59,7 @@ const TechRays: React.FC<TechRaysProps> = ({ isAccelerated = false }) => {
                             {/* Subtle Static Path (The "Guide") */}
                             <path
                                 d={circ.d}
-                                stroke="#FFC107"
+                                stroke="#FF5A00"
                                 strokeWidth="0.3"
                                 strokeOpacity="0.1"
                             />
@@ -87,7 +87,7 @@ const TechRays: React.FC<TechRaysProps> = ({ isAccelerated = false }) => {
                             {/* Data Node (Flashing endpoint) */}
                             <motion.circle
                                 r="0.6"
-                                fill="#FFC107"
+                                fill="#FF5A00"
                                 filter="url(#premiumGlow)"
                                 initial={{ opacity: 0 }}
                                 animate={{

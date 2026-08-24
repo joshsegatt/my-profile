@@ -31,12 +31,12 @@ const Shard = () => {
     >
       <icosahedronGeometry args={[1, 0]} />
       <MeshDistortMaterial
-        color="#ffc107" // Brand Yellow
+        color="#FF5A00" // Brand Yellow
         speed={hovered ? 6 : 2}
         distort={hovered ? 0.4 : 0.25}
         metalness={0.9}
         roughness={0.1}
-        emissive="#ffc107"
+        emissive="#FF5A00"
         emissiveIntensity={hovered ? 0.5 : 0.2}
       />
     </mesh>
@@ -56,7 +56,7 @@ const Logo3D: React.FC = () => {
         <AdaptiveDpr pixelated />
         
         <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#ffc107" />
+        <pointLight position={[10, 10, 10]} intensity={1} color="#FF5A00" />
         <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
         
         <Float 

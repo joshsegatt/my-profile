@@ -13,7 +13,9 @@ export default {
           black: '#09090B',
           window: '#0D0D0D',
           card: '#1A1A1A',
-          yellow: '#FFC107',
+          yellow: '#FF5A00', // Replaced with new orange to not break existing classes temporarily
+          primary: '#FF5A00',
+          orange: '#FF5A00',
           textPrimary: '#FAFAFA',
           textSecondary: '#A1A1AA',
           textTertiary: '#52525B',
@@ -22,10 +24,11 @@ export default {
           paintYellow: '#FDE047',
           paintOrange: '#8B5CF6',
           codeGray: '#27272A',
-          // Adding brand-yellow for common utility usage
-          'yellow/50': 'rgba(255, 193, 7, 0.5)',
-          'yellow/60': 'rgba(255, 193, 7, 0.6)',
-          'yellow/30': 'rgba(255, 193, 7, 0.3)',
+          'yellow/50': 'rgba(255, 90, 0, 0.5)',
+          'yellow/60': 'rgba(255, 90, 0, 0.6)',
+          'yellow/30': 'rgba(255, 90, 0, 0.3)',
+          'primary/50': 'rgba(255, 90, 0, 0.5)',
+          'primary/30': 'rgba(255, 90, 0, 0.3)',
         }
       },
       fontFamily: {

@@ -24,24 +24,24 @@
         "role": "AI-Powered Senior Developer"
     },
     "hero": {
-        "title_line1": "AI-Driven SaaS Architecture",
-        "title_line2": "& LLM Orchestration.",
-        "subhead": "Elite engineering for founders who demand scale, security, and extreme performance. From low-level code to high-conversion interfaces.",
-        "cta": "Request Technical Assessment"
+        "title_line1": "I Build High-Performance",
+        "title_line2": "Websites & Software.",
+        "subhead": "Senior full-stack engineer delivering premium websites, AI-powered SaaS, and fast, reliable products for European startups and agencies.",
+        "cta": "Request a Quote"
     },
     "gamer": {
         "hero": {
             "title": "Squeeze every <span class=\"highlight-pro\">FPS</span> from your battle rig.",
-            "desc": "Enterprise-grade performance tuning. Our neural engine eliminates micro-stutters and stabilizes frame-pacing for absolute competitive advantage.",
+            "desc": "Enterprise-grade performance tuning. Our neural engine eliminates micro-stutters and stabilises frame-pacing for absolute competitive advantage.",
             "stat1": { "label": "+30-60 AVG FPS", "detail": "Guaranteed boost" },
-            "stat2": { "label": "-40MS PING", "detail": "Latency optimized" },
+            "stat2": { "label": "-40MS PING", "detail": "Latency optimised" },
             "stat3": { "label": "LOW DPC", "detail": "Priority handling" },
             "footer1": "Direct-X 12 + Vulkan",
-            "footer2": "Windows 11 Optimized"
+            "footer2": "Windows 11 optimised"
         },
         "tabs": {
             "all": "All",
-            "opt": "Optimization",
+            "opt": "Optimisation",
             "diag": "Diagnosis",
             "net": "Network"
         },
@@ -50,64 +50,34 @@
             "desc": "This module is being trained by our neural networks. Check back soon."
         },
         "tools": {
-            "rig_optimizer": { "title": "Rig Optimizer", "desc": "Professional multi-step performance and latency tuner." },
+            "rig_Optimiser": { "title": "Rig Optimiser", "desc": "Professional multi-step performance and latency tuner." },
             "latency_sniper": { "title": "Latency Sniper", "desc": "Measure and fix end-to-end system and network jitter." },
             "fps_analyst": { "title": "FPS Analyst", "desc": "Analyze bottlenecks and generate golden game settings." }
         }
     },
     "about": {
-        "title": "THE CHRONICLES OF PERFORMANCE",
-        "journey": "An Obsidian Engineering Odyssey",
+        "title": "About Me",
+        "subtitle": "Senior Software Engineer · London",
+        "intro": "I'm Josh, a senior software engineer based in London. I specialise in building AI-powered SaaS products, clean React and Node architectures, and fast web experiences that hold up at scale.",
+        "mission": "I work with European startups and product teams who need reliable delivery, honest communication, and code they can actually maintain.",
         "arsenal": {
-            "title": "THE ARCHITECT'S ARSENAL",
-            "subtitle": "Technical Foundations & Strategic Mastery",
+            "title": "What I Work With",
+            "subtitle": "Technical Foundations & Strategic Delivery",
             "items": {
-                "ai": { "title": "AI Engineering", "desc": "Agentic workflows, RAG pipelines, and LLM automation." },
-                "perf": { "title": "Performance Architecture", "desc": "Kernel-level optimization and zero-latency engineering." },
-                "ui": { "title": "Vercel Grade UI", "desc": "Next.js, Framer Motion, and high-fidelity obsidian design." }
-            }
-        },
-        "chapters": {
-            "prologo": {
-                "id": "PROLÓGO",
-                "subtitle": "Chapter 0: The Great Stagnation",
-                "title": "The Digital Abyss",
-                "content": "Before the architecture, there was chaos. Modern environments are burdened by systemic bloat, legacy latency, and inefficient sub-processes that stifle the raw potential of professional hardware."
-            },
-            "chapter1": {
-                "id": "CAPÍTULO I",
-                "subtitle": "Chapter 1: The First Breach",
-                "title": "Initial Penetration",
-                "content": "I realized that code is only as powerful as the engine driving it. My path began with a fundamental breach into kernel-level operations, stripping away the unnecessary to reveal the core essence of performance."
-            },
-            "chapter2": {
-                "id": "CAPÍTULO II",
-                "subtitle": "Chapter 2: The Obsidian Forge",
-                "title": "Structural Mastery",
-                "content": "The birth of the 'Obsidian' aesthetic—minimalist, authoritative, and precise. Here, architecture meets aesthetics. I build systems that don't just function; they dominate with an uncompromising standard of execution."
-            },
-            "chapter3": {
-                "id": "CAPÍTULO III",
-                "subtitle": "Chapter 3: Architect of Velocity",
-                "title": "Transcendent Speed",
-                "content": "Velocity is the ultimate metric. By orchestrating hardware and software in perfect synchronicity, I eliminate the barriers between thought and execution. This is where zero-latency becomes a reality."
-            },
-            "epilogo": {
-                "id": "EPÍLOGO",
-                "subtitle": "The Final Archive: Your Legacy",
-                "title": "A New Paradigm",
-                "content": "The journey doesn't end here. It evolves. Whether through AI-driven SaaS or elite system tuning, our collaboration establishes a standard that will define the future of your digital operations."
+                "ai": { "title": "AI Engineering", "desc": "Agentic workflows, RAG pipelines, and LLM automation that solve real business problems." },
+                "perf": { "title": "Full-Stack Development", "desc": "React, Node.js, TypeScript and cloud infrastructure built to production standard." },
+                "ui": { "title": "Product Design", "desc": "Clean, fast interfaces that convert — built in Figma and shipped in React." }
             }
         },
         "cta": {
-            "title": "START THE NEXT CHAPTER.",
-            "button": "Initialize Onboarding Flow"
+            "title": "Let's Build Something Worth Using.",
+            "button": "Start a Conversation"
         }
     },
     "tools_hero": {
         "title": "The Professional Windows Performance Blueprint.",
         "subhead": "Eliminate latency, debloat services, and unlock your hardware's full potential with elite engineering methodologies.",
-        "cta": "Get Optimization Blueprint",
+        "cta": "Get Optimisation Blueprint",
         "stats": {
             "input_delay": "Input Delay",
             "fps_gain": "FPS Gain",
@@ -135,7 +105,7 @@
             "manifest": "Manifest Review",
             "manifest_sub": "Confirm your digital stack architecture.",
             "security": "Security Gate",
-            "security_sub": "Select authorized payment protocol.",
+            "security_sub": "Select authorised payment protocol.",
             "access": "Access Granted",
             "welcome": "Welcome to the Inner Circle.",
             "success_msg": "Your proprietary assets have been successfully decrypted and deployed to your vault.",
@@ -147,9 +117,9 @@
         },
         "items": {
             "v177": {
-                "title": "V177 Optimizer",
-                "desc": "Elite-grade kernel optimization for maximum throughput.",
-                "long_desc": "The V177 Protocol is a proprietary low-level system optimizer designed to bypass standard Windows bottlenecks. It reconfigures IRQ priorities, CPU core parking, and network throttling for sub-1ms system response.",
+                "title": "V177 Optimiser",
+                "desc": "Elite-grade kernel Optimisation for maximum throughput.",
+                "long_desc": "The V177 Protocol is a proprietary low-level system Optimiser designed to bypass standard Windows bottlenecks. It reconfigures IRQ priorities, CPU core parking, and network throttling for sub-1ms system response.",
                 "features": ["Kernel-Level Tuning", "Sub-1ms Latency", "AES-256 Encrypted Logic"]
             },
             "bible": {
@@ -168,7 +138,7 @@
                 "title": "Neural Bridge SDK",
                 "desc": "Sub-100ms AI streaming foundation for React apps.",
                 "long_desc": "A production-ready React/TypeScript SDK for developers. Implements high-performance state management for real-time AI streaming and neural throughput calculations.",
-                "features": ["React Core Provider", "Optimized State Reducers", "Throughput Logic"]
+                "features": ["React Core Provider", "optimised State Reducers", "Throughput Logic"]
             }
         }
     },
@@ -233,7 +203,7 @@
             "button": "Establish Connection",
             "sending": "Establishing Connection...",
             "async_title": "Async Protocol Activated.",
-            "async_msg": "To ensure maximum efficiency and immediate start on this scope, we utilize an Async Onboarding process. Submit your technical details and we will initiate the sprint.",
+            "async_msg": "To ensure maximum efficiency and immediate start on this scope, we utilise an Async Onboarding process. Submit your technical details and we will initiate the sprint.",
             "async_cta": "Submit Project Scope ->",
             "cal_title": "Architecture Discovery Call"
         },
@@ -267,7 +237,7 @@
     },
     "sidebar": {
         "about_title": "About Me",
-        "about_desc": "I am an AI-Powered Senior Developer specialized in high-performance web applications and production-grade software architecture.",
+        "about_desc": "I am an AI-Powered Senior Developer specialised in high-performance web applications and production-grade software architecture.",
         "connect_title": "Connect",
         "contact_title": "Contact Me",
         "labels": {

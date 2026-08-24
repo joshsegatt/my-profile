@@ -28,7 +28,7 @@ const PaintStrokes: React.FC = () => {
       {/* Yellow Stroke */}
       <path 
         d="M30 150C80 200 120 180 140 320C160 460 100 500 40 540" 
-        stroke="#FFD700" 
+        stroke="#FF5A00" 
         strokeWidth="35" 
         strokeLinecap="round" 
         style={{ opacity: 0.9 }}

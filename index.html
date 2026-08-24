@@ -4,12 +4,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Josh Segatt | AI-Powered Senior Developer</title>
+  <title>Josh Segatt · AI Software Architect &amp; Full-Stack Engineer</title>
+  <meta name="description" content="Josh Segatt is a London-based AI Software Architect &amp; Senior Full-Stack Engineer building high-conversion SaaS MVPs, autonomous AI/RAG pipelines, and ultra-fast web systems across the UK and Europe." />
+  <meta name="keywords" content="AI Software Architect London, Full Stack Developer London UK, Next.js AI MVP Engineer, SaaS Developer Europe, Freelance AI Engineer London, Supabase Stripe Developer, Python AI Pipelines UK, React TypeScript Architect" />
+  <meta name="author" content="Josh Segatt" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://segatt.com" />
+
+  <!-- Geographic & Local SEO (London / UK / Europe) -->
+  <meta name="geo.region" content="GB-LND" />
+  <meta name="geo.placename" content="London" />
+  <meta name="geo.position" content="51.5074;-0.1278" />
+  <meta name="ICBM" content="51.5074, -0.1278" />
+
+  <!-- OpenGraph / Social Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Josh Segatt" />
+  <meta property="og:title" content="Josh Segatt · AI Software Architect &amp; Full-Stack Engineer" />
+  <meta property="og:description" content="Bespoke AI solutions, 14-day SaaS MVPs, and production-grade software development for high-growth founders in London, the UK, and Europe." />
+  <meta property="og:url" content="https://segatt.com" />
+  <meta property="og:image" content="https://segatt.com/favicon.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Josh Segatt · AI Software Architect &amp; Full-Stack Engineer" />
+  <meta name="twitter:description" content="Bespoke AI solutions, 14-day SaaS MVPs, and production-grade software development in London &amp; Europe." />
+  <meta name="twitter:image" content="https://segatt.com/favicon.png" />
+
+  <!-- JSON-LD Structured Data Schema for Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://segatt.com/#person",
+        "name": "Josh Segatt",
+        "url": "https://segatt.com",
+        "jobTitle": "Principal AI Software Architect & Full-Stack Engineer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressRegion": "Greater London",
+          "addressCountry": "GB"
+        },
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Full-Stack Development",
+          "SaaS Architecture",
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Python",
+          "LLM & RAG Systems",
+          "Cloud Infrastructure",
+          "SEO Optimization"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://segatt.com/#service",
+        "name": "Josh Segatt — AI Architecture & Full-Stack Engineering",
+        "url": "https://segatt.com",
+        "image": "https://segatt.com/favicon.png",
+        "priceRange": "$$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressCountry": "GB"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "London, United Kingdom" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "Switzerland" },
+          { "@type": "Continent", "name": "Europe" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software & AI Engineering Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "14-Day MVP Launch Sprints",
+                "description": "Rapid development of production-ready SaaS MVPs with Next.js 15, Supabase, and Stripe."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Autonomous AI & RAG Pipelines",
+                "description": "Bespoke LLM orchestration, vector search, and agentic workflows that automate operations."
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://res.cloudinary.com">
   <link rel="preconnect" href="https://i.pravatar.cc">
   <link
@@ -22,15 +124,16 @@
           colors: {
             brand: {
               black: '#09090B',
-              window: '#0D0D0D', // Deeper black for window
-              card: '#1A1A1A',   // Slightly lighter for cards
-              yellow: '#FFC107',  // Primary accent
+              window: '#0D0D0D',
+              card: '#1A1A1A',
+              yellow: '#FF5A00',  // Mapped to brand orange
+              orange: '#FF5A00',
               textPrimary: '#FAFAFA',
               textSecondary: '#A1A1AA',
               textTertiary: '#52525B',
               paintRed: '#D946EF',
               paintCyan: '#22D3EE',
-              paintYellow: '#FDE047',
+              paintYellow: '#FF5A00',
               paintOrange: '#8B5CF6',
               codeGray: '#27272A',
             }
@@ -53,13 +156,13 @@
       padding: 0;
       overflow-x: hidden;
       font-family: 'Outfit', sans-serif;
-      background-color: #050505; /* True black for page background */
+      background-color: #050505;
     }
 
     /* Window Container Base */
     .window-frame {
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 193, 7, 0.03);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 90, 0, 0.05);
     }
 
     /* Custom scrollbars for the contained window */
@@ -74,7 +177,7 @@
       border-radius: 10px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 193, 7, 0.4);
+      background: rgba(255, 90, 0, 0.6);
     }
 
     /* Shimmer effect for buttons and accents */
@@ -84,7 +187,7 @@
     }
 
     .shimmer-text {
-      background: linear-gradient(90deg, #FFC107 0%, #FFF 50%, #FFC107 100%);
+      background: linear-gradient(90deg, #FF5A00 0%, #FFF 50%, #FF5A00 100%);
       background-size: 200% auto;
       color: transparent;
       -webkit-background-clip: text;
@@ -107,11 +210,11 @@
     /* Home & About: Compact Architectural Style */
     #home-hero-section .hero-title, 
     #about .about-title {
-      font-size: 30px !important; /* Increased Mobile Size */
-      font-weight: 700 !important; /* Architectural Weight */
+      font-size: 30px !important;
+      font-weight: 700 !important;
       letter-spacing: -0.06em !important;
       line-height: 1.0 !important;
-      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%); /* Frosted Steel */
+      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -119,50 +222,50 @@
       max-width: 850px !important;
     }
 
-    /* 🏷️ Senior Figma Highlighting & Liquid Gold */
+    /* 🏷️ Senior Highlighting & Brand Orange */
     .highlight-pro {
-      font-weight: 900 !important; /* Visual Hierarchy Boost */
-      background: linear-gradient(to bottom, #FFC700 0%, #B8860B 100%) !important; /* Liquid Gold */
+      font-weight: 900 !important;
+      background: linear-gradient(to bottom, #FF5A00 0%, #d64700 100%) !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 0 1px rgba(255, 199, 0, 0.8));
+      filter: drop-shadow(0 0 1px rgba(255, 90, 0, 0.8));
       text-shadow: 
-        0 0 10px rgba(255, 199, 0, 0.4),
-        0 0 30px rgba(255, 199, 0, 0.2),
-        0 0 60px rgba(255, 199, 0, 0.1); /* Triple-Layer Glow */
+        0 0 10px rgba(255, 90, 0, 0.4),
+        0 0 30px rgba(255, 90, 0, 0.2),
+        0 0 60px rgba(255, 90, 0, 0.1);
     }
 
     /* Gamer: High-Impact Dominance Style */
     #gamer-hero-section .hero-title {
-      font-size: 42px !important; /* Proportional Mobile Increase */
+      font-size: 42px !important;
       font-weight: 800 !important;
       letter-spacing: -0.06em !important;
       line-height: 1.0 !important;
-      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%); /* Frosted Steel */
+      background: linear-gradient(to bottom, #FFFFFF 0%, #A1A1AA 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 2rem !important;
     }
 
-    /* Subtitles & Descriptions: Senior Proportionality */
+    /* Subtitles & Descriptions */
     .hero-description, .hero-subhead {
       font-size: 14px !important;
       line-height: 1.7 !important;
       color: rgba(255, 255, 255, 0.6) !important;
       max-width: 580px !important;
-      margin-bottom: 3.5rem !important; /* Extra Respiro */
+      margin-bottom: 3.5rem !important;
     }
 
     @media (min-width: 1024px) {
       #home-hero-section .hero-title, 
       #about .about-title {
-        font-size: 48px !important; /* Senior Impact Scale */
+        font-size: 48px !important;
       }
       
       #gamer-hero-section .hero-title {
-        font-size: 64px !important; /* Maintained Dominance Gap */
+        font-size: 64px !important;
       }
 
       .hero-description, .hero-subhead {
@@ -170,21 +273,21 @@
       }
     }
 
-    /* ⚡ Elite CTA: Magnetic Obsidian System */
+    /* ⚡ Elite CTA: Magnetic System */
     .cta-button {
-      background-color: #FFC700 !important;
-      color: #000 !important;
+      background-color: #FF5A00 !important;
+      color: #FFF !important;
       position: relative !important;
       overflow: hidden !important;
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
-      box-shadow: 0 0 0 rgba(255, 199, 0, 0) !important;
-      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 0 0 rgba(255, 90, 0, 0) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
       z-index: 10 !important;
       text-decoration: none !important;
       cursor: pointer !important;
     }
 
-    /* Premium Light Sweep (Shimmer) */
+    /* Premium Light Sweep */
     .cta-button::before {
       content: '' !important;
       position: absolute !important;
@@ -208,10 +311,10 @@
 
     .cta-button:hover {
       transform: translateY(-4px) scale(1.02) !important;
-      background-color: #FFD600 !important;
+      background-color: #ff6f1f !important;
       box-shadow: 
-        0 15px 45px rgba(255, 199, 0, 0.35),
-        0 0 20px rgba(255, 199, 0, 0.1) !important;
+        0 15px 45px rgba(255, 90, 0, 0.35),
+        0 0 20px rgba(255, 90, 0, 0.1) !important;
     }
 
     .cta-button:active {
@@ -228,8 +331,8 @@
     }
 
     @keyframes pulse-glow-elite {
-      0%, 100% { box-shadow: 0 0 30px rgba(255, 199, 0, 0.2); }
-      50% { box-shadow: 0 0 60px rgba(255, 199, 0, 0.45); }
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 90, 0, 0.2); }
+      50% { box-shadow: 0 0 60px rgba(255, 90, 0, 0.45); }
     }
 
     .animate-pulse-slow {

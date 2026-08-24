@@ -35,8 +35,8 @@
 /* Haptics & Pulsing UI */
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 30px rgba(255, 199, 0, 0.15); }
-  50% { box-shadow: 0 0 50px rgba(255, 199, 0, 0.3); }
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 90, 0, 0.15); }
+  50% { box-shadow: 0 0 50px rgba(255, 90, 0, 0.3); }
 }
 
 .animate-pulse-slow {
@@ -44,8 +44,8 @@
 }
 
 .lightning-bolt {
-  color: #FFC700;
-  filter: drop-shadow(0 0 8px rgba(255, 199, 0, 0.5));
+  color: #FF5A00;
+  filter: drop-shadow(0 0 8px rgba(255, 90, 0, 0.5));
 }
 
 /* Responsive Overrides */
@@ -109,13 +109,13 @@
   padding: 2.5px; /* Espessura do Neon */
   background: conic-gradient(
     from var(--border-angle, 0deg),
-    #ffc700 0%,
+    #FF5A00 0%,
     transparent 15%,
     transparent 45%,
     #a855f7 50%,
     transparent 65%,
     transparent 90%,
-    #ffc700 100%
+    #FF5A00 100%
   );
   -webkit-mask: 
      linear-gradient(#fff 0 0) content-box, 
@@ -146,7 +146,7 @@
   background: rgba(12, 12, 12, 0.6);
   box-shadow: 
     0 0 40px rgba(168, 85, 247, 0.25), /* Purple Glow */
-    0 0 80px rgba(255, 199, 0, 0.2); /* Yellow Glow */
+    0 0 80px rgba(255, 90, 0, 0.2); /* Yellow Glow */
 }
 
 /* Tactical Elements Persistence */
@@ -157,11 +157,11 @@
   font-family: ui-monospace, monospace;
   font-size: 10px;
   font-weight: 900;
-  color: rgba(255, 199, 0, 0.6);
+  color: rgba(255, 90, 0, 0.6);
   background: rgba(0, 0, 0, 0.8);
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 199, 0, 0.2);
+  border: 1px solid rgba(255, 90, 0, 0.2);
   letter-spacing: 0.1em;
   z-index: 20;
 }

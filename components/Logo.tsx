@@ -77,20 +77,20 @@ const Logo: React.FC<LogoProps> = ({ className, variant = 'full' }) => {
         </motion.div>
       </div>
 
-      <div className="flex flex-col -space-y-1">
-        <div className="flex items-baseline gap-1.5">
-          <span className={`${isMinimal ? 'text-[16px]' : 'text-[22px]'} font-black tracking-[-0.02em] text-white`}>JOSH</span>
-          <span className={`${isMinimal ? 'text-[16px]' : 'text-[22px]'} font-extralight tracking-[0.1em] text-white/40 uppercase`}>SEGATT</span>
-        </div>
-        {!isMinimal && (
-          <div className="flex items-center gap-2">
-              <div className="h-[1px] w-3 bg-brand-yellow/30" />
-              <span className="text-[8px] font-black tracking-[0.4em] text-brand-yellow/60 uppercase">
-                  {t('intro.role')}
-              </span>
+      {!isMinimal && (
+        <div className="flex flex-col -space-y-1">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-[22px] font-black tracking-[-0.02em] text-white">JOSH</span>
+            <span className="text-[22px] font-extralight tracking-[0.1em] text-white/40 uppercase">SEGATT</span>
           </div>
-        )}
-      </div>
+          <div className="flex items-center gap-2">
+            <div className="h-[1px] w-3 bg-brand-yellow/30" />
+            <span className="text-[8px] font-black tracking-[0.4em] text-brand-yellow/60 uppercase">
+              {t('intro.role')}
+            </span>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };

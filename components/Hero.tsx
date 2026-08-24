@@ -1,263 +1,138 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Zap, CheckCircle2, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import { useLanguage } from '../utils/i18n';
-import './Hero.css';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { QuickQuoteModal } from './QuickQuoteModal';
 
-gsap.registerPlugin(ScrollTrigger);
-
-// --- Magnetic Button Component ---
-const MagneticButton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 150, damping: 15 });
-  const springY = useSpring(y, { stiffness: 150, damping: 15 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY, currentTarget } = e;
-    const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
-    x.set(clientX - centerX);
-    y.set(clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// --- Tier S Hero Image Component ---
-const HeroVideo: React.FC = () => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    if (!rect.width || !rect.height) return;
-    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
-    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  return (
-    <motion.div 
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: "1000px" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-      className="relative w-full h-full aspect-video lg:aspect-auto overflow-hidden group bg-[#020202]"
-    >
-      <img 
-        src="/assets/hero_dashboard.png" 
-        alt="Hero Dashboard" 
-        {...(true ? { fetchpriority: "high" } as any : {})}
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ transform: "translateZ(20px)" }}
-      />
-
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020202]/80 via-transparent to-transparent pointer-events-none" />
-      
-      {/* Animated Border Glow */}
-      <motion.div 
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 4, repeat: Infinity }}
-        className="absolute inset-0 border border-brand-yellow/10 rounded-[2.5rem] pointer-events-none"
-      />
-
-      {/* Cinematic Grain Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.15] mix-blend-overlay overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dyd911kmh/image/upload/v1640050215/grain_u87v9v.png')] bg-repeat animate-grain" />
-      </div>
-
-      {/* Extreme Radial Mask */}
-      <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(2,2,2,0.8)]" />
-    </motion.div>
-  );
-};
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] }
+});
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    const chars = titleRef.current?.querySelectorAll('.char-reveal');
-    if (chars) {
-      gsap.fromTo(chars, 
-        { y: 100, opacity: 0 }, 
-        { y: 0, opacity: 1, stagger: 0.03, duration: 0.8, ease: "power4.out" }
-      );
-    }
-  }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section id="home-hero-section" className="hero-container">
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-12">
+    <>
+      <section className="relative h-[100dvh] min-h-[800px] w-full overflow-hidden bg-black">
+        {/* CSS Background Split */}
+        <div className="absolute inset-0 flex">
+          {/* Approximate orange from the generated image */}
+          <div className="w-[55%] h-full bg-[#d64700]" />
+          <div className="w-[45%] h-full bg-white" />
+        </div>
+
+        {/* Full Image Background - Unzoomed & Blended */}
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+          <img 
+            src="/assets/josh-hero.jpg" 
+            alt="Hero Background" 
+            className="h-full w-auto max-w-none object-contain pointer-events-none"
+            style={{ 
+              maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)'
+            }}
+          />
+          {/* Subtle gradient overlay to ensure text readability if needed */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent pointer-events-none" />
+        </div>
+
+        {/* Content Container */}
+        <div className="absolute inset-0 w-full max-w-[1600px] mx-auto flex">
           
-          {/* Left Column: Text Content (60%) */}
-          <div className="w-full lg:w-[55%] flex flex-col items-start text-left">
-            
-            {/* H1 Heading */}
-            <div className="hero-reveal-wrapper">
-              <h1 ref={titleRef} className="hero-title-reveal text-4xl md:text-5xl lg:text-[clamp(32px,4vw,68px)] font-black text-white leading-[1.15] tracking-tight uppercase mb-6">
-                {t('hero.title_line1').split(' ').map((word, wordIdx) => (
-                  <span key={`w1-${wordIdx}`} className="inline-block whitespace-nowrap">
-                    {word.split('').map((char, charIdx) => (
-                      <span key={`c1-${charIdx}`} className="inline-block char-reveal">{char}</span>
-                    ))}
-                    {/* Add space after word if not the last one */}
-                    {wordIdx < t('hero.title_line1').split(' ').length - 1 && '\u00A0'}
-                  </span>
-                ))}
-                <br />
-                <span className="text-brand-yellow">
-                  {t('hero.title_line2').split(' ').map((word, wordIdx) => (
-                    <span key={`w2-${wordIdx}`} className="inline-block whitespace-nowrap">
-                      {word.split('').map((char, charIdx) => (
-                        <span key={`c2-${charIdx}`} className="inline-block char-reveal">{char}</span>
-                      ))}
-                      {wordIdx < t('hero.title_line2').split(' ').length - 1 && '\u00A0'}
-                    </span>
-                  ))}
-                </span>
+          {/* Left Column Content */}
+          <div className="w-1/2 h-full flex flex-col justify-center px-12 lg:px-24 z-20">
+            <motion.div {...fadeUp(0)}>
+              <h1 className="text-[clamp(40px,9vw,150px)] font-black text-white leading-[0.85] tracking-tighter mix-blend-overlay opacity-90 -ml-2 select-none uppercase">
+                CREATE
               </h1>
-            </div>
-
-            {/* Subhead */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="hero-subhead text-white/65 text-lg mb-8 leading-relaxed"
-            >
-              {t('hero.subhead')}
-            </motion.p>
-
-            {/* Social Proof Line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-6 mb-8"
-            >
-              {[
-                "Enterprise SaaS Dev",
-                "App Architecture",
-                "Windows/FPS Tuning"
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-brand-yellow/60" />
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-white/40">
-                    {item}
-                  </span>
-                </div>
-              ))}
+            </motion.div>
+            
+            <motion.div {...fadeUp(0.1)} className="mt-8 mb-10">
+              <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 leading-tight drop-shadow-md">
+                {t('hero.title_line1')} <br />
+                {t('hero.title_line2')}
+              </h2>
+              <p className="text-white/90 text-base md:text-lg max-w-sm font-medium drop-shadow-md">
+                {t('hero.subhead')}
+              </p>
             </motion.div>
 
-            {/* CTA Interaction Area */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-                <Link 
-                  to="/onboarding"
-                  className="cta-button inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-[0.2em] active:scale-95 transition-all"
-                >
-                  {t('hero.cta')}
-                  <ChevronRight size={18} className="arrow-icon" />
-                </Link>
+            <motion.div {...fadeUp(0.2)}>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#FF5A00] text-sm font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 border-none cursor-pointer shadow-[0_0_40px_rgba(255,255,255,0.4)]"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Request a Quote
+                  <ChevronRight size={18} />
+                </span>
+              </button>
             </motion.div>
 
-          </div>
-
-          {/* Right Column: Mosaic Bento Grid (40%) */}
-          <div className="w-full lg:w-[40%]">
-            <HeroMosaic />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// --- Hero Mosaic Component ---
-const HeroMosaic: React.FC = () => {
-  return (
-    <div className="hero-mosaic">
-      {/* Slot Principal: Video Tier S */}
-      <div className="mosaic-card main-card">
-        <HeroVideo />
-      </div>
-      
-      {/* Slot Secundrio 1 */}
-      <div className="mosaic-card sub-card-1 skeleton-pulse">
-        <div className="placeholder-content">
-          <img 
-            src="/cardhero2.png" 
-            alt="Tactical Detail" 
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover" 
-          />
-          <div className="scan-line-anim" />
-          <div className="vignette-overlay" />
-        </div>
-      </div>
-
-      {/* Slot Secundrio 2 */}
-      <div className="mosaic-card sub-card-2 skeleton-pulse">
-        <div className="placeholder-content">
-          <img 
-            src="/cardhero3.png" 
-            alt="Performance Feed" 
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover" 
-          />
-          <div className="scan-line-anim" />
-          <div className="vignette-overlay" />
-        </div>
-      </div>
-
-      {/* Slot Secundrio 3 */}
-      <div className="mosaic-card sub-card-3">
-        <div className="placeholder-content">
-           <div className="flex items-center gap-8 px-6">
-              <div className="flex flex-col gap-1">
-                <div className="w-12 h-1 bg-brand-yellow/20 rounded-full overflow-hidden">
-                  <motion.div 
-                    animate={{ x: [-50, 50] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-full h-full bg-brand-yellow"
-                  />
+            {/* Social Proof */}
+            <motion.div {...fadeUp(0.3)} className="absolute bottom-20 left-12 lg:left-24">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-3">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-[#FF5A00] bg-[#cc4f00] flex items-center justify-center text-xs font-bold text-white overflow-hidden">
+                       <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                  <div className="w-10 h-10 rounded-full border-2 border-[#FF5A00] bg-black/20 flex items-center justify-center text-[10px] font-bold text-white">
+                    +12
+                  </div>
                 </div>
-                <span className="text-[8px] opacity-30 font-black">LATENCY_STABLE</span>
               </div>
-              <div className="h-8 w-[1px] bg-white/5" />
-              <Zap size={18} className="text-brand-yellow/40" />
-           </div>
+              <p className="text-white/90 text-xs mt-3 max-w-[200px] drop-shadow-md font-medium">
+                Trusted by forward-thinking startups across Europe.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right Column Content */}
+          <div className="w-1/2 h-full flex flex-col justify-center px-12 lg:px-24 z-20 text-black">
+             <motion.div 
+               {...fadeUp(0.2)}
+               className="absolute top-1/3 right-12 lg:right-24 text-right"
+             >
+               <p className="text-[#FF5A00] text-xs font-bold tracking-[0.3em] uppercase mb-2 flex items-center justify-end gap-2 drop-shadow-sm">
+                 Available For <span className="w-2 h-2 rounded-full bg-[#FF5A00] inline-block" />
+               </p>
+               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black leading-none drop-shadow-sm">
+                 Freelance<br />Projects
+               </h2>
+             </motion.div>
+
+             <motion.div 
+               {...fadeUp(0.4)}
+               className="absolute bottom-20 right-12 lg:right-24 bg-white/80 backdrop-blur-md p-6 rounded-2xl max-w-sm border border-gray-100 shadow-xl shadow-black/10"
+             >
+               <p className="text-[#FF5A00] text-4xl font-serif leading-none h-4">“</p>
+               <p className="text-gray-800 text-sm italic mb-4 mt-2">
+                 Josh delivered outstanding work that exceeded our expectations on latency and architecture.
+               </p>
+               <div className="flex items-center gap-3">
+                 <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
+                   <img src="https://i.pravatar.cc/100?img=33" alt="Client" />
+                 </div>
+                 <div>
+                   <p className="text-black font-bold text-xs uppercase">James Carter</p>
+                   <p className="text-gray-500 text-[10px] uppercase tracking-wider">Founder, SaaS Co.</p>
+                 </div>
+               </div>
+             </motion.div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <QuickQuoteModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+    </>
   );
 };
 

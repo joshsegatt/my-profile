@@ -13,7 +13,7 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
   title, 
   icon, 
   className = "",
-  glowColor = "rgba(255,193,7,0.05)"
+  glowColor = "rgba(255,90,0,0.05)"
 }) => {
   return (
     <section className={`relative overflow-hidden group rounded-3xl border border-white/5 bg-brand-window/40 backdrop-blur-xl ${className}`}>

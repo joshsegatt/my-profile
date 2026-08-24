@@ -38,9 +38,9 @@ export const ProjectTechRays: React.FC<ProjectTechRaysProps> = ({ isActive }) =>
                         >
                             <defs>
                                 <linearGradient id="cardCircuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stopColor="#FFC107" stopOpacity="0" />
-                                    <stop offset="50%" stopColor="#FFC107" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#FFC107" stopOpacity="0" />
+                                    <stop offset="0%" stopColor="#FF5A00" stopOpacity="0" />
+                                    <stop offset="50%" stopColor="#FF5A00" stopOpacity="1" />
+                                    <stop offset="100%" stopColor="#FF5A00" stopOpacity="0" />
                                 </linearGradient>
                                 
                                 <filter id="cardGlow">
@@ -74,7 +74,7 @@ export const ProjectTechRays: React.FC<ProjectTechRaysProps> = ({ isActive }) =>
                                     {/* Pulsating Endpoint */}
                                     <motion.circle
                                         r="0.8"
-                                        fill="#FFC107"
+                                        fill="#FF5A00"
                                         filter="url(#cardGlow)"
                                         animate={{
                                             opacity: [0, 1, 0],

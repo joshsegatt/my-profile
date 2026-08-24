@@ -7,10 +7,10 @@ import { submitIntake, IntakeData } from '../utils/submitIntake';
 import { Lock, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const intakeSchema = z.object({
-    name: z.string().min(2, "Nome é obrigatório"),
-    email: z.string().email("E-mail inválido"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Invalid email address"),
     url: z.string().optional(),
-    bottleneck: z.string().min(1, "Selecione o principal gargalo"),
+    bottleneck: z.string().min(1, "Select the main bottleneck"),
     description: z.string().optional()
 });
 
@@ -72,54 +72,54 @@ const AsyncIntakeForm: React.FC = () => {
                                     Async <span className="text-brand-yellow">Intake</span>
                                 </h1>
                                 <p className="text-white/40 font-bold uppercase tracking-[0.2em] text-[11px] max-w-md mx-auto leading-relaxed">
-                                    Diagnóstico Técnico de Elite. Preenche os dados abaixo para darmos início ao teu Sprint ($1k - $5k).
+                                    Elite Technical Diagnostic. Fill in the details below to initiate your Sprint ($1k - $5k).
                                 </p>
                             </div>
 
                             {submitError && (
                                 <div className="mb-8 p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-start gap-3 text-red-400 text-sm font-medium">
                                     <AlertCircle size={18} className="shrink-0 mt-0.5" />
-                                    <p>Falha ao estabelecer ligação. Por favor, tenta novamente.</p>
+                                    <p>Failed to establish connection. Please try again.</p>
                                 </div>
                             )}
 
                             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Nome Completo *</label>
+                                        <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Full Name *</label>
                                         <input 
                                             {...register("name")} 
                                             disabled={isSubmitting}
                                             className={`w-full bg-white/[0.03] border ${errors.name ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium placeholder:text-white/20`}
-                                            placeholder="Ex: John Doe"
+                                            placeholder="e.g. John Doe"
                                         />
                                         {errors.name && <p className="text-red-400 text-xs pl-2">{errors.name.message}</p>}
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Email Corporativo *</label>
+                                        <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Corporate Email *</label>
                                         <input 
                                             {...register("email")} 
                                             disabled={isSubmitting}
                                             className={`w-full bg-white/[0.03] border ${errors.email ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium placeholder:text-white/20`}
-                                            placeholder="john@empresa.com"
+                                            placeholder="john@company.com"
                                         />
                                         {errors.email && <p className="text-red-400 text-xs pl-2">{errors.email.message}</p>}
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Nome do Projeto ou URL (Opcional)</label>
+                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Project Name or URL (Optional)</label>
                                     <input 
                                         {...register("url")} 
                                         disabled={isSubmitting}
                                         className={`w-full bg-white/[0.03] border ${errors.url ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium placeholder:text-white/20`}
-                                        placeholder="Ex: Minha Startup ou https://meusite.com"
+                                        placeholder="e.g. My Startup or https://mysite.com"
                                     />
                                     {errors.url && <p className="text-red-400 text-xs pl-2">{errors.url.message}</p>}
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Qual é o principal gargalo técnico hoje? *</label>
+                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">What is the main technical bottleneck today? *</label>
                                     <div className="relative group">
                                         <select 
                                             {...register("bottleneck")}
@@ -127,11 +127,11 @@ const AsyncIntakeForm: React.FC = () => {
                                             style={{ colorScheme: 'dark' }}
                                             className={`w-full bg-[#0a0a0a] border ${errors.bottleneck ? 'border-red-500/50' : 'border-white/10 focus:border-brand-yellow/50'} rounded-2xl px-5 py-4 text-white outline-none focus:bg-white/[0.05] transition-all font-medium appearance-none cursor-pointer pr-12`}
                                         >
-                                            <option value="" disabled hidden className="bg-[#0a0a0a]">Selecione um gargalo técnico...</option>
-                                            <option value="Necessito de integrar IA / Automação" className="bg-[#0a0a0a]">Necessito de integrar IA / Automação</option>
-                                            <option value="Performance inaceitável / Tempo de carregamento" className="bg-[#0a0a0a]">Performance inaceitável / Tempo de carregamento</option>
-                                            <option value="Refatoração de código / Arquitetura SaaS" className="bg-[#0a0a0a]">Refatoração de código / Arquitetura SaaS</option>
-                                            <option value="Construir um MVP do zero" className="bg-[#0a0a0a]">Construir um MVP do zero</option>
+                                            <option value="" disabled hidden className="bg-[#0a0a0a]">Select a technical bottleneck...</option>
+                                            <option value="Necessito de integrar IA / Automação" className="bg-[#0a0a0a]">I need to integrate AI / Automation</option>
+                                            <option value="Performance inaceitável / Tempo de carregamento" className="bg-[#0a0a0a]">Unacceptable performance / Load time</option>
+                                            <option value="Refatoração de código / Arquitetura SaaS" className="bg-[#0a0a0a]">Code refactoring / SaaS Architecture</option>
+                                            <option value="Construir um MVP do zero" className="bg-[#0a0a0a]">Build an MVP from scratch</option>
                                         </select>
                                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-brand-yellow transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -141,13 +141,13 @@ const AsyncIntakeForm: React.FC = () => {
                                 </div>
 
                                 <div className="space-y-2 pt-2">
-                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Descreve o problema ou cola um link do Loom (Opcional)</label>
+                                    <label className="text-[11px] font-black uppercase tracking-widest text-white/50 pl-2">Describe the problem or paste a Loom link (Optional)</label>
                                     <textarea 
                                         {...register("description")}
                                         disabled={isSubmitting}
                                         rows={4}
                                         className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-brand-yellow/50 focus:bg-white/[0.05] transition-all font-medium placeholder:text-white/20 resize-none"
-                                        placeholder="Breve resumo do projeto..."
+                                        placeholder="Brief project summary..."
                                     />
                                 </div>
 
@@ -161,10 +161,10 @@ const AsyncIntakeForm: React.FC = () => {
                                     {isSubmitting ? (
                                         <>
                                             <Loader2 size={18} className="animate-spin stroke-[3px]" />
-                                            A validar e enviar...
+                                            Validating and submitting...
                                         </>
                                     ) : (
-                                        <>Submeter Escopo Técnico</>
+                                        <>Submit Technical Scope</>
                                     )}
                                 </motion.button>
                             </form>
@@ -189,14 +189,14 @@ const AsyncIntakeForm: React.FC = () => {
                                 Scope <span className="text-brand-yellow">Locked.</span>
                             </h2>
                             <p className="text-white/60 text-lg font-medium leading-relaxed max-w-lg mx-auto mb-10">
-                                O teu diagnóstico foi submetido com sucesso. Iniciaremos a análise em breve.
+                                Your diagnostic has been successfully submitted. We will begin the analysis shortly.
                             </p>
                             <motion.button 
                                 whileHover={{ scale: 1.05 }}
                                 onClick={() => window.location.href = '/'} 
                                 className="bg-white/5 border border-white/10 text-white font-black py-4 px-10 rounded-2xl hover:bg-white hover:text-black transition-all uppercase tracking-widest text-[11px]"
                             >
-                                Voltar ao Início
+                                Back to Home
                             </motion.button>
                         </motion.div>
                     )}

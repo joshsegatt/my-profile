@@ -117,7 +117,7 @@ const Sidebar: React.FC<SidebarProps> = ({ hideAbout = false }) => {
                     <button
                         type="submit"
                         disabled={isSubmitting || isSuccess}
-                        className="w-full bg-brand-yellow text-black font-bold h-11 rounded-xl text-[13px] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(255,193,7,0.15)] disabled:opacity-70"
+                        className="w-full bg-[#FF5A00] text-white font-bold h-11 rounded-xl text-[13px] hover:bg-[#ff6f1f] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,90,0,0.35)] disabled:opacity-70 cursor-pointer"
                     >
                         {isSubmitting ? t('sidebar.status.sending') : isSuccess ? t('sidebar.status.delivered') : t('sidebar.button')}
                         {!isSuccess && <Send size={12} className="stroke-[2.5px]" />}

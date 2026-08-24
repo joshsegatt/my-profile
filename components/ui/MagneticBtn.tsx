@@ -41,7 +41,7 @@ const MagneticBtn: React.FC<MagneticBtnProps> = ({
       whileTap={{ scale: 0.96 }}
       className={`relative group overflow-hidden flex items-center gap-2 rounded-full font-semibold transition-colors
         ${primary
-          ? 'px-8 py-[13px] text-[13px] text-black bg-brand-yellow shadow-[0_8px_28px_rgba(255,193,7,0.28)]'
+          ? 'px-8 py-[13px] text-[13px] text-black bg-brand-yellow shadow-[0_8px_28px_rgba(255,90,0,0.28)]'
           : 'px-8 py-[13px] text-[13px] border border-white/10 text-white/40 hover:bg-white/5'
         } ${className}`}
     >
